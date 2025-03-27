@@ -4359,7 +4359,8 @@ std::string GUI_App::format_display_version()
     if (!version_display.empty())
         return version_display;
 
-    version_display = SoftFever_VERSION;
+    // version_display = SoftFever_VERSION;
+    version_display = HIM_VERSION;
     return version_display;
 }
 
@@ -4986,12 +4987,12 @@ bool GUI_App::load_language(wxString language, bool initial)
     // if (language_info == m_language_info_best || language_info == m_language_info_system) {
     //    // The current language matches user's default profile exactly. That's great.
     //} else if (m_language_info_best != nullptr && language_info->CanonicalName.BeforeFirst('_') ==
-    //m_language_info_best->CanonicalName.BeforeFirst('_')) {
+    // m_language_info_best->CanonicalName.BeforeFirst('_')) {
     //    // Use whatever the operating system recommends, if it the language code of the dictionary matches the recommended language.
     //    // This allows a Swiss guy to use a German dictionary without forcing him to German locales.
     //    language_info = m_language_info_best;
     //} else if (m_language_info_system != nullptr && language_info->CanonicalName.BeforeFirst('_') ==
-    //m_language_info_system->CanonicalName.BeforeFirst('_'))
+    // m_language_info_system->CanonicalName.BeforeFirst('_'))
     //    language_info = m_language_info_system;
 
     // Alternate language code.
