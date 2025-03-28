@@ -13,13 +13,12 @@
 
 #include <boost/log/trivial.hpp>
 
-#define TOPBAR_ICON_SIZE  18
-#define TOPBAR_TITLE_WIDTH  300
+#define TOPBAR_ICON_SIZE 18
+#define TOPBAR_TITLE_WIDTH 300
 
 using namespace Slic3r;
 
-enum CUSTOM_ID
-{
+enum CUSTOM_ID {
     ID_TOP_MENU_TOOL = 3100,
     ID_LOGO,
     ID_TOP_FILE_MENU,
@@ -59,8 +58,7 @@ void BBLTopbarArt::DrawLabel(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& it
     int textX, textY;
     if (textWidth < rect.GetWidth()) {
         textX = rect.x + 1 + (rect.width - textWidth) / 2;
-    }
-    else {
+    } else {
         textX = rect.x + 1;
     }
     textY = rect.y + (rect.height - textHeight) / 2;
@@ -83,8 +81,7 @@ void BBLTopbarArt::DrawButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& i
 {
     int textWidth = 0, textHeight = 0;
 
-    if (m_flags & wxAUI_TB_TEXT)
-    {
+    if (m_flags & wxAUI_TB_TEXT) {
         dc.SetFont(m_font);
         int tx, ty;
 
@@ -96,66 +93,46 @@ void BBLTopbarArt::DrawButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& i
     int bmpX = 0, bmpY = 0;
     int textX = 0, textY = 0;
 
-    const wxBitmap& bmp = item.GetState() & wxAUI_BUTTON_STATE_DISABLED
-        ? item.GetDisabledBitmap()
-        : item.GetBitmap();
+    const wxBitmap& bmp = item.GetState() & wxAUI_BUTTON_STATE_DISABLED ? item.GetDisabledBitmap() : item.GetBitmap();
 
     const wxSize bmpSize = bmp.IsOk() ? bmp.GetScaledSize() : wxSize(0, 0);
 
-    if (m_textOrientation == wxAUI_TBTOOL_TEXT_BOTTOM)
-    {
-        bmpX = rect.x +
-            (rect.width / 2) -
-            (bmpSize.x / 2);
+    if (m_textOrientation == wxAUI_TBTOOL_TEXT_BOTTOM) {
+        bmpX = rect.x + (rect.width / 2) - (bmpSize.x / 2);
 
-        bmpY = rect.y +
-            ((rect.height - textHeight) / 2) -
-            (bmpSize.y / 2);
+        bmpY = rect.y + ((rect.height - textHeight) / 2) - (bmpSize.y / 2);
 
         textX = rect.x + (rect.width / 2) - (textWidth / 2) + 1;
         textY = rect.y + rect.height - textHeight - 1;
-    }
-    else if (m_textOrientation == wxAUI_TBTOOL_TEXT_RIGHT)
-    {
+    } else if (m_textOrientation == wxAUI_TBTOOL_TEXT_RIGHT) {
         bmpX = rect.x + wnd->FromDIP(3);
 
-        bmpY = rect.y +
-            (rect.height / 2) -
-            (bmpSize.y / 2);
+        bmpY = rect.y + (rect.height / 2) - (bmpSize.y / 2);
 
         textX = bmpX + wnd->FromDIP(3) + bmpSize.x;
-        textY = rect.y +
-            (rect.height / 2) -
-            (textHeight / 2);
+        textY = rect.y + (rect.height / 2) - (textHeight / 2);
     }
 
-
-    if (!(item.GetState() & wxAUI_BUTTON_STATE_DISABLED))
-    {
-        if (item.GetState() & wxAUI_BUTTON_STATE_PRESSED)
-        {
-            dc.SetPen(wxPen(StateColor::darkModeColorFor("#009688"))); // ORCA
-            dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#009688"))); // ORCA
+    if (!(item.GetState() & wxAUI_BUTTON_STATE_DISABLED)) {
+        if (item.GetState() & wxAUI_BUTTON_STATE_PRESSED) {
+            dc.SetPen(wxPen(StateColor::darkModeColorFor("#99fe00")));     // ORCA
+            dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#99fe00"))); // ORCA
             dc.DrawRectangle(rect);
-        }
-        else if ((item.GetState() & wxAUI_BUTTON_STATE_HOVER) || item.IsSticky())
-        {
-            dc.SetPen(wxPen(StateColor::darkModeColorFor("#009688"))); // ORCA
-            dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#009688"))); // ORCA
+        } else if ((item.GetState() & wxAUI_BUTTON_STATE_HOVER) || item.IsSticky()) {
+            dc.SetPen(wxPen(StateColor::darkModeColorFor("#99fe00")));     // ORCA
+            dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#99fe00"))); // ORCA
 
             // draw an even lighter background for checked item hovers (since
             // the hover background is the same color as the check background)
             if (item.GetState() & wxAUI_BUTTON_STATE_CHECKED)
-                dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#009688"))); // ORCA
+                dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#99fe00"))); // ORCA
 
             dc.DrawRectangle(rect);
-        }
-        else if (item.GetState() & wxAUI_BUTTON_STATE_CHECKED)
-        {
+        } else if (item.GetState() & wxAUI_BUTTON_STATE_CHECKED) {
             // it's important to put this code in an else statement after the
             // hover, otherwise hovers won't draw properly for checked items
-            dc.SetPen(wxPen(StateColor::darkModeColorFor("#009688"))); // ORCA
-            dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#009688"))); // ORCA
+            dc.SetPen(wxPen(StateColor::darkModeColorFor("#99fe00")));     // ORCA
+            dc.SetBrush(wxBrush(StateColor::darkModeColorFor("#99fe00"))); // ORCA
             dc.DrawRectangle(rect);
         }
     }
@@ -169,34 +146,32 @@ void BBLTopbarArt::DrawButton(wxDC& dc, wxWindow* wnd, const wxAuiToolBarItem& i
 #else
     dc.SetTextForeground(*wxWHITE);
 #endif
-    if (item.GetState() & wxAUI_BUTTON_STATE_DISABLED)
-    {
+    if (item.GetState() & wxAUI_BUTTON_STATE_DISABLED) {
         dc.SetTextForeground(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
     }
 
-    if ((m_flags & wxAUI_TB_TEXT) && !item.GetLabel().empty())
-    {
+    if ((m_flags & wxAUI_TB_TEXT) && !item.GetLabel().empty()) {
         dc.DrawText(item.GetLabel(), textX, textY);
     }
 }
 
-BBLTopbar::BBLTopbar(wxFrame* parent) 
+BBLTopbar::BBLTopbar(wxFrame* parent)
     : wxAuiToolBar(parent, ID_TOOL_BAR, wxDefaultPosition, wxDefaultSize, wxAUI_TB_TEXT | wxAUI_TB_HORZ_TEXT)
-{ 
+{
     Init(parent);
 }
 
 BBLTopbar::BBLTopbar(wxWindow* pwin, wxFrame* parent)
-    : wxAuiToolBar(pwin, ID_TOOL_BAR, wxDefaultPosition, wxDefaultSize, wxAUI_TB_TEXT | wxAUI_TB_HORZ_TEXT) 
-{ 
+    : wxAuiToolBar(pwin, ID_TOOL_BAR, wxDefaultPosition, wxDefaultSize, wxAUI_TB_TEXT | wxAUI_TB_HORZ_TEXT)
+{
     Init(parent);
 }
 
-void BBLTopbar::Init(wxFrame* parent) 
+void BBLTopbar::Init(wxFrame* parent)
 {
     SetArtProvider(new BBLTopbarArt());
-    m_frame = parent;
-    m_skip_popup_file_menu = false;
+    m_frame                    = parent;
+    m_skip_popup_file_menu     = false;
     m_skip_popup_dropdown_menu = false;
     m_skip_popup_calib_menu    = false;
 
@@ -210,39 +185,38 @@ void BBLTopbar::Init(wxFrame* parent)
     logo_item->SetActive(false);*/
 
     wxBitmap file_bitmap = create_scaled_bitmap("topbar_file", nullptr, TOPBAR_ICON_SIZE);
-    m_file_menu_item = this->AddTool(ID_TOP_FILE_MENU, _L("File"), file_bitmap, wxEmptyString, wxITEM_NORMAL);
+    m_file_menu_item     = this->AddTool(ID_TOP_FILE_MENU, _L("File"), file_bitmap, wxEmptyString, wxITEM_NORMAL);
 
     this->SetForegroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_HIGHLIGHTTEXT));
 
     this->AddSpacer(FromDIP(5));
 
     wxBitmap dropdown_bitmap = create_scaled_bitmap("topbar_dropdown", nullptr, TOPBAR_ICON_SIZE);
-    m_dropdown_menu_item = this->AddTool(ID_TOP_DROPDOWN_MENU, "",
-        dropdown_bitmap, wxEmptyString);
+    m_dropdown_menu_item     = this->AddTool(ID_TOP_DROPDOWN_MENU, "", dropdown_bitmap, wxEmptyString);
 
     this->AddSpacer(FromDIP(5));
     this->AddSeparator();
     this->AddSpacer(FromDIP(5));
 
-    //wxBitmap open_bitmap = create_scaled_bitmap("topbar_open", nullptr, TOPBAR_ICON_SIZE);
-    //wxAuiToolBarItem* tool_item = this->AddTool(wxID_OPEN, "", open_bitmap);
+    // wxBitmap open_bitmap = create_scaled_bitmap("topbar_open", nullptr, TOPBAR_ICON_SIZE);
+    // wxAuiToolBarItem* tool_item = this->AddTool(wxID_OPEN, "", open_bitmap);
 
     this->AddSpacer(FromDIP(10));
 
-    wxBitmap save_bitmap = create_scaled_bitmap("topbar_save", nullptr, TOPBAR_ICON_SIZE);
-    wxAuiToolBarItem* save_btn = this->AddTool(wxID_SAVE, "", save_bitmap);
+    wxBitmap          save_bitmap = create_scaled_bitmap("topbar_save", nullptr, TOPBAR_ICON_SIZE);
+    wxAuiToolBarItem* save_btn    = this->AddTool(wxID_SAVE, "", save_bitmap);
 
     this->AddSpacer(FromDIP(10));
 
-    wxBitmap undo_bitmap = create_scaled_bitmap("topbar_undo", nullptr, TOPBAR_ICON_SIZE);
-    m_undo_item = this->AddTool(wxID_UNDO, "", undo_bitmap);
+    wxBitmap undo_bitmap          = create_scaled_bitmap("topbar_undo", nullptr, TOPBAR_ICON_SIZE);
+    m_undo_item                   = this->AddTool(wxID_UNDO, "", undo_bitmap);
     wxBitmap undo_inactive_bitmap = create_scaled_bitmap("topbar_undo_inactive", nullptr, TOPBAR_ICON_SIZE);
     m_undo_item->SetDisabledBitmap(undo_inactive_bitmap);
 
     this->AddSpacer(FromDIP(10));
 
-    wxBitmap redo_bitmap = create_scaled_bitmap("topbar_redo", nullptr, TOPBAR_ICON_SIZE);
-    m_redo_item = this->AddTool(wxID_REDO, "", redo_bitmap);
+    wxBitmap redo_bitmap          = create_scaled_bitmap("topbar_redo", nullptr, TOPBAR_ICON_SIZE);
+    m_redo_item                   = this->AddTool(wxID_REDO, "", redo_bitmap);
     wxBitmap redo_inactive_bitmap = create_scaled_bitmap("topbar_redo_inactive", nullptr, TOPBAR_ICON_SIZE);
     m_redo_item->SetDisabledBitmap(redo_inactive_bitmap);
 
@@ -262,8 +236,8 @@ void BBLTopbar::Init(wxFrame* parent)
     this->AddSpacer(FromDIP(10));
     this->AddStretchSpacer(1);
 
-    m_publish_bitmap = create_scaled_bitmap("topbar_publish", nullptr, TOPBAR_ICON_SIZE);
-    m_publish_item = this->AddTool(ID_PUBLISH, "", m_publish_bitmap);
+    m_publish_bitmap         = create_scaled_bitmap("topbar_publish", nullptr, TOPBAR_ICON_SIZE);
+    m_publish_item           = this->AddTool(ID_PUBLISH, "", m_publish_bitmap);
     m_publish_disable_bitmap = create_scaled_bitmap("topbar_publish_disable", nullptr, TOPBAR_ICON_SIZE);
     m_publish_item->SetDisabledBitmap(m_publish_disable_bitmap);
     this->EnableTool(m_publish_item->GetId(), false);
@@ -274,27 +248,26 @@ void BBLTopbar::Init(wxFrame* parent)
     this->AddSpacer(12);
     */
 
-    //this->AddSeparator();
+    // this->AddSeparator();
     this->AddSpacer(FromDIP(4));
 
-    wxBitmap iconize_bitmap = create_scaled_bitmap("topbar_min", nullptr, TOPBAR_ICON_SIZE);
-    wxAuiToolBarItem* iconize_btn = this->AddTool(wxID_ICONIZE_FRAME, "", iconize_bitmap);
+    wxBitmap          iconize_bitmap = create_scaled_bitmap("topbar_min", nullptr, TOPBAR_ICON_SIZE);
+    wxAuiToolBarItem* iconize_btn    = this->AddTool(wxID_ICONIZE_FRAME, "", iconize_bitmap);
 
     this->AddSpacer(FromDIP(4));
 
     maximize_bitmap = create_scaled_bitmap("topbar_max", nullptr, TOPBAR_ICON_SIZE);
-    window_bitmap = create_scaled_bitmap("topbar_win", nullptr, TOPBAR_ICON_SIZE);
+    window_bitmap   = create_scaled_bitmap("topbar_win", nullptr, TOPBAR_ICON_SIZE);
     if (m_frame->IsMaximized()) {
         maximize_btn = this->AddTool(wxID_MAXIMIZE_FRAME, "", window_bitmap);
-    }
-    else {
+    } else {
         maximize_btn = this->AddTool(wxID_MAXIMIZE_FRAME, "", maximize_bitmap);
     }
 
     this->AddSpacer(FromDIP(4));
 
-    wxBitmap close_bitmap = create_scaled_bitmap("topbar_close", nullptr, TOPBAR_ICON_SIZE);
-    wxAuiToolBarItem* close_btn = this->AddTool(wxID_CLOSE_FRAME, "", close_bitmap);
+    wxBitmap          close_bitmap = create_scaled_bitmap("topbar_close", nullptr, TOPBAR_ICON_SIZE);
+    wxAuiToolBarItem* close_btn    = this->AddTool(wxID_CLOSE_FRAME, "", close_bitmap);
 
     Realize();
     // m_toolbar_h = this->GetSize().GetHeight();
@@ -319,21 +292,21 @@ void BBLTopbar::Init(wxFrame* parent)
     this->Bind(wxEVT_AUITOOLBAR_TOOL_DROPDOWN, &BBLTopbar::OnSaveProject, this, wxID_SAVE);
     this->Bind(wxEVT_AUITOOLBAR_TOOL_DROPDOWN, &BBLTopbar::OnRedo, this, wxID_REDO);
     this->Bind(wxEVT_AUITOOLBAR_TOOL_DROPDOWN, &BBLTopbar::OnUndo, this, wxID_UNDO);
-    //this->Bind(wxEVT_AUITOOLBAR_TOOL_DROPDOWN, &BBLTopbar::OnModelStoreClicked, this, ID_MODEL_STORE);
+    // this->Bind(wxEVT_AUITOOLBAR_TOOL_DROPDOWN, &BBLTopbar::OnModelStoreClicked, this, ID_MODEL_STORE);
     this->Bind(wxEVT_AUITOOLBAR_TOOL_DROPDOWN, &BBLTopbar::OnPublishClicked, this, ID_PUBLISH);
 }
 
 BBLTopbar::~BBLTopbar()
 {
-    m_file_menu_item = nullptr;
+    m_file_menu_item     = nullptr;
     m_dropdown_menu_item = nullptr;
-    m_file_menu = nullptr;
+    m_file_menu          = nullptr;
 }
 
 void BBLTopbar::OnOpenProject(wxAuiToolBarEvent& event)
 {
     MainFrame* main_frame = dynamic_cast<MainFrame*>(m_frame);
-    Plater* plater = main_frame->plater();
+    Plater*    plater     = main_frame->plater();
     plater->load_project();
 }
 
@@ -346,21 +319,21 @@ void BBLTopbar::show_publish_button(bool show)
 void BBLTopbar::OnSaveProject(wxAuiToolBarEvent& event)
 {
     MainFrame* main_frame = dynamic_cast<MainFrame*>(m_frame);
-    Plater* plater = main_frame->plater();
+    Plater*    plater     = main_frame->plater();
     plater->save_project();
 }
 
 void BBLTopbar::OnUndo(wxAuiToolBarEvent& event)
 {
     MainFrame* main_frame = dynamic_cast<MainFrame*>(m_frame);
-    Plater* plater = main_frame->plater();
+    Plater*    plater     = main_frame->plater();
     plater->undo();
 }
 
 void BBLTopbar::OnRedo(wxAuiToolBarEvent& event)
 {
     MainFrame* main_frame = dynamic_cast<MainFrame*>(m_frame);
-    Plater* plater = main_frame->plater();
+    Plater*    plater     = main_frame->plater();
     plater->redo();
 }
 
@@ -380,10 +353,7 @@ void BBLTopbar::DisableUndoRedoItems()
     Refresh();
 }
 
-void BBLTopbar::SaveNormalRect()
-{
-    m_normalRect = m_frame->GetRect();
-}
+void BBLTopbar::SaveNormalRect() { m_normalRect = m_frame->GetRect(); }
 
 void BBLTopbar::ShowCalibrationButton(bool show)
 {
@@ -396,7 +366,7 @@ void BBLTopbar::ShowCalibrationButton(bool show)
 
 void BBLTopbar::OnModelStoreClicked(wxAuiToolBarEvent& event)
 {
-    //GUI::wxGetApp().load_url(wxString(wxGetApp().app_config->get_web_host_url() + MODEL_STORE_URL));
+    // GUI::wxGetApp().load_url(wxString(wxGetApp().app_config->get_web_host_url() + MODEL_STORE_URL));
 }
 
 void BBLTopbar::OnPublishClicked(wxAuiToolBarEvent& event)
@@ -406,8 +376,8 @@ void BBLTopbar::OnPublishClicked(wxAuiToolBarEvent& event)
         return;
     }
 
-    //no more check
-    //if (GUI::wxGetApp().plater()->model().objects.empty()) return;
+    // no more check
+    // if (GUI::wxGetApp().plater()->model().objects.empty()) return;
 
 #ifdef ENABLE_PUBLISHING
     wxGetApp().plater()->show_publish_dialog();
@@ -415,30 +385,15 @@ void BBLTopbar::OnPublishClicked(wxAuiToolBarEvent& event)
     wxGetApp().open_publish_page_dialog();
 }
 
-void BBLTopbar::SetFileMenu(wxMenu* file_menu)
-{
-    m_file_menu = file_menu;
-}
+void BBLTopbar::SetFileMenu(wxMenu* file_menu) { m_file_menu = file_menu; }
 
-void BBLTopbar::AddDropDownSubMenu(wxMenu* sub_menu, const wxString& title)
-{
-    m_top_menu.AppendSubMenu(sub_menu, title);
-}
+void BBLTopbar::AddDropDownSubMenu(wxMenu* sub_menu, const wxString& title) { m_top_menu.AppendSubMenu(sub_menu, title); }
 
-void BBLTopbar::AddDropDownMenuItem(wxMenuItem* menu_item)
-{
-    m_top_menu.Append(menu_item);
-}
+void BBLTopbar::AddDropDownMenuItem(wxMenuItem* menu_item) { m_top_menu.Append(menu_item); }
 
-wxMenu* BBLTopbar::GetTopMenu()
-{
-    return &m_top_menu;
-}
+wxMenu* BBLTopbar::GetTopMenu() { return &m_top_menu; }
 
-wxMenu* BBLTopbar::GetCalibMenu()
-{
-    return &m_calib_menu;
-}
+wxMenu* BBLTopbar::GetCalibMenu() { return &m_calib_menu; }
 
 void BBLTopbar::SetTitle(wxString title)
 {
@@ -450,23 +405,15 @@ void BBLTopbar::SetTitle(wxString title)
     this->Refresh();
 }
 
-void BBLTopbar::SetMaximizedSize()
-{
-    maximize_btn->SetBitmap(maximize_bitmap);
-}
+void BBLTopbar::SetMaximizedSize() { maximize_btn->SetBitmap(maximize_bitmap); }
 
-void BBLTopbar::SetWindowSize()
-{
-    maximize_btn->SetBitmap(window_bitmap);
-}
+void BBLTopbar::SetWindowSize() { maximize_btn->SetBitmap(window_bitmap); }
 
-void BBLTopbar::UpdateToolbarWidth(int width)
-{
-    this->SetSize(width, m_toolbar_h);
-}
+void BBLTopbar::UpdateToolbarWidth(int width) { this->SetSize(width, m_toolbar_h); }
 
-void BBLTopbar::Rescale() {
-    int em = em_unit(this);
+void BBLTopbar::Rescale()
+{
+    int               em = em_unit(this);
     wxAuiToolBarItem* item;
 
     /*item = this->FindTool(ID_LOGO);
@@ -478,8 +425,8 @@ void BBLTopbar::Rescale() {
     item = this->FindTool(ID_TOP_DROPDOWN_MENU);
     item->SetBitmap(create_scaled_bitmap("topbar_dropdown", this, TOPBAR_ICON_SIZE));
 
-    //item = this->FindTool(wxID_OPEN);
-    //item->SetBitmap(create_scaled_bitmap("topbar_open", nullptr, TOPBAR_ICON_SIZE));
+    // item = this->FindTool(wxID_OPEN);
+    // item->SetBitmap(create_scaled_bitmap("topbar_open", nullptr, TOPBAR_ICON_SIZE));
 
     item = this->FindTool(wxID_SAVE);
     item->SetBitmap(create_scaled_bitmap("topbar_save", this, TOPBAR_ICON_SIZE));
@@ -509,13 +456,12 @@ void BBLTopbar::Rescale() {
     item = this->FindTool(wxID_ICONIZE_FRAME);
     item->SetBitmap(create_scaled_bitmap("topbar_min", this, TOPBAR_ICON_SIZE));
 
-    item = this->FindTool(wxID_MAXIMIZE_FRAME);
+    item            = this->FindTool(wxID_MAXIMIZE_FRAME);
     maximize_bitmap = create_scaled_bitmap("topbar_max", this, TOPBAR_ICON_SIZE);
     window_bitmap   = create_scaled_bitmap("topbar_win", this, TOPBAR_ICON_SIZE);
     if (m_frame->IsMaximized()) {
         item->SetBitmap(window_bitmap);
-    }
-    else {
+    } else {
         item->SetBitmap(maximize_bitmap);
     }
 
@@ -525,33 +471,25 @@ void BBLTopbar::Rescale() {
     Realize();
 }
 
-void BBLTopbar::OnIconize(wxAuiToolBarEvent& event)
-{
-    m_frame->Iconize();
-}
+void BBLTopbar::OnIconize(wxAuiToolBarEvent& event) { m_frame->Iconize(); }
 
 void BBLTopbar::OnFullScreen(wxAuiToolBarEvent& event)
 {
     if (m_frame->IsMaximized()) {
         m_frame->Restore();
-    }
-    else {
+    } else {
         m_normalRect = m_frame->GetRect();
         m_frame->Maximize();
     }
 }
 
-void BBLTopbar::OnCloseFrame(wxAuiToolBarEvent& event)
-{
-    m_frame->Close();
-}
+void BBLTopbar::OnCloseFrame(wxAuiToolBarEvent& event) { m_frame->Close(); }
 
 void BBLTopbar::OnMouseLeftDClock(wxMouseEvent& mouse)
 {
     wxPoint mouse_pos = ::wxGetMousePosition();
     // check whether mouse is not on any tool item
-    if (this->FindToolByCurrentPosition() != NULL &&
-        this->FindToolByCurrentPosition() != m_title_item) {
+    if (this->FindToolByCurrentPosition() != NULL && this->FindToolByCurrentPosition() != m_title_item) {
         mouse.Skip();
         return;
     }
@@ -572,8 +510,7 @@ void BBLTopbar::OnFileToolItem(wxAuiToolBarEvent& evt)
 
     if (!m_skip_popup_file_menu) {
         GetParent()->PopupMenu(m_file_menu, wxPoint(FromDIP(1), this->GetSize().GetHeight() - 2));
-    }
-    else {
+    } else {
         m_skip_popup_file_menu = false;
     }
 
@@ -589,8 +526,7 @@ void BBLTopbar::OnDropdownToolItem(wxAuiToolBarEvent& evt)
 
     if (!m_skip_popup_dropdown_menu) {
         GetParent()->PopupMenu(&m_top_menu, wxPoint(FromDIP(1), this->GetSize().GetHeight() - 2));
-    }
-    else {
+    } else {
         m_skip_popup_dropdown_menu = false;
     }
 
@@ -598,9 +534,9 @@ void BBLTopbar::OnDropdownToolItem(wxAuiToolBarEvent& evt)
     tb->SetToolSticky(evt.GetId(), false);
 }
 
-void BBLTopbar::OnCalibToolItem(wxAuiToolBarEvent &evt)
+void BBLTopbar::OnCalibToolItem(wxAuiToolBarEvent& evt)
 {
-    wxAuiToolBar *tb = static_cast<wxAuiToolBar *>(evt.GetEventObject());
+    wxAuiToolBar* tb = static_cast<wxAuiToolBar*>(evt.GetEventObject());
 
     tb->SetToolSticky(evt.GetId(), true);
 
@@ -619,11 +555,9 @@ void BBLTopbar::OnMouseLeftDown(wxMouseEvent& event)
 {
     wxPoint mouse_pos = ::wxGetMousePosition();
     wxPoint frame_pos = m_frame->GetScreenPosition();
-    m_delta = mouse_pos - frame_pos;
+    m_delta           = mouse_pos - frame_pos;
 
-    if (FindToolByCurrentPosition() == NULL 
-        || this->FindToolByCurrentPosition() == m_title_item)
-    {
+    if (FindToolByCurrentPosition() == NULL || this->FindToolByCurrentPosition() == m_title_item) {
         CaptureMouse();
 #ifdef __WXMSW__
         ReleaseMouse();
@@ -631,15 +565,14 @@ void BBLTopbar::OnMouseLeftDown(wxMouseEvent& event)
         return;
 #endif //  __WXMSW__
     }
-    
+
     event.Skip();
 }
 
 void BBLTopbar::OnMouseLeftUp(wxMouseEvent& event)
 {
     wxPoint mouse_pos = ::wxGetMousePosition();
-    if (HasCapture())
-    {
+    if (HasCapture()) {
         ReleaseMouse();
     }
 
@@ -651,20 +584,19 @@ void BBLTopbar::OnMouseMotion(wxMouseEvent& event)
     wxPoint mouse_pos = ::wxGetMousePosition();
 
     if (!HasCapture()) {
-        //m_frame->OnMouseMotion(event);
+        // m_frame->OnMouseMotion(event);
 
         event.Skip();
         return;
     }
 
-    if (event.Dragging() && event.LeftIsDown())
-    {
-        // leave max state and adjust position 
+    if (event.Dragging() && event.LeftIsDown()) {
+        // leave max state and adjust position
         if (m_frame->IsMaximized()) {
             wxRect rect = m_frame->GetRect();
             // Filter unexcept mouse move
             if (m_delta + rect.GetLeftTop() != mouse_pos) {
-                m_delta = mouse_pos - rect.GetLeftTop();
+                m_delta   = mouse_pos - rect.GetLeftTop();
                 m_delta.x = m_delta.x * m_normalRect.width / rect.width;
                 m_delta.y = m_delta.y * m_normalRect.height / rect.height;
                 m_frame->Restore();
@@ -675,24 +607,21 @@ void BBLTopbar::OnMouseMotion(wxMouseEvent& event)
     event.Skip();
 }
 
-void BBLTopbar::OnMouseCaptureLost(wxMouseCaptureLostEvent& event)
-{
-}
+void BBLTopbar::OnMouseCaptureLost(wxMouseCaptureLostEvent& event) {}
 
 void BBLTopbar::OnMenuClose(wxMenuEvent& event)
 {
     wxAuiToolBarItem* item = this->FindToolByCurrentPosition();
     if (item == m_file_menu_item) {
         m_skip_popup_file_menu = true;
-    }
-    else if (item == m_dropdown_menu_item) {
+    } else if (item == m_dropdown_menu_item) {
         m_skip_popup_dropdown_menu = true;
     }
 }
 
 wxAuiToolBarItem* BBLTopbar::FindToolByCurrentPosition()
 {
-    wxPoint mouse_pos = ::wxGetMousePosition();
+    wxPoint mouse_pos  = ::wxGetMousePosition();
     wxPoint client_pos = this->ScreenToClient(mouse_pos);
     return this->FindToolByPosition(client_pos.x, client_pos.y);
 }

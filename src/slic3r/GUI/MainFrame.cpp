@@ -442,19 +442,20 @@ MainFrame::MainFrame()
         }
 
 #if 0 // BBS
-        //if (m_plater != nullptr) {
-        //    int saved_project = m_plater->save_project_if_dirty(_L("Closing Application. Current project is modified."));
-        //    if (saved_project == wxID_CANCEL) {
-        //        event.Veto();
-        //        return;
-        //    }
-        //    // check unsaved changes only if project wasn't saved
-        //    else if (plater()->is_project_dirty() && saved_project == wxID_NO && event.CanVeto() &&
-        //             (plater()->is_presets_dirty() && !wxGetApp().check_and_save_current_preset_changes(_L("Application is closing"), _L("Closing Application while some presets are modified.")))) {
-        //        event.Veto();
-        //        return;
-        //    }
-        //}
+      // if (m_plater != nullptr) {
+      //    int saved_project = m_plater->save_project_if_dirty(_L("Closing Application. Current project is modified."));
+      //    if (saved_project == wxID_CANCEL) {
+      //        event.Veto();
+      //        return;
+      //    }
+      //    // check unsaved changes only if project wasn't saved
+      //    else if (plater()->is_project_dirty() && saved_project == wxID_NO && event.CanVeto() &&
+      //             (plater()->is_presets_dirty() && !wxGetApp().check_and_save_current_preset_changes(_L("Application is closing"),
+      //             _L("Closing Application while some presets are modified.")))) {
+      //        event.Veto();
+      //        return;
+      //    }
+      //}
 #endif
 
         MarkdownTip::ExitTip();
@@ -1282,8 +1283,8 @@ void MainFrame::register_win32_callbacks()
                                                             1,                    // Number of entries in the pfsne array
                                                             &shCNE);              // Array of SHChangeNotifyEntry structures that
                                                                                   // contain the notifications. This array should
-                                                                     // always be set to one when calling SHChnageNotifyRegister
-                                                                     // or SHChangeNotifyDeregister will not work properly.
+        // always be set to one when calling SHChnageNotifyRegister
+        // or SHChangeNotifyDeregister will not work properly.
         assert(m_ulSHChangeNotifyRegister != 0); // Shell notification failed
     } else {
         // Failed to get desktop location
@@ -1951,8 +1952,8 @@ void MainFrame::update_side_button_style()
     m_slice_btn->SetCornerRadius(FromDIP(12));
     m_slice_btn->SetExtraSize(wxSize(FromDIP(38), FromDIP(10)));
     m_slice_btn->SetBottomColour(wxColour(0x3B4446));*/
-    StateColor m_btn_bg_enable = StateColor(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-                                            std::pair<wxColour, int>(wxColour(48, 221, 112), StateColor::Hovered),
+    StateColor m_btn_bg_enable = StateColor(std::pair<wxColour, int>(wxColour(130, 204, 21), StateColor::Pressed), //  suKing (0, 137, 123)
+                                            std::pair<wxColour, int>(wxColour(130, 204, 21), StateColor::Hovered), //  suKing
                                             std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
 
     // m_publish_btn->SetMinSize(wxSize(FromDIP(125), FromDIP(24)));

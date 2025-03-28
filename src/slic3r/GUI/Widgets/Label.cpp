@@ -6,12 +6,11 @@
 #include <wx/settings.h>
 #include <boost/log/trivial.hpp>
 
-
 wxFont Label::sysFont(int size, bool bold)
 {
-//#ifdef __linux__
-//    return wxFont{};
-//#endif
+// #ifdef __linux__
+//     return wxFont{};
+// #endif
 #ifndef __APPLE__
     size = size * 4 / 5;
 #endif
@@ -26,12 +25,12 @@ wxFont Label::sysFont(int size, bool bold)
     wxFont font{size, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, bold ? wxFONTWEIGHT_BOLD : wxFONTWEIGHT_NORMAL, false, face};
     font.SetFaceName(face);
     if (!font.IsOk()) {
-      BOOST_LOG_TRIVIAL(warning) << boost::format("Can't find %1% font") % face;
-      font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
-      BOOST_LOG_TRIVIAL(warning) << boost::format("Use system font instead: %1%") % font.GetFaceName();
-      if (bold)
-        font.MakeBold();
-      font.SetPointSize(size);
+        BOOST_LOG_TRIVIAL(warning) << boost::format("Can't find %1% font") % face;
+        font = wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT);
+        BOOST_LOG_TRIVIAL(warning) << boost::format("Use system font instead: %1%") % font.GetFaceName();
+        if (bold)
+            font.MakeBold();
+        font.SetPointSize(size);
     }
     return font;
 }
@@ -61,22 +60,22 @@ wxFont Label::Body_8;
 void Label::initSysFont()
 {
 #if defined(__linux__) || defined(_WIN32)
-    const std::string &resource_path = Slic3r::resources_dir();
-    wxString font_path = wxString::FromUTF8(resource_path + "/fonts/HarmonyOS_Sans_SC_Bold.ttf");
-    bool result = wxFont::AddPrivateFont(font_path);
+    const std::string& resource_path = Slic3r::resources_dir();
+    wxString           font_path     = wxString::FromUTF8(resource_path + "/fonts/HarmonyOS_Sans_SC_Bold.ttf");
+    bool               result        = wxFont::AddPrivateFont(font_path);
     // BOOST_LOG_TRIVIAL(info) << boost::format("add font of HarmonyOS_Sans_SC_Bold returns %1%")%result;
     printf("add font of HarmonyOS_Sans_SC_Bold returns %d\n", result);
     font_path = wxString::FromUTF8(resource_path + "/fonts/HarmonyOS_Sans_SC_Regular.ttf");
-    result = wxFont::AddPrivateFont(font_path);
+    result    = wxFont::AddPrivateFont(font_path);
     // BOOST_LOG_TRIVIAL(info) << boost::format("add font of HarmonyOS_Sans_SC_Regular returns %1%")%result;
     printf("add font of HarmonyOS_Sans_SC_Regular returns %d\n", result);
     // Adding NanumGothic Regular and Bold
     font_path = wxString::FromUTF8(resource_path + "/fonts/NanumGothic-Regular.ttf");
-    result = wxFont::AddPrivateFont(font_path);
+    result    = wxFont::AddPrivateFont(font_path);
     // BOOST_LOG_TRIVIAL(info) << boost::format("add font of NanumGothic-Regular returns %1%")%result;
     printf("add font of NanumGothic-Regular returns %d\n", result);
     font_path = wxString::FromUTF8(resource_path + "/fonts/NanumGothic-Bold.ttf");
-    result = wxFont::AddPrivateFont(font_path);
+    result    = wxFont::AddPrivateFont(font_path);
     // BOOST_LOG_TRIVIAL(info) << boost::format("add font of NanumGothic-Bold returns %1%")%result;
     printf("add font of NanumGothic-Bold returns %d\n", result);
 #endif
@@ -111,13 +110,13 @@ public:
 
     // win is used for getting the font, text is the text to wrap, width is the
     // max line width or -1 to disable wrapping
-    void Wrap(wxWindow *win, const wxString &text, int widthMax)
+    void Wrap(wxWindow* win, const wxString& text, int widthMax)
     {
         const wxClientDC dc(win);
         Wrap(dc, text, widthMax);
     }
 
-    void Wrap(wxDC const & dc, const wxString &text, int widthMax)
+    void Wrap(wxDC const& dc, const wxString& text, int widthMax)
     {
         const wxArrayString ls = wxSplit(text, '\n', '\0');
         for (wxArrayString::const_iterator i = ls.begin(); i != ls.end(); ++i) {
@@ -135,7 +134,8 @@ public:
             }
 
             for (bool newLine = false; !line.empty(); newLine = true) {
-                if (newLine) OnNewLine();
+                if (newLine)
+                    OnNewLine();
 
                 if (1 == line.length()) {
                     DoOutputLine(line);
@@ -179,7 +179,8 @@ public:
                 DoOutputLine(line.substr(0, lastSpace));
 
                 // And redo the layout with the rest.
-                if (line[lastSpace] == ' ') ++lastSpace;
+                if (line[lastSpace] == ' ')
+                    ++lastSpace;
                 line = line.substr(lastSpace);
             }
         }
@@ -190,14 +191,14 @@ public:
 
 protected:
     // line may be empty
-    virtual void OnOutputLine(const wxString &line) = 0;
+    virtual void OnOutputLine(const wxString& line) = 0;
 
     // called at the start of every new line (except the very first one)
     virtual void OnNewLine() {}
 
 private:
     // call OnOutputLine() and set m_eol to true
-    void DoOutputLine(const wxString &line)
+    void DoOutputLine(const wxString& line)
     {
         OnOutputLine(line);
 
@@ -209,7 +210,8 @@ private:
     // more
     bool IsStartOfNewLine()
     {
-        if (!m_eol) return false;
+        if (!m_eol)
+            return false;
 
         m_eol = false;
 
@@ -222,13 +224,13 @@ private:
 class wxLabelWrapper2 : public wxTextWrapper2
 {
 public:
-    void WrapLabel(wxDC const & dc, wxString const & label, int widthMax)
+    void WrapLabel(wxDC const& dc, wxString const& label, int widthMax)
     {
         m_text.clear();
         Wrap(dc, label, widthMax);
     }
 
-    void WrapLabel(wxWindow *text, wxString const & label, int widthMax)
+    void WrapLabel(wxWindow* text, wxString const& label, int widthMax)
     {
         m_text.clear();
         Wrap(text, label, widthMax);
@@ -237,7 +239,7 @@ public:
     wxString GetText() const { return m_text; }
 
 protected:
-    virtual void OnOutputLine(const wxString &line) wxOVERRIDE { m_text += line; }
+    virtual void OnOutputLine(const wxString& line) wxOVERRIDE { m_text += line; }
 
     virtual void OnNewLine() wxOVERRIDE { m_text += wxT('\n'); }
 
@@ -245,8 +247,7 @@ private:
     wxString m_text;
 };
 
-
-wxSize Label::split_lines(wxDC &dc, int width, const wxString &text, wxString &multiline_text)
+wxSize Label::split_lines(wxDC& dc, int width, const wxString& text, wxString& multiline_text)
 {
     wxLabelWrapper2 wrap;
     wrap.Wrap(dc, text, width);
@@ -254,9 +255,9 @@ wxSize Label::split_lines(wxDC &dc, int width, const wxString &text, wxString &m
     return dc.GetMultiLineTextExtent(multiline_text);
 }
 
-Label::Label(wxWindow *parent, wxString const &text, long style) : Label(parent, Body_14, text, style) {}
+Label::Label(wxWindow* parent, wxString const& text, long style) : Label(parent, Body_14, text, style) {}
 
-Label::Label(wxWindow *parent, wxFont const &font, wxString const &text, long style)
+Label::Label(wxWindow* parent, wxFont const& font, wxString const& text, long style)
     : wxStaticText(parent, wxID_ANY, text, wxDefaultPosition, wxDefaultSize, style)
 {
     this->m_font = font;
@@ -266,8 +267,8 @@ Label::Label(wxWindow *parent, wxFont const &font, wxString const &text, long st
     SetBackgroundColour(StaticBox::GetParentBackgroundColor(parent));
     SetForegroundColour("#262E30");
     if (style & LB_PROPAGATE_MOUSE_EVENT) {
-        for (auto evt : { wxEVT_LEFT_UP, wxEVT_LEFT_DOWN })
-            Bind(evt, [this] (auto & e) { GetParent()->GetEventHandler()->ProcessEventLocally(e); });
+        for (auto evt : {wxEVT_LEFT_UP, wxEVT_LEFT_DOWN})
+            Bind(evt, [this](auto& e) { GetParent()->GetEventHandler()->ProcessEventLocally(e); });
     };
     if (style & LB_AUTO_WRAP) {
         Bind(wxEVT_SIZE, &Label::OnSize, this);
@@ -300,7 +301,7 @@ void Label::SetWindowStyleFlag(long style)
     wxStaticText::SetWindowStyleFlag(style);
     if (style & LB_HYPERLINK) {
         this->m_color = GetForegroundColour();
-        static wxColor clr_url("#009688");
+        static wxColor clr_url("#99fe00");
         SetFont(this->m_font.Underlined());
         SetForegroundColour(clr_url);
         SetCursor(wxCURSOR_HAND);
@@ -328,9 +329,10 @@ void Label::Wrap(int width)
     m_skip_size_evt = false;
 }
 
-void Label::OnSize(wxSizeEvent &evt)
+void Label::OnSize(wxSizeEvent& evt)
 {
     evt.Skip();
-    if (m_skip_size_evt) return;
+    if (m_skip_size_evt)
+        return;
     Wrap(evt.GetSize().x);
 }
