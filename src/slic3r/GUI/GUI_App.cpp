@@ -348,7 +348,7 @@ public:
 
         // Based on Text
         memDc.SetFont(m_constant_text.based_on_font);
-        auto   bs_version   = wxString::Format("Based on OrcaSlicer and PrusaSlicer and BambuStudio").ToStdString();
+        auto   bs_version   = wxString::Format("Based on OrcaSlicer").ToStdString();
         wxSize based_on_ext = memDc.GetTextExtent(bs_version);
         wxRect based_on_rect(wxPoint(0, height - based_on_ext.GetHeight() * 2), wxPoint(width, height - based_on_ext.GetHeight()));
         memDc.DrawLabel(bs_version, based_on_rect, wxALIGN_CENTER);
@@ -4359,8 +4359,8 @@ std::string GUI_App::format_display_version()
     if (!version_display.empty())
         return version_display;
 
-    // version_display = SoftFever_VERSION;
-    version_display = HIM_VERSION;
+    version_display = SoftFever_VERSION;
+    // version_display = HIM_VERSION;
     return version_display;
 }
 

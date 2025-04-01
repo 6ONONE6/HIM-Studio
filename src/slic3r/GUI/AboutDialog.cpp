@@ -241,9 +241,9 @@ AboutDialog::AboutDialog()
         // _build_string_font.SetStyle(wxFONTSTYLE_ITALIC);
 
         vesizer->Add(0, 0, 1, wxEXPAND, FromDIP(5));
-        // auto          version_string = std::string(SoftFever_VERSION); // _L("Orca Slicer ") + " " + std::string(SoftFever_VERSION);
-        auto          version_string = std::string(HIM_VERSION); // suKing
-        wxStaticText* version        = new wxStaticText(this, wxID_ANY, version_string.c_str(), wxDefaultPosition, wxDefaultSize);
+        auto version_string = std::string(SoftFever_VERSION); // _L("Orca Slicer ") + " " + std::string(SoftFever_VERSION);
+        // auto          version_string = std::string(HIM_VERSION); // suKing
+        wxStaticText* version = new wxStaticText(this, wxID_ANY, version_string.c_str(), wxDefaultPosition, wxDefaultSize);
         // wxStaticText* credits_string = new wxStaticText(this, wxID_ANY, wxString::Format("Build %s", std::string(GIT_COMMIT_HASH)),
         //                                                 wxDefaultPosition, wxDefaultSize);
         wxStaticText* credits_string = new wxStaticText(this, wxID_ANY, " ", wxDefaultPosition, wxDefaultSize); //  suKing
@@ -280,7 +280,7 @@ AboutDialog::AboutDialog()
     text_sizer_horiz->Add(0, 0, 0, wxLEFT, FromDIP(20));
 
     std::vector<wxString> text_list;
-    text_list.push_back(_L("HIM-Studio is based on OrcaSlicer."));
+    text_list.push_back(_L("HIM-Studio is based on OrcaSlicer.")); // suKing
     text_list.push_back(_L("OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."));
     text_list.push_back(_L("BambuStudio is originally based on PrusaSlicer by PrusaResearch."));
     text_list.push_back(_L("PrusaSlicer is originally based on Slic3r by Alessandro Ranellucci."));
