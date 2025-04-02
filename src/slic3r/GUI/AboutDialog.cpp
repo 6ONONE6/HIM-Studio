@@ -147,9 +147,9 @@ wxString CopyrightsDialog::get_html_text()
         "<font size=\"5\">%s:</font><br/>"
         "<br />"
         "<font size=\"3\">",
-        bgr_clr_str, text_clr_str, text_clr_str, _L("License"), _L("Orca Slicer is licensed under "),
+        bgr_clr_str, text_clr_str, text_clr_str, _L("License"), _L("HIM-Studio is licensed under "),
         "https://www.gnu.org/licenses/agpl-3.0.html", _L("GNU Affero General Public License, version 3"),
-        _L("Orca Slicer is based on PrusaSlicer and BambuStudio"), _L("Libraries"),
+        _L("HIM-Studio is based on Orca Slicer"), _L("Libraries"),
         _L("This software uses open source components whose copyright and other proprietary rights belong to their respective owners"));
 
     for (auto& entry : m_entries) {
@@ -241,9 +241,9 @@ AboutDialog::AboutDialog()
         // _build_string_font.SetStyle(wxFONTSTYLE_ITALIC);
 
         vesizer->Add(0, 0, 1, wxEXPAND, FromDIP(5));
-        auto version_string = std::string(SoftFever_VERSION); // _L("Orca Slicer ") + " " + std::string(SoftFever_VERSION);
-        // auto          version_string = std::string(HIM_VERSION); // suKing
-        wxStaticText* version = new wxStaticText(this, wxID_ANY, version_string.c_str(), wxDefaultPosition, wxDefaultSize);
+        // auto version_string = std::string(SoftFever_VERSION); // _L("Orca Slicer ") + " " + std::string(SoftFever_VERSION);
+        auto          version_string = std::string(HIM_VERSION); // suKing
+        wxStaticText* version        = new wxStaticText(this, wxID_ANY, version_string.c_str(), wxDefaultPosition, wxDefaultSize);
         // wxStaticText* credits_string = new wxStaticText(this, wxID_ANY, wxString::Format("Build %s", std::string(GIT_COMMIT_HASH)),
         //                                                 wxDefaultPosition, wxDefaultSize);
         wxStaticText* credits_string = new wxStaticText(this, wxID_ANY, " ", wxDefaultPosition, wxDefaultSize); //  suKing

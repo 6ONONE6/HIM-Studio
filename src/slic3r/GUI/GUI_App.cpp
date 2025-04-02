@@ -4119,6 +4119,7 @@ Semver get_version(const std::string& str, const std::regex& regexp)
 
 void GUI_App::check_new_version_sf(bool show_tips, int by_user)
 {
+    return; // suKing no_check_new_version now
     AppConfig* app_config        = wxGetApp().app_config;
     bool       check_stable_only = app_config->get_bool("check_stable_update_only");
     auto       version_check_url = app_config->version_check_url(check_stable_only);
@@ -4359,8 +4360,8 @@ std::string GUI_App::format_display_version()
     if (!version_display.empty())
         return version_display;
 
-    version_display = SoftFever_VERSION;
-    // version_display = HIM_VERSION;
+    // version_display = SoftFever_VERSION;
+    version_display = HIM_VERSION;
     return version_display;
 }
 
