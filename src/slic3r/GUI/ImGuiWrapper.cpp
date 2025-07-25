@@ -2653,10 +2653,10 @@ void ImGuiWrapper::push_radio_style()
 {
     if (m_is_dark_mode) {
         ImGui::PushStyleColor(ImGuiCol_CheckMark,
-                              to_ImVec4(decode_color_to_float_array("#00675b"))); // ORCA use orca color for radio buttons
+                              to_ImVec4(decode_color_to_float_array("#1E5FB3"))); // ORCA use orca color for radio buttons
     } else {
         ImGui::PushStyleColor(ImGuiCol_CheckMark,
-                              to_ImVec4(decode_color_to_float_array("#99fe00"))); // ORCA use orca color for radio buttons
+                              to_ImVec4(decode_color_to_float_array("#2573D9"))); // ORCA use orca color for radio buttons
     }
 }
 

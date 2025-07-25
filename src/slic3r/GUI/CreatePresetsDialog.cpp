@@ -32,7 +32,7 @@
 #define STATIC_TEXT_COLOUR wxColour("#363636")
 #define PRINTER_LIST_COLOUR wxColour("#EEEEEE")
 #define FILAMENT_OPTION_COLOUR wxColour("#D9D9D9")
-#define SELECT_ALL_OPTION_COLOUR wxColour("#99fe00")
+#define SELECT_ALL_OPTION_COLOUR wxColour("#2573D9")
 #define DEFAULT_PROMPT_TEXT_COLOUR wxColour("#ACACAC")
 
 namespace Slic3r { namespace GUI {
@@ -1097,7 +1097,7 @@ wxBoxSizer* CreateFilamentPresetDialog::create_button_item()
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_button_create = new Button(this, _L("Create"));
     m_button_create->SetBackgroundColor(btn_bg_green);
@@ -2066,8 +2066,8 @@ wxBoxSizer* CreatePrinterPresetDialog::create_hot_bed_stl_item(wxWindow* parent)
                             std::pair<wxColour, int>(wxColour(238, 238, 238), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(238, 238, 238), StateColor::Normal));
 
-    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Pressed),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Hovered),
+    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Pressed),
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(172, 172, 172), StateColor::Normal));
 
     m_button_bed_stl = new Button(parent, _L("Load stl"));
@@ -2105,8 +2105,8 @@ wxBoxSizer* CreatePrinterPresetDialog::create_hot_bed_svg_item(wxWindow* parent)
                             std::pair<wxColour, int>(wxColour(238, 238, 238), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(238, 238, 238), StateColor::Normal));
 
-    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Pressed),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Hovered),
+    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Pressed),
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(172, 172, 172), StateColor::Normal));
 
     m_button_bed_svg = new Button(parent, _L("Load svg"));
@@ -2156,7 +2156,7 @@ wxBoxSizer* CreatePrinterPresetDialog::create_page1_btns_item(wxWindow* parent)
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_button_OK = new Button(parent, _L("OK"));
     m_button_OK->SetBackgroundColor(btn_bg_green);
@@ -2761,7 +2761,7 @@ wxBoxSizer* CreatePrinterPresetDialog::create_page2_btns_item(wxWindow* parent)
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     StateColor btn_bg_white(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(238, 238, 238), StateColor::Hovered),
@@ -3562,7 +3562,7 @@ CreatePresetSuccessfulDialog::CreatePresetSuccessfulDialog(wxWindow* parent, con
     }
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     StateColor btn_bg_white(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(238, 238, 238), StateColor::Hovered),
@@ -4423,7 +4423,7 @@ wxBoxSizer* ExportConfigsDialog::create_button_item(wxWindow* parent)
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_button_ok = new Button(this, _L("OK"));
     m_button_ok->SetBackgroundColor(btn_bg_green);
@@ -4968,8 +4968,8 @@ wxBoxSizer* EditFilamentPresetDialog::create_add_filament_btn()
                             std::pair<wxColour, int>(wxColour(107, 107, 106), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(107, 107, 106), StateColor::Normal));
 
-    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Pressed),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Hovered),
+    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Pressed),
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(172, 172, 172), StateColor::Normal));
 
     m_add_filament_btn->SetBackgroundColor(flush_bg_col);
@@ -5030,7 +5030,7 @@ wxBoxSizer* EditFilamentPresetDialog::create_button_sizer()
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_ok_btn = new Button(this, _L("OK"));
     m_ok_btn->SetBackgroundColor(btn_bg_green);
@@ -5250,7 +5250,7 @@ wxBoxSizer* CreatePresetForPrinterDialog::create_button_sizer()
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_ok_btn = new Button(this, _L("OK"));
     m_ok_btn->SetBackgroundColor(btn_bg_green);
@@ -5406,13 +5406,13 @@ wxPanel* PresetTree::get_child_item(wxPanel* parent, std::shared_ptr<Preset> pre
                             std::pair<wxColour, int>(wxColour(107, 107, 106), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(107, 107, 106), StateColor::Normal));
 
-    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Pressed),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Hovered),
+    StateColor flush_bd_col(std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Pressed),
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(172, 172, 172), StateColor::Normal));
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
                             std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     Button* edit_preset_btn = new Button(panel, _L("Edit Preset"));
     edit_preset_btn->SetFont(Label::Body_10);

@@ -2951,7 +2951,7 @@ void GUI_App::UpdateDarkUI(wxWindow* window, bool highlited /* = false*/, bool j
         auto orig_col = window->GetBackgroundColour();
         auto bg_col   = StateColor::darkModeColorFor(orig_col);
         // there are cases where the background color of an item is bright, specifically:
-        // * the background color of a button: #99fe00  -- 73
+        // * the background color of a button: #2573D9  -- 73
         if (bg_col != orig_col) {
             window->SetBackgroundColour(bg_col);
         }

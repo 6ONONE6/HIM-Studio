@@ -1952,9 +1952,9 @@ void MainFrame::update_side_button_style()
     m_slice_btn->SetCornerRadius(FromDIP(12));
     m_slice_btn->SetExtraSize(wxSize(FromDIP(38), FromDIP(10)));
     m_slice_btn->SetBottomColour(wxColour(0x3B4446));*/
-    StateColor m_btn_bg_enable = StateColor(std::pair<wxColour, int>(wxColour(130, 204, 21), StateColor::Pressed), //  suKing (0, 137, 123)
-                                            std::pair<wxColour, int>(wxColour(130, 204, 21), StateColor::Hovered), //  suKing
-                                            std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+    StateColor m_btn_bg_enable = StateColor(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed), //  suKing (0, 137, 123)
+                                            std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Hovered), //  suKing
+                                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     // m_publish_btn->SetMinSize(wxSize(FromDIP(125), FromDIP(24)));
     // m_publish_btn->SetCornerRadius(FromDIP(12));

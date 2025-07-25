@@ -1197,7 +1197,7 @@ SelectMachineDialog::SelectMachineDialog(Plater *plater)
 
     m_sizer_printer->Add(m_comboBox_printer, 1, wxEXPAND | wxRIGHT, FromDIP(5));
     m_btn_bg_enable = StateColor(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed), std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
-                               std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+                               std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_button_refresh = new Button(this, _L("Refresh"));
     m_button_refresh->SetBackgroundColor(m_btn_bg_enable);
@@ -1291,7 +1291,7 @@ SelectMachineDialog::SelectMachineDialog(Plater *plater)
 
     m_statictext_finish = new wxStaticText(m_panel_finish, wxID_ANY, L("send completed"), wxDefaultPosition, wxDefaultSize, 0);
     m_statictext_finish->Wrap(-1);
-    m_statictext_finish->SetForegroundColour(wxColour(0, 150, 136));
+    m_statictext_finish->SetForegroundColour(wxColour(37, 115, 217));
     m_sizer_finish_h->Add(m_statictext_finish, 0, wxALIGN_CENTER | wxALL, FromDIP(5));
 
     m_sizer_finish_v->Add(m_sizer_finish_h, 1, wxALIGN_CENTER, 0);
@@ -4688,9 +4688,9 @@ EditDevNameDialog::EditDevNameDialog(Plater *plater /*= nullptr*/)
 
 
     m_button_confirm = new Button(this, _L("Confirm"));
-    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed), std::pair<wxColour, int>(wxColour(0, 150, 136), StateColor::Normal));
+    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed), std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
     m_button_confirm->SetBackgroundColor(btn_bg_green);
-    m_button_confirm->SetBorderColor(wxColour(0, 150, 136));
+    m_button_confirm->SetBorderColor(wxColour(37, 115, 217));
     m_button_confirm->SetTextColor(wxColour(255, 255, 255));
     m_button_confirm->SetSize(wxSize(FromDIP(72), FromDIP(24)));
     m_button_confirm->SetMinSize(wxSize(FromDIP(72), FromDIP(24)));
