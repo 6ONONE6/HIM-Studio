@@ -11,27 +11,24 @@ EVT_PAINT(SideButton::paintEvent)
 END_EVENT_TABLE()
 
 SideButton::SideButton(wxWindow* parent, wxString text, wxString icon, long stlye, int iconSize)
-    : wxWindow(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, stlye)
-    , state_handler(this)
+    : wxWindow(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, stlye), state_handler(this)
 {
     radius = 12;
 #ifdef __APPLE__
-    extra_size = wxSize(38 + FromDIP(20), 10);
+    extra_size  = wxSize(38 + FromDIP(20), 10);
     text_margin = 15 + FromDIP(20);
 #else
-    extra_size = wxSize(38, 10);
+    extra_size  = wxSize(38, 10);
     text_margin = 15;
 #endif
-    
-    icon_offset = 0;
-    text_orientation = HO_Left;
-    
 
+    icon_offset      = 0;
+    text_orientation = HO_Left;
 
     border_color.append(0x6B6B6B, StateColor::Disabled);
-    border_color.append(wxColour(0, 137, 123), StateColor::Pressed);
-    border_color.append(wxColour(38, 166, 154), StateColor::Hovered);
-    border_color.append(0x009688, StateColor::Normal);
+    border_color.append(wxColour(27, 85, 161), StateColor::Pressed);
+    border_color.append(wxColour(43, 135, 255), StateColor::Hovered);
+    border_color.append(0x2573D9, StateColor::Normal);
     border_color.setTakeFocusedAsHovered(false);
 
     text_color.append(0xACACAC, StateColor::Disabled);
@@ -40,14 +37,14 @@ SideButton::SideButton(wxWindow* parent, wxString text, wxString icon, long stly
     text_color.append(0xFEFEFE, StateColor::Normal);
 
     background_color.append(0x6B6B6B, StateColor::Disabled);
-    background_color.append(wxColour(0, 137, 123), StateColor::Pressed);
-    background_color.append(wxColour(38, 166, 154), StateColor::Hovered);
-    background_color.append(0x009688, StateColor::Normal);
+    background_color.append(wxColour(27, 85, 161), StateColor::Pressed);
+    background_color.append(wxColour(43, 135, 255), StateColor::Hovered);
+    background_color.append(0x2573D9, StateColor::Normal);
     background_color.setTakeFocusedAsHovered(false);
 
     SetBottomColour(wxColour("#3B4446"));
 
-    state_handler.attach({ &border_color, &text_color, &background_color });
+    state_handler.attach({&border_color, &text_color, &background_color});
     state_handler.update_binds();
 
     // icon only
@@ -78,7 +75,7 @@ void SideButton::SetCornerEnable(const std::vector<bool>& enable)
 void SideButton::SetTextLayout(EHorizontalOrientation orient, int margin)
 {
     text_orientation = orient;
-    text_margin = margin;
+    text_margin      = margin;
     messureSize();
     Refresh();
 }
@@ -97,7 +94,7 @@ void SideButton::SetLabel(const wxString& label)
     Refresh();
 }
 
-bool SideButton::SetForegroundColour(wxColour const &color)
+bool SideButton::SetForegroundColour(wxColour const& color)
 {
     text_color = StateColor(color);
     state_handler.update_binds();
@@ -123,21 +120,21 @@ void SideButton::SetMinSize(const wxSize& size)
     messureSize();
 }
 
-void SideButton::SetBorderColor(StateColor const &color)
+void SideButton::SetBorderColor(StateColor const& color)
 {
     border_color = color;
     state_handler.update_binds();
     Refresh();
 }
 
-void SideButton::SetForegroundColor(StateColor const &color)
+void SideButton::SetForegroundColor(StateColor const& color)
 {
     text_color = color;
     state_handler.update_binds();
     Refresh();
 }
 
-void SideButton::SetBackgroundColor(StateColor const &color)
+void SideButton::SetBackgroundColor(StateColor const& color)
 {
     background_color = color;
     state_handler.update_binds();
@@ -181,10 +178,10 @@ void SideButton::paintEvent(wxPaintEvent& evt)
 #ifdef __WXMSW__
     wxGCDC dc2(dc);
 #else
-    wxDC & dc2(dc);
+    wxDC& dc2(dc);
 #endif
 
-    wxDC & dctext(dc);
+    wxDC& dctext(dc);
     dorender(dc2, dctext);
 }
 
@@ -208,7 +205,6 @@ void SideButton::dorender(wxDC& dc, wxDC& text_dc)
     dc.SetPen(wxPen(border_color.colorForStates(states)));
     int pen_width = dc.GetPen().GetWidth();
 
-    
     // draw icon style
     if (icon.bmp().IsOk()) {
         if (radius > 1e-5) {
@@ -216,8 +212,7 @@ void SideButton::dorender(wxDC& dc, wxDC& text_dc)
             dc.DrawRectangle(radius, 0, size.x - radius, size.y);
             dc.SetPen(wxNullPen);
             dc.DrawRectangle(radius - pen_width, pen_width, radius, size.y - 2 * pen_width);
-        }
-        else {
+        } else {
             dc.DrawRectangle(0, 0, size.x, size.y);
         }
     }
@@ -244,7 +239,7 @@ void SideButton::dorender(wxDC& dc, wxDC& text_dc)
     wxSize szContent = textSize;
     if (icon.bmp().IsOk()) {
         if (szContent.y > 0) {
-            //BBS norrow size between text and icon
+            // BBS norrow size between text and icon
             szContent.x += 5;
         }
         szIcon = icon.GetBmpSize();
@@ -253,7 +248,7 @@ void SideButton::dorender(wxDC& dc, wxDC& text_dc)
             szContent.y = szIcon.y;
     }
     // move to center
-    wxRect rcContent = { {0, 0}, size };
+    wxRect rcContent = {{0, 0}, size};
     if (text_orientation == EHorizontalOrientation::HO_Center) {
         wxSize offset = (size - szContent) / 2;
         rcContent.Deflate(offset.x, offset.y);
@@ -268,11 +263,11 @@ void SideButton::dorender(wxDC& dc, wxDC& text_dc)
     // start draw
     wxPoint pt = rcContent.GetLeftTop();
     if (icon.bmp().IsOk()) {
-        //BBS extra pixels for icon
+        // BBS extra pixels for icon
         pt.x += icon_offset;
         pt.y += (rcContent.height - szIcon.y) / 2;
         dc.DrawBitmap(icon.bmp(), pt);
-        //BBS norrow size between text and icon
+        // BBS norrow size between text and icon
         pt.x += szIcon.x + 5;
         pt.y = rcContent.y;
     }
@@ -304,15 +299,14 @@ void SideButton::messureSize()
         szContent.x += szIcon.x;
         if (szIcon.y > szContent.y)
             szContent.y = szIcon.y;
-        //BBS icon only
+        // BBS icon only
         wxWindow::SetMinSize(szContent + wxSize(szContent.GetX() + extra_size.GetX(), minSize.GetHeight()));
-    }
-    else {
+    } else {
         if (minSize.GetHeight() > 0) {
-            //BBS with text size
+            // BBS with text size
             wxWindow::SetMinSize(wxSize(szContent.GetX() + extra_size.GetX(), minSize.GetHeight()));
         } else {
-            //BBS with text size
+            // BBS with text size
             wxWindow::SetMinSize(szContent + extra_size);
         }
     }
