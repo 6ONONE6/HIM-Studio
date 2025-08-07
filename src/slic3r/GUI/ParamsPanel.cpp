@@ -61,7 +61,7 @@ TipsDialog::TipsDialog(wxWindow *parent, const wxString &title, const wxString &
     wxBoxSizer *m_sizer_right = new wxBoxSizer(wxHORIZONTAL);
 
     m_confirm = new Button(this, _L("OK"));
-    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed), std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed), std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_confirm->SetBackgroundColor(btn_bg_green);

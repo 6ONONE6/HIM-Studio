@@ -30,34 +30,25 @@ END_EVENT_TABLE()
  * calling Refresh()/Update().
  */
 
-DropDown::DropDown(std::vector<wxString> &texts,
-                   std::vector<wxString> &tips,
-                   std::vector<wxBitmap> &icons)
+DropDown::DropDown(std::vector<wxString>& texts, std::vector<wxString>& tips, std::vector<wxBitmap>& icons)
     : texts(texts)
     , tips(tips)
     , icons(icons)
     , state_handler(this)
     , border_color(0xDBDBDB)
     , text_color(0x363636)
-    , selector_border_color(std::make_pair(0x009688, (int) StateColor::Hovered),
-        std::make_pair(*wxWHITE, (int) StateColor::Normal))
-    , selector_background_color(std::make_pair(0xBFE1DE, (int) StateColor::Checked), // ORCA updated background color for checked item
-        std::make_pair(*wxWHITE, (int) StateColor::Normal))
-{
-}
+    , selector_border_color(std::make_pair(0x2573D9, (int) StateColor::Hovered), std::make_pair(*wxWHITE, (int) StateColor::Normal))
+    , selector_background_color(std::make_pair(0x93b4df, (int) StateColor::Checked), // ORCA updated background color for checked item
+                                std::make_pair(*wxWHITE, (int) StateColor::Normal))
+{}
 
-DropDown::DropDown(wxWindow *             parent,
-                   std::vector<wxString> &texts,
-                   std::vector<wxString> &tips,
-                   std::vector<wxBitmap> &icons,
-                   long           style)
+DropDown::DropDown(wxWindow* parent, std::vector<wxString>& texts, std::vector<wxString>& tips, std::vector<wxBitmap>& icons, long style)
     : DropDown(texts, tips, icons)
 {
     Create(parent, style);
 }
 
-void DropDown::Create(wxWindow *     parent,
-         long           style)
+void DropDown::Create(wxWindow* parent, long style)
 {
     PopupWindow::Create(parent, wxPU_CONTAINS_CONTROLS);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
@@ -73,7 +64,7 @@ void DropDown::Create(wxWindow *     parent,
 #ifdef __WXOSX__
     // PopupWindow releases mouse on idle, which may cause various problems,
     //  such as losting mouse move, and dismissing soon on first LEFT_DOWN event.
-    Bind(wxEVT_IDLE, [] (wxIdleEvent & evt) {});
+    Bind(wxEVT_IDLE, [](wxIdleEvent& evt) {});
 #endif
 }
 
@@ -81,7 +72,7 @@ void DropDown::Invalidate(bool clear)
 {
     if (clear) {
         selection = hover_item = -1;
-        offset = wxPoint();
+        offset                 = wxPoint();
     }
     assert(selection < (int) texts.size());
     need_sync = true;
@@ -92,7 +83,8 @@ void DropDown::SetSelection(int n)
     assert(n < (int) texts.size());
     if (n >= (int) texts.size())
         n = -1;
-    if (selection == n) return;
+    if (selection == n)
+        return;
     selection = n;
     if (need_sync) { // for icon Size
         messureSize();
@@ -101,14 +93,11 @@ void DropDown::SetSelection(int n)
     paintNow();
 }
 
-wxString DropDown::GetValue() const
-{
-    return selection >= 0 ? texts[selection] : wxString();
-}
+wxString DropDown::GetValue() const { return selection >= 0 ? texts[selection] : wxString(); }
 
-void DropDown::SetValue(const wxString &value)
+void DropDown::SetValue(const wxString& value)
 {
-    auto i = std::find(texts.begin(), texts.end(), value);
+    auto i    = std::find(texts.begin(), texts.end(), value);
     selection = i == texts.end() ? -1 : std::distance(texts.begin(), i);
 }
 
@@ -118,28 +107,28 @@ void DropDown::SetCornerRadius(double radius)
     paintNow();
 }
 
-void DropDown::SetBorderColor(StateColor const &color)
+void DropDown::SetBorderColor(StateColor const& color)
 {
     border_color = color;
     state_handler.update_binds();
     paintNow();
 }
 
-void DropDown::SetSelectorBorderColor(StateColor const &color)
+void DropDown::SetSelectorBorderColor(StateColor const& color)
 {
     selector_border_color = color;
     state_handler.update_binds();
     paintNow();
 }
 
-void DropDown::SetTextColor(StateColor const &color)
+void DropDown::SetTextColor(StateColor const& color)
 {
     text_color = color;
     state_handler.update_binds();
     paintNow();
 }
 
-void DropDown::SetSelectorBackgroundColor(StateColor const &color)
+void DropDown::SetSelectorBackgroundColor(StateColor const& color)
 {
     selector_background_color = color;
     state_handler.update_binds();
@@ -150,24 +139,20 @@ void DropDown::SetUseContentWidth(bool use, bool limit_max_content_width)
 {
     if (use_content_width == use)
         return;
-    use_content_width = use;
+    use_content_width             = use;
     this->limit_max_content_width = limit_max_content_width;
-    need_sync = true;
+    need_sync                     = true;
     messureSize();
 }
 
 void DropDown::SetAlignIcon(bool align) { align_icon = align; }
 
-void DropDown::Rescale()
-{
-    need_sync = true;
-}
+void DropDown::Rescale() { need_sync = true; }
 
 bool DropDown::HasDismissLongTime()
 {
     auto now = boost::posix_time::microsec_clock::universal_time();
-    return !IsShown() &&
-        (now - dismissTime).total_milliseconds() >= 20;
+    return !IsShown() && (now - dismissTime).total_milliseconds() >= 20;
 }
 
 void DropDown::paintEvent(wxPaintEvent& evt)
@@ -188,12 +173,12 @@ void DropDown::paintEvent(wxPaintEvent& evt)
 void DropDown::paintNow()
 {
     // depending on your system you may need to look at double-buffered dcs
-    //wxClientDC dc(this);
-    //render(dc);
+    // wxClientDC dc(this);
+    // render(dc);
     Refresh();
 }
 
-static wxSize GetBmpSize(wxBitmap & bmp)
+static wxSize GetBmpSize(wxBitmap& bmp)
 {
 #ifdef __APPLE__
     return bmp.GetScaledSize();
@@ -207,9 +192,10 @@ static wxSize GetBmpSize(wxBitmap & bmp)
  * method so that it can work no matter what type of DC
  * (e.g. wxPaintDC or wxClientDC) is used.
  */
-void DropDown::render(wxDC &dc)
+void DropDown::render(wxDC& dc)
 {
-    if (texts.size() == 0) return;
+    if (texts.size() == 0)
+        return;
     int states = state_handler.states();
     dc.SetPen(wxPen(border_color.colorForStates(states)));
     dc.SetBrush(wxBrush(StateColor::darkModeColorFor(GetBackgroundColour())));
@@ -258,8 +244,7 @@ void DropDown::render(wxDC &dc)
     // draw position bar
     if (rowSize.y * texts.size() > size.y) {
         int    height = rowSize.y * texts.size();
-        wxRect rect = {size.x - 6, -offset.y * size.y / height, 4,
-                       size.y * size.y / height};
+        wxRect rect   = {size.x - 6, -offset.y * size.y / height, 4, size.y * size.y / height};
         dc.SetPen(wxPen(border_color.defaultColor()));
         dc.SetBrush(wxBrush(*wxLIGHT_GREY));
         dc.DrawRoundedRectangle(rect, 2);
@@ -288,10 +273,11 @@ void DropDown::render(wxDC &dc)
             rcContent.y += rowSize.y;
             continue;
         }
-        if (rcContent.y > size.y) break;
-        wxPoint pt   = rcContent.GetLeftTop();
-        auto & icon = icons[i];
-        auto size2 = GetBmpSize(icon);
+        if (rcContent.y > size.y)
+            break;
+        wxPoint pt    = rcContent.GetLeftTop();
+        auto&   icon  = icons[i];
+        auto    size2 = GetBmpSize(icon);
         if (iconSize.x > 0) {
             if (icon.IsOk()) {
                 pt.y += (rcContent.height - size2.y) / 2;
@@ -311,8 +297,7 @@ void DropDown::render(wxDC &dc)
             if (pt.x + tSize.x > rcContent.GetRight()) {
                 if (i == hover_item && tips[i].IsEmpty())
                     SetToolTip(text);
-                text = wxControl::Ellipsize(text, dc, wxELLIPSIZE_END,
-                                            rcContent.GetRight() - pt.x);
+                text = wxControl::Ellipsize(text, dc, wxELLIPSIZE_END, rcContent.GetRight() - pt.x);
             }
             pt.y += (rcContent.height - textSize.y) / 2;
             dc.SetFont(GetFont());
@@ -324,7 +309,8 @@ void DropDown::render(wxDC &dc)
 
 void DropDown::messureSize()
 {
-    if (!need_sync) return;
+    if (!need_sync)
+        return;
     textSize = wxSize();
     iconSize = wxSize();
     wxClientDC dc(GetParent() ? GetParent() : this);
@@ -332,24 +318,30 @@ void DropDown::messureSize()
         wxSize size1 = text_off ? wxSize() : dc.GetMultiLineTextExtent(texts[i]);
         if (icons[i].IsOk()) {
             wxSize size2 = GetBmpSize(icons[i]);
-            if (size2.x > iconSize.x) iconSize = size2;
+            if (size2.x > iconSize.x)
+                iconSize = size2;
             if (!align_icon) {
                 size1.x += size2.x + (text_off ? 0 : 5);
             }
         }
-        if (size1.x > textSize.x) textSize = size1;
+        if (size1.x > textSize.x)
+            textSize = size1;
     }
-    if (!align_icon) iconSize.x = 0;
+    if (!align_icon)
+        iconSize.x = 0;
     wxSize szContent = textSize;
     szContent.x += 10;
     if (check_bitmap.bmp().IsOk()) {
         auto szBmp = check_bitmap.GetBmpSize();
         szContent.x += szBmp.x + 5;
     }
-    if (iconSize.x > 0) szContent.x += iconSize.x + (text_off ? 0 : 5);
-    if (iconSize.y > szContent.y) szContent.y = iconSize.y;
+    if (iconSize.x > 0)
+        szContent.x += iconSize.x + (text_off ? 0 : 5);
+    if (iconSize.y > szContent.y)
+        szContent.y = iconSize.y;
     szContent.y += 10;
-    if (texts.size() > 15) szContent.x += 6;
+    if (texts.size() > 15)
+        szContent.x += 6;
     if (GetParent()) {
         auto x = GetParent()->GetSize().x;
         if (!use_content_width || x > szContent.x)
@@ -363,12 +355,12 @@ void DropDown::messureSize()
             szContent = rowSize;
         }
     }
-    szContent.y *= std::min((size_t)15, texts.size());
+    szContent.y *= std::min((size_t) 15, texts.size());
     szContent.y += texts.size() > 15 ? rowSize.y / 2 : 0;
     wxWindow::SetSize(szContent);
 #ifdef __WXGTK__
     // Gtk has a wrapper window for popup widget
-    gtk_window_resize (GTK_WINDOW (m_widget), szContent.x, szContent.y);
+    gtk_window_resize(GTK_WINDOW(m_widget), szContent.x, szContent.y);
 #endif
     need_sync = false;
 }
@@ -376,13 +368,13 @@ void DropDown::messureSize()
 void DropDown::autoPosition()
 {
     messureSize();
-    wxPoint pos = GetParent()->ClientToScreen(wxPoint(0, -6));
-    wxPoint old = GetPosition();
-    wxSize size = GetSize();
+    wxPoint pos  = GetParent()->ClientToScreen(wxPoint(0, -6));
+    wxPoint old  = GetPosition();
+    wxSize  size = GetSize();
     Position(pos, {0, GetParent()->GetSize().y + 12});
     if (old != GetPosition()) {
         size = rowSize;
-        size.y *= std::min((size_t)15, texts.size());
+        size.y *= std::min((size_t) 15, texts.size());
         size.y += texts.size() > 15 ? rowSize.y / 2 : 0;
         if (size != GetSize()) {
             wxWindow::SetSize(size);
@@ -394,7 +386,8 @@ void DropDown::autoPosition()
         // may exceed
         auto drect = wxDisplay(GetParent()).GetGeometry();
         if (GetPosition().y + size.y + 10 > drect.GetBottom()) {
-            if (use_content_width && texts.size() <= 15) size.x += 6;
+            if (use_content_width && texts.size() <= 15)
+                size.x += 6;
             size.y = drect.GetBottom() - GetPosition().y - 10;
             wxWindow::SetSize(size);
             if (selection >= 0) {
@@ -416,13 +409,13 @@ void DropDown::mouseDown(wxMouseEvent& event)
     mouseMove(event);
     pressedDown = true;
     CaptureMouse();
-    dragStart   = event.GetPosition();
+    dragStart = event.GetPosition();
 }
 
 void DropDown::mouseReleased(wxMouseEvent& event)
 {
     if (pressedDown) {
-        dragStart = wxPoint();
+        dragStart   = wxPoint();
         pressedDown = false;
         if (HasCapture())
             ReleaseMouse();
@@ -433,17 +426,17 @@ void DropDown::mouseReleased(wxMouseEvent& event)
     }
 }
 
-void DropDown::mouseCaptureLost(wxMouseCaptureLostEvent &event)
+void DropDown::mouseCaptureLost(wxMouseCaptureLostEvent& event)
 {
     wxMouseEvent evt;
     mouseReleased(evt);
 }
 
-void DropDown::mouseMove(wxMouseEvent &event)
+void DropDown::mouseMove(wxMouseEvent& event)
 {
-    wxPoint pt  = event.GetPosition();
+    wxPoint pt = event.GetPosition();
     if (pressedDown) {
-        wxPoint pt2 = offset + pt - dragStart;
+        wxPoint pt2  = offset + pt - dragStart;
         wxSize  size = GetSize();
         dragStart    = pt;
         if (pt2.y > 0)
@@ -451,7 +444,7 @@ void DropDown::mouseMove(wxMouseEvent &event)
         else if (pt2.y + rowSize.y * int(texts.size()) < size.y)
             pt2.y = size.y - rowSize.y * int(texts.size());
         if (pt2.y != offset.y) {
-            offset = pt2;
+            offset     = pt2;
             hover_item = -1; // moved
         } else {
             return;
@@ -459,17 +452,20 @@ void DropDown::mouseMove(wxMouseEvent &event)
     }
     if (!pressedDown || hover_item >= 0) {
         int hover = (pt.y - offset.y) / rowSize.y;
-        if (hover >= (int) texts.size()) hover = -1;
-        if (hover == hover_item) return;
+        if (hover >= (int) texts.size())
+            hover = -1;
+        if (hover == hover_item)
+            return;
         hover_item = hover;
-        if (hover >= 0) SetToolTip(tips[hover]);
+        if (hover >= 0)
+            SetToolTip(tips[hover]);
     }
     paintNow();
 }
 
-void DropDown::mouseWheelMoved(wxMouseEvent &event)
+void DropDown::mouseWheelMoved(wxMouseEvent& event)
 {
-    auto delta = event.GetWheelRotation();
+    auto    delta = event.GetWheelRotation();
     wxSize  size  = GetSize();
     wxPoint pt2   = offset + wxPoint{0, delta};
     if (pt2.y > 0)
@@ -482,10 +478,12 @@ void DropDown::mouseWheelMoved(wxMouseEvent &event)
         return;
     }
     int hover = (event.GetPosition().y - offset.y) / rowSize.y;
-    if (hover >= (int) texts.size()) hover = -1;
+    if (hover >= (int) texts.size())
+        hover = -1;
     if (hover != hover_item) {
         hover_item = hover;
-        if (hover >= 0) SetToolTip(tips[hover]);
+        if (hover >= 0)
+            SetToolTip(tips[hover]);
     }
     paintNow();
 }

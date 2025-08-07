@@ -73,7 +73,7 @@ HistoryWindow::HistoryWindow(wxWindow* parent, const std::vector<PACalibResult>&
     scroll_window->SetSizer(scroll_sizer);
 
     Button *   mew_btn = new Button(scroll_window, _L("New"));
-    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed), std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed), std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
     mew_btn->SetBackgroundColour(*wxWHITE);
     mew_btn->SetBackgroundColor(btn_bg_green);
@@ -307,8 +307,8 @@ void HistoryWindow::sync_history_data() {
             });
 
         auto edit_button = new Button(m_history_data_panel, _L("Edit"));
-        StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-            std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+        StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
+            std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
             std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
         edit_button->SetBackgroundColour(*wxWHITE);
         edit_button->SetBackgroundColor(btn_bg_green);
@@ -423,8 +423,8 @@ EditCalibrationHistoryDialog::EditCalibrationHistoryDialog(wxWindow* parent, con
 
     auto btn_sizer = new wxBoxSizer(wxHORIZONTAL);
     Button* save_btn = new Button(top_panel, _L("Save"));
-    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
         std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
     save_btn->SetBackgroundColour(*wxWHITE);
     save_btn->SetBackgroundColor(btn_bg_green);
@@ -639,7 +639,7 @@ NewCalibrationHistoryDialog::NewCalibrationHistoryDialog(wxWindow *parent, const
 
     auto       btn_sizer = new wxBoxSizer(wxHORIZONTAL);
     Button *   ok_btn  = new Button(top_panel, _L("Ok"));
-    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed), std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+    StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed), std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
     ok_btn->SetBackgroundColour(*wxWHITE);
     ok_btn->SetBackgroundColor(btn_bg_green);

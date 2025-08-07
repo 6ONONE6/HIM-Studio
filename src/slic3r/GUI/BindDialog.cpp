@@ -139,8 +139,8 @@ PingCodeBindDialog::PingCodeBindDialog(Plater* plater /*= nullptr*/)
     m_button_bind = new Button(request_bind_panel, _L("Confirm"));
 
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Disabled),
-        std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
         std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
     m_button_bind->SetBackgroundColor(btn_bg_green);
     m_button_bind->SetBorderColor(*wxWHITE);
@@ -680,8 +680,8 @@ PingCodeBindDialog::~PingCodeBindDialog() {
      m_button_bind = new Button(button_panel, _L("Confirm"));
 
      StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(206, 206, 206), StateColor::Disabled),
-         std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-         std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+         std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
+         std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
          std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
      m_button_bind->SetBackgroundColor(btn_bg_green);
      m_button_bind->SetBorderColor(*wxWHITE);
@@ -1030,7 +1030,7 @@ std::string icon_path = (boost::format("%1%/images/OrcaSlicerTitle.ico") % resou
 
      m_sizer_button->Add(0, 0, 1, wxEXPAND, 5);
      m_button_unbind = new Button(this, _L("Confirm"));
-     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
                              std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
      m_button_unbind->SetBackgroundColor(btn_bg_green);
      m_button_unbind->SetBorderColor(wxColour(37, 115, 217));

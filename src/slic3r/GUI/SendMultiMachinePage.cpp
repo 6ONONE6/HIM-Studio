@@ -1261,8 +1261,8 @@ wxPanel* SendMultiMachinePage::create_page()
     m_tip_text->Wrap(-1);
 
     auto m_btn_bg_enable = StateColor(
-        std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+        std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
+        std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
         std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal)
     );
 
@@ -1323,7 +1323,7 @@ wxPanel* SendMultiMachinePage::create_page()
     sizer->AddSpacer(FromDIP(10));
 
     // add send button
-    btn_bg_enable = StateColor(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed), std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+    btn_bg_enable = StateColor(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed), std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
         std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     m_button_send = new Button(main_page, _L("Send"));

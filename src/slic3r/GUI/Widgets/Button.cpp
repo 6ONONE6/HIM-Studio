@@ -22,22 +22,17 @@ END_EVENT_TABLE()
  * calling Refresh()/Update().
  */
 
-Button::Button()
-    : paddingSize(10, 8)
+Button::Button() : paddingSize(10, 8)
 {
-    background_color = StateColor(
-        std::make_pair(0xF0F0F1, (int) StateColor::Disabled),
-        std::make_pair(0x52c7b8, (int) StateColor::Hovered | StateColor::Checked),
-        std::make_pair(0x009688, (int) StateColor::Checked),
-        std::make_pair(*wxLIGHT_GREY, (int) StateColor::Hovered), 
-        std::make_pair(*wxWHITE, (int) StateColor::Normal));
-    text_color       = StateColor(
-        std::make_pair(*wxLIGHT_GREY, (int) StateColor::Disabled), 
-        std::make_pair(*wxBLACK, (int) StateColor::Normal));
+    background_color = StateColor(std::make_pair(0xF0F0F1, (int) StateColor::Disabled),
+                                  std::make_pair(0x2B87FF, (int) StateColor::Hovered | StateColor::Checked),
+                                  std::make_pair(0x2573D9, (int) StateColor::Checked),
+                                  std::make_pair(*wxLIGHT_GREY, (int) StateColor::Hovered),
+                                  std::make_pair(*wxWHITE, (int) StateColor::Normal));
+    text_color = StateColor(std::make_pair(*wxLIGHT_GREY, (int) StateColor::Disabled), std::make_pair(*wxBLACK, (int) StateColor::Normal));
 }
 
-Button::Button(wxWindow* parent, wxString text, wxString icon, long style, int iconSize, wxWindowID btn_id)
-    : Button()
+Button::Button(wxWindow* parent, wxString text, wxString icon, long style, int iconSize, wxWindowID btn_id) : Button()
 {
     Create(parent, text, icon, style, iconSize, btn_id);
 }
@@ -47,11 +42,11 @@ bool Button::Create(wxWindow* parent, wxString text, wxString icon, long style, 
     StaticBox::Create(parent, btn_id, wxDefaultPosition, wxDefaultSize, style);
     state_handler.attach({&text_color});
     state_handler.update_binds();
-    //BBS set default font
+    // BBS set default font
     SetFont(Label::Body_14);
     wxWindow::SetLabel(text);
     if (!icon.IsEmpty()) {
-        //BBS set button icon default size to 20
+        // BBS set button icon default size to 20
         this->active_icon = ScalableBitmap(this, icon.ToStdString(), iconSize > 0 ? iconSize : 20);
     }
     messureSize();
@@ -76,17 +71,15 @@ bool Button::SetFont(const wxFont& font)
 void Button::SetIcon(const wxString& icon)
 {
     if (!icon.IsEmpty()) {
-        //BBS set button icon default size to 20
+        // BBS set button icon default size to 20
         this->active_icon = ScalableBitmap(this, icon.ToStdString(), this->active_icon.px_cnt());
-    }
-    else
-    {
+    } else {
         this->active_icon = ScalableBitmap();
     }
     Refresh();
 }
 
-void Button::SetInactiveIcon(const wxString &icon)
+void Button::SetInactiveIcon(const wxString& icon)
 {
     if (!icon.IsEmpty()) {
         // BBS set button icon default size to 20
@@ -116,7 +109,7 @@ void Button::SetTextColor(StateColor const& color)
     Refresh();
 }
 
-void Button::SetTextColorNormal(wxColor const &color)
+void Button::SetTextColorNormal(wxColor const& color)
 {
     text_color.setColorForStates(color, 0);
     Refresh();
@@ -137,16 +130,14 @@ void Button::SetCanFocus(bool canFocus) { this->canFocus = canFocus; }
 
 void Button::SetValue(bool state)
 {
-    if (GetValue() == state) return;
+    if (GetValue() == state)
+        return;
     state_handler.set_state(state ? StateHandler::Checked : 0, StateHandler::Checked);
 }
 
 bool Button::GetValue() const { return state_handler.states() & StateHandler::Checked; }
 
-void Button::SetCenter(bool isCenter)
-{
-    this->isCenter = isCenter;
-}
+void Button::SetCenter(bool isCenter) { this->isCenter = isCenter; }
 
 void Button::Rescale()
 {
@@ -174,22 +165,22 @@ void Button::paintEvent(wxPaintEvent& evt)
 void Button::render(wxDC& dc)
 {
     StaticBox::render(dc);
-    int states = state_handler.states();
-    wxSize size = GetSize();
+    int    states = state_handler.states();
+    wxSize size   = GetSize();
     dc.SetBrush(*wxTRANSPARENT_BRUSH);
     // calc content size
     wxSize szIcon;
     wxSize szContent = textSize.GetSize();
 
     ScalableBitmap icon;
-    if (m_selected || ((states & (int)StateColor::State::Hovered) != 0))
+    if (m_selected || ((states & (int) StateColor::State::Hovered) != 0))
         icon = active_icon;
     else
         icon = inactive_icon;
     int padding = 5;
     if (icon.bmp().IsOk()) {
         if (szContent.y > 0) {
-            //BBS norrow size between text and icon
+            // BBS norrow size between text and icon
             szContent.x += padding;
         }
         szIcon = icon.GetBmpSize();
@@ -203,10 +194,11 @@ void Button::render(wxDC& dc)
         }
     }
     // move to center
-    wxRect rcContent = { {0, 0}, size };
+    wxRect rcContent = {{0, 0}, size};
     if (isCenter) {
         wxSize offset = (size - szContent) / 2;
-        if (offset.x < 0) offset.x = 0;
+        if (offset.x < 0)
+            offset.x = 0;
         rcContent.Deflate(offset.x, offset.y);
     }
     // start draw
@@ -214,7 +206,7 @@ void Button::render(wxDC& dc)
     if (icon.bmp().IsOk()) {
         pt.y += (rcContent.height - szIcon.y) / 2;
         dc.DrawBitmap(icon.bmp(), pt);
-        //BBS norrow size between text and icon
+        // BBS norrow size between text and icon
         pt.x += szIcon.x + padding;
         pt.y = rcContent.y;
     }
@@ -243,7 +235,7 @@ void Button::messureSize()
     wxSize szContent = textSize.GetSize();
     if (this->active_icon.bmp().IsOk()) {
         if (szContent.y > 0) {
-            //BBS norrow size between text and icon
+            // BBS norrow size between text and icon
             szContent.x += 5;
         }
         wxSize szIcon = this->active_icon.GetBmpSize();
@@ -283,13 +275,13 @@ void Button::mouseReleased(wxMouseEvent& event)
     }
 }
 
-void Button::mouseCaptureLost(wxMouseCaptureLostEvent &event)
+void Button::mouseCaptureLost(wxMouseCaptureLostEvent& event)
 {
     wxMouseEvent evt;
     mouseReleased(evt);
 }
 
-void Button::keyDownUp(wxKeyEvent &event)
+void Button::keyDownUp(wxKeyEvent& event)
 {
     if (event.GetKeyCode() == WXK_SPACE || event.GetKeyCode() == WXK_RETURN) {
         wxMouseEvent evt(event.GetEventType() == wxEVT_KEY_UP ? wxEVT_LEFT_UP : wxEVT_LEFT_DOWN);
@@ -298,8 +290,8 @@ void Button::keyDownUp(wxKeyEvent &event)
         return;
     }
     if (event.GetEventType() == wxEVT_KEY_DOWN &&
-        (event.GetKeyCode() == WXK_TAB || event.GetKeyCode() == WXK_LEFT || event.GetKeyCode() == WXK_RIGHT 
-        || event.GetKeyCode() == WXK_UP || event.GetKeyCode() == WXK_DOWN))
+        (event.GetKeyCode() == WXK_TAB || event.GetKeyCode() == WXK_LEFT || event.GetKeyCode() == WXK_RIGHT ||
+         event.GetKeyCode() == WXK_UP || event.GetKeyCode() == WXK_DOWN))
         HandleAsNavigationKey(event);
     else
         event.Skip();
@@ -316,7 +308,9 @@ void Button::sendButtonEvent()
 
 WXLRESULT Button::MSWWindowProc(WXUINT nMsg, WXWPARAM wParam, WXLPARAM lParam)
 {
-    if (nMsg == WM_GETDLGCODE) { return DLGC_WANTMESSAGE; }
+    if (nMsg == WM_GETDLGCODE) {
+        return DLGC_WANTMESSAGE;
+    }
     if (nMsg == WM_KEYDOWN) {
         wxKeyEvent event(CreateKeyEvent(wxEVT_KEY_DOWN, wParam, lParam));
         switch (wParam) {

@@ -431,8 +431,8 @@ wxBoxSizer* EditGCodeDialog::create_btn_sizer(long flags)
     auto btn_sizer = new wxBoxSizer(wxHORIZONTAL);
     btn_sizer->AddStretchSpacer();
 
-    StateColor ok_btn_bg(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-                         std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+    StateColor ok_btn_bg(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
+                         std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
                          std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     StateColor ok_btn_bd(std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
@@ -447,8 +447,8 @@ wxBoxSizer* EditGCodeDialog::create_btn_sizer(long flags)
 
     StateColor cancel_btn_text(std::pair<wxColour, int>(wxColour(38, 46, 48), StateColor::Normal));
 
-    StateColor calc_btn_bg(std::pair<wxColour, int>(wxColour(0, 137, 123), StateColor::Pressed),
-                           std::pair<wxColour, int>(wxColour(38, 166, 154), StateColor::Hovered),
+    StateColor calc_btn_bg(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
+                           std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
                            std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
 
     StateColor calc_btn_bd(std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
