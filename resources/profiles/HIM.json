@@ -1,0 +1,90 @@
+{
+    "name": "HIM",
+    "version":  "02.03.00.03",
+    "force_update": "0",
+    "description": "HIM configurations",
+    "machine_model_list": [
+        {
+            "name": "HIM F300A",
+            "sub_path": "machine/HIM F300A.json"
+        }
+    ],
+    "process_list": [
+        {
+            "name": "fdm_process_common",
+            "sub_path": "process/fdm_process_common.json"
+        },
+        {
+            "name": "fdm_process_HIM_common",
+            "sub_path": "process/fdm_process_HIM_common.json"
+        },
+        {
+            "name": "0.08mm Standard @HIM F300A 0.4 nozzle",
+            "sub_path": "process/0.08mm Standard @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "0.12mm Standard @HIM F300A 0.4 nozzle",
+            "sub_path": "process/0.12mm Standard @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "0.15mm Standard @HIM F300A 0.4 nozzle",
+            "sub_path": "process/0.15mm Standard @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "0.20mm Standard @HIM F300A 0.4 nozzle",
+            "sub_path": "process/0.20mm Standard @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "0.24mm Standard @HIM F300A 0.4 nozzle",
+            "sub_path": "process/0.24mm Standard @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "0.28mm Standard @HIM F300A 0.4 nozzle",
+            "sub_path": "process/0.28mm Standard @HIM F300A 0.4 nozzle.json"
+        }
+    ],
+    "filament_list": [
+        {
+            "name": "kexcelled PLA K5 @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/kexcelled/kexcelled PLA K5 @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/kexcelled/kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "Bambu PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/Bambu PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "SUNLU PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/SUNLU PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/SUNLU PLA+ Silk @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "eSUN PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/eSUN PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "PolyLite PLA @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Polymaker/PolyLite PLA @HIM F300A 0.4 nozzle.json"
+        }
+    ],
+    "machine_list": [
+        {
+            "name": "fdm_machine_common",
+            "sub_path": "machine/fdm_machine_common.json"
+        },
+        {
+            "name": "fdm_klipper_common",
+            "sub_path": "machine/fdm_klipper_common.json"
+        },
+        {
+            "name": "HIM F300A 0.4 nozzle",
+            "sub_path": "machine/HIM F300A 0.4 nozzle.json"
+        }
+    ]
+}

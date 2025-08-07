@@ -1,0 +1,62 @@
+{
+    "type": "filament",
+    "name": "PolyLite PLA @HIM F300A 0.4 nozzle",
+    "inherits": "PolyLite PLA @base",
+    "from": "system",
+    "setting_id": "OGFSL19",
+    "instantiation": "true",
+    "filament_vendor": [
+        "HIM"
+    ],
+    "filament_density": [
+        "1.24"
+    ],
+    "filament_cost": [
+        "20"
+    ],
+    "temperature_vitrification": [
+        "60"
+    ],
+    "nozzle_temperature_range_high": [
+        "230"
+    ],
+    "filament_flow_ratio": [
+        "0.95"
+    ],
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "pressure_advance": [
+        "0.06"
+    ],
+    "nozzle_temperature": [
+        "200"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "200"
+    ],
+    "hot_plate_temp": [
+        "60"
+    ],
+    "hot_plate_temp_initial_layer": [
+        "60"
+    ],
+    "filament_max_volumetric_speed": [
+        "16"
+    ],
+    "slow_down_layer_time": [
+        "0"
+    ],
+    "complete_print_exhaust_fan_speed": [
+        "80"
+    ],
+    "during_print_exhaust_fan_speed": [
+        "60"
+    ],
+    "filament_start_gcode": [
+        "; Filament start gcode\n"
+    ],
+    "compatible_printers": [
+        "HIM F300A 0.4 nozzle"
+    ]
+}

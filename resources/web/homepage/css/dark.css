@@ -67,8 +67,8 @@ body
 /*-----Right Top MenuBtn-----*/
 .MenuItem:hover
 {
-	border-color: #00675b;
-	background-color: #223C3C;
+	border-color: #578fd8;
+	background-color: #2b4e7a;
 }
 
 #RecentClearAllBtn:hover
@@ -91,7 +91,7 @@ body
 
 .CT_Item:hover
 {
-	background-color:#00675b; /*ORCA color*/
+	background-color:#c2d9f7; /*ORCA color*/
 }
 
 /*----User Manual------*/

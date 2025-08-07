@@ -1,0 +1,52 @@
+{
+    "type": "filament",
+    "name": "SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
+    "inherits": "SUNLU Silk PLA+ @base",
+    "from": "system",
+    "setting_id": "OSNLS05",
+    "instantiation": "true",
+    "filament_vendor": [
+        "HIM"
+    ],
+    "filament_density": [
+        "1.24"
+    ],
+    "filament_cost": [
+        "20"
+    ],
+    "temperature_vitrification": [
+        "60"
+    ],
+    "nozzle_temperature_range_high": [
+        "230"
+    ],
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "nozzle_temperature": [
+        "200"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "210"
+    ],
+    "filament_max_volumetric_speed": [
+        "18"
+    ],
+    "slow_down_layer_time": [
+        "8"
+    ],
+    "complete_print_exhaust_fan_speed": [
+        "80"
+    ],
+    "during_print_exhaust_fan_speed": [
+        "60"
+    ],
+    "filament_start_gcode": [
+        "; Filament start gcode\n"
+    ],
+
+
+    "compatible_printers": [
+        "HIM F300A 0.4 nozzle"
+    ]
+}

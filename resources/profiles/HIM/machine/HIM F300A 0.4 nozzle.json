@@ -1,0 +1,33 @@
+{
+    "type": "machine",
+    "setting_id": "GM001",
+    "name": "HIM F300A 0.4 nozzle",
+    "from": "system",
+    "instantiation": "true",
+    "inherits": "fdm_klipper_common",
+    "printer_model": "HIM F300A",
+    "nozzle_diameter": [
+      "0.4"
+    ],
+    "printer_variant": "0.4",
+    "printable_area": [
+      "0x0",
+      "300x0",
+      "300x300",
+      "0x300"
+    ],
+    "printable_height": "200",
+    "machine_start_gcode": "PRINT_START EXTUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[bed_temperature_initial_layer_single] Chamber=[chamber_temperature] PRINT_MIN={first_layer_print_min[0]},{first_layer_print_min[1]} PRINT_MAX={first_layer_print_max[0]},{first_layer_print_max[1]} MESH_MIN={adaptive_bed_mesh_min[0]},{adaptive_bed_mesh_min[1]} MESH_MAX={adaptive_bed_mesh_max[0]},{adaptive_bed_mesh_max[1]} MESH_ALGO=[bed_mesh_algo] PROBE_COUNT={bed_mesh_probe_count[0]},{bed_mesh_probe_count[1]}\nM83\nG1 X18.0 Y1.0 Z0.8 F18000;Move to start position\n\nM109 S{nozzle_temperature_initial_layer[initial_extruder]}\n\nG1 Z0.2\nG0 E2 F300\nG0 X285 E15 F{outer_wall_volumetric_speed/(0.3*0.5)     * 60}\n\nG0 Y11 E0.700 F{outer_wall_volumetric_speed/(0.3*0.5)/ 4 * 60}\n\nG0 X284.5\n\nG0 E0.2\n\nG0 Y1.5 E0.700\n\nG0 X18 E15 F{outer_wall_volumetric_speed/(0.3*0.5)     * 60}\nM400",
+    "printer_settings_id": "HIM-F300A",
+    "retract_when_changing_layer": [
+        "0"
+    ],
+    "thumbnails": "48x48/PNG, 300x300/PNG",
+    "default_print_profile": "0.20mm Standard @HIM F300A 0.4 nozzle",
+    "wipe": [
+        "0"
+    ],
+    "min_layer_height": [
+    "0.08"
+    ]
+  }

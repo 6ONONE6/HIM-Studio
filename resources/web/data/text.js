@@ -1,7 +1,7 @@
 var LangText = {
   en: {
-    t1: "Welcome to Orca Slicer",
-    t2: "Orca Slicer will be setup in several steps. Let's start!",
+    t1: "Welcome to HIM-Studio",
+    t2: "HIM-Studio will be setup in several steps. Let's start!",
     t3: "User Agreement",
     t4: "Disagree",
     t5: "Agree",
@@ -658,8 +658,8 @@ var LangText = {
     wk16: "Avec l'outil Texte 3D, les utilisateurs peuvent facilement créer diverses formes de texte 3D dans le projet, ce qui rend le modèle plus personnalisé. Orca Slicer fournit des dizaines de polices et prend en charge les styles gras et italique pour donner au texte une plus grande flexibilité.",
   },
   zh_CN: {
-    t1: "欢迎使用Orca Slicer",
-    t2: "Orca Slicer需要几步安装步骤，让我们开始吧！",
+    t1: "欢迎使用HIM-Studio",
+    t2: "HIM-Studio需要几步安装步骤，让我们开始吧！",
     t3: "用户使用协议",
     t4: "拒绝",
     t5: "同意",
