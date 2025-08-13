@@ -4,7 +4,7 @@
     "name": "kexcelled PLA K5 @HIM F300A 0.4 nozzle",
     "from": "system",
     "instantiation": "true",
-    "inherits": "AliZ PLA @base",
+    "inherits": "kexcelled PLA @base",
     "enable_pressure_advance": [
         "1"
     ],
