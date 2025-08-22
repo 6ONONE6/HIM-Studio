@@ -143,6 +143,10 @@
 #include <gtk/gtk.h>
 #endif
 
+#ifndef wxEVT_WEBREQUEST_COMPLETED
+#define wxEVT_WEBREQUEST_COMPLETED wxEVT_WEBREQUEST_STATE
+#endif
+
 using namespace std::literals;
 namespace pt = boost::property_tree;
 
@@ -974,7 +978,8 @@ void GUI_App::post_init()
             bool        sys_preset  = app_config->get("sync_system_preset") == "true";
             this->preset_updater->sync(http_url, language, network_ver, sys_preset ? preset_bundle : nullptr);
 
-            this->check_new_version_sf();
+            // this->check_new_version_sf();
+            this->check_new_version_hs();
             if (is_user_login() && !app_config->get_stealth_mode()) {
                 // this->check_privacy_version(0);
                 request_user_handle(0);
@@ -4119,7 +4124,7 @@ Semver get_version(const std::string& str, const std::regex& regexp)
 
 void GUI_App::check_new_version_sf(bool show_tips, int by_user)
 {
-    return; // suKing no_check_new_version now
+    return; // HS: not used, see check_new_version_hs
     AppConfig* app_config        = wxGetApp().app_config;
     bool       check_stable_only = app_config->get_bool("check_stable_update_only");
     auto       version_check_url = app_config->version_check_url(check_stable_only);
@@ -4220,6 +4225,56 @@ void GUI_App::check_new_version_sf(bool show_tips, int by_user)
             } catch (...) {}
         })
         .perform();
+}
+
+void GUI_App::check_new_version_hs(bool show_tips, int by_user)
+{
+    wxEvtHandler* handler = wxTheApp->GetTopWindow();
+    wxWebRequest  request;
+    request = wxWebSession::GetDefault().CreateRequest(handler, "https://gitee.com/nullptr01/him-studio/raw/master/updates.json");
+
+    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [by_user, this](wxWebRequestEvent& event) {
+        if (event.GetState() == wxWebRequest::State_Completed) {
+            wxString response = event.GetResponse().AsString();
+            wxMessageBox("Success:\n" + response.Left(1000) + "...");
+
+            std::string jsonStr = response.utf8_string();
+
+            wxLogMessage("recive updates info:\n%s", response.c_str());
+
+            try {
+                json j       = json::parse(jsonStr);
+                json updates = j["updates"];
+                json windows = updates["windows"];
+
+                wxString latestVersion = wxString::FromUTF8(windows["latest-version"]);
+                // wxString downloadUrl = wxString::FromUTF8(windows["download-url"]);
+                wxString changelog = wxString::FromUTF8(windows["changelog"]);
+
+                std::string downloadUrl = windows["download-url"];
+
+                if (latestVersion.ToStdString() != std::string(HIM_VERSION)) {
+                    int ret = wxMessageBox(_L("The latest version: ") + latestVersion + "\n\n" + changelog + "\n\n" + _L("download now?"),
+                                           "New version found!", wxYES_NO | wxICON_INFORMATION);
+
+                    if (ret == wxYES) {
+                        wxLaunchDefaultBrowser(downloadUrl);
+                    }
+                } else {
+                    wxLogMessage("almost newest");
+                    if (by_user != 0) {
+                        this->no_new_version();
+                    }
+                }
+            } catch (std::exception& e) {
+                wxLogError("parse update info fail%s", e.what());
+            }
+        } else if (event.GetState() == wxWebRequest::State_Failed) {
+            wxMessageBox(_L("Check for update error: ") + event.GetErrorDescription(), _L("New Version Check"));
+        }
+    });
+
+    request.Start();
 }
 
 // BBS pop up a dialog and download files
