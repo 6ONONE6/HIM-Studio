@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 17:41+0800\n"
+"POT-Creation-Date: 2025-08-26 17:10+0800\n"
 "PO-Revision-Date: 2025-03-12 23:48+0300\n"
 "Last-Translator: GlauTech\n"
 "Language-Team: \n"
@@ -1602,6 +1602,18 @@ msgid ""
 msgstr ""
 "Orca Slicer'ın sürümü çok düşük ve normal şekilde kullanılabilmesi için en "
 "son sürüme güncellenmesi gerekiyor"
+
+msgid "The latest version: "
+msgstr ""
+
+msgid "download now?"
+msgstr ""
+
+msgid "Check for update error: "
+msgstr ""
+
+msgid "New Version Check"
+msgstr ""
 
 msgid "Privacy Policy Update"
 msgstr "Gizlilik Politikası Güncellemesi"
@@ -6677,8 +6689,8 @@ msgstr "İndirme Dizini seçin"
 msgid "Associate"
 msgstr "Ortak"
 
-msgid "with OrcaSlicer so that Orca can open models from"
-msgstr "Orca’nın modelleri açabilmesi için OrcaSlicer ile"
+msgid "with HIM-Studio so that HIM-Studio can open models from"
+msgstr ""
 
 msgid "Current Association: "
 msgstr "Mevcut Ortak:"
@@ -6736,8 +6748,8 @@ msgstr "Imperial"
 msgid "Units"
 msgstr "Birimler"
 
-msgid "Allow only one OrcaSlicer instance"
-msgstr "Yalnızca bir OrcaSlicer örneğine izin ver"
+msgid "Allow only one HIM-Studio instance"
+msgstr ""
 
 msgid ""
 "On OSX there is always only one instance of app running by default. However "
@@ -6750,13 +6762,10 @@ msgstr ""
 "örneğe izin verecektir."
 
 msgid ""
-"If this is enabled, when starting OrcaSlicer and another instance of the "
-"same OrcaSlicer is already running, that instance will be reactivated "
+"If this is enabled, when starting HIM-Studio and another instance of the "
+"same HIM-Studio is already running, that instance will be reactivated "
 "instead."
 msgstr ""
-"Bu etkinleştirilirse, OrcaSlicer başlatıldığında ve aynı OrcaSlicer’ın başka "
-"bir örneği zaten çalışıyorken, bunun yerine bu örnek yeniden "
-"etkinleştirilecektir."
 
 msgid "Home"
 msgstr "Ana Sayfa"
@@ -6837,15 +6846,12 @@ msgid "Remember printer configuration"
 msgstr "Yazıcı yapılandırmasını hatırla"
 
 msgid ""
-"If enabled, Orca will remember and switch filament/process configuration for "
-"each printer automatically."
+"If enabled, HIM-Studio will remember and switch filament/process "
+"configuration for each printer automatically."
 msgstr ""
-"Etkinleştirilirse, Orca her yazıcı için filament/işlem yapılandırmasını "
-"hatırlayacak ve otomatik olarak değiştirecektir."
 
-msgid "Multi-device Management(Take effect after restarting Orca)."
+msgid "Multi-device Management(Take effect after restarting HIM-Studio)."
 msgstr ""
-"Çoklu Cihaz Yönetimi(Studio yeniden başlatıldıktan sonra geçerli olur)."
 
 msgid ""
 "With this option enabled, you can send a task to multiple devices at the "
@@ -6878,38 +6884,32 @@ msgstr "Sistem Senkronizasyonu"
 msgid "Clear my choice on the unsaved presets."
 msgstr "Kaydedilmemiş ön ayarlardaki seçimimi temizle."
 
-msgid "Associate files to OrcaSlicer"
-msgstr "Dosyaları OrcaSlicer ile ilişkilendirin"
-
-msgid "Associate .3mf files to OrcaSlicer"
-msgstr ".3mf dosyalarını OrcaSlicer ile ilişkilendirin"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
+msgid "Associate files to HIM-Studio"
 msgstr ""
-"Etkinleştirilirse, OrcaSlicer'ı .3mf dosyalarını açacak varsayılan uygulama "
-"olarak ayarlar"
 
-msgid "Associate .stl files to OrcaSlicer"
-msgstr ".stl dosyalarını OrcaSlicer ile ilişkilendirin"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
+msgid "Associate .3mf files to HIM-Studio"
 msgstr ""
-"Etkinleştirilirse OrcaSlicer'ı .stl dosyalarını açmak için varsayılan "
-"uygulama olarak ayarlar"
 
-msgid "Associate .step/.stp files to OrcaSlicer"
-msgstr ".step/.stp dosyalarını OrcaSlicer ile ilişkilendirin"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .step files"
+msgid "If enabled, sets HIM-Studio as default application to open .3mf files"
 msgstr ""
-"Etkinleştirilirse, OrcaSlicer'ı .step dosyalarını açmak için varsayılan "
-"uygulama olarak ayarlar"
 
-msgid "Associate web links to OrcaSlicer"
-msgstr "Web bağlantılarını OrcaSlicer ile ilişkilendirin"
+msgid "Associate .stl files to HIM-Studio"
+msgstr ""
 
-msgid "Associate URLs to OrcaSlicer"
-msgstr "URL’leri OrcaSlicer ile ilişkilendirin"
+msgid "If enabled, sets HIM-Studio as default application to open .stl files"
+msgstr ""
+
+msgid "Associate .step/.stp files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .step files"
+msgstr ""
+
+msgid "Associate web links to HIM-Studio"
+msgstr ""
+
+msgid "Associate URLs to HIM-Studio"
+msgstr ""
 
 msgid "Load All"
 msgstr "Tümünü Yükle"
@@ -18339,6 +18339,68 @@ msgstr ""
 "ABS gibi bükülmeye yatkın malzemelere baskı yaparken, ısıtma yatağı "
 "sıcaklığının uygun şekilde arttırılmasının bükülme olasılığını "
 "azaltabileceğini biliyor muydunuz?"
+
+#~ msgid "with OrcaSlicer so that Orca can open models from"
+#~ msgstr "Orca’nın modelleri açabilmesi için OrcaSlicer ile"
+
+#~ msgid "Allow only one OrcaSlicer instance"
+#~ msgstr "Yalnızca bir OrcaSlicer örneğine izin ver"
+
+#~ msgid ""
+#~ "If this is enabled, when starting OrcaSlicer and another instance of the "
+#~ "same OrcaSlicer is already running, that instance will be reactivated "
+#~ "instead."
+#~ msgstr ""
+#~ "Bu etkinleştirilirse, OrcaSlicer başlatıldığında ve aynı OrcaSlicer’ın "
+#~ "başka bir örneği zaten çalışıyorken, bunun yerine bu örnek yeniden "
+#~ "etkinleştirilecektir."
+
+#~ msgid ""
+#~ "If enabled, Orca will remember and switch filament/process configuration "
+#~ "for each printer automatically."
+#~ msgstr ""
+#~ "Etkinleştirilirse, Orca her yazıcı için filament/işlem yapılandırmasını "
+#~ "hatırlayacak ve otomatik olarak değiştirecektir."
+
+#~ msgid "Multi-device Management(Take effect after restarting Orca)."
+#~ msgstr ""
+#~ "Çoklu Cihaz Yönetimi(Studio yeniden başlatıldıktan sonra geçerli olur)."
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "Dosyaları OrcaSlicer ile ilişkilendirin"
+
+#~ msgid "Associate .3mf files to OrcaSlicer"
+#~ msgstr ".3mf dosyalarını OrcaSlicer ile ilişkilendirin"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
+#~ msgstr ""
+#~ "Etkinleştirilirse, OrcaSlicer'ı .3mf dosyalarını açacak varsayılan "
+#~ "uygulama olarak ayarlar"
+
+#~ msgid "Associate .stl files to OrcaSlicer"
+#~ msgstr ".stl dosyalarını OrcaSlicer ile ilişkilendirin"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
+#~ msgstr ""
+#~ "Etkinleştirilirse OrcaSlicer'ı .stl dosyalarını açmak için varsayılan "
+#~ "uygulama olarak ayarlar"
+
+#~ msgid "Associate .step/.stp files to OrcaSlicer"
+#~ msgstr ".step/.stp dosyalarını OrcaSlicer ile ilişkilendirin"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .step files"
+#~ msgstr ""
+#~ "Etkinleştirilirse, OrcaSlicer'ı .step dosyalarını açmak için varsayılan "
+#~ "uygulama olarak ayarlar"
+
+#~ msgid "Associate web links to OrcaSlicer"
+#~ msgstr "Web bağlantılarını OrcaSlicer ile ilişkilendirin"
+
+#~ msgid "Associate URLs to OrcaSlicer"
+#~ msgstr "URL’leri OrcaSlicer ile ilişkilendirin"
 
 #~ msgid ""
 #~ "How to use keyboard shortcuts\n"

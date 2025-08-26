@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 17:41+0800\n"
+"POT-Creation-Date: 2025-08-26 17:10+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Carlos Fco. Caruncho Serrano <puzzlero@gmail.com>\n"
 "Language-Team: \n"
@@ -1633,6 +1633,18 @@ msgid ""
 msgstr ""
 "La versión de Orca Slicer es una versión demasiado antigua y necesita ser "
 "actualizada a la última versión antes de poder utilizarla con normalidad"
+
+msgid "The latest version: "
+msgstr ""
+
+msgid "download now?"
+msgstr ""
+
+msgid "Check for update error: "
+msgstr ""
+
+msgid "New Version Check"
+msgstr ""
 
 msgid "Privacy Policy Update"
 msgstr "Actualización de política de privacidad"
@@ -6786,8 +6798,8 @@ msgstr "Elegir Directorio de Descarga"
 msgid "Associate"
 msgstr "Asociar"
 
-msgid "with OrcaSlicer so that Orca can open models from"
-msgstr "con OrcaSlicer para que pueda abrir modelos desde"
+msgid "with HIM-Studio so that HIM-Studio can open models from"
+msgstr ""
 
 msgid "Current Association: "
 msgstr "Asociación actual:"
@@ -6845,8 +6857,8 @@ msgstr "Imperial"
 msgid "Units"
 msgstr "Unidades"
 
-msgid "Allow only one OrcaSlicer instance"
-msgstr "Permitir sólo una instancia de OrcaSlicer"
+msgid "Allow only one HIM-Studio instance"
+msgstr ""
 
 msgid ""
 "On OSX there is always only one instance of app running by default. However "
@@ -6859,13 +6871,10 @@ msgstr ""
 "permitirá una instancia."
 
 msgid ""
-"If this is enabled, when starting OrcaSlicer and another instance of the "
-"same OrcaSlicer is already running, that instance will be reactivated "
+"If this is enabled, when starting HIM-Studio and another instance of the "
+"same HIM-Studio is already running, that instance will be reactivated "
 "instead."
 msgstr ""
-"Si esta opción está activada, al iniciar OrcaSlicer y otra instancia del "
-"mismo OrcaSlicer ya se está ejecutando, esa instancia se reactivará en su "
-"lugar."
 
 msgid "Home"
 msgstr "Página de Inicio"
@@ -6948,14 +6957,12 @@ msgid "Remember printer configuration"
 msgstr "Recordar la configuración de la impresora"
 
 msgid ""
-"If enabled, Orca will remember and switch filament/process configuration for "
-"each printer automatically."
+"If enabled, HIM-Studio will remember and switch filament/process "
+"configuration for each printer automatically."
 msgstr ""
-"Si está activada, Orca recordará y cambiará la configuración de archivos/"
-"procesos para cada impresora automáticamente."
 
-msgid "Multi-device Management(Take effect after restarting Orca)."
-msgstr "Gestión multidispositivo (surte efecto tras reiniciar Orca)."
+msgid "Multi-device Management(Take effect after restarting HIM-Studio)."
+msgstr ""
 
 msgid ""
 "With this option enabled, you can send a task to multiple devices at the "
@@ -6990,38 +6997,32 @@ msgstr "Sincronizar sistema"
 msgid "Clear my choice on the unsaved presets."
 msgstr "Limpiar mi selección de perfiles no guardados."
 
-msgid "Associate files to OrcaSlicer"
-msgstr "Asociar archivos a OrcaSlicer"
-
-msgid "Associate .3mf files to OrcaSlicer"
-msgstr "Asociar archivos .3mf a OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
+msgid "Associate files to HIM-Studio"
 msgstr ""
-"Si se activa, ajusta OrcaSlicer como aplicación por defecto para abrir "
-"archivos .3mf"
 
-msgid "Associate .stl files to OrcaSlicer"
-msgstr "Asociar archivos .stl a OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
+msgid "Associate .3mf files to HIM-Studio"
 msgstr ""
-"Si se activa, ajusta OrcaSlicer como aplicación por defecto para abrir "
-"archivos .stl"
 
-msgid "Associate .step/.stp files to OrcaSlicer"
-msgstr "Asociar archivos .step/.stp a OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .step files"
+msgid "If enabled, sets HIM-Studio as default application to open .3mf files"
 msgstr ""
-"Si se activa, ajusta OrcaSlicer como aplicación por defecto para abrir "
-"archivos .step"
 
-msgid "Associate web links to OrcaSlicer"
-msgstr "Asociar enlaces web a OrcaSlicer"
+msgid "Associate .stl files to HIM-Studio"
+msgstr ""
 
-msgid "Associate URLs to OrcaSlicer"
-msgstr "Asociar URLs a OrcaSlicer"
+msgid "If enabled, sets HIM-Studio as default application to open .stl files"
+msgstr ""
+
+msgid "Associate .step/.stp files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .step files"
+msgstr ""
+
+msgid "Associate web links to HIM-Studio"
+msgstr ""
+
+msgid "Associate URLs to HIM-Studio"
+msgstr ""
 
 msgid "Load All"
 msgstr ""
@@ -18512,6 +18513,67 @@ msgstr ""
 "Sabías que al imprimir materiales propensos a la deformación como el ABS, "
 "aumentar adecuadamente la temperatura de la cama térmica puede reducir la "
 "probabilidad de deformaciones."
+
+#~ msgid "with OrcaSlicer so that Orca can open models from"
+#~ msgstr "con OrcaSlicer para que pueda abrir modelos desde"
+
+#~ msgid "Allow only one OrcaSlicer instance"
+#~ msgstr "Permitir sólo una instancia de OrcaSlicer"
+
+#~ msgid ""
+#~ "If this is enabled, when starting OrcaSlicer and another instance of the "
+#~ "same OrcaSlicer is already running, that instance will be reactivated "
+#~ "instead."
+#~ msgstr ""
+#~ "Si esta opción está activada, al iniciar OrcaSlicer y otra instancia del "
+#~ "mismo OrcaSlicer ya se está ejecutando, esa instancia se reactivará en su "
+#~ "lugar."
+
+#~ msgid ""
+#~ "If enabled, Orca will remember and switch filament/process configuration "
+#~ "for each printer automatically."
+#~ msgstr ""
+#~ "Si está activada, Orca recordará y cambiará la configuración de archivos/"
+#~ "procesos para cada impresora automáticamente."
+
+#~ msgid "Multi-device Management(Take effect after restarting Orca)."
+#~ msgstr "Gestión multidispositivo (surte efecto tras reiniciar Orca)."
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "Asociar archivos a OrcaSlicer"
+
+#~ msgid "Associate .3mf files to OrcaSlicer"
+#~ msgstr "Asociar archivos .3mf a OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
+#~ msgstr ""
+#~ "Si se activa, ajusta OrcaSlicer como aplicación por defecto para abrir "
+#~ "archivos .3mf"
+
+#~ msgid "Associate .stl files to OrcaSlicer"
+#~ msgstr "Asociar archivos .stl a OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
+#~ msgstr ""
+#~ "Si se activa, ajusta OrcaSlicer como aplicación por defecto para abrir "
+#~ "archivos .stl"
+
+#~ msgid "Associate .step/.stp files to OrcaSlicer"
+#~ msgstr "Asociar archivos .step/.stp a OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .step files"
+#~ msgstr ""
+#~ "Si se activa, ajusta OrcaSlicer como aplicación por defecto para abrir "
+#~ "archivos .step"
+
+#~ msgid "Associate web links to OrcaSlicer"
+#~ msgstr "Asociar enlaces web a OrcaSlicer"
+
+#~ msgid "Associate URLs to OrcaSlicer"
+#~ msgstr "Asociar URLs a OrcaSlicer"
 
 #~ msgid ""
 #~ "How to use keyboard shortcuts\n"

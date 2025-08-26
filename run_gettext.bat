@@ -4,7 +4,6 @@ REM Created by SoftFever on 27/5/23.
 REM Changed by suKing on 1/4/25. OrcaSlicer -> HIMstudio
 
 REM Check for --full argument
-
 set FULL_MODE=0
 for %%a in (%*) do (
     if "%%a"=="--full" set FULL_MODE=1

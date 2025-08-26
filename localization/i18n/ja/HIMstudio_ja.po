@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 17:41+0800\n"
+"POT-Creation-Date: 2025-08-26 17:10+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1574,6 +1574,18 @@ msgid ""
 msgstr ""
 "現在のOrca Slicerはバージョンが古いため使用できません、アップデートしてくださ"
 "い。"
+
+msgid "The latest version: "
+msgstr ""
+
+msgid "download now?"
+msgstr ""
+
+msgid "Check for update error: "
+msgstr ""
+
+msgid "New Version Check"
+msgstr ""
 
 msgid "Privacy Policy Update"
 msgstr "Privacy Policy Update"
@@ -6509,7 +6521,7 @@ msgstr "ダウンロードフォルドを選択"
 msgid "Associate"
 msgstr ""
 
-msgid "with OrcaSlicer so that Orca can open models from"
+msgid "with HIM-Studio so that HIM-Studio can open models from"
 msgstr ""
 
 msgid "Current Association: "
@@ -6565,7 +6577,7 @@ msgstr "インチ"
 msgid "Units"
 msgstr "単位"
 
-msgid "Allow only one OrcaSlicer instance"
+msgid "Allow only one HIM-Studio instance"
 msgstr ""
 
 msgid ""
@@ -6578,8 +6590,8 @@ msgstr ""
 "In such case this setting will allow only one instance."
 
 msgid ""
-"If this is enabled, when starting OrcaSlicer and another instance of the "
-"same OrcaSlicer is already running, that instance will be reactivated "
+"If this is enabled, when starting HIM-Studio and another instance of the "
+"same HIM-Studio is already running, that instance will be reactivated "
 "instead."
 msgstr ""
 
@@ -6657,11 +6669,11 @@ msgid "Remember printer configuration"
 msgstr ""
 
 msgid ""
-"If enabled, Orca will remember and switch filament/process configuration for "
-"each printer automatically."
+"If enabled, HIM-Studio will remember and switch filament/process "
+"configuration for each printer automatically."
 msgstr ""
 
-msgid "Multi-device Management(Take effect after restarting Orca)."
+msgid "Multi-device Management(Take effect after restarting HIM-Studio)."
 msgstr ""
 
 msgid ""
@@ -6695,31 +6707,31 @@ msgstr "System Sync"
 msgid "Clear my choice on the unsaved presets."
 msgstr "Clear my choice on the unsaved presets."
 
-msgid "Associate files to OrcaSlicer"
-msgstr "ファイルをOrca Slicerに関連付ける"
-
-msgid "Associate .3mf files to OrcaSlicer"
-msgstr ".3mfファイルをOrca Slicerに関連付けます。"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
-msgstr "デフォルトで.3mfファイルをOrca Slicerで開く"
-
-msgid "Associate .stl files to OrcaSlicer"
-msgstr ".stlファイルをOrca Slicerに関連付けます。"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
-msgstr "デフォルトで.stlファイルをOrca Slicerで開く"
-
-msgid "Associate .step/.stp files to OrcaSlicer"
-msgstr ".step/.stpファイルをOrca Slicerに関連付けます。"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .step files"
-msgstr "デフォルトで.step/.stpファイルをOrca Slicerで開く"
-
-msgid "Associate web links to OrcaSlicer"
+msgid "Associate files to HIM-Studio"
 msgstr ""
 
-msgid "Associate URLs to OrcaSlicer"
+msgid "Associate .3mf files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .3mf files"
+msgstr ""
+
+msgid "Associate .stl files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .stl files"
+msgstr ""
+
+msgid "Associate .step/.stp files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .step files"
+msgstr ""
+
+msgid "Associate web links to HIM-Studio"
+msgstr ""
+
+msgid "Associate URLs to HIM-Studio"
 msgstr ""
 
 msgid "Load All"
@@ -16910,6 +16922,30 @@ msgstr ""
 "反りを避ける\n"
 "ABSのような反りやすい素材を印刷する場合、ヒートベッドの温度を適切に上げること"
 "で、反りが発生する確率を下げることができることをご存知ですか？"
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "ファイルをOrca Slicerに関連付ける"
+
+#~ msgid "Associate .3mf files to OrcaSlicer"
+#~ msgstr ".3mfファイルをOrca Slicerに関連付けます。"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
+#~ msgstr "デフォルトで.3mfファイルをOrca Slicerで開く"
+
+#~ msgid "Associate .stl files to OrcaSlicer"
+#~ msgstr ".stlファイルをOrca Slicerに関連付けます。"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
+#~ msgstr "デフォルトで.stlファイルをOrca Slicerで開く"
+
+#~ msgid "Associate .step/.stp files to OrcaSlicer"
+#~ msgstr ".step/.stpファイルをOrca Slicerに関連付けます。"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .step files"
+#~ msgstr "デフォルトで.step/.stpファイルをOrca Slicerで開く"
 
 #~ msgid "Orca Slicer is licensed under "
 #~ msgstr "Orca Slicerのライセンス"

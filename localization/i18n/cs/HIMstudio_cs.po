@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 17:41+0800\n"
+"POT-Creation-Date: 2025-08-26 17:10+0800\n"
 "PO-Revision-Date: 2024-11-03 20:59+0100\n"
 "Last-Translator: René Mošner <Renemosner@seznam.cz>\n"
 "Language-Team: \n"
@@ -1593,6 +1593,18 @@ msgid ""
 msgstr ""
 "Verze Orca Slicer je příliš nízká a je třeba ji aktualizovat na nejnovější "
 "verze předtím, než ji lze normálně používat"
+
+msgid "The latest version: "
+msgstr ""
+
+msgid "download now?"
+msgstr ""
+
+msgid "Check for update error: "
+msgstr ""
+
+msgid "New Version Check"
+msgstr ""
 
 msgid "Privacy Policy Update"
 msgstr "Aktualizace zásad ochrany osobních údajů"
@@ -6593,7 +6605,7 @@ msgstr "Vyberte adresář pro stahování"
 msgid "Associate"
 msgstr ""
 
-msgid "with OrcaSlicer so that Orca can open models from"
+msgid "with HIM-Studio so that HIM-Studio can open models from"
 msgstr ""
 
 msgid "Current Association: "
@@ -6649,7 +6661,7 @@ msgstr "Imperiální"
 msgid "Units"
 msgstr "Jednotky"
 
-msgid "Allow only one OrcaSlicer instance"
+msgid "Allow only one HIM-Studio instance"
 msgstr ""
 
 msgid ""
@@ -6662,8 +6674,8 @@ msgstr ""
 "V takovém případě toto nastavení povolí pouze jednu instanci."
 
 msgid ""
-"If this is enabled, when starting OrcaSlicer and another instance of the "
-"same OrcaSlicer is already running, that instance will be reactivated "
+"If this is enabled, when starting HIM-Studio and another instance of the "
+"same HIM-Studio is already running, that instance will be reactivated "
 "instead."
 msgstr ""
 
@@ -6739,11 +6751,11 @@ msgid "Remember printer configuration"
 msgstr ""
 
 msgid ""
-"If enabled, Orca will remember and switch filament/process configuration for "
-"each printer automatically."
+"If enabled, HIM-Studio will remember and switch filament/process "
+"configuration for each printer automatically."
 msgstr ""
 
-msgid "Multi-device Management(Take effect after restarting Orca)."
+msgid "Multi-device Management(Take effect after restarting HIM-Studio)."
 msgstr ""
 
 msgid ""
@@ -6776,37 +6788,31 @@ msgstr "Synchronizace systému"
 msgid "Clear my choice on the unsaved presets."
 msgstr "Vymazat mé volby neuložených předvoleb."
 
-msgid "Associate files to OrcaSlicer"
-msgstr "Přidružit soubory k OrcaSlicer"
-
-msgid "Associate .3mf files to OrcaSlicer"
-msgstr "Přidružit soubory .3mf k OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
-msgstr ""
-"Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
-"souborů .3mf"
-
-msgid "Associate .stl files to OrcaSlicer"
-msgstr "Přidružit .stl soubory k Orca Slicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
-msgstr ""
-"Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
-"souborů .stl"
-
-msgid "Associate .step/.stp files to OrcaSlicer"
-msgstr "Přidružit soubory .step/.stp k OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open .step files"
-msgstr ""
-"Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
-"souborů .step"
-
-msgid "Associate web links to OrcaSlicer"
+msgid "Associate files to HIM-Studio"
 msgstr ""
 
-msgid "Associate URLs to OrcaSlicer"
+msgid "Associate .3mf files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .3mf files"
+msgstr ""
+
+msgid "Associate .stl files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .stl files"
+msgstr ""
+
+msgid "Associate .step/.stp files to HIM-Studio"
+msgstr ""
+
+msgid "If enabled, sets HIM-Studio as default application to open .step files"
+msgstr ""
+
+msgid "Associate web links to HIM-Studio"
+msgstr ""
+
+msgid "Associate URLs to HIM-Studio"
 msgstr ""
 
 msgid "Load All"
@@ -17144,6 +17150,36 @@ msgid ""
 "ABS, appropriately increasing the heatbed temperature can reduce the "
 "probability of warping."
 msgstr ""
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "Přidružit soubory k OrcaSlicer"
+
+#~ msgid "Associate .3mf files to OrcaSlicer"
+#~ msgstr "Přidružit soubory .3mf k OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
+#~ msgstr ""
+#~ "Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
+#~ "souborů .3mf"
+
+#~ msgid "Associate .stl files to OrcaSlicer"
+#~ msgstr "Přidružit .stl soubory k Orca Slicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
+#~ msgstr ""
+#~ "Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
+#~ "souborů .stl"
+
+#~ msgid "Associate .step/.stp files to OrcaSlicer"
+#~ msgstr "Přidružit soubory .step/.stp k OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open .step files"
+#~ msgstr ""
+#~ "Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
+#~ "souborů .step"
 
 #~ msgid "Orca Slicer is licensed under "
 #~ msgstr "Orca Slicer je licencován pod "
