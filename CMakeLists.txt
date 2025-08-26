@@ -8,7 +8,7 @@ if (APPLE)
     message(STATUS "CMAKE_OSX_DEPLOYMENT_TARGET: ${CMAKE_OSX_DEPLOYMENT_TARGET}")
 endif ()
 
-project(OrcaSlicer)
+project(HIM-Studio_2.3.0)
 
 include("version.inc")
 include(GNUInstallDirs)
