@@ -4270,7 +4270,9 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
                 wxLogError("parse update info fail%s", e.what());
             }
         } else if (event.GetState() == wxWebRequest::State_Failed) {
-            wxMessageBox(_L("Check for update error: ") + event.GetErrorDescription(), _L("New Version Check"));
+            if (by_user != 0) {
+                wxMessageBox(_L("Check for update error: ") + event.GetErrorDescription(), _L("New Version Check"));
+            }
         }
     });
 
