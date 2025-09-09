@@ -1,0 +1,63 @@
+{
+    "type": "filament",
+    "name": "HIM+Bambu PLA Matte @HIM F300A 0.4 nozzle",
+    "inherits": "HIM+Bambu PLA Matte @base",
+    "from": "system",
+    "setting_id": "OGFSA01",
+    "instantiation": "true",
+    "filament_vendor": [
+        "HIM"
+    ],
+    "filament_density": [
+        "1.24"
+    ],
+    "filament_cost": [
+        "20"
+    ],
+    "temperature_vitrification": [
+        "60"
+    ],
+    "filament_flow_ratio": [
+        "0.9114"
+    ],
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "pressure_advance": [
+        "0.0588"
+    ],
+    "nozzle_temperature": [
+        "200"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "190"
+    ],
+    "filament_max_volumetric_speed": [
+        "20"
+    ],
+    "slow_down_layer_time": [
+        "8"
+    ],
+    "complete_print_exhaust_fan_speed": [
+        "80"
+    ],
+    "during_print_exhaust_fan_speed": [
+        "60"
+    ],
+    "filament_retraction_length": [
+        "0.5"
+    ],
+    "filament_start_gcode": [
+        "; Filament start gcode\n"
+    ],
+
+    "filament_long_retractions_when_cut": [
+        "1"
+    ],
+    "filament_retraction_distances_when_cut": [
+        "18"
+    ],
+    "compatible_printers": [
+        "HIM F300A 0.4 nozzle"
+    ]
+}

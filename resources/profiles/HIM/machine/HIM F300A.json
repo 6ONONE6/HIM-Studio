@@ -1,0 +1,12 @@
+{
+    "type": "machine_model",
+    "name": "HIM F300A",
+    "model_id": "HIM_F300A",
+    "nozzle_diameter": "0.4",
+    "machine_tech": "FFF",
+    "family": "HIM",
+    "bed_model": "",
+    "bed_texture": "HIM_bed_texture.svg",
+    "hotend_model": "",
+    "default_materials": "HIM+kexcelled PLA K5 @HIM F300A 0.4 nozzle"
+}
