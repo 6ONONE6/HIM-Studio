@@ -1,10 +1,10 @@
 {
     "type": "filament",
     "setting_id": "AliZF300AFSA04",
-    "name": "kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle",
+    "name": "HIM+kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle",
     "from": "system",
     "instantiation": "true",
-    "inherits": "kexcelled PLA @base",
+    "inherits": "HIM+kexcelled PLA @base",
     "enable_pressure_advance": [
         "1"
     ],

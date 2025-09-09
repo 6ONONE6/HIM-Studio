@@ -1,7 +1,7 @@
 {
     "type": "filament",
-    "name": "eSUN PLA Matte @HIM F300A 0.4 nozzle",
-    "inherits": "eSUN PLA+ @base",
+    "name": "HIM+eSUN PLA Matte @HIM F300A 0.4 nozzle",
+    "inherits": "HIM+eSUN PLA+ @base",
     "from": "system",
     "setting_id": "OGFSL03_00",
     "instantiation": "true",

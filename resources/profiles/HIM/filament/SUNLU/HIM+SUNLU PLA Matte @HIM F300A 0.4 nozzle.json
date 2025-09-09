@@ -1,9 +1,9 @@
 {
     "type": "filament",
-    "name": "PolyLite PLA @HIM F300A 0.4 nozzle",
-    "inherits": "PolyLite PLA @base",
+    "name": "HIM+SUNLU PLA Matte @HIM F300A 0.4 nozzle",
+    "inherits": "HIM+SUNLU PLA Matte @base",
     "from": "system",
-    "setting_id": "OGFSL19",
+    "setting_id": "OSNLS02",
     "instantiation": "true",
     "filament_vendor": [
         "HIM"
@@ -20,20 +20,20 @@
     "nozzle_temperature_range_high": [
         "230"
     ],
-    "filament_flow_ratio": [
-        "0.95"
+    "nozzle_temperature_range_low": [
+        "190"
     ],
     "enable_pressure_advance": [
         "1"
     ],
     "pressure_advance": [
-        "0.06"
+        "0.01"
     ],
     "nozzle_temperature": [
-        "200"
+        "205"
     ],
     "nozzle_temperature_initial_layer": [
-        "200"
+        "205"
     ],
     "hot_plate_temp": [
         "60"
@@ -42,7 +42,7 @@
         "60"
     ],
     "filament_max_volumetric_speed": [
-        "16"
+        "19"
     ],
     "slow_down_layer_time": [
         "0"

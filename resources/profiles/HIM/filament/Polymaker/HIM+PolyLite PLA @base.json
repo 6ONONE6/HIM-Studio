@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "PolyLite PLA @base",
+    "name": "HIM+PolyLite PLA @base",
     "inherits": "fdm_filament_pla",
     "from": "system",
     "filament_id": "GFL00",
