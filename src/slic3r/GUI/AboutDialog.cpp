@@ -334,7 +334,7 @@ AboutDialog::AboutDialog()
               (boost::format(
               "<html>"
               "<body>"
-              "<p style=\"text-align:left\"><a style=\"color:#009789\" href=\"https://www.xmly3d.com/\">https://www.xmly3d.com/</ a></p>"
+              "<p style=\"text-align:left\"><a style=\"color:#2574DA\" href=\"https://www.xmly3d.com/\">https://www.xmly3d.com/</ a></p>"
               "</body>"
               "</html>")
             ).str());
