@@ -128,7 +128,7 @@ body
 
 #DownloadBtn
 {
-	color:#00ffd9;
+	color:#00aeff;
 }
 
 
@@ -170,8 +170,8 @@ body
 	font-size: 14px;
 	height: 24px;
 	line-height: 24px;
-	color: #4db6ac;
-	border: 1px solid  #009688;
+	color: #4d6eb6;
+	border: 1px solid  #2573D9;
 	border-radius: 4px;
 	cursor: pointer;
 	margin-top: 5px;
@@ -180,7 +180,7 @@ body
 
 #LogoutBtn:hover
 {
-	background: #00f0d8;
+	background: #0084f0;
 	color: #fff;
 }
 
@@ -278,8 +278,8 @@ body
 
 .MenuItem:hover
 {
-	border-color: #009688;		/*ORCA color*/
-	background-color: #E5F0EE; /*ORCA color with %25 opacity*/
+	border-color: #2573D9;		/*ORCA color*/
+	background-color: #c2d9f7; /*ORCA color with %25 opacity*/
 }
 
 .MenuIcon
@@ -466,7 +466,7 @@ body
 .CT_Item:hover
 {
 	cursor: pointer;
-	background-color:#009688; /*ORCA color*/
+	background-color:#2573D9; /*ORCA color*/
 	border-radius: 4px;
 	color: #fff;
 }
@@ -702,7 +702,7 @@ body
 #HotModel_RIGHT_Title:hover
 {
 	cursor: pointer;	
-	color:#009688;	
+	color:#2573D9;	
 }
 
 .HotModelPiece

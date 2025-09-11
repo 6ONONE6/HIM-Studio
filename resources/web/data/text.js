@@ -1,7 +1,7 @@
 var LangText = {
   en: {
-    t1: "Welcome to Orca Slicer",
-    t2: "Orca Slicer will be setup in several steps. Let's start!",
+    t1: "Welcome to HIM Studio",
+    t2: "HIM Studio will be setup in several steps. Let's start!",
     t3: "User Agreement",
     t4: "Disagree",
     t5: "Agree",
@@ -57,7 +57,7 @@ var LangText = {
     t62: "Others",
     t63: "After changing the region, your account will be logged out. Please log in again later.",
     t64: "Proprietary Plugins",
-    t65: "Please be aware that these plugins are not developed or maintained by OrcaSlicer. They should be used at your own discretion and risk.",
+    t65: "Please be aware that these plugins are not developed or maintained by HIM-Studio. They should be used at your own discretion and risk.",
     t66: "Full remote control",
     t67: "Liveview streaming",
     t68: "User data synchronization",
@@ -775,8 +775,8 @@ var LangText = {
     wk16: "Avec l'outil Texte 3D, les utilisateurs peuvent facilement créer diverses formes de texte 3D dans le projet, ce qui rend le modèle plus personnalisé. Orca Slicer fournit des dizaines de polices et prend en charge les styles gras et italique pour donner au texte une plus grande flexibilité.",
   },
   zh_CN: {
-    t1: "欢迎使用Orca Slicer",
-    t2: "Orca Slicer需要几步安装步骤，让我们开始吧！",
+    t1: "欢迎使用HIM Studio",
+    t2: "HIM Studio需要几步安装步骤，让我们开始吧！",
     t3: "用户使用协议",
     t4: "拒绝",
     t5: "同意",
@@ -832,7 +832,7 @@ var LangText = {
     t62: "其他",
     t63: "切换区域后，你的账号会被登出。稍后请重新登录。",
     t64: "Bambu网络插件",
-    t65: "注意：这些插件不是由OrcaSlicer开发或维护的。使用它们需自担风险",
+    t65: "注意：这些插件不是由HIM-Studio开发或维护的。使用它们需自担风险",
     t66: "强大的远程控制功能",
     t67: "实时视频流",
     t68: "用户数据同步",

@@ -7,7 +7,7 @@
 .BlockBanner
 {
 	padding: 0px;
-	border-bottom:#009688 1px solid;
+	border-bottom:#2573D9 1px solid;
 	width: 100%;
 }
 
@@ -42,7 +42,7 @@
 
 .Banner-Btn-green
 {
-	background-color: #009688;
+	background-color: #2573D9;
 	color: #fff;
 	padding: 0px 6px;
 	min-width: 50px;
@@ -55,7 +55,7 @@
 .BlockBanner  a
 {
 	display: inline-block;
-	background-color:#009688;
+	background-color:#2573D9;
 	line-height: 40px;
 	height: 40px;
 	padding: 0px 24px;
@@ -133,7 +133,7 @@
 
 #NoticeBar
 {
-	background-color:#00f0d8;
+	background-color:#2A83F7;
 	height: 40px;
 	line-height: 40px;
 	color: #fff;
@@ -169,7 +169,7 @@
 	line-height: 20px; /* ORCA center text vertically */
 	border-radius: 5px 5px 5px 5px;
 	outline: none;
-	color: #9DBFAF;
+	color: #79a9e7;
 }
 @media (prefers-color-scheme: dark) {  /* ORCA Searchbox > add dark mode support */
 	.searchTerm {border: 1px solid #4A4A51;}
@@ -177,7 +177,7 @@
 
 .searchTerm:focus{
 	color: #363636;       /* ORCA Searchbox > use normal text color */
-	border-color:#009688; /* ORCA Searchbox > highlight border color when focused. like on normal UI */
+	border-color:#2573D9; /* ORCA Searchbox > highlight border color when focused. like on normal UI */
 }
 @media (prefers-color-scheme: dark) {  /* ORCA Searchbox > add dark mode support */
 	.searchTerm:focus{color: #FFFFFF}
