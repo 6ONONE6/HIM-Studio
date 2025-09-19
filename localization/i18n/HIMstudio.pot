@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-11 21:06+0800\n"
+"POT-Creation-Date: 2025-09-19 16:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1469,7 +1469,7 @@ msgid ""
 "Configuration file \"%1%\" was loaded, but some values were not recognized."
 msgstr ""
 
-msgid "Based on PrusaSlicer and BambuStudio"
+msgid "Based on OrcaSlicer"
 msgstr ""
 
 msgid ""
@@ -2767,13 +2767,13 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-msgid "Orca Slicer is licensed under "
+msgid "HIM Studio is licensed under "
 msgstr ""
 
 msgid "GNU Affero General Public License, version 3"
 msgstr ""
 
-msgid "Orca Slicer is based on PrusaSlicer and BambuStudio"
+msgid "HIM Studio is based on OrcaSlicer"
 msgstr ""
 
 msgid "Libraries"
@@ -2786,6 +2786,9 @@ msgstr ""
 
 #, possible-c-format, possible-boost-format
 msgid "About %s"
+msgstr ""
+
+msgid "HIM-Studio is based on OrcaSlicer."
 msgstr ""
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
@@ -3599,6 +3602,7 @@ msgid ""
 "Reset to 0."
 msgstr ""
 
+#, possible-c-format, possible-boost-format
 msgid ""
 "Lock depth should smaller than skin depth.\n"
 "Reset to 50% of skin depth."
@@ -4277,7 +4281,7 @@ msgstr ""
 msgid "Size:"
 msgstr ""
 
-#, possible-boost-format
+#, possible-c-format, possible-boost-format
 msgid ""
 "Conflicts of G-code paths have been found at layer %d, z = %.2lf mm. Please "
 "separate the conflicted objects farther (%s <-> %s)."
@@ -5846,6 +5850,17 @@ msgstr ""
 msgid "Load 3mf"
 msgstr ""
 
+msgid ""
+"This project was created with an OrcaSlicer 2.3.1-alpha and uses infill "
+"rotation template settings that may not work properly with your current "
+"infill pattern. This could result in weak support or print quality issues."
+msgstr ""
+
+msgid ""
+"Would you like OrcaSlicer to automatically fix this by clearing the rotation "
+"template settings?"
+msgstr ""
+
 #, possible-c-format, possible-boost-format
 msgid ""
 "The 3mf's version %s is newer than %s's version %s, found following "
@@ -6327,7 +6342,7 @@ msgstr ""
 msgid "Associate"
 msgstr ""
 
-msgid "with OrcaSlicer so that Orca can open models from"
+msgid "with HIM-Studio so that HIM-Studio can open models from"
 msgstr ""
 
 msgid "Current Association: "
@@ -6371,7 +6386,7 @@ msgstr ""
 msgid "Enable network plugin"
 msgstr ""
 
-msgid "Use legacy network plugin (Takes effect after restarting Orca)"
+msgid "Use legacy network plugin (Takes effect after restarting HIM Studio)"
 msgstr ""
 
 msgid ""
@@ -6390,7 +6405,7 @@ msgstr ""
 msgid "Units"
 msgstr ""
 
-msgid "Allow only one OrcaSlicer instance"
+msgid "Allow only one HIM Studio instance"
 msgstr ""
 
 msgid ""
@@ -6400,8 +6415,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If this is enabled, when starting OrcaSlicer and another instance of the "
-"same OrcaSlicer is already running, that instance will be reactivated "
+"If this is enabled, when starting HIM-Studio and another instance of the "
+"same HIM-Studio is already running, that instance will be reactivated "
 "instead."
 msgstr ""
 
@@ -6499,7 +6514,7 @@ msgid ""
 "If enabled,a parameter settings dialog will appear during STEP file import."
 msgstr ""
 
-msgid "Multi-device Management (Take effect after restarting Orca Slicer)."
+msgid "Multi-device Management (Take effect after restarting HIM Studio)."
 msgstr ""
 
 msgid ""
@@ -6531,31 +6546,34 @@ msgstr ""
 msgid "Clear my choice on the unsaved presets."
 msgstr ""
 
+msgid "Associate files to HIM Studio"
+msgstr ""
+
 msgid "Associate files to OrcaSlicer"
 msgstr ""
 
-msgid "Associate .3mf files to OrcaSlicer"
+msgid "Associate .3mf files to HIM Studio"
 msgstr ""
 
-msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
+msgid "If enabled, sets HIM Studio as default application to open .3mf files"
 msgstr ""
 
-msgid "Associate .stl files to OrcaSlicer"
+msgid "Associate .stl files to HIM Studio"
 msgstr ""
 
-msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
+msgid "If enabled, sets HIM Studio as default application to open .stl files"
 msgstr ""
 
-msgid "Associate .step/.stp files to OrcaSlicer"
+msgid "Associate .step/.stp files to HIM Studio"
 msgstr ""
 
-msgid "If enabled, sets OrcaSlicer as default application to open .step files"
+msgid "If enabled, sets HIM Studio as default application to open .step files"
 msgstr ""
 
-msgid "Associate web links to OrcaSlicer"
+msgid "Associate web links to HIM Studio"
 msgstr ""
 
-msgid "Associate URLs to OrcaSlicer"
+msgid "Associate URLs to HIM Studio"
 msgstr ""
 
 msgid "Load All"
@@ -7326,8 +7344,8 @@ msgstr ""
 msgid ""
 "When recording timelapse without toolhead, it is recommended to add a "
 "\"Timelapse Wipe Tower\" \n"
-"by right-click the empty position of build plate and choose \"Add "
-"Primitive\"->\"Timelapse Wipe Tower\"."
+"by right-click the empty position of build plate and choose \"Add Primitive"
+"\"->\"Timelapse Wipe Tower\"."
 msgstr ""
 
 msgid ""
@@ -8224,10 +8242,10 @@ msgstr ""
 msgid "Global shortcuts"
 msgstr ""
 
-msgid "Rotate View"
+msgid "Pan View"
 msgstr ""
 
-msgid "Pan View"
+msgid "Rotate View"
 msgstr ""
 
 msgid "Zoom View"
@@ -10840,8 +10858,8 @@ msgid "mm/s² or %"
 msgstr ""
 
 msgid ""
-"Acceleration of sparse infill. If the value is expressed as a percentage "
-"(e.g. 100%), it will be calculated based on the default acceleration."
+"Acceleration of sparse infill. If the value is expressed as a percentage (e."
+"g. 100%), it will be calculated based on the default acceleration."
 msgstr ""
 
 msgid ""
@@ -10942,10 +10960,10 @@ msgstr ""
 
 msgid ""
 "Fan speed will be ramped up linearly from zero at layer "
-"\"close_fan_the_first_x_layers\" to maximum at layer "
-"\"full_fan_speed_layer\". \"full_fan_speed_layer\" will be ignored if lower "
-"than \"close_fan_the_first_x_layers\", in which case the fan will be running "
-"at maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
+"\"close_fan_the_first_x_layers\" to maximum at layer \"full_fan_speed_layer"
+"\". \"full_fan_speed_layer\" will be ignored if lower than "
+"\"close_fan_the_first_x_layers\", in which case the fan will be running at "
+"maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
 msgstr ""
 
 msgid "layer"
@@ -12398,8 +12416,8 @@ msgid "Role base wipe speed"
 msgstr ""
 
 msgid ""
-"The wipe speed is determined by the speed of the current extrusion role. "
-"e.g. if a wipe action is executed immediately following an outer wall "
+"The wipe speed is determined by the speed of the current extrusion role. e."
+"g. if a wipe action is executed immediately following an outer wall "
 "extrusion, the speed of the outer wall extrusion will be utilized for the "
 "wipe action."
 msgstr ""
@@ -13088,8 +13106,8 @@ msgstr ""
 
 msgid ""
 "Enable this option for automated chamber temperature control. This option "
-"activates the emitting of an M191 command before the "
-"\"machine_start_gcode\"\n"
+"activates the emitting of an M191 command before the \"machine_start_gcode"
+"\"\n"
 " which sets the chamber temperature and waits until it is reached. In "
 "addition, it emits an M141 command at the end of the print to turn off the "
 "chamber heater, if present.\n"
@@ -13810,8 +13828,8 @@ msgid "Debug level"
 msgstr ""
 
 msgid ""
-"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, "
-"5:trace\n"
+"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, 5:"
+"trace\n"
 msgstr ""
 
 msgid "Enable timelapse for print"
@@ -15177,8 +15195,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"We would rename the presets as \"Vendor Type Serial @printer you "
-"selected\".\n"
+"We would rename the presets as \"Vendor Type Serial @printer you selected"
+"\".\n"
 "To add preset for more printers, please go to printer selection"
 msgstr ""
 
