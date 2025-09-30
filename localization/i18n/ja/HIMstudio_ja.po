@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 16:13+0800\n"
+"POT-Creation-Date: 2025-09-28 18:44+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1491,7 +1491,7 @@ msgid ""
 "Configuration file \"%1%\" was loaded, but some values were not recognized."
 msgstr "構成ファイル %1% がロードされましたが、一部の値が認識できませんでした"
 
-msgid "Based on OrcaSlicer"
+msgid "Based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid ""
@@ -2809,13 +2809,13 @@ msgstr "著作権情報"
 msgid "License"
 msgstr "ライセンス"
 
-msgid "HIM Studio is licensed under "
-msgstr ""
+msgid "Orca Slicer is licensed under "
+msgstr "Orca Slicerのライセンス"
 
 msgid "GNU Affero General Public License, version 3"
 msgstr ""
 
-msgid "HIM Studio is based on OrcaSlicer"
+msgid "Orca Slicer is based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid "Libraries"
@@ -2831,9 +2831,6 @@ msgstr ""
 #, c-format, boost-format
 msgid "About %s"
 msgstr "%s について"
-
-msgid "HIM-Studio is based on OrcaSlicer."
-msgstr ""
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 msgstr ""
@@ -3700,7 +3697,6 @@ msgid ""
 "Reset to 0."
 msgstr ""
 
-#, c-format, boost-format
 msgid ""
 "Lock depth should smaller than skin depth.\n"
 "Reset to 50% of skin depth."
@@ -4384,7 +4380,7 @@ msgstr "ボリューム"
 msgid "Size:"
 msgstr "サイズ:"
 
-#, c-format, boost-format
+#, boost-format
 msgid ""
 "Conflicts of G-code paths have been found at layer %d, z = %.2lf mm. Please "
 "separate the conflicted objects farther (%s <-> %s)."
@@ -6486,7 +6482,7 @@ msgstr "ダウンロードフォルドを選択"
 msgid "Associate"
 msgstr ""
 
-msgid "with HIM-Studio so that HIM-Studio can open models from"
+msgid "with OrcaSlicer so that Orca can open models from"
 msgstr ""
 
 msgid "Current Association: "
@@ -6530,7 +6526,7 @@ msgstr ""
 msgid "Enable network plugin"
 msgstr ""
 
-msgid "Use legacy network plugin (Takes effect after restarting HIM Studio)"
+msgid "Use legacy network plugin (Takes effect after restarting Orca)"
 msgstr ""
 
 msgid ""
@@ -6549,7 +6545,7 @@ msgstr "インチ"
 msgid "Units"
 msgstr "単位"
 
-msgid "Allow only one HIM Studio instance"
+msgid "Allow only one OrcaSlicer instance"
 msgstr ""
 
 msgid ""
@@ -6559,8 +6555,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If this is enabled, when starting HIM-Studio and another instance of the "
-"same HIM-Studio is already running, that instance will be reactivated "
+"If this is enabled, when starting OrcaSlicer and another instance of the "
+"same OrcaSlicer is already running, that instance will be reactivated "
 "instead."
 msgstr ""
 
@@ -6662,7 +6658,7 @@ msgid ""
 "If enabled,a parameter settings dialog will appear during STEP file import."
 msgstr ""
 
-msgid "Multi-device Management (Take effect after restarting HIM Studio)."
+msgid "Multi-device Management (Take effect after restarting Orca Slicer)."
 msgstr ""
 
 msgid ""
@@ -6694,34 +6690,31 @@ msgstr ""
 msgid "Clear my choice on the unsaved presets."
 msgstr ""
 
-msgid "Associate files to HIM Studio"
-msgstr ""
-
 msgid "Associate files to OrcaSlicer"
 msgstr "ファイルをOrca Slicerに関連付ける"
 
-msgid "Associate .3mf files to HIM Studio"
+msgid "Associate .3mf files to OrcaSlicer"
+msgstr ".3mfファイルをOrca Slicerに関連付けます。"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
+msgstr "デフォルトで.3mfファイルをOrca Slicerで開く"
+
+msgid "Associate .stl files to OrcaSlicer"
+msgstr ".stlファイルをOrca Slicerに関連付けます。"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
+msgstr "デフォルトで.stlファイルをOrca Slicerで開く"
+
+msgid "Associate .step/.stp files to OrcaSlicer"
+msgstr ".step/.stpファイルをOrca Slicerに関連付けます。"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .step files"
+msgstr "デフォルトで.step/.stpファイルをOrca Slicerで開く"
+
+msgid "Associate web links to OrcaSlicer"
 msgstr ""
 
-msgid "If enabled, sets HIM Studio as default application to open .3mf files"
-msgstr ""
-
-msgid "Associate .stl files to HIM Studio"
-msgstr ""
-
-msgid "If enabled, sets HIM Studio as default application to open .stl files"
-msgstr ""
-
-msgid "Associate .step/.stp files to HIM Studio"
-msgstr ""
-
-msgid "If enabled, sets HIM Studio as default application to open .step files"
-msgstr ""
-
-msgid "Associate web links to HIM Studio"
-msgstr ""
-
-msgid "Associate URLs to HIM Studio"
+msgid "Associate URLs to OrcaSlicer"
 msgstr ""
 
 msgid "Load All"
@@ -7504,8 +7497,8 @@ msgstr ""
 msgid ""
 "When recording timelapse without toolhead, it is recommended to add a "
 "\"Timelapse Wipe Tower\" \n"
-"by right-click the empty position of build plate and choose \"Add Primitive"
-"\"->\"Timelapse Wipe Tower\"."
+"by right-click the empty position of build plate and choose \"Add "
+"Primitive\"->\"Timelapse Wipe Tower\"."
 msgstr ""
 "ヘッド無しのタイムラプスビデオを録画する時に、「タイムラプスプライムタワー」"
 "を追加してください。プレートで右クリックして、「プリミティブを追加」→「タイム"
@@ -11201,8 +11194,8 @@ msgid "mm/s² or %"
 msgstr "mm/s² 或は %"
 
 msgid ""
-"Acceleration of sparse infill. If the value is expressed as a percentage (e."
-"g. 100%), it will be calculated based on the default acceleration."
+"Acceleration of sparse infill. If the value is expressed as a percentage "
+"(e.g. 100%), it will be calculated based on the default acceleration."
 msgstr ""
 
 msgid ""
@@ -11304,10 +11297,10 @@ msgstr "最大回転速度の積層"
 
 msgid ""
 "Fan speed will be ramped up linearly from zero at layer "
-"\"close_fan_the_first_x_layers\" to maximum at layer \"full_fan_speed_layer"
-"\". \"full_fan_speed_layer\" will be ignored if lower than "
-"\"close_fan_the_first_x_layers\", in which case the fan will be running at "
-"maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
+"\"close_fan_the_first_x_layers\" to maximum at layer "
+"\"full_fan_speed_layer\". \"full_fan_speed_layer\" will be ignored if lower "
+"than \"close_fan_the_first_x_layers\", in which case the fan will be running "
+"at maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
 msgstr ""
 
 msgid "layer"
@@ -11882,8 +11875,8 @@ msgid ""
 "\"mmu_segmented_region_interlocking_depth\" is bigger than "
 "\"mmu_segmented_region_max_width\". Zero disables this feature."
 msgstr ""
-"セグメント化された領域の連動深さ。mmu_segmented_region_max_width \"が0"
-"か、\"mmu_segmented_region_interlocking_depth \"が "
+"セグメント化された領域の連動深さ。mmu_segmented_region_max_width \"が0か、"
+"\"mmu_segmented_region_interlocking_depth \"が "
 "\"mmu_segmented_region_max_width \"より大きい場合は無視される。ゼロはこの機能"
 "を無効にする。"
 
@@ -12830,8 +12823,8 @@ msgid "Role base wipe speed"
 msgstr ""
 
 msgid ""
-"The wipe speed is determined by the speed of the current extrusion role. e."
-"g. if a wipe action is executed immediately following an outer wall "
+"The wipe speed is determined by the speed of the current extrusion role. "
+"e.g. if a wipe action is executed immediately following an outer wall "
 "extrusion, the speed of the outer wall extrusion will be utilized for the "
 "wipe action."
 msgstr ""
@@ -13560,8 +13553,8 @@ msgstr ""
 
 msgid ""
 "Enable this option for automated chamber temperature control. This option "
-"activates the emitting of an M191 command before the \"machine_start_gcode"
-"\"\n"
+"activates the emitting of an M191 command before the "
+"\"machine_start_gcode\"\n"
 " which sets the chamber temperature and waits until it is reached. In "
 "addition, it emits an M141 command at the end of the print to turn off the "
 "chamber heater, if present.\n"
@@ -14330,11 +14323,11 @@ msgid "Debug level"
 msgstr "デバッグ レベル"
 
 msgid ""
-"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, 5:"
-"trace\n"
+"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, "
+"5:trace\n"
 msgstr ""
-"デバッグロギングレベルを設定します。0:fatal、1:error、2:warning、3:info、4:"
-"debug、5:trace。\n"
+"デバッグロギングレベルを設定します。0:fatal、1:error、2:warning、3:info、"
+"4:debug、5:trace。\n"
 
 msgid "Enable timelapse for print"
 msgstr ""
@@ -15745,8 +15738,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"We would rename the presets as \"Vendor Type Serial @printer you selected"
-"\".\n"
+"We would rename the presets as \"Vendor Type Serial @printer you "
+"selected\".\n"
 "To add preset for more printers, please go to printer selection"
 msgstr ""
 
@@ -16874,30 +16867,6 @@ msgstr ""
 "反りを避ける\n"
 "ABSのような反りやすい素材を印刷する場合、ヒートベッドの温度を適切に上げること"
 "で、反りが発生する確率を下げることができることをご存知ですか？"
-
-#~ msgid "Orca Slicer is licensed under "
-#~ msgstr "Orca Slicerのライセンス"
-
-#~ msgid "Associate .3mf files to OrcaSlicer"
-#~ msgstr ".3mfファイルをOrca Slicerに関連付けます。"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
-#~ msgstr "デフォルトで.3mfファイルをOrca Slicerで開く"
-
-#~ msgid "Associate .stl files to OrcaSlicer"
-#~ msgstr ".stlファイルをOrca Slicerに関連付けます。"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
-#~ msgstr "デフォルトで.stlファイルをOrca Slicerで開く"
-
-#~ msgid "Associate .step/.stp files to OrcaSlicer"
-#~ msgstr ".step/.stpファイルをOrca Slicerに関連付けます。"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .step files"
-#~ msgstr "デフォルトで.step/.stpファイルをOrca Slicerで開く"
 
 #~ msgid "Alt + Mouse wheel"
 #~ msgstr "Alt + マウスホイール"

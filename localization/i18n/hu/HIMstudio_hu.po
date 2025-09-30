@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-19 16:13+0800\n"
+"POT-Creation-Date: 2025-09-28 18:44+0800\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1473,7 +1473,7 @@ msgstr ""
 "A(z) \"%1%\" konfigurációs csomag betöltődött, de néhány értéket nem "
 "sikerült felismerni."
 
-msgid "Based on OrcaSlicer"
+msgid "Based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid ""
@@ -2820,13 +2820,13 @@ msgstr "Copyright"
 msgid "License"
 msgstr "Licenc"
 
-msgid "HIM Studio is licensed under "
-msgstr ""
+msgid "Orca Slicer is licensed under "
+msgstr "A Orca Slicer a következő licencet használja "
 
 msgid "GNU Affero General Public License, version 3"
 msgstr ""
 
-msgid "HIM Studio is based on OrcaSlicer"
+msgid "Orca Slicer is based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid "Libraries"
@@ -2842,9 +2842,6 @@ msgstr ""
 #, c-format, boost-format
 msgid "About %s"
 msgstr "%s névjegye"
-
-msgid "HIM-Studio is based on OrcaSlicer."
-msgstr ""
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 msgstr ""
@@ -3761,7 +3758,6 @@ msgid ""
 "Reset to 0."
 msgstr ""
 
-#, c-format, boost-format
 msgid ""
 "Lock depth should smaller than skin depth.\n"
 "Reset to 50% of skin depth."
@@ -4454,7 +4450,7 @@ msgstr "Térfogat:"
 msgid "Size:"
 msgstr "Méret:"
 
-#, c-format, boost-format
+#, boost-format
 msgid ""
 "Conflicts of G-code paths have been found at layer %d, z = %.2lf mm. Please "
 "separate the conflicted objects farther (%s <-> %s)."
@@ -6613,7 +6609,7 @@ msgstr "Válassz letöltési mappát"
 msgid "Associate"
 msgstr ""
 
-msgid "with HIM-Studio so that HIM-Studio can open models from"
+msgid "with OrcaSlicer so that Orca can open models from"
 msgstr ""
 
 msgid "Current Association: "
@@ -6657,7 +6653,7 @@ msgstr ""
 msgid "Enable network plugin"
 msgstr ""
 
-msgid "Use legacy network plugin (Takes effect after restarting HIM Studio)"
+msgid "Use legacy network plugin (Takes effect after restarting Orca)"
 msgstr ""
 
 msgid ""
@@ -6676,7 +6672,7 @@ msgstr "Angolszász"
 msgid "Units"
 msgstr "Mértékegység"
 
-msgid "Allow only one HIM Studio instance"
+msgid "Allow only one OrcaSlicer instance"
 msgstr ""
 
 msgid ""
@@ -6690,8 +6686,8 @@ msgstr ""
 "engedélyez."
 
 msgid ""
-"If this is enabled, when starting HIM-Studio and another instance of the "
-"same HIM-Studio is already running, that instance will be reactivated "
+"If this is enabled, when starting OrcaSlicer and another instance of the "
+"same OrcaSlicer is already running, that instance will be reactivated "
 "instead."
 msgstr ""
 
@@ -6796,7 +6792,7 @@ msgid ""
 "If enabled,a parameter settings dialog will appear during STEP file import."
 msgstr ""
 
-msgid "Multi-device Management (Take effect after restarting HIM Studio)."
+msgid "Multi-device Management (Take effect after restarting Orca Slicer)."
 msgstr ""
 
 msgid ""
@@ -6830,34 +6826,37 @@ msgstr ""
 msgid "Clear my choice on the unsaved presets."
 msgstr ""
 
-msgid "Associate files to HIM Studio"
-msgstr ""
-
 msgid "Associate files to OrcaSlicer"
 msgstr "Fájlok társítása a OrcaSlicerhoz"
 
-msgid "Associate .3mf files to HIM Studio"
+msgid "Associate .3mf files to OrcaSlicer"
+msgstr ".3mf fájlok társítása a OrcaSlicerhoz"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
+msgstr ""
+"Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
+"alkalmazásként a .3mf fájlok megnyitásához"
+
+msgid "Associate .stl files to OrcaSlicer"
+msgstr ".stl fájlok társítása a OrcaSlicerhoz"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
+msgstr ""
+"Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
+"alkalmazásként az .stl fájlok megnyitásához"
+
+msgid "Associate .step/.stp files to OrcaSlicer"
+msgstr ".step/.stp fájlok társítása a OrcaSlicerhoz"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .step files"
+msgstr ""
+"Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
+"alkalmazásként a .step fájlok megnyitásához"
+
+msgid "Associate web links to OrcaSlicer"
 msgstr ""
 
-msgid "If enabled, sets HIM Studio as default application to open .3mf files"
-msgstr ""
-
-msgid "Associate .stl files to HIM Studio"
-msgstr ""
-
-msgid "If enabled, sets HIM Studio as default application to open .stl files"
-msgstr ""
-
-msgid "Associate .step/.stp files to HIM Studio"
-msgstr ""
-
-msgid "If enabled, sets HIM Studio as default application to open .step files"
-msgstr ""
-
-msgid "Associate web links to HIM Studio"
-msgstr ""
-
-msgid "Associate URLs to HIM Studio"
+msgid "Associate URLs to OrcaSlicer"
 msgstr ""
 
 msgid "Load All"
@@ -7676,8 +7675,8 @@ msgstr ""
 msgid ""
 "When recording timelapse without toolhead, it is recommended to add a "
 "\"Timelapse Wipe Tower\" \n"
-"by right-click the empty position of build plate and choose \"Add Primitive"
-"\"->\"Timelapse Wipe Tower\"."
+"by right-click the empty position of build plate and choose \"Add "
+"Primitive\"->\"Timelapse Wipe Tower\"."
 msgstr ""
 "Ha a nyomtatófej nélküli timelapse engedélyezve van, javasoljuk, hogy "
 "helyezz el a tálcán egy „Timelapse törlőtornyot“. Ehhez kattints jobb "
@@ -11462,8 +11461,8 @@ msgid "mm/s² or %"
 msgstr "mm/s² vagy %"
 
 msgid ""
-"Acceleration of sparse infill. If the value is expressed as a percentage (e."
-"g. 100%), it will be calculated based on the default acceleration."
+"Acceleration of sparse infill. If the value is expressed as a percentage "
+"(e.g. 100%), it will be calculated based on the default acceleration."
 msgstr ""
 "Gyorsulás a ritkás kitöltéseknél. Ha az érték százalékban van megadva (pl. "
 "100%), akkor az alapértelmezett gyorsulás alapján kerül kiszámításra."
@@ -11571,10 +11570,10 @@ msgstr "Teljes ventilátor fordulatszám ennél a rétegnél"
 
 msgid ""
 "Fan speed will be ramped up linearly from zero at layer "
-"\"close_fan_the_first_x_layers\" to maximum at layer \"full_fan_speed_layer"
-"\". \"full_fan_speed_layer\" will be ignored if lower than "
-"\"close_fan_the_first_x_layers\", in which case the fan will be running at "
-"maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
+"\"close_fan_the_first_x_layers\" to maximum at layer "
+"\"full_fan_speed_layer\". \"full_fan_speed_layer\" will be ignored if lower "
+"than \"close_fan_the_first_x_layers\", in which case the fan will be running "
+"at maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
 msgstr ""
 
 msgid "layer"
@@ -13111,8 +13110,8 @@ msgid "Role base wipe speed"
 msgstr ""
 
 msgid ""
-"The wipe speed is determined by the speed of the current extrusion role. e."
-"g. if a wipe action is executed immediately following an outer wall "
+"The wipe speed is determined by the speed of the current extrusion role. "
+"e.g. if a wipe action is executed immediately following an outer wall "
 "extrusion, the speed of the outer wall extrusion will be utilized for the "
 "wipe action."
 msgstr ""
@@ -13879,8 +13878,8 @@ msgstr ""
 
 msgid ""
 "Enable this option for automated chamber temperature control. This option "
-"activates the emitting of an M191 command before the \"machine_start_gcode"
-"\"\n"
+"activates the emitting of an M191 command before the "
+"\"machine_start_gcode\"\n"
 " which sets the chamber temperature and waits until it is reached. In "
 "addition, it emits an M141 command at the end of the print to turn off the "
 "chamber heater, if present.\n"
@@ -14679,11 +14678,11 @@ msgid "Debug level"
 msgstr "Hibakeresés szintje"
 
 msgid ""
-"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, 5:"
-"trace\n"
+"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, "
+"5:trace\n"
 msgstr ""
-"A hibakeresési naplózási szint beállítása. 0:fatal, 1:error, 2:warning, 3:"
-"info, 4:debug, 5:trace\n"
+"A hibakeresési naplózási szint beállítása. 0:fatal, 1:error, 2:warning, "
+"3:info, 4:debug, 5:trace\n"
 
 msgid "Enable timelapse for print"
 msgstr ""
@@ -16100,8 +16099,8 @@ msgstr ""
 "Szeretnéd felülírni?"
 
 msgid ""
-"We would rename the presets as \"Vendor Type Serial @printer you selected"
-"\".\n"
+"We would rename the presets as \"Vendor Type Serial @printer you "
+"selected\".\n"
 "To add preset for more printers, please go to printer selection"
 msgstr ""
 
@@ -17311,36 +17310,6 @@ msgstr ""
 "Vetemedés elkerülése\n"
 "Tudtad, hogy a vetemedésre hajlamos anyagok (például ABS) nyomtatásakor a "
 "tárgyasztal hőmérsékletének növelése csökkentheti a vetemedés valószínűségét?"
-
-#~ msgid "Orca Slicer is licensed under "
-#~ msgstr "A Orca Slicer a következő licencet használja "
-
-#~ msgid "Associate .3mf files to OrcaSlicer"
-#~ msgstr ".3mf fájlok társítása a OrcaSlicerhoz"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
-#~ msgstr ""
-#~ "Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
-#~ "alkalmazásként a .3mf fájlok megnyitásához"
-
-#~ msgid "Associate .stl files to OrcaSlicer"
-#~ msgstr ".stl fájlok társítása a OrcaSlicerhoz"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
-#~ msgstr ""
-#~ "Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
-#~ "alkalmazásként az .stl fájlok megnyitásához"
-
-#~ msgid "Associate .step/.stp files to OrcaSlicer"
-#~ msgstr ".step/.stp fájlok társítása a OrcaSlicerhoz"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .step files"
-#~ msgstr ""
-#~ "Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
-#~ "alkalmazásként a .step fájlok megnyitásához"
 
 #~ msgid "Alt + Mouse wheel"
 #~ msgstr "Alt + Egérgörgő"
