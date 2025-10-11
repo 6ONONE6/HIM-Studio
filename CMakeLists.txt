@@ -53,7 +53,7 @@ if (APPLE)
     message(STATUS "CMAKE_OSX_DEPLOYMENT_TARGET: ${CMAKE_OSX_DEPLOYMENT_TARGET}")
 endif ()
 
-project(HIM-Studio_2.3.1)
+project(HIM-Studio_2.3.2)
 
 include("version.inc")
 include(GNUInstallDirs)
