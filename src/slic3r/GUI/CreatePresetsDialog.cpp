@@ -71,12 +71,12 @@ static const std::vector<std::string> printer_vendors =
      "Blocks",             "Chuanying",          "Co Print",           "Comgrow",            "CONSTRUCT3D",
      "Creality",           "DeltaMaker",         "Dremel",             "Elegoo",             "Flashforge",
      "FLSun",              "FlyingBear",         "Folgertech",         "Geeetech",           "Ginger Additive",
-     "InfiMech",           "Kingroon",           "Lulzbot",            "MagicMaker",         "Mellow",
-     "Orca Arena Printer", "Peopoly",            "Positron 3D",        "Prusa",              "Qidi",
-     "Raise3D",            "RatRig",             "RolohaunDesign",     "SecKit",             "Snapmaker",
-     "Sovol",              "Thinker X400",       "Tronxy",             "TwoTrees",           "UltiMaker",
-     "Vivedino",           "Volumic",            "Voron",              "Voxelab",            "Vzbot",
-     "Wanhao",             "Z-Bolt"};
+     "HIM",                "InfiMech",           "Kingroon",           "Lulzbot",            "MagicMaker",
+     "Mellow",             "Orca Arena Printer", "Peopoly",            "Positron 3D",        "Prusa",
+     "Qidi",               "Raise3D",            "RatRig",             "RolohaunDesign",     "SecKit",
+     "Snapmaker",          "Sovol",              "Thinker X400",       "Tronxy",             "TwoTrees",
+     "UltiMaker",          "Vivedino",           "Volumic",            "Voron",              "Voxelab",
+     "Vzbot",              "Wanhao",             "Z-Bolt"};
 
 static const std::unordered_map<std::string, std::vector<std::string>> printer_model_map =
     {{"Anker",             {"Anker M5",                   "Anker M5 All-Metal Hot End", "Anker M5C"}},
@@ -117,6 +117,7 @@ static const std::unordered_map<std::string, std::vector<std::string>> printer_m
                             "Geeetech A20 M",     "Geeetech A20 T",     "Geeetech A30 Pro",   "Geeetech A30 M",     "Geeetech A30 T",
                             "Geeetech M1"}},
      {"Ginger Additive",   {"ginger G1"}},
+     {"HIM", {"HIM F300A"}},
      {"InfiMech",          {"InfiMech TX",                       "InfiMech TX Hardened Steel Nozzle"}},
      {"Kingroon",          {"Kingroon KP3S PRO S1", "Kingroon KP3S PRO V2", "Kingroon KP3S 3.0",    "Kingroon KP3S V1",     "Kingroon KLP1"}},
      {"Lulzbot",           {"Lulzbot Taz 6",        "Lulzbot Taz 4 or 5",   "Lulzbot Taz Pro Dual", "Lulzbot Taz Pro S"}},
