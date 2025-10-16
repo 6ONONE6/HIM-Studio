@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-09 16:40+0800\n"
+"POT-Creation-Date: 2025-09-28 18:44+0800\n"
 "PO-Revision-Date: 2025-03-27 19:32+0800\n"
 "Last-Translator: 5idereal <hi@5idereal.cc>\n"
 "Language-Team: \n"
@@ -1485,7 +1485,7 @@ msgid ""
 "Configuration file \"%1%\" was loaded, but some values were not recognized."
 msgstr "設定檔「%1%」 已被載入，但部分數值無法識別。"
 
-msgid "Based on OrcaSlicer"
+msgid "Based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid ""
@@ -1625,21 +1625,6 @@ msgid ""
 "The version of Orca Slicer is too low and needs to be updated to the latest "
 "version before it can be used normally."
 msgstr "Orca Slicer 版本過舊，需要更新到最新版本才能正常使用"
-
-msgid "The latest version: "
-msgstr ""
-
-msgid "Current version: "
-msgstr ""
-
-msgid "New version found!"
-msgstr ""
-
-msgid "Check for update error: "
-msgstr ""
-
-msgid "New Version Check"
-msgstr ""
 
 msgid "Privacy Policy Update"
 msgstr "隱私協議更新"
@@ -2825,14 +2810,14 @@ msgstr "版權"
 msgid "License"
 msgstr "憑證"
 
-msgid "HIM Studio is licensed under "
-msgstr ""
+msgid "Orca Slicer is licensed under "
+msgstr "Orca Slicer 授權於"
 
 msgid "GNU Affero General Public License, version 3"
 msgstr "GNU Affero 通用公共許可證，版本 3"
 
-msgid "HIM Studio is based on OrcaSlicer"
-msgstr ""
+msgid "Orca Slicer is based on PrusaSlicer and BambuStudio"
+msgstr "Orca Slicer 基於 PrusaSlicer 與 BambuStudio"
 
 msgid "Libraries"
 msgstr "Libraries"
@@ -2845,9 +2830,6 @@ msgstr "本軟體採用了開源組件，其版權及相關專有權歸屬於各
 #, c-format, boost-format
 msgid "About %s"
 msgstr "關於 %s"
-
-msgid "HIM-Studio is based on OrcaSlicer."
-msgstr ""
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 msgstr "Orca Slicer 是基於 BambuStudio, PrusaSlicer, 與 SuperSlicer 的開發。"
@@ -3730,7 +3712,6 @@ msgstr ""
 "seam_slope_start_height 必須小於 layer_height。\n"
 "重設為 0。"
 
-#, fuzzy, c-format, boost-format
 msgid ""
 "Lock depth should smaller than skin depth.\n"
 "Reset to 50% of skin depth."
@@ -4429,7 +4410,7 @@ msgstr "體積："
 msgid "Size:"
 msgstr "尺寸："
 
-#, fuzzy, c-format, boost-format
+#, fuzzy, boost-format
 msgid ""
 "Conflicts of G-code paths have been found at layer %d, z = %.2lf mm. Please "
 "separate the conflicted objects farther (%s <-> %s)."
@@ -5233,8 +5214,8 @@ msgid ""
 "The .gcode.3mf file contains no G-code data. Please slice it with Orca "
 "Slicer and export a new .gcode.3mf file."
 msgstr ""
-".gcode.3mf 檔案中不包含 G-code 資料。請使用 Orca Slicer 進行切片並匯出新的 ."
-"gcode.3mf 檔案。"
+".gcode.3mf 檔案中不包含 G-code 資料。請使用 Orca Slicer 進行切片並匯出新"
+"的 .gcode.3mf 檔案。"
 
 #, c-format, boost-format
 msgid "File '%s' was lost! Please download it again."
@@ -6549,8 +6530,8 @@ msgstr "選擇下載資料夾"
 msgid "Associate"
 msgstr "關聯"
 
-msgid "with HIM-Studio so that HIM-Studio can open models from"
-msgstr ""
+msgid "with OrcaSlicer so that Orca can open models from"
+msgstr "與 OrcaSlicer 關聯，以便 Orca 可以從中打開模型"
 
 msgid "Current Association: "
 msgstr "目前關聯："
@@ -6579,10 +6560,10 @@ msgstr "北美"
 msgid "Others"
 msgstr "其他"
 
-msgid "Login Region"
+msgid "Login region"
 msgstr "登入區域"
 
-msgid "Stealth Mode"
+msgid "Stealth mode"
 msgstr "區域網路模式"
 
 msgid ""
@@ -6592,11 +6573,14 @@ msgstr ""
 "這會停止資料傳輸到 Bambu 的雲端服務。使用者如果不使用 Bambu 機台或僅使用區域"
 "網路模式，可以安全地啟用此功能。"
 
+msgid "Network plugin"
+msgstr ""
+
 msgid "Enable network plugin"
 msgstr "啟用網路外掛程式"
 
-msgid "Use legacy network plugin (Takes effect after restarting HIM Studio)"
-msgstr ""
+msgid "Use legacy network plugin"
+msgstr "使用舊版網路外掛"
 
 msgid ""
 "Disable to use latest network plugin that supports new BambuLab firmwares."
@@ -6614,8 +6598,8 @@ msgstr "英製"
 msgid "Units"
 msgstr "單位"
 
-msgid "Allow only one HIM Studio instance"
-msgstr ""
+msgid "Allow only one OrcaSlicer instance"
+msgstr "僅允許一個 OrcaSlicer 程序"
 
 msgid ""
 "On OSX there is always only one instance of app running by default. However "
@@ -6626,15 +6610,17 @@ msgstr ""
 "同一應用程式的多個實例。當您設定了這個設定後將只允許一個實例執行。"
 
 msgid ""
-"If this is enabled, when starting HIM-Studio and another instance of the "
-"same HIM-Studio is already running, that instance will be reactivated "
+"If this is enabled, when starting OrcaSlicer and another instance of the "
+"same OrcaSlicer is already running, that instance will be reactivated "
 "instead."
 msgstr ""
+"啟用後，嘗試開起 OrcaSlicer 時若有另一個 OrcaSlicer 程序已在執行時，已在執行"
+"的程序會被重新啟動。"
 
 msgid "Home"
 msgstr "首頁"
 
-msgid "Default Page"
+msgid "Default page"
 msgstr "預設頁面"
 
 msgid "Set the page opened on startup."
@@ -6721,14 +6707,17 @@ msgid ""
 "each printer automatically."
 msgstr "啟用後，Orca 會記住且自動切換各機臺線材與列印設定。"
 
-msgid "Show the step mesh parameter setting dialog."
+msgid "Show options when importing STEP file"
 msgstr "顯示 STEP 網格參數設定視窗。"
 
 msgid ""
 "If enabled,a parameter settings dialog will appear during STEP file import."
 msgstr "啟用後，匯入 STEP 檔案時會顯示參數設定視窗。"
 
-msgid "Multi-device Management (Take effect after restarting HIM Studio)."
+msgid "Multi device management"
+msgstr "多臺設備管理"
+
+msgid "(Requires restart)"
 msgstr ""
 
 msgid ""
@@ -6760,35 +6749,32 @@ msgstr "系統同步"
 msgid "Clear my choice on the unsaved presets."
 msgstr "清除我對未儲存預設的選擇。"
 
-msgid "Associate files to HIM Studio"
-msgstr ""
-
 msgid "Associate files to OrcaSlicer"
 msgstr "Orca Slicer 檔案關聯"
 
-msgid "Associate .3mf files to HIM Studio"
-msgstr ""
+msgid "Associate .3mf files to OrcaSlicer"
+msgstr "使用 Orca Slicer 打開 .3mf 檔案"
 
-msgid "If enabled, sets HIM Studio as default application to open .3mf files"
-msgstr ""
+msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
+msgstr "開啟後，將預設使用 Orca Slicer 打開 .3mf 檔案"
 
-msgid "Associate .stl files to HIM Studio"
-msgstr ""
+msgid "Associate .stl files to OrcaSlicer"
+msgstr "使用 Orca Slicer 打開 .stl 檔案"
 
-msgid "If enabled, sets HIM Studio as default application to open .stl files"
-msgstr ""
+msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
+msgstr "開啟後，將預設使用 Orca Slicer 打開 .stl 檔案"
 
-msgid "Associate .step/.stp files to HIM Studio"
-msgstr ""
+msgid "Associate .step/.stp files to OrcaSlicer"
+msgstr "使用 Orca Slicer 打開 .step/.stp 檔案"
 
-msgid "If enabled, sets HIM Studio as default application to open .step files"
-msgstr ""
+msgid "If enabled, sets OrcaSlicer as default application to open .step files"
+msgstr "開啟後，將預設使用 Orca Slicer 打開 .step 檔案"
 
-msgid "Associate web links to HIM Studio"
-msgstr ""
+msgid "Associate web links to OrcaSlicer"
+msgstr "將網頁連結關聯到 OrcaSlicer"
 
-msgid "Associate URLs to HIM Studio"
-msgstr ""
+msgid "Associate URLs to OrcaSlicer"
+msgstr "將 URL 關聯到 OrcaSlicer"
 
 msgid "Load All"
 msgstr "載入全部"
@@ -6802,8 +6788,11 @@ msgstr "總是詢問"
 msgid "Load Geometry Only"
 msgstr "僅載入幾何資料"
 
-msgid "Load Behaviour"
+msgid "Load behaviour"
 msgstr "載入方式"
+
+msgid "Behaviour"
+msgstr ""
 
 msgid "Should printer/filament/process settings be loaded when opening a .3mf?"
 msgstr "開啟 .3mf 檔案時，是否需要載入印表機、線材和參數設定？"
@@ -6814,16 +6803,16 @@ msgstr ""
 msgid "Maximum count of recent files"
 msgstr ""
 
-msgid "Add model files (stl/step) to recent file list."
+msgid "Add STL/STEP files to recent files list"
 msgstr ""
 
 msgid "Clear my choice on the unsaved projects."
 msgstr "清除我對未儲存專案項目的選擇。"
 
-msgid "No warnings when loading 3MF with modified G-code"
+msgid "Don't warn when loading 3MF with modified G-code"
 msgstr "載入包含修改過 G-code 的 3MF 時不顯示警告"
 
-msgid "Auto-Backup"
+msgid "Auto backup"
 msgstr "自動備份"
 
 msgid ""
@@ -6839,10 +6828,13 @@ msgstr "備份的週期。"
 msgid "Downloads"
 msgstr "下載"
 
+msgid "Downloads folder"
+msgstr ""
+
 msgid "Dark Mode"
 msgstr "深色模式"
 
-msgid "Enable Dark mode"
+msgid "Enable dark mode"
 msgstr "啟用深色模式"
 
 msgid "Develop mode"
@@ -7603,8 +7595,8 @@ msgstr ""
 msgid ""
 "When recording timelapse without toolhead, it is recommended to add a "
 "\"Timelapse Wipe Tower\" \n"
-"by right-click the empty position of build plate and choose \"Add Primitive"
-"\"->\"Timelapse Wipe Tower\"."
+"by right-click the empty position of build plate and choose \"Add "
+"Primitive\"->\"Timelapse Wipe Tower\"."
 msgstr ""
 "在錄製無工具頭縮時錄影影片時，建議新增一個「縮時錄影換料塔」\n"
 "可以通過右鍵點擊構建板的空白位置，選擇『新增標準模型』->『縮時錄影換料塔』來"
@@ -11532,8 +11524,8 @@ msgid "mm/s² or %"
 msgstr "mm/s² 或 %"
 
 msgid ""
-"Acceleration of sparse infill. If the value is expressed as a percentage (e."
-"g. 100%), it will be calculated based on the default acceleration."
+"Acceleration of sparse infill. If the value is expressed as a percentage "
+"(e.g. 100%), it will be calculated based on the default acceleration."
 msgstr ""
 "稀疏填充的加速度。如果該值表示為百分比（例如 100%），則將根據預設加速度進行計"
 "算。"
@@ -11638,10 +11630,10 @@ msgstr "滿速風扇在"
 
 msgid ""
 "Fan speed will be ramped up linearly from zero at layer "
-"\"close_fan_the_first_x_layers\" to maximum at layer \"full_fan_speed_layer"
-"\". \"full_fan_speed_layer\" will be ignored if lower than "
-"\"close_fan_the_first_x_layers\", in which case the fan will be running at "
-"maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
+"\"close_fan_the_first_x_layers\" to maximum at layer "
+"\"full_fan_speed_layer\". \"full_fan_speed_layer\" will be ignored if lower "
+"than \"close_fan_the_first_x_layers\", in which case the fan will be running "
+"at maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
 msgstr ""
 "風扇速度會從第「close_fan_the_first_x_layers」層開始，從零速以線性方式逐漸增"
 "加，直到第「full_fan_speed_layer」層達到最大速度。如果"
@@ -13247,8 +13239,8 @@ msgid "Role base wipe speed"
 msgstr "自動擦拭速度"
 
 msgid ""
-"The wipe speed is determined by the speed of the current extrusion role. e."
-"g. if a wipe action is executed immediately following an outer wall "
+"The wipe speed is determined by the speed of the current extrusion role. "
+"e.g. if a wipe action is executed immediately following an outer wall "
 "extrusion, the speed of the outer wall extrusion will be utilized for the "
 "wipe action."
 msgstr ""
@@ -14019,8 +14011,8 @@ msgstr "啟動溫度控制"
 
 msgid ""
 "Enable this option for automated chamber temperature control. This option "
-"activates the emitting of an M191 command before the \"machine_start_gcode"
-"\"\n"
+"activates the emitting of an M191 command before the "
+"\"machine_start_gcode\"\n"
 " which sets the chamber temperature and waits until it is reached. In "
 "addition, it emits an M141 command at the end of the print to turn off the "
 "chamber heater, if present.\n"
@@ -14842,8 +14834,8 @@ msgid "Debug level"
 msgstr "除錯模式等級"
 
 msgid ""
-"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, 5:"
-"trace\n"
+"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, "
+"5:trace\n"
 msgstr ""
 "設定除錯日誌級別。0：致命錯誤，1：錯誤，2：警告，3：資訊，4：除錯，5：追蹤\n"
 
@@ -16164,6 +16156,9 @@ msgstr "刪除輸入"
 msgid "Network Test"
 msgstr "網路測試"
 
+msgid "Network test"
+msgstr "網路測試"
+
 msgid "Start Test Multi-Thread"
 msgstr "啟動多執行緒測試"
 
@@ -16296,8 +16291,8 @@ msgstr ""
 "確定要覆寫嗎？"
 
 msgid ""
-"We would rename the presets as \"Vendor Type Serial @printer you selected"
-"\".\n"
+"We would rename the presets as \"Vendor Type Serial @printer you "
+"selected\".\n"
 "To add preset for more printers, please go to printer selection"
 msgstr ""
 "將會將預設名稱重新命名為「廠牌 型號 序號 @選擇的列印設備」。\n"
@@ -17543,59 +17538,6 @@ msgstr ""
 "避免翹曲\n"
 "您知道嗎？當列印容易翹曲的材料（如 ABS）時，適當提高熱床溫度\n"
 "可以降低翹曲的機率。"
-
-#~ msgid "Orca Slicer is licensed under "
-#~ msgstr "Orca Slicer 授權於"
-
-#~ msgid "Orca Slicer is based on PrusaSlicer and BambuStudio"
-#~ msgstr "Orca Slicer 基於 PrusaSlicer 與 BambuStudio"
-
-#~ msgid "with OrcaSlicer so that Orca can open models from"
-#~ msgstr "與 OrcaSlicer 關聯，以便 Orca 可以從中打開模型"
-
-#~ msgid "Use legacy network plugin (Takes effect after restarting Orca)"
-#~ msgstr "使用舊版網路外掛（重新啟動 Orca 後生效）"
-
-#~ msgid "Allow only one OrcaSlicer instance"
-#~ msgstr "僅允許一個 OrcaSlicer 程序"
-
-#~ msgid ""
-#~ "If this is enabled, when starting OrcaSlicer and another instance of the "
-#~ "same OrcaSlicer is already running, that instance will be reactivated "
-#~ "instead."
-#~ msgstr ""
-#~ "啟用後，嘗試開起 OrcaSlicer 時若有另一個 OrcaSlicer 程序已在執行時，已在執"
-#~ "行的程序會被重新啟動。"
-
-#~ msgid "Multi-device Management (Take effect after restarting Orca Slicer)."
-#~ msgstr "多臺設備管理 (需重開 Orca)"
-
-#~ msgid "Associate .3mf files to OrcaSlicer"
-#~ msgstr "使用 Orca Slicer 打開 .3mf 檔案"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
-#~ msgstr "開啟後，將預設使用 Orca Slicer 打開 .3mf 檔案"
-
-#~ msgid "Associate .stl files to OrcaSlicer"
-#~ msgstr "使用 Orca Slicer 打開 .stl 檔案"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
-#~ msgstr "開啟後，將預設使用 Orca Slicer 打開 .stl 檔案"
-
-#~ msgid "Associate .step/.stp files to OrcaSlicer"
-#~ msgstr "使用 Orca Slicer 打開 .step/.stp 檔案"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .step files"
-#~ msgstr "開啟後，將預設使用 Orca Slicer 打開 .step 檔案"
-
-#~ msgid "Associate web links to OrcaSlicer"
-#~ msgstr "將網頁連結關聯到 OrcaSlicer"
-
-#~ msgid "Associate URLs to OrcaSlicer"
-#~ msgstr "將 URL 關聯到 OrcaSlicer"
 
 #~ msgid ""
 #~ "Improve shell precision by adjusting outer wall spacing. This also "

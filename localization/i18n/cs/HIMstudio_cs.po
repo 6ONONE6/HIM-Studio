@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-09 16:40+0800\n"
+"POT-Creation-Date: 2025-09-28 18:44+0800\n"
 "PO-Revision-Date: 2024-11-03 20:59+0100\n"
 "Last-Translator: René Mošner <Renemosner@seznam.cz>\n"
 "Language-Team: \n"
@@ -1506,8 +1506,8 @@ msgstr ""
 "Konfigurační soubor \" %1% \" byl načten, ale některé hodnoty nebyly "
 "rozpoznány."
 
-msgid "Based on OrcaSlicer"
-msgstr ""
+msgid "Based on PrusaSlicer and BambuStudio"
+msgstr "Založeno na PrusaSlicer a Bambustudio"
 
 msgid ""
 "OrcaSlicer will terminate because of running out of memory. It may be a bug. "
@@ -1655,21 +1655,6 @@ msgid ""
 msgstr ""
 "Verze Orca Slicer je příliš nízká a je třeba ji aktualizovat na nejnovější "
 "verze předtím, než ji lze normálně používat"
-
-msgid "The latest version: "
-msgstr ""
-
-msgid "Current version: "
-msgstr ""
-
-msgid "New version found!"
-msgstr ""
-
-msgid "Check for update error: "
-msgstr ""
-
-msgid "New Version Check"
-msgstr ""
 
 msgid "Privacy Policy Update"
 msgstr "Aktualizace zásad ochrany osobních údajů"
@@ -2898,13 +2883,13 @@ msgstr "Autorská práva"
 msgid "License"
 msgstr "Licence"
 
-msgid "HIM Studio is licensed under "
-msgstr ""
+msgid "Orca Slicer is licensed under "
+msgstr "Orca Slicer je licencován pod "
 
 msgid "GNU Affero General Public License, version 3"
 msgstr "GNU Affero General Public License, verze 3"
 
-msgid "HIM Studio is based on OrcaSlicer"
+msgid "Orca Slicer is based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid "Libraries"
@@ -2920,9 +2905,6 @@ msgstr ""
 #, c-format, boost-format
 msgid "About %s"
 msgstr "O %s"
-
-msgid "HIM-Studio is based on OrcaSlicer."
-msgstr ""
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 msgstr "OrcaSlicer je založen na BambuStudio, PrusaSlicer a SuperSlicer."
@@ -3836,7 +3818,6 @@ msgid ""
 "Reset to 0."
 msgstr ""
 
-#, c-format, boost-format
 msgid ""
 "Lock depth should smaller than skin depth.\n"
 "Reset to 50% of skin depth."
@@ -4538,7 +4519,7 @@ msgstr "Objem:"
 msgid "Size:"
 msgstr "Velikost:"
 
-#, c-format, boost-format
+#, boost-format
 msgid ""
 "Conflicts of G-code paths have been found at layer %d, z = %.2lf mm. Please "
 "separate the conflicted objects farther (%s <-> %s)."
@@ -6725,7 +6706,7 @@ msgstr "Vyberte adresář pro stahování"
 msgid "Associate"
 msgstr ""
 
-msgid "with HIM-Studio so that HIM-Studio can open models from"
+msgid "with OrcaSlicer so that Orca can open models from"
 msgstr ""
 
 msgid "Current Association: "
@@ -6755,21 +6736,24 @@ msgstr "Severní Amerika"
 msgid "Others"
 msgstr "Ostatní"
 
-msgid "Login Region"
+msgid "Login region"
 msgstr "Región přihlášení"
 
-msgid "Stealth Mode"
-msgstr "Tajný Režim"
+msgid "Stealth mode"
+msgstr "Tajný režim"
 
 msgid ""
 "This stops the transmission of data to Bambu's cloud services. Users who "
 "don't use BBL machines or use LAN mode only can safely turn on this function."
 msgstr ""
 
+msgid "Network plugin"
+msgstr ""
+
 msgid "Enable network plugin"
 msgstr ""
 
-msgid "Use legacy network plugin (Takes effect after restarting HIM Studio)"
+msgid "Use legacy network plugin"
 msgstr ""
 
 msgid ""
@@ -6788,7 +6772,7 @@ msgstr "Imperiální"
 msgid "Units"
 msgstr "Jednotky"
 
-msgid "Allow only one HIM Studio instance"
+msgid "Allow only one OrcaSlicer instance"
 msgstr ""
 
 msgid ""
@@ -6801,15 +6785,15 @@ msgstr ""
 "V takovém případě toto nastavení povolí pouze jednu instanci."
 
 msgid ""
-"If this is enabled, when starting HIM-Studio and another instance of the "
-"same HIM-Studio is already running, that instance will be reactivated "
+"If this is enabled, when starting OrcaSlicer and another instance of the "
+"same OrcaSlicer is already running, that instance will be reactivated "
 "instead."
 msgstr ""
 
 msgid "Home"
 msgstr "Home"
 
-msgid "Default Page"
+msgid "Default page"
 msgstr ""
 
 msgid "Set the page opened on startup."
@@ -6897,14 +6881,17 @@ msgid ""
 "each printer automatically."
 msgstr ""
 
-msgid "Show the step mesh parameter setting dialog."
+msgid "Show options when importing STEP file"
 msgstr ""
 
 msgid ""
 "If enabled,a parameter settings dialog will appear during STEP file import."
 msgstr ""
 
-msgid "Multi-device Management (Take effect after restarting HIM Studio)."
+msgid "Multi device management"
+msgstr ""
+
+msgid "(Requires restart)"
 msgstr ""
 
 msgid ""
@@ -6937,34 +6924,37 @@ msgstr "Synchronizace systému"
 msgid "Clear my choice on the unsaved presets."
 msgstr "Vymazat mé volby neuložených předvoleb."
 
-msgid "Associate files to HIM Studio"
-msgstr ""
-
 msgid "Associate files to OrcaSlicer"
 msgstr "Přidružit soubory k OrcaSlicer"
 
-msgid "Associate .3mf files to HIM Studio"
+msgid "Associate .3mf files to OrcaSlicer"
+msgstr "Přidružit soubory .3mf k OrcaSlicer"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
+msgstr ""
+"Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
+"souborů .3mf"
+
+msgid "Associate .stl files to OrcaSlicer"
+msgstr "Přidružit .stl soubory k Orca Slicer"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
+msgstr ""
+"Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
+"souborů .stl"
+
+msgid "Associate .step/.stp files to OrcaSlicer"
+msgstr "Přidružit soubory .step/.stp k OrcaSlicer"
+
+msgid "If enabled, sets OrcaSlicer as default application to open .step files"
+msgstr ""
+"Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
+"souborů .step"
+
+msgid "Associate web links to OrcaSlicer"
 msgstr ""
 
-msgid "If enabled, sets HIM Studio as default application to open .3mf files"
-msgstr ""
-
-msgid "Associate .stl files to HIM Studio"
-msgstr ""
-
-msgid "If enabled, sets HIM Studio as default application to open .stl files"
-msgstr ""
-
-msgid "Associate .step/.stp files to HIM Studio"
-msgstr ""
-
-msgid "If enabled, sets HIM Studio as default application to open .step files"
-msgstr ""
-
-msgid "Associate web links to HIM Studio"
-msgstr ""
-
-msgid "Associate URLs to HIM Studio"
+msgid "Associate URLs to OrcaSlicer"
 msgstr ""
 
 msgid "Load All"
@@ -6979,7 +6969,10 @@ msgstr ""
 msgid "Load Geometry Only"
 msgstr ""
 
-msgid "Load Behaviour"
+msgid "Load behaviour"
+msgstr ""
+
+msgid "Behaviour"
 msgstr ""
 
 msgid "Should printer/filament/process settings be loaded when opening a .3mf?"
@@ -6991,16 +6984,16 @@ msgstr ""
 msgid "Maximum count of recent files"
 msgstr ""
 
-msgid "Add model files (stl/step) to recent file list."
+msgid "Add STL/STEP files to recent files list"
 msgstr ""
 
 msgid "Clear my choice on the unsaved projects."
 msgstr "Vymazat moje volby pro neuložené projekty."
 
-msgid "No warnings when loading 3MF with modified G-code"
+msgid "Don't warn when loading 3MF with modified G-code"
 msgstr ""
 
-msgid "Auto-Backup"
+msgid "Auto backup"
 msgstr "Automatické zálohování"
 
 msgid ""
@@ -7017,10 +7010,13 @@ msgstr "Doba zálohování v sekundách."
 msgid "Downloads"
 msgstr "Stahování"
 
+msgid "Downloads folder"
+msgstr ""
+
 msgid "Dark Mode"
 msgstr "Tmavý režim"
 
-msgid "Enable Dark mode"
+msgid "Enable dark mode"
 msgstr "Povolit tmavý režim"
 
 msgid "Develop mode"
@@ -7788,8 +7784,8 @@ msgstr ""
 msgid ""
 "When recording timelapse without toolhead, it is recommended to add a "
 "\"Timelapse Wipe Tower\" \n"
-"by right-click the empty position of build plate and choose \"Add Primitive"
-"\"->\"Timelapse Wipe Tower\"."
+"by right-click the empty position of build plate and choose \"Add "
+"Primitive\"->\"Timelapse Wipe Tower\"."
 msgstr ""
 "Při nahrávání časosběru bez nástrojové hlavy se doporučuje přidat  "
 "\"Timelapse Wipe Tower\" \n"
@@ -11644,8 +11640,8 @@ msgid "mm/s² or %"
 msgstr "mm/s² or %"
 
 msgid ""
-"Acceleration of sparse infill. If the value is expressed as a percentage (e."
-"g. 100%), it will be calculated based on the default acceleration."
+"Acceleration of sparse infill. If the value is expressed as a percentage "
+"(e.g. 100%), it will be calculated based on the default acceleration."
 msgstr ""
 "Zrychlení vnitřní výplně. Pokud je hodnota vyjádřena v procentech (např. 100 "
 "%), bude vypočítána na základě výchozího zrychlení."
@@ -11758,10 +11754,10 @@ msgstr "Maximální otáčky ventilátoru ve vrstvě"
 
 msgid ""
 "Fan speed will be ramped up linearly from zero at layer "
-"\"close_fan_the_first_x_layers\" to maximum at layer \"full_fan_speed_layer"
-"\". \"full_fan_speed_layer\" will be ignored if lower than "
-"\"close_fan_the_first_x_layers\", in which case the fan will be running at "
-"maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
+"\"close_fan_the_first_x_layers\" to maximum at layer "
+"\"full_fan_speed_layer\". \"full_fan_speed_layer\" will be ignored if lower "
+"than \"close_fan_the_first_x_layers\", in which case the fan will be running "
+"at maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
 msgstr ""
 "Otáčky ventilátoru se lineárně zvýší z nuly ve vrstvě "
 "\"close_fan_first_layers\" na maximum ve vrstvě \"full_fan_speed_layer\". "
@@ -13395,8 +13391,8 @@ msgid "Role base wipe speed"
 msgstr "Rychlost čištění podle role"
 
 msgid ""
-"The wipe speed is determined by the speed of the current extrusion role. e."
-"g. if a wipe action is executed immediately following an outer wall "
+"The wipe speed is determined by the speed of the current extrusion role. "
+"e.g. if a wipe action is executed immediately following an outer wall "
 "extrusion, the speed of the outer wall extrusion will be utilized for the "
 "wipe action."
 msgstr ""
@@ -14179,8 +14175,8 @@ msgstr "Aktivovat řízení teploty"
 
 msgid ""
 "Enable this option for automated chamber temperature control. This option "
-"activates the emitting of an M191 command before the \"machine_start_gcode"
-"\"\n"
+"activates the emitting of an M191 command before the "
+"\"machine_start_gcode\"\n"
 " which sets the chamber temperature and waits until it is reached. In "
 "addition, it emits an M141 command at the end of the print to turn off the "
 "chamber heater, if present.\n"
@@ -15004,11 +15000,11 @@ msgid "Debug level"
 msgstr "Úroveň ladění"
 
 msgid ""
-"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, 5:"
-"trace\n"
+"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, "
+"5:trace\n"
 msgstr ""
-"Nastaví úroveň protokolování ladění. 0:fatal, 1:error, 2:warning, 3:info, 4:"
-"debug, 5:sledovat\n"
+"Nastaví úroveň protokolování ladění. 0:fatal, 1:error, 2:warning, 3:info, "
+"4:debug, 5:sledovat\n"
 
 msgid "Enable timelapse for print"
 msgstr ""
@@ -15444,8 +15440,8 @@ msgstr "Nahraný soubor nemohl být načten, protože je prázdný"
 msgid ""
 "Unknown file format. Input file must have .stl, .obj, .amf(.xml) extension."
 msgstr ""
-"Neznámý formát souboru. Vstupní soubor musí mít příponu .stl, .obj nebo ."
-"amf(.xml)"
+"Neznámý formát souboru. Vstupní soubor musí mít příponu .stl, .obj "
+"nebo .amf(.xml)"
 
 msgid "Unknown file format. Input file must have .3mf or .zip.amf extension."
 msgstr ""
@@ -16348,6 +16344,9 @@ msgstr "Smazat vstup"
 msgid "Network Test"
 msgstr ""
 
+msgid "Network test"
+msgstr ""
+
 msgid "Start Test Multi-Thread"
 msgstr ""
 
@@ -16476,8 +16475,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"We would rename the presets as \"Vendor Type Serial @printer you selected"
-"\".\n"
+"We would rename the presets as \"Vendor Type Serial @printer you "
+"selected\".\n"
 "To add preset for more printers, please go to printer selection"
 msgstr ""
 
@@ -17422,8 +17421,8 @@ msgid ""
 msgstr ""
 "Plochou na podložku\n"
 "Věděli jste, že můžete rychle nastavit orientaci modelu tak, aby jedna z "
-"jeho stěn spočívala na tiskovém podloží? Vyberte funkci \"Plochou na podložku"
-"\" nebo stiskněte klávesu <b>F</b>."
+"jeho stěn spočívala na tiskovém podloží? Vyberte funkci \"Plochou na "
+"podložku\" nebo stiskněte klávesu <b>F</b>."
 
 #: resources/data/hints.ini: [hint:Object List]
 msgid ""
@@ -17650,39 +17649,6 @@ msgid ""
 "ABS, appropriately increasing the heatbed temperature can reduce the "
 "probability of warping?"
 msgstr ""
-
-#~ msgid "Based on PrusaSlicer and BambuStudio"
-#~ msgstr "Založeno na PrusaSlicer a Bambustudio"
-
-#~ msgid "Orca Slicer is licensed under "
-#~ msgstr "Orca Slicer je licencován pod "
-
-#~ msgid "Associate .3mf files to OrcaSlicer"
-#~ msgstr "Přidružit soubory .3mf k OrcaSlicer"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
-#~ msgstr ""
-#~ "Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
-#~ "souborů .3mf"
-
-#~ msgid "Associate .stl files to OrcaSlicer"
-#~ msgstr "Přidružit .stl soubory k Orca Slicer"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
-#~ msgstr ""
-#~ "Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
-#~ "souborů .stl"
-
-#~ msgid "Associate .step/.stp files to OrcaSlicer"
-#~ msgstr "Přidružit soubory .step/.stp k OrcaSlicer"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .step files"
-#~ msgstr ""
-#~ "Pokud je povoleno, nastaví OrcaSlicer jako výchozí aplikaci pro otevírání "
-#~ "souborů .step"
 
 #~ msgid ""
 #~ "Improve shell precision by adjusting outer wall spacing. This also "
@@ -18349,12 +18315,12 @@ msgstr ""
 #~ "Najdete podrobnosti o kalibraci průtoku dynamiky v naší wiki.\n"
 #~ "\n"
 #~ "Obvykle kalibrace není potřebná. Při spuštění tisku s jednobarevným/"
-#~ "materiálovým filamentem a zaškrtnutou volbou \"kalibrace průtoku dynamiky"
-#~ "\" v menu spuštění tisku, tiskárna bude postupovat podle staré metody a "
-#~ "zkalibruje filament před tiskem. Při spuštění tisku s vícebarevným/"
-#~ "materiálovým filamentem bude tiskárna při každé změně filamentu používat "
-#~ "výchozí kompenzační parametr pro filament, což má většinou dobrý "
-#~ "výsledek.\n"
+#~ "materiálovým filamentem a zaškrtnutou volbou \"kalibrace průtoku "
+#~ "dynamiky\" v menu spuštění tisku, tiskárna bude postupovat podle staré "
+#~ "metody a zkalibruje filament před tiskem. Při spuštění tisku s "
+#~ "vícebarevným/materiálovým filamentem bude tiskárna při každé změně "
+#~ "filamentu používat výchozí kompenzační parametr pro filament, což má "
+#~ "většinou dobrý výsledek.\n"
 #~ "\n"
 #~ "Všimněte si, že existují některé případy, které mohou způsobit, že "
 #~ "výsledek kalibrace nebude spolehlivý: použití texturované podložky pro "

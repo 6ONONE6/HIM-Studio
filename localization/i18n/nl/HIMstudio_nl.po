@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-09 16:40+0800\n"
+"POT-Creation-Date: 2025-09-28 18:44+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1489,7 +1489,7 @@ msgstr ""
 "Configuratiebestand “%1%” werd geladen, maar sommige waarden werden niet "
 "herkend."
 
-msgid "Based on OrcaSlicer"
+msgid "Based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid ""
@@ -1632,21 +1632,6 @@ msgid ""
 msgstr ""
 "De versie van Orca Slicer is te oud en dient te worden bijgewerkt naar de "
 "nieuwste versie voordat deze normaal kan worden gebruikt"
-
-msgid "The latest version: "
-msgstr ""
-
-msgid "Current version: "
-msgstr ""
-
-msgid "New version found!"
-msgstr ""
-
-msgid "Check for update error: "
-msgstr ""
-
-msgid "New Version Check"
-msgstr ""
 
 msgid "Privacy Policy Update"
 msgstr ""
@@ -2868,13 +2853,13 @@ msgstr "Auteursrecht"
 msgid "License"
 msgstr "Licentie"
 
-msgid "HIM Studio is licensed under "
-msgstr ""
+msgid "Orca Slicer is licensed under "
+msgstr "Orca Slicer is gelicentieerd onder "
 
 msgid "GNU Affero General Public License, version 3"
 msgstr "GNU Affero Algemene Openbare Licentie, versie 3"
 
-msgid "HIM Studio is based on OrcaSlicer"
+msgid "Orca Slicer is based on PrusaSlicer and BambuStudio"
 msgstr ""
 
 msgid "Libraries"
@@ -2891,9 +2876,6 @@ msgstr ""
 #, c-format, boost-format
 msgid "About %s"
 msgstr "Over %s"
-
-msgid "HIM-Studio is based on OrcaSlicer."
-msgstr ""
 
 msgid "OrcaSlicer is based on BambuStudio, PrusaSlicer, and SuperSlicer."
 msgstr ""
@@ -3822,7 +3804,6 @@ msgid ""
 "Reset to 0."
 msgstr ""
 
-#, c-format, boost-format
 msgid ""
 "Lock depth should smaller than skin depth.\n"
 "Reset to 50% of skin depth."
@@ -4514,7 +4495,7 @@ msgstr "Volume:"
 msgid "Size:"
 msgstr "Maat:"
 
-#, c-format, boost-format
+#, boost-format
 msgid ""
 "Conflicts of G-code paths have been found at layer %d, z = %.2lf mm. Please "
 "separate the conflicted objects farther (%s <-> %s)."
@@ -6703,8 +6684,8 @@ msgstr "Kies Downloadmap"
 msgid "Associate"
 msgstr "Associeer"
 
-msgid "with HIM-Studio so that HIM-Studio can open models from"
-msgstr ""
+msgid "with OrcaSlicer so that Orca can open models from"
+msgstr "met OrcaSlicer zodat Orca modellen kan openen van"
 
 msgid "Current Association: "
 msgstr "Huidige associatie: "
@@ -6733,11 +6714,11 @@ msgstr "Noord-Amerika"
 msgid "Others"
 msgstr "Andere"
 
-msgid "Login Region"
+msgid "Login region"
 msgstr "Inlogregio"
 
-msgid "Stealth Mode"
-msgstr "Stealth-modus"
+msgid "Stealth mode"
+msgstr "Stealth modus"
 
 msgid ""
 "This stops the transmission of data to Bambu's cloud services. Users who "
@@ -6747,10 +6728,13 @@ msgstr ""
 "Gebruikers die geen BambuLab-machines gebruiken of alleen de LAN-modus "
 "gebruiken, kunnen deze functie veilig inschakelen."
 
+msgid "Network plugin"
+msgstr ""
+
 msgid "Enable network plugin"
 msgstr "Netwerkplug-in inschakelen"
 
-msgid "Use legacy network plugin (Takes effect after restarting HIM Studio)"
+msgid "Use legacy network plugin"
 msgstr ""
 
 msgid ""
@@ -6769,8 +6753,8 @@ msgstr "Imperiaal"
 msgid "Units"
 msgstr "Eenheden"
 
-msgid "Allow only one HIM Studio instance"
-msgstr ""
+msgid "Allow only one OrcaSlicer instance"
+msgstr "Sta slechts één OrcaSlicer-instantie toe"
 
 msgid ""
 "On OSX there is always only one instance of app running by default. However "
@@ -6783,15 +6767,17 @@ msgstr ""
 "instantie toe."
 
 msgid ""
-"If this is enabled, when starting HIM-Studio and another instance of the "
-"same HIM-Studio is already running, that instance will be reactivated "
+"If this is enabled, when starting OrcaSlicer and another instance of the "
+"same OrcaSlicer is already running, that instance will be reactivated "
 "instead."
 msgstr ""
+"Als deze optie is ingeschakeld, wordt OrcaSlicer opnieuw geactiveerd wanneer "
+"er al een ander exemplaar van OrcaSlicer is gestart."
 
 msgid "Home"
 msgstr "Thuis"
 
-msgid "Default Page"
+msgid "Default page"
 msgstr "Startpagina"
 
 msgid "Set the page opened on startup."
@@ -6896,14 +6882,17 @@ msgstr ""
 "Als dit is ingeschakeld, onthoudt Orca automatisch de filament-/"
 "procesconfiguratie voor elke printer en schakelt deze automatisch om."
 
-msgid "Show the step mesh parameter setting dialog."
+msgid "Show options when importing STEP file"
 msgstr ""
 
 msgid ""
 "If enabled,a parameter settings dialog will appear during STEP file import."
 msgstr ""
 
-msgid "Multi-device Management (Take effect after restarting HIM Studio)."
+msgid "Multi device management"
+msgstr "Beheer van meerdere apparaten"
+
+msgid "(Requires restart)"
 msgstr ""
 
 msgid ""
@@ -6937,35 +6926,38 @@ msgstr "Systeemsync"
 msgid "Clear my choice on the unsaved presets."
 msgstr "Wis keuze voor niet-opgeslagen presets."
 
-msgid "Associate files to HIM Studio"
-msgstr ""
-
 msgid "Associate files to OrcaSlicer"
 msgstr "Koppel bestanden aan OrcaSlicer"
 
-msgid "Associate .3mf files to HIM Studio"
-msgstr ""
+msgid "Associate .3mf files to OrcaSlicer"
+msgstr "Koppel .3mf-bestanden aan OrcaSlicer"
 
-msgid "If enabled, sets HIM Studio as default application to open .3mf files"
+msgid "If enabled, sets OrcaSlicer as default application to open .3mf files"
 msgstr ""
+"Indien ingeschakeld, wordt OrcaSlicer ingesteld als de standaardtoepassing "
+"om .3mf-bestanden te openen"
 
-msgid "Associate .stl files to HIM Studio"
-msgstr ""
+msgid "Associate .stl files to OrcaSlicer"
+msgstr "Koppel .stl-bestanden aan OrcaSlicer"
 
-msgid "If enabled, sets HIM Studio as default application to open .stl files"
+msgid "If enabled, sets OrcaSlicer as default application to open .stl files"
 msgstr ""
+"Indien ingeschakeld, wordt OrcaSlicer ingesteld als de standaardtoepassing "
+"om .stl-bestanden te openen"
 
-msgid "Associate .step/.stp files to HIM Studio"
-msgstr ""
+msgid "Associate .step/.stp files to OrcaSlicer"
+msgstr "Koppel .step/.stp bestanden aan OrcaSlicer"
 
-msgid "If enabled, sets HIM Studio as default application to open .step files"
+msgid "If enabled, sets OrcaSlicer as default application to open .step files"
 msgstr ""
+"Indien ingeschakeld, wordt OrcaSlicer ingesteld als de standaardtoepassing "
+"om .step-bestanden te openen"
 
-msgid "Associate web links to HIM Studio"
-msgstr ""
+msgid "Associate web links to OrcaSlicer"
+msgstr "Koppel weblinks aan OrcaSlicer"
 
-msgid "Associate URLs to HIM Studio"
-msgstr ""
+msgid "Associate URLs to OrcaSlicer"
+msgstr "Koppel URL's aan OrcaSlicer"
 
 msgid "Load All"
 msgstr ""
@@ -6979,7 +6971,10 @@ msgstr ""
 msgid "Load Geometry Only"
 msgstr ""
 
-msgid "Load Behaviour"
+msgid "Load behaviour"
+msgstr ""
+
+msgid "Behaviour"
 msgstr ""
 
 msgid "Should printer/filament/process settings be loaded when opening a .3mf?"
@@ -6991,16 +6986,16 @@ msgstr ""
 msgid "Maximum count of recent files"
 msgstr ""
 
-msgid "Add model files (stl/step) to recent file list."
+msgid "Add STL/STEP files to recent files list"
 msgstr ""
 
 msgid "Clear my choice on the unsaved projects."
 msgstr "Wis keuze voor niet-opgeslagen projecten."
 
-msgid "No warnings when loading 3MF with modified G-code"
+msgid "Don't warn when loading 3MF with modified G-code"
 msgstr "Geen waarschuwingen bij het laden van 3MF met aangepaste G-codes"
 
-msgid "Auto-Backup"
+msgid "Auto backup"
 msgstr "Automatisch een back-up maken"
 
 msgid ""
@@ -7018,10 +7013,13 @@ msgstr "De periode van de back-up in seconden."
 msgid "Downloads"
 msgstr ""
 
+msgid "Downloads folder"
+msgstr ""
+
 msgid "Dark Mode"
 msgstr "Donkere modus"
 
-msgid "Enable Dark mode"
+msgid "Enable dark mode"
 msgstr "Donkere modus inschakelen"
 
 msgid "Develop mode"
@@ -7817,8 +7815,8 @@ msgstr ""
 msgid ""
 "When recording timelapse without toolhead, it is recommended to add a "
 "\"Timelapse Wipe Tower\" \n"
-"by right-click the empty position of build plate and choose \"Add Primitive"
-"\"->\"Timelapse Wipe Tower\"."
+"by right-click the empty position of build plate and choose \"Add "
+"Primitive\"->\"Timelapse Wipe Tower\"."
 msgstr ""
 "Bij het opnemen van timelapse zonder toolhead is het aan te raden om een "
 "„Timelapse Wipe Tower” toe te voegen \n"
@@ -11645,8 +11643,8 @@ msgid "mm/s² or %"
 msgstr "mm/s² of %"
 
 msgid ""
-"Acceleration of sparse infill. If the value is expressed as a percentage (e."
-"g. 100%), it will be calculated based on the default acceleration."
+"Acceleration of sparse infill. If the value is expressed as a percentage "
+"(e.g. 100%), it will be calculated based on the default acceleration."
 msgstr ""
 "Versnelling van de schaarse invulling. Als de waarde wordt uitgedrukt als "
 "een percentage (bijvoorbeeld 100%), wordt deze berekend op basis van de "
@@ -11758,10 +11756,10 @@ msgstr "Volledige snelheid op laag"
 
 msgid ""
 "Fan speed will be ramped up linearly from zero at layer "
-"\"close_fan_the_first_x_layers\" to maximum at layer \"full_fan_speed_layer"
-"\". \"full_fan_speed_layer\" will be ignored if lower than "
-"\"close_fan_the_first_x_layers\", in which case the fan will be running at "
-"maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
+"\"close_fan_the_first_x_layers\" to maximum at layer "
+"\"full_fan_speed_layer\". \"full_fan_speed_layer\" will be ignored if lower "
+"than \"close_fan_the_first_x_layers\", in which case the fan will be running "
+"at maximum allowed speed at layer \"close_fan_the_first_x_layers\" + 1."
 msgstr ""
 
 msgid "layer"
@@ -13321,8 +13319,8 @@ msgid "Role base wipe speed"
 msgstr ""
 
 msgid ""
-"The wipe speed is determined by the speed of the current extrusion role. e."
-"g. if a wipe action is executed immediately following an outer wall "
+"The wipe speed is determined by the speed of the current extrusion role. "
+"e.g. if a wipe action is executed immediately following an outer wall "
 "extrusion, the speed of the outer wall extrusion will be utilized for the "
 "wipe action."
 msgstr ""
@@ -14091,8 +14089,8 @@ msgstr "Temperatuurregeling activeren"
 
 msgid ""
 "Enable this option for automated chamber temperature control. This option "
-"activates the emitting of an M191 command before the \"machine_start_gcode"
-"\"\n"
+"activates the emitting of an M191 command before the "
+"\"machine_start_gcode\"\n"
 " which sets the chamber temperature and waits until it is reached. In "
 "addition, it emits an M141 command at the end of the print to turn off the "
 "chamber heater, if present.\n"
@@ -14514,10 +14512,11 @@ msgid ""
 "Wipe tower is only compatible with relative mode. It is recommended on most "
 "printers. Default is checked."
 msgstr ""
-"Relatieve extrusie wordt aanbevolen bij gebruik van de optie \"label_objects"
-"\". Sommige extruders werken beter als deze optie niet is aangevinkt "
-"(absolute extrusiemodus). Wipe tower is alleen compatibel met relatieve "
-"modus. Het wordt aanbevolen op de meeste printers. Standaard is aangevinkt"
+"Relatieve extrusie wordt aanbevolen bij gebruik van de optie "
+"\"label_objects\". Sommige extruders werken beter als deze optie niet is "
+"aangevinkt (absolute extrusiemodus). Wipe tower is alleen compatibel met "
+"relatieve modus. Het wordt aanbevolen op de meeste printers. Standaard is "
+"aangevinkt"
 
 msgid ""
 "Classic wall generator produces walls with constant extrusion width and for "
@@ -14913,8 +14912,8 @@ msgid "Debug level"
 msgstr "Debuggen level"
 
 msgid ""
-"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, 5:"
-"trace\n"
+"Sets debug logging level. 0:fatal, 1:error, 2:warning, 3:info, 4:debug, "
+"5:trace\n"
 msgstr ""
 
 msgid "Enable timelapse for print"
@@ -16210,6 +16209,9 @@ msgstr "Invoer verwijderen"
 msgid "Network Test"
 msgstr "Netwerktest"
 
+msgid "Network test"
+msgstr "Netwerktest"
+
 msgid "Start Test Multi-Thread"
 msgstr "Multi-thread test starten"
 
@@ -16350,8 +16352,8 @@ msgstr ""
 "Wil je het herschrijven?"
 
 msgid ""
-"We would rename the presets as \"Vendor Type Serial @printer you selected"
-"\".\n"
+"We would rename the presets as \"Vendor Type Serial @printer you "
+"selected\".\n"
 "To add preset for more printers, please go to printer selection"
 msgstr ""
 
@@ -17627,60 +17629,6 @@ msgstr ""
 "Wist je dat bij het printen van materialen die gevoelig zijn voor "
 "kromtrekken, zoals ABS, een juiste verhoging van de temperatuur van het "
 "warmtebed de kans op kromtrekken kan verkleinen?"
-
-#~ msgid "Orca Slicer is licensed under "
-#~ msgstr "Orca Slicer is gelicentieerd onder "
-
-#~ msgid "with OrcaSlicer so that Orca can open models from"
-#~ msgstr "met OrcaSlicer zodat Orca modellen kan openen van"
-
-#~ msgid "Allow only one OrcaSlicer instance"
-#~ msgstr "Sta slechts één OrcaSlicer-instantie toe"
-
-#~ msgid ""
-#~ "If this is enabled, when starting OrcaSlicer and another instance of the "
-#~ "same OrcaSlicer is already running, that instance will be reactivated "
-#~ "instead."
-#~ msgstr ""
-#~ "Als deze optie is ingeschakeld, wordt OrcaSlicer opnieuw geactiveerd "
-#~ "wanneer er al een ander exemplaar van OrcaSlicer is gestart."
-
-#~ msgid "Multi-device Management (Take effect after restarting Orca Slicer)."
-#~ msgstr ""
-#~ "Beheer van meerdere apparaten (Werkt nadat Orca opnieuw is opgestart)."
-
-#~ msgid "Associate .3mf files to OrcaSlicer"
-#~ msgstr "Koppel .3mf-bestanden aan OrcaSlicer"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .3mf files"
-#~ msgstr ""
-#~ "Indien ingeschakeld, wordt OrcaSlicer ingesteld als de "
-#~ "standaardtoepassing om .3mf-bestanden te openen"
-
-#~ msgid "Associate .stl files to OrcaSlicer"
-#~ msgstr "Koppel .stl-bestanden aan OrcaSlicer"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .stl files"
-#~ msgstr ""
-#~ "Indien ingeschakeld, wordt OrcaSlicer ingesteld als de "
-#~ "standaardtoepassing om .stl-bestanden te openen"
-
-#~ msgid "Associate .step/.stp files to OrcaSlicer"
-#~ msgstr "Koppel .step/.stp bestanden aan OrcaSlicer"
-
-#~ msgid ""
-#~ "If enabled, sets OrcaSlicer as default application to open .step files"
-#~ msgstr ""
-#~ "Indien ingeschakeld, wordt OrcaSlicer ingesteld als de "
-#~ "standaardtoepassing om .step-bestanden te openen"
-
-#~ msgid "Associate web links to OrcaSlicer"
-#~ msgstr "Koppel weblinks aan OrcaSlicer"
-
-#~ msgid "Associate URLs to OrcaSlicer"
-#~ msgstr "Koppel URL's aan OrcaSlicer"
 
 #~ msgid "Alt + Mouse wheel"
 #~ msgstr "Alt + muiswiel"
