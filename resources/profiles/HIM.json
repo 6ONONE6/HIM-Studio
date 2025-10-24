@@ -57,28 +57,76 @@
             "sub_path": "filament/Bambu/HIM+Bambu PLA Matte @base.json"
         },
         {
+            "name": "HIM+Bambu PLA Basic @base",
+            "sub_path": "filament/Bambu/HIM+Bambu PLA Basic @base.json"
+        },
+        {
+            "name": "HIM+Bambu PLA Silk @base",
+            "sub_path": "filament/Bambu/HIM+Bambu PLA Silk @base.json"
+        },
+        {
+            "name": "HIM+Bambu PLA WOOD @base",
+            "sub_path": "filament/Bambu/HIM+Bambu PLA WOOD @base.json"
+        },
+        {
             "name": "HIM+eSUN PLA+ @base",
             "sub_path": "filament/eSUN/HIM+eSUN PLA+ @base.json"
+        },
+        {
+            "name": "HIM+eSUN PLA Silk @base",
+            "sub_path": "filament/eSUN/HIM+eSUN PLA Silk @base.json"
         },
         {
             "name": "HIM+kexcelled PLA @base",
             "sub_path": "filament/kexcelled/HIM+kexcelled PLA @base.json"
         },
         {
-            "name": "HIM+PolyLite PLA @base",
-            "sub_path": "filament/Polymaker/HIM+PolyLite PLA @base.json"
+            "name": "HIM+kexcelled PLA Silk @base",
+            "sub_path": "filament/kexcelled/HIM+kexcelled PLA Silk @base.json"
+        },
+        {
+            "name": "HIM+Polymaker PLA Matte @base",
+            "sub_path": "filament/Polymaker/HIM+Polymaker PLA Matte @base.json"
+        },
+        {
+            "name": "HIM+Polymaker PLA Basic @base",
+            "sub_path": "filament/Polymaker/HIM+Polymaker PLA Basic @base.json"
+        },
+        {
+            "name": "HIM+Polymaker PLA Silk @base",
+            "sub_path": "filament/Polymaker/HIM+Polymaker PLA Silk @base.json"
         },
         {
             "name": "HIM+SUNLU PLA Matte @base",
             "sub_path": "filament/SUNLU/HIM+SUNLU PLA Matte @base.json"
         },
         {
-            "name": "HIM+SUNLU Silk PLA+ @base",
-            "sub_path": "filament/SUNLU/HIM+SUNLU Silk PLA+ @base.json"
+            "name": "HIM+SUNLU PLA Silk @base",
+            "sub_path": "filament/SUNLU/HIM+SUNLU PLA Silk @base.json"
+        },
+        {
+            "name": "HIM+SUNLU PLA Basic @base",
+            "sub_path": "filament/SUNLU/HIM+SUNLU PLA Basic @base.json"
+        },
+        {
+            "name": "HIM+SUNLU PLA WOOD @base",
+            "sub_path": "filament/SUNLU/HIM+SUNLU PLA WOOD @base.json"
         },
         {
             "name": "HIM+Bambu PLA Matte @HIM F300A 0.4 nozzle",
             "sub_path": "filament/Bambu/HIM+Bambu PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+Bambu PLA Basic @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/HIM+Bambu PLA Basic @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+Bambu PLA Silk @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/HIM+Bambu PLA Silk @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+Bambu PLA WOOD @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/HIM+Bambu PLA WOOD @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "HIM+kexcelled PLA K5 @HIM F300A 0.4 nozzle",
@@ -89,20 +137,48 @@
             "sub_path": "filament/kexcelled/HIM+kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle.json"
         },
         {
+            "name": "HIM+kexcelled PLA Silk @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/kexcelled/HIM+kexcelled PLA Silk @HIM F300A 0.4 nozzle.json"
+        },
+        {
             "name": "HIM+SUNLU PLA Matte @HIM F300A 0.4 nozzle",
             "sub_path": "filament/SUNLU/HIM+SUNLU PLA Matte @HIM F300A 0.4 nozzle.json"
         },
         {
-            "name": "HIM+SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/HIM+SUNLU PLA+ Silk @HIM F300A 0.4 nozzle.json"
+            "name": "HIM+SUNLU PLA Silk @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/HIM+SUNLU PLA Silk @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+SUNLU PLA Basic @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/HIM+SUNLU PLA Basic @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+SUNLU PLA WOOD @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/HIM+SUNLU PLA WOOD @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "HIM+eSUN PLA Matte @HIM F300A 0.4 nozzle",
             "sub_path": "filament/eSUN/HIM+eSUN PLA Matte @HIM F300A 0.4 nozzle.json"
         },
         {
-            "name": "HIM+PolyLite PLA @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Polymaker/HIM+PolyLite PLA @HIM F300A 0.4 nozzle.json"
+            "name": "HIM+eSUN PLA Basic @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/HIM+eSUN PLA Basic @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+eSUN PLA Silk @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/HIM+eSUN PLA Silk @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+Polymaker PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Polymaker/HIM+Polymaker PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+Polymaker PLA Basic @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Polymaker/HIM+Polymaker PLA Basic @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM+Polymaker PLA Silk @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Polymaker/HIM+Polymaker PLA Silk @HIM F300A 0.4 nozzle.json"
         }
     ],
     "machine_list": [

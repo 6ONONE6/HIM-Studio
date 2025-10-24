@@ -1,7 +1,7 @@
 {
     "type": "filament",
-    "name": "HIM+PolyLite PLA @HIM F300A 0.4 nozzle",
-    "inherits": "HIM+PolyLite PLA @base",
+    "name": "HIM+Polymaker PLA Silk @HIM F300A 0.4 nozzle",
+    "inherits": "HIM+Polymaker PLA Silk @base",
     "from": "system",
     "setting_id": "OGFSL19",
     "instantiation": "true",
@@ -21,7 +21,7 @@
         "230"
     ],
     "filament_flow_ratio": [
-        "0.95"
+        "0.9215"
     ],
     "enable_pressure_advance": [
         "1"
@@ -30,19 +30,22 @@
         "0.06"
     ],
     "nozzle_temperature": [
-        "200"
+        "205"
     ],
     "nozzle_temperature_initial_layer": [
-        "200"
+        "210"
     ],
     "hot_plate_temp": [
-        "60"
+        "55"
     ],
     "hot_plate_temp_initial_layer": [
-        "60"
+        "55"
     ],
     "filament_max_volumetric_speed": [
-        "16"
+        "12"
+    ],
+    "filament_retraction_length": [
+        "0.8"
     ],
     "slow_down_layer_time": [
         "0"
