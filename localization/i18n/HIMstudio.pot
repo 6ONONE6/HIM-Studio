@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-26 10:38+0800\n"
+"POT-Creation-Date: 2025-10-29 11:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1967,6 +1967,12 @@ msgstr ""
 msgid "Replace the selected part with new STL"
 msgstr ""
 
+msgid "Replace all with STL"
+msgstr ""
+
+msgid "Replace all selected parts with STL from folder"
+msgstr ""
+
 msgid "Change filament"
 msgstr ""
 
@@ -2146,6 +2152,30 @@ msgid "Delete Plate"
 msgstr ""
 
 msgid "Remove the selected plate"
+msgstr ""
+
+msgid "Add instance"
+msgstr ""
+
+msgid "Add one more instance of the selected object"
+msgstr ""
+
+msgid "Remove instance"
+msgstr ""
+
+msgid "Remove one instance of the selected object"
+msgstr ""
+
+msgid "Set number of instances"
+msgstr ""
+
+msgid "Change the number of instances of the selected object"
+msgstr ""
+
+msgid "Fill bed with instances"
+msgstr ""
+
+msgid "Fill the remaining area of bed with instances of the selected object"
 msgstr ""
 
 msgid "Clone"
@@ -2649,9 +2679,9 @@ msgid "Top"
 msgstr ""
 
 msgid ""
-"The fan controls the temperature during printing to improve print "
-"quality.The system automatically adjusts the fan's switch and speed "
-"according to different printing materials."
+"The fan controls the temperature during printing to improve print quality."
+"The system automatically adjusts the fan's switch and speed according to "
+"different printing materials."
 msgstr ""
 
 msgid ""
@@ -2893,7 +2923,25 @@ msgstr ""
 msgid "Access code:%s IP address:%s"
 msgstr ""
 
-msgid "Storage needs to be inserted before printing via LAN."
+msgid "A Storage needs to be inserted before printing via LAN."
+msgstr ""
+
+msgid ""
+"Sending print job over LAN, but the Storage in the printer is abnormal and "
+"print-issues may be caused by this."
+msgstr ""
+
+msgid ""
+"The Storage in the printer is abnormal. Please replace it with a normal "
+"Storage before sending print job to printer."
+msgstr ""
+
+msgid ""
+"The Storage in the printer is read-only. Please replace it with a normal "
+"Storage before sending print job to printer."
+msgstr ""
+
+msgid "Encountered an unknown error with the Storage status. Please try again."
 msgstr ""
 
 msgid "Sending G-code file over LAN"
@@ -2907,6 +2955,21 @@ msgid "Successfully sent. Close current page in %s s"
 msgstr ""
 
 msgid "Storage needs to be inserted before sending to printer."
+msgstr ""
+
+msgid ""
+"Sending G-code file over LAN, but the Storage in the printer is abnormal and "
+"print-issues may be caused by this."
+msgstr ""
+
+msgid ""
+"The Storage in the printer is abnormal. Please replace it with a normal "
+"Storage before sending to printer."
+msgstr ""
+
+msgid ""
+"The Storage in the printer is read-only. Please replace it with a normal "
+"Storage before sending to printer."
 msgstr ""
 
 msgid "Importing SLA archive"
@@ -5150,13 +5213,10 @@ msgstr ""
 msgid "Max flowrate"
 msgstr ""
 
-msgid "Junction Deviation"
-msgstr ""
-
-msgid "Junction Deviation calibration"
-msgstr ""
-
 msgid "Cornering"
+msgstr ""
+
+msgid "Cornering calibration"
 msgstr ""
 
 msgid "Input Shaping Frequency"
@@ -6716,6 +6776,34 @@ msgstr ""
 msgid "File for the replace wasn't selected"
 msgstr ""
 
+msgid "Select folder to replace from"
+msgstr ""
+
+msgid "Directory for the replace wasn't selected"
+msgstr ""
+
+msgid "Replaced with STLs from directory:\n"
+msgstr ""
+
+#, possible-boost-format
+msgid "✖ Skipped %1%: same file.\n"
+msgstr ""
+
+#, possible-boost-format
+msgid "✖ Skipped %1%: file does not exist.\n"
+msgstr ""
+
+#, possible-boost-format
+msgid "✖ Skipped %1%: failed to replace.\n"
+msgstr ""
+
+#, possible-boost-format
+msgid "✔ Replaced %1%.\n"
+msgstr ""
+
+msgid "Replaced volumes"
+msgstr ""
+
 msgid "Please select a file"
 msgstr ""
 
@@ -7440,6 +7528,14 @@ msgid ""
 "difference together."
 msgstr ""
 
+msgid "Allow Abnormal Storage"
+msgstr ""
+
+msgid ""
+"This allows the use of Storage that is marked as abnormal by the Printer.\n"
+"Use at your own risk, can cause issues!"
+msgstr ""
+
 msgid "Log Level"
 msgstr ""
 
@@ -7991,7 +8087,10 @@ msgid ""
 "information."
 msgstr ""
 
-msgid "Storage is not available or is in read-only mode."
+msgid "Storage needs to be inserted before printing via LAN."
+msgstr ""
+
+msgid "Storage is in abnormal state or is in read-only mode."
 msgstr ""
 
 msgid "Storage needs to be inserted before printing."
@@ -8779,10 +8878,6 @@ msgstr ""
 msgid "Single extruder multi-material parameters"
 msgstr ""
 
-#, possible-c-format, possible-boost-format
-msgid "Extruder %d"
-msgstr ""
-
 msgid ""
 "This is a single extruder multi-material printer, diameters of all extruders "
 "will be set to the new value. Do you want to proceed?"
@@ -9238,6 +9333,9 @@ msgstr ""
 msgid ""
 "Please check whether the nozzle type of the device is the same as the preset "
 "nozzle type."
+msgstr ""
+
+msgid "Storage is not available or is in read-only mode."
 msgstr ""
 
 #, possible-c-format, possible-boost-format
@@ -12266,6 +12364,9 @@ msgstr ""
 msgid "Default jerk."
 msgstr ""
 
+msgid "Junction Deviation"
+msgstr ""
+
 msgid ""
 "Marlin Firmware Junction Deviation (replaces the traditional XY Jerk "
 "setting)."
@@ -13147,7 +13248,9 @@ msgid "Maximum Junction Deviation"
 msgstr ""
 
 msgid ""
-"Maximum junction deviation (M205 J, only apply if JD > 0 for Marlin Firmware)"
+"Maximum junction deviation (M205 J, only apply if JD > 0 for Marlin "
+"Firmware\n"
+"If your Marlin 2 printer uses Classic Jerk set this value to 0.)"
 msgstr ""
 
 msgid "Minimum speed for extruding"
@@ -14424,14 +14527,6 @@ msgid ""
 "are harder to remove, thus it is recommended to enable top support "
 "interfaces instead of a high branch density value if dense interfaces are "
 "needed."
-msgstr ""
-
-msgid "Adaptive layer height"
-msgstr ""
-
-msgid ""
-"Enabling this option means the height of tree support layer except the first "
-"will be automatically calculated."
 msgstr ""
 
 msgid "Auto brim width"
@@ -16268,6 +16363,12 @@ msgstr ""
 msgid "Comma-separated list of printing speeds"
 msgstr ""
 
+msgid "Pressure Advance Guide"
+msgstr ""
+
+msgid "Adaptive Pressure Advance Guide"
+msgstr ""
+
 msgid ""
 "Please input valid values:\n"
 "Start PA: >= 0.0\n"
@@ -16311,6 +16412,9 @@ msgstr ""
 msgid "Temp step: "
 msgstr ""
 
+msgid "Wiki Guide: Temperature Calibration"
+msgstr ""
+
 msgid ""
 "Please input valid values:\n"
 "Start temp: <= 350\n"
@@ -16325,6 +16429,9 @@ msgid "Start volumetric speed: "
 msgstr ""
 
 msgid "End volumetric speed: "
+msgstr ""
+
+msgid "Wiki Guide: Volumetric Speed Calibration"
 msgstr ""
 
 msgid ""
@@ -16343,6 +16450,9 @@ msgstr ""
 msgid "End speed: "
 msgstr ""
 
+msgid "Wiki Guide: VFA"
+msgstr ""
+
 msgid ""
 "Please input valid values:\n"
 "start > 10\n"
@@ -16354,6 +16464,9 @@ msgid "Start retraction length: "
 msgstr ""
 
 msgid "End retraction length: "
+msgstr ""
+
+msgid "Wiki Guide: Retraction Calibration"
 msgstr ""
 
 msgid "Input shaping Frequency test"
@@ -16391,6 +16504,9 @@ msgid ""
 "This will use the printer's default or saved value."
 msgstr ""
 
+msgid "Wiki Guide: Input Shaping Calibration"
+msgstr ""
+
 msgid ""
 "Please input valid values:\n"
 "(0 < FreqStart < FreqEnd < 500)"
@@ -16426,27 +16542,52 @@ msgid ""
 "Please input a valid damping factor (0 <= DampingStart < DampingEnd <= 1)"
 msgstr ""
 
-msgid "Junction Deviation test"
+msgid "Cornering test"
 msgstr ""
 
-msgid "Start junction deviation: "
+msgid "SCV-V2"
 msgstr ""
 
-msgid "End junction deviation: "
+msgid "Start: "
 msgstr ""
 
-msgid "Junction Deviation settings"
+msgid "End: "
 msgstr ""
 
-msgid "Note: Lower values = sharper corners but slower speeds"
+msgid "Cornering settings"
+msgstr ""
+
+msgid "Note: Lower values = sharper corners but slower speeds.\n"
 msgstr ""
 
 msgid ""
-"Please input valid values:\n"
-"(0 <= Junction Deviation < 1)"
+"Marlin 2 Junction Deviation detected:\n"
+"To test Classic Jerk, set 'Maximum Junction Deviation' in Motion ability to "
+"0."
 msgstr ""
 
-msgid "NOTE: High values may cause Layer shift"
+msgid ""
+"Marlin 2 Classic Jerk detected:\n"
+"To test Junction Deviation, set 'Maximum Junction Deviation' in Motion "
+"ability to a value > 0."
+msgstr ""
+
+msgid ""
+"RepRap detected: Jerk in mm/s.\n"
+"OrcaSlicer will convert the values to mm/min when necessary."
+msgstr ""
+
+msgid "Wiki Guide: Cornering Calibration"
+msgstr ""
+
+#, possible-c-format, possible-boost-format
+msgid ""
+"Please input valid values:\n"
+"(0 <= Cornering <= %s)"
+msgstr ""
+
+#, possible-c-format, possible-boost-format
+msgid "NOTE: High values may cause Layer shift (>%s)"
 msgstr ""
 
 msgid "Send G-code to printer host"
@@ -17063,8 +17204,8 @@ msgid "nozzle size memorized: %d"
 msgstr ""
 
 msgid ""
-"The size of nozzle type in preset is not consistent with memorized "
-"nozzle.Did you change your nozzle lately ? "
+"The size of nozzle type in preset is not consistent with memorized nozzle."
+"Did you change your nozzle lately ? "
 msgstr ""
 
 #, possible-c-format, possible-boost-format
