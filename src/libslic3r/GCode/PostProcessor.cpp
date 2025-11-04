@@ -146,10 +146,6 @@ static int run_script(const std::string &script, const std::string &gcode, std::
 }
 #endif
 
-
-
-
-
 static int run_script(const std::string& script, const std::string& gcode, std::string& /*std_err*/)
 {
     // Unpack the argument list provided by the user.
