@@ -8,5 +8,5 @@
     "bed_model": "",
     "bed_texture": "HIM_bed_texture.svg",
     "hotend_model": "",
-    "default_materials": "HIM+kexcelled PLA K5 @HIM F300A 0.4 nozzle"
+    "default_materials": ""
 }

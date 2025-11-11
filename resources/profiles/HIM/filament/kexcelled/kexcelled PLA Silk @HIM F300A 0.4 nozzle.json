@@ -1,0 +1,59 @@
+{
+    "type": "filament",
+    "setting_id": "AliZF300AFSA04",
+    "name": "kexcelled PLA Silk @HIM F300A 0.4 nozzle",
+    "inherits": "kexcelled PLA Silk @base",
+    "from": "system",
+    "instantiation": "true",
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "pressure_advance": [
+        "0.02"
+    ],
+    "complete_print_exhaust_fan_speed": [
+        "80"
+    ],
+    "during_print_exhaust_fan_speed": [
+        "60"
+    ],
+    "filament_cost": [
+        "20"
+    ],
+    "filament_density": [
+        "1.24"
+    ],
+    "filament_flow_ratio": [
+        "0.987"
+    ],
+    "filament_max_volumetric_speed": [
+        "16"
+    ],
+    "filament_retraction_length": [
+        "0.8"
+    ],
+    "filament_start_gcode": [
+        "; Filament start gcode\n"
+    ],
+    "filament_wipe_distance": [
+        "nil"
+    ],
+    "nozzle_temperature_range_high": [
+        "240"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "210"
+    ],
+    "nozzle_temperature": [
+        "210"
+    ],
+    "slow_down_layer_time": [
+        "8"
+    ],
+    "temperature_vitrification": [
+        "60"
+    ],
+    "compatible_printers": [
+        "HIM F300A 0.4 nozzle"
+    ]
+}
