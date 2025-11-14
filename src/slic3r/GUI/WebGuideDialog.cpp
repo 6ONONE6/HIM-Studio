@@ -702,7 +702,36 @@ static std::string get_first_added_preset(const std::map<std::string, std::strin
     return *diff.begin();
 }
 
-bool GuideFrame::apply_config(AppConfig *app_config, PresetBundle *preset_bundle, const PresetUpdater *updater, bool& apply_keeped_changes)
+void GuideFrame::PrioritizeVendorModels(const std::string& preferred_vendor)
+{
+    if (preferred_vendor.empty())
+        return;
+    if (!m_ProfileJson.contains("model"))
+        return;
+
+    json front = json::array();
+    json rest  = json::array();
+
+    for (auto& item : m_ProfileJson["model"]) {
+        if (item.is_object() && item.contains("vendor") && item["vendor"].is_string() &&
+            item["vendor"].get<std::string>() == preferred_vendor) {
+            front.push_back(item);
+        } else {
+            rest.push_back(item);
+        }
+    }
+
+    if (!front.empty()) {
+        json combined = json::array();
+        for (auto& it : front)
+            combined.push_back(it);
+        for (auto& it : rest)
+            combined.push_back(it);
+        m_ProfileJson["model"] = combined;
+    }
+}
+
+bool GuideFrame::apply_config(AppConfig* app_config, PresetBundle* preset_bundle, const PresetUpdater* updater, bool& apply_keeped_changes)
 {
     const auto enabled_vendors = m_appconfig_new.vendors();
     const auto old_enabled_vendors = app_config->vendors();
@@ -1064,6 +1093,10 @@ int GuideFrame::LoadProfileData()
         m_Res["command"]     = "userguide_profile_load_finish";
         m_Res["sequence_id"] = "10001";
         wxString strJS       = wxString::Format("HandleStudio(%s)", m_Res.dump(-1, ' ', true));
+
+        // SuK - Prioritize Vendor Models
+        PrioritizeVendorModels("HIM");
+
         if (!m_destroy)
             wxGetApp().CallAfter([this, strJS] { RunScript(strJS); });
 
