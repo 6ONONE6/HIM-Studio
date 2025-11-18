@@ -815,7 +815,7 @@ NewCalibrationHistoryDialog::NewCalibrationHistoryDialog(wxWindow *parent, const
     panel_sizer->AddSpacer(FromDIP(25));
 
     auto       btn_sizer = new wxBoxSizer(wxHORIZONTAL);
-    Button *   ok_btn  = new Button(top_panel, _L("Ok"));
+    Button *   ok_btn  = new Button(top_panel, _L("OK"));
     StateColor btn_bg_green(std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed), std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
                             std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
     ok_btn->SetBackgroundColour(*wxWHITE);
