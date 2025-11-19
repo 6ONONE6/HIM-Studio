@@ -109,13 +109,14 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/dev-utils/platform/msw/OrcaSlicer.man
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/dev-utils/platform/osx/Info.plist.in ${CMAKE_CURRENT_BINARY_DIR}/Info.plist @ONLY)
 if (WIN32)
     add_library(OrcaSlicer SHARED OrcaSlicer.cpp OrcaSlicer.hpp dev-utils/BaseException.cpp dev-utils/BaseException.h dev-utils/StackWalker.cpp dev-utils/StackWalker.h)
+	# setOrcaSlicer.dll outputName HIMstudio.dll
 	set_target_properties(OrcaSlicer PROPERTIES
 		OUTPUT_NAME "HIMstudio"
         RUNTIME_OUTPUT_NAME "HIMstudio"
         ARCHIVE_OUTPUT_NAME "HIMstudio"
     )
     if (MINGW)
-        # 保证 MinGW 不会生成 lib 前缀
+	# Ensure MinGW does not generate the lib prefix
         set_target_properties(OrcaSlicer PROPERTIES PREFIX "")
     endif()
 else ()
