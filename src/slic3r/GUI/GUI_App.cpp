@@ -4830,12 +4830,15 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
 
                     if (ret == wxYES) {
                         wxLaunchDefaultBrowser(downloadUrl);
+                    } else {
+                        check_new_version_him_profiles();
                     }
                 } else {
                     wxLogMessage("almost newest");
                     if (by_user != 0) {
                         this->no_new_version();
                     }
+                    check_new_version_him_profiles();
                 }
             } catch (std::exception& e) {
                 wxLogError("parse update info fail%s", e.what());
@@ -4849,6 +4852,642 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
 
     request.Start();
 }
+
+void GUI_App::check_new_version_him_profiles()
+{
+    wxEvtHandler*     handler = wxTheApp->GetTopWindow();
+    wxWebRequest      request;
+    const std::string updates_url = "https://gitee.com/nullptr01/him-studio-profiles/raw/master/updates.json";
+    request                       = wxWebSession::GetDefault().CreateRequest(handler, updates_url);
+
+    // helpers: parse version string "01.02.03.00" or "1.2.3" -> vector<int>
+    auto parse_version = [](const std::string& s) {
+        std::vector<int> parts;
+        std::string      cur;
+        for (char ch : s) {
+            if (ch == '.') {
+                if (!cur.empty()) {
+                    parts.push_back(std::stoi(cur));
+                    cur.clear();
+                }
+            } else if (std::isdigit(static_cast<unsigned char>(ch))) {
+                cur.push_back(ch);
+            } else {
+                // ignore non-digit/non-dot
+            }
+        }
+        if (!cur.empty())
+            parts.push_back(std::stoi(cur));
+        return parts;
+    };
+    // compare two version vectors: -1 a<b, 0 equal, 1 a>b
+    auto compare_version_vec = [](const std::vector<int>& a, const std::vector<int>& b) -> int {
+        size_t n = std::max(a.size(), b.size());
+        for (size_t i = 0; i < n; ++i) {
+            int va = (i < a.size()) ? a[i] : 0;
+            int vb = (i < b.size()) ? b[i] : 0;
+            if (va < vb)
+                return -1;
+            if (va > vb)
+                return 1;
+        }
+        return 0;
+    };
+    auto version_greater = [&](const std::string& a, const std::string& b) -> bool {
+        return compare_version_vec(parse_version(a), parse_version(b)) > 0;
+    };
+    // check if localVersion in [minv, maxv] (empty min/max means open ended)
+    auto in_range = [&](const std::string& local, const std::string& minv, const std::string& maxv) -> bool {
+        auto lv = parse_version(local);
+        if (!minv.empty()) {
+            if (compare_version_vec(lv, parse_version(minv)) < 0)
+                return false;
+        }
+        if (!maxv.empty()) {
+            if (compare_version_vec(lv, parse_version(maxv)) > 0)
+                return false;
+        }
+        return true;
+    };
+
+    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [this, updates_url, parse_version, compare_version_vec, version_greater,
+                                               in_range](wxWebRequestEvent& event) {
+        if (event.GetState() == wxWebRequest::State_Completed) {
+            wxString    response = event.GetResponse().AsString();
+            std::string jsonStr  = response.utf8_string();
+            wxLogMessage("received HIM profiles updates info:\n%s", response.c_str());
+
+            // 1) read local profiles/HIM.json
+            std::string local_profile_version = "0.0.0";
+            std::string local_force           = "0";
+            try {
+                wxFileName exePath(wxStandardPaths::Get().GetExecutablePath());
+                wxString   baseDir = exePath.GetPath();
+                wxFileName localFile(baseDir + wxFILE_SEP_PATH + "resources" + wxFILE_SEP_PATH + "profiles" + wxFILE_SEP_PATH + "HIM.json");
+                std::string localPathStd = localFile.GetFullPath().ToStdString();
+
+                std::ifstream ifs(localPathStd);
+                if (ifs) {
+                    nlohmann::json localJson;
+                    ifs >> localJson;
+                    if (localJson.contains("version"))
+                        local_profile_version = localJson["version"].get<std::string>();
+                    if (localJson.contains("force_update"))
+                        local_force = localJson["force_update"].get<std::string>();
+                } else {
+                    wxLogWarning("Local HIM.json not found at: %s", localFile.GetFullPath());
+                }
+            } catch (std::exception& e) {
+                wxLogError("Failed to read local HIM.json: %s", e.what());
+            }
+
+            // 2) parse remote updates.json
+            try {
+                nlohmann::json j = nlohmann::json::parse(jsonStr);
+
+                // expected structure { "version":"1.3.1.0", "compatible_app": { "min":"1.3.0", "max":"1.3.99" },
+                // "download-url":"", "notes": "..." }
+                std::string remote_version;
+                std::string download_url;
+                std::string notes;
+                std::string compat_min, compat_max;
+
+                if (j.contains("version"))
+                    remote_version = j["version"].get<std::string>();
+                if (j.contains("download-url"))
+                    download_url = j["download-url"].get<std::string>();
+                if (j.contains("notes"))
+                    notes = j["notes"].get<std::string>();
+                if (j.contains("compatible_app")) {
+                    auto& c = j["compatible_app"];
+                    if (c.is_object()) {
+                        if (c.contains("min"))
+                            compat_min = c["min"].get<std::string>();
+                        if (c.contains("max"))
+                            compat_max = c["max"].get<std::string>();
+                    }
+                }
+
+                if (remote_version.empty()) {
+                    wxLogWarning("Remote updates.json does not contain 'version' field.");
+                    return;
+                }
+
+                // 3) check compatibility: use compatible_app to validate current application version
+                std::string app_version    = std::string(HIM_VERSION); // your app version macro
+                bool        app_compatible = true;
+                if (!compat_min.empty() || !compat_max.empty()) {
+                    app_compatible = in_range(app_version, compat_min, compat_max);
+                } else {
+                    // if no compatible_app given, use conservative default: same major.minor between app and remote package version
+                    // parse remote_version as package version fallback
+                    auto rv = parse_version(remote_version);
+                    auto av = parse_version(app_version);
+                    if (av.size() >= 2 && rv.size() >= 2) {
+                        app_compatible = (av[0] == rv[0]) && (av[1] == rv[1]);
+                    }
+                }
+
+                if (!app_compatible) {
+                    wxLogMessage("Remote HIM profiles version %s is not compatible with this application version %s. Skipping.",
+                                 remote_version, app_version);
+                    wxMessageBox(wxString::Format("Found HIM profiles version %s, but it's not compatible with this application version "
+                                                  "%s. Update skipped.",
+                                                  remote_version, app_version),
+                                 _L("HIM Profiles - Incompatible"), wxOK | wxICON_INFORMATION);
+                    return;
+                }
+
+                // 4) compare local profile version vs remote package version
+                bool need_update = version_greater(remote_version, local_profile_version);
+                if (!need_update) {
+                    wxLogMessage("HIM profiles are up-to-date (local=%s, remote=%s).", local_profile_version, remote_version);
+                    return;
+                }
+
+                // 5) update is available and compatible. Notify user (no download/install executed here).
+                std::string msg = "A new HIM profiles package is available.\n\n";
+                msg += "Local version: " + local_profile_version + "\n";
+                msg += "Remote version: " + remote_version + "\n\n";
+                if (!notes.empty())
+                    msg += "Notes:\n" + notes + "\n\n";
+                msg += "No automatic install is performed. Please download the package and install it manually (or use the OTA installer "
+                       "you maintain).";
+
+                // If there's a download URL we show it and allow user to open it.
+                if (!download_url.empty()) {
+                    int ret = wxMessageBox(_L(msg), _L("HIM Profiles Update Available"), wxYES_NO | wxICON_INFORMATION);
+                    if (ret == wxYES) {
+                        install_him_profiles_from_url(download_url, remote_version);
+                    } else {
+                        // user postponed; you may choose to mark internal state here
+                        wxLogMessage("User postponed HIM profiles update (remote %s).", remote_version);
+                    }
+                } else {
+                    wxMessageBox(_L(msg), _L("HIM Profiles Update Available"), wxOK | wxICON_INFORMATION);
+                }
+
+            } catch (std::exception& e) {
+                wxLogError("Failed to parse remote HIM updates.json: %s", e.what());
+            }
+
+        } else if (event.GetState() == wxWebRequest::State_Failed) {
+            wxLogError("HIM profiles update check failed: %s", event.GetErrorDescription());
+            // If you want to alert user when invoked manually, you can add a MessageBox here
+        }
+    });
+
+    request.Start();
+}
+
+void GUI_App::install_him_profiles_from_url(const std::string& download_url, const std::string& remote_version)
+{
+    // Run heavy work in background
+    std::thread([this, download_url, remote_version]() {
+        try {
+            // 1) prepare paths
+            std::string             data_dir_str = data_dir();
+            boost::filesystem::path data_dir_path(data_dir_str);
+
+            // ota folder: <data_dir>/ota/profiles/HIM/
+            boost::filesystem::path ota_profiles = data_dir_path / "ota" / "profiles" / "HIM";
+            boost::filesystem::create_directories(ota_profiles);
+
+            // backups folder: <data_dir>/ota/backups/
+            boost::filesystem::path ota_backups = data_dir_path / "ota" / "backups";
+            boost::filesystem::create_directories(ota_backups);
+
+            // exe resources folder: <exe_dir>/resources/profiles/
+            wxFileName              exePath(wxStandardPaths::Get().GetExecutablePath());
+            wxString                baseDir      = exePath.GetPath();
+            boost::filesystem::path profiles_dir = boost::filesystem::path(baseDir.ToStdString()) / "resources" / "profiles";
+            boost::filesystem::create_directories(profiles_dir);
+
+            // timestamp for unique names
+            std::time_t ts    = std::time(nullptr);
+            std::string tsstr = std::to_string(ts);
+
+            // target zip path
+            boost::filesystem::path zip_path    = ota_profiles / ("HIM_pkg_" + tsstr + ".zip");
+            boost::filesystem::path tmp_extract = ota_profiles / ("tmp_HIM_" + tsstr);
+
+            // 2) download file (try curl, powershell, then fail)
+            bool downloaded = false;
+            int  exitcode   = -1;
+
+            // prefer curl
+            {
+                std::ostringstream cmd;
+                // -L follow redirects, -s silent, -S show error, -f fail on http errors, -o output
+                cmd << "curl -L -f -s -S -o \"" << zip_path.string() << "\" \"" << download_url << "\"";
+#ifdef _WIN32
+                // on Windows, ensure we run via cmd /C so that quotes are handled
+                std::string wcmd = std::string("cmd /C ") + cmd.str();
+                exitcode         = ::wxExecute(wcmd, wxEXEC_SYNC);
+#else
+                exitcode = ::wxExecute(cmd.str(), wxEXEC_SYNC);
+#endif
+                if (exitcode == 0 && boost::filesystem::exists(zip_path)) {
+                    downloaded = true;
+                }
+            }
+
+            // fallback: PowerShell (Windows) or wget (unix)
+#ifdef _WIN32
+            if (!downloaded) {
+                // try PowerShell Invoke-WebRequest
+                std::ostringstream ps;
+                ps << "powershell -NoProfile -Command \"try { Invoke-WebRequest -Uri '" << download_url << "' -OutFile '"
+                   << zip_path.string() << "' -UseBasicParsing -ErrorAction Stop; exit 0 } catch { exit 1 }\"";
+                exitcode = ::wxExecute(ps.str(), wxEXEC_SYNC);
+                if (exitcode == 0 && boost::filesystem::exists(zip_path))
+                    downloaded = true;
+            }
+#else
+            if (!downloaded) {
+                // try wget
+                std::ostringstream cmd2;
+                cmd2 << "wget -q -O \"" << zip_path.string() << "\" \"" << download_url << "\"";
+                exitcode = ::wxExecute(cmd2.str(), wxEXEC_SYNC);
+                if (exitcode == 0 && boost::filesystem::exists(zip_path))
+                    downloaded = true;
+            }
+#endif
+
+            if (!downloaded) {
+                // download failed
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("Failed to download HIM profiles package. Please check network or download manually."),
+                                 _L("HIM Profiles Update"), wxICON_ERROR);
+                });
+                // cleanup any partial file
+                boost::system::error_code e1;
+                if (boost::filesystem::exists(zip_path))
+                    boost::filesystem::remove(zip_path, e1);
+                return;
+            }
+
+            // Optional: attempt to fetch an expected SHA256 from download_url + ".sha256" (if you will publish it there)
+            std::string expected_sha256;
+            try {
+                std::string             sha_url1 = download_url + ".sha256";
+                boost::filesystem::path sha_tmp  = ota_profiles / ("HIM_pkg_" + tsstr + ".sha256");
+                std::ostringstream      cmd;
+#ifdef _WIN32
+                cmd << "cmd /C curl -L -f -s -S -o \"" << sha_tmp.string() << "\" \"" << sha_url1 << "\"";
+#else
+                cmd << "curl -L -f -s -S -o \"" << sha_tmp.string() << "\" \"" << sha_url1 << "\"";
+#endif
+                int rc = ::wxExecute(cmd.str(), wxEXEC_SYNC);
+                if (rc == 0 && boost::filesystem::exists(sha_tmp)) {
+                    std::ifstream ifs(sha_tmp.string());
+                    if (ifs) {
+                        std::string line;
+                        std::getline(ifs, line);
+                        boost::algorithm::trim(line);
+                        // line may contain "sha256  filename" or just hash
+                        std::vector<std::string> toks;
+                        boost::split(toks, line, boost::is_any_of(" \t"));
+                        for (auto& t : toks)
+                            if (!t.empty()) {
+                                expected_sha256 = t;
+                                break;
+                            }
+                        ifs.close();
+                    }
+                    // remove sha tmp file
+                    boost::filesystem::remove(sha_tmp);
+                }
+            } catch (...) {
+                // ignore; not fatal
+            }
+
+            // NOTE: we did NOT compute/verify local sha here.
+            // If you want SHA verification, implement compute_file_sha256(zip_path) and compare to expected_sha256.
+            if (!expected_sha256.empty()) {
+                // TODO: compute local SHA256 and compare; for now just log
+                BOOST_LOG_TRIVIAL(info) << boost::format("[HIM OTA] Found expected SHA256: %1%") % expected_sha256;
+            }
+
+            // 3) unzip to tmp_extract
+            boost::filesystem::create_directories(tmp_extract);
+            bool unzipped = false;
+            // try platform unzip methods
+#ifdef _WIN32
+            {
+                // Use PowerShell Expand-Archive -Force
+                std::ostringstream ps;
+                ps << "powershell -NoProfile -Command \"try { Expand-Archive -LiteralPath '" << zip_path.string() << "' -DestinationPath '"
+                   << tmp_extract.string() << "' -Force; exit 0 } catch { exit 1 }\"";
+                int rc = ::wxExecute(ps.str(), wxEXEC_SYNC);
+                if (rc == 0)
+                    unzipped = true;
+            }
+#else
+            {
+                // try unzip command
+                std::ostringstream cmd;
+                cmd << "unzip -o -qq \"" << zip_path.string() << "\" -d \"" << tmp_extract.string() << "\"";
+                int rc = ::wxExecute(cmd.str(), wxEXEC_SYNC);
+                if (rc == 0)
+                    unzipped = true;
+            }
+#endif
+            if (!unzipped) {
+                // try 7z if available
+                std::ostringstream cmd7;
+#ifdef _WIN32
+                cmd7 << "cmd /C 7z x -y -o\"" << tmp_extract.string() << "\" \"" << zip_path.string() << "\" >NUL";
+#else
+                cmd7 << "7z x -y -o\"" << tmp_extract.string() << "\" \"" << zip_path.string() << "\" >/dev/null 2>&1";
+#endif
+                int rc = ::wxExecute(cmd7.str(), wxEXEC_SYNC);
+                if (rc == 0)
+                    unzipped = true;
+            }
+
+            if (!unzipped) {
+                // unzip failed -> cleanup and abort
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("Failed to extract HIM profiles package. Please extract manually and install."),
+                                 _L("HIM Profiles Update"), wxICON_ERROR);
+                });
+                return;
+            }
+
+            // 4) validate extracted package: must contain HIM.json and version match
+            boost::filesystem::path extracted_manifest = tmp_extract / "HIM.json";
+            // Some packages may put files under a top-level folder; try also tmp_extract/HIM/HIM.json
+            if (!boost::filesystem::exists(extracted_manifest)) {
+                boost::filesystem::path alt = tmp_extract / "HIM" / "HIM.json";
+                if (boost::filesystem::exists(alt)) {
+                    extracted_manifest = alt;
+                }
+            }
+            if (!boost::filesystem::exists(extracted_manifest)) {
+                // not found
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("The package does not contain HIM.json. Installation aborted."), _L("HIM Profiles Update"),
+                                 wxICON_ERROR);
+                });
+                return;
+            }
+
+            std::string manifest_content;
+            try {
+                Slic3r::load_string_file(extracted_manifest, manifest_content);
+            } catch (...) {
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("Failed to read package manifest HIM.json. Installation aborted."), _L("HIM Profiles Update"),
+                                 wxICON_ERROR);
+                });
+                return;
+            }
+
+            nlohmann::json manifest_j;
+            try {
+                manifest_j = nlohmann::json::parse(manifest_content);
+            } catch (...) {
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("Invalid JSON in package HIM.json. Installation aborted."), _L("HIM Profiles Update"), wxICON_ERROR);
+                });
+                return;
+            }
+
+            std::string extracted_version = manifest_j.value("version", std::string(""));
+            if (!remote_version.empty() && !extracted_version.empty() && (remote_version != extracted_version)) {
+                // mismatch (warning -> treat as error)
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this, remote_version, extracted_version]() {
+                    wxMessageBox(wxString::Format("Package version mismatch: expected %s but package contains %s. Installation aborted.",
+                                                  remote_version, extracted_version),
+                                 _L("HIM Profiles Update"), wxICON_ERROR);
+                });
+                return;
+            }
+
+            // 5) backup current profiles (move HIM.json and HIM folder)
+            boost::filesystem::path backup_dir = ota_backups / ("HIM_bak_" + tsstr);
+            boost::filesystem::create_directories(backup_dir.parent_path());
+            boost::filesystem::create_directories(backup_dir);
+
+            boost::filesystem::path current_manifest = profiles_dir / "HIM.json";
+            boost::filesystem::path current_folder   = profiles_dir / "HIM";
+
+            boost::system::error_code ec;
+            bool                      had_backup = false;
+            try {
+                if (boost::filesystem::exists(current_manifest) || boost::filesystem::exists(current_folder)) {
+                    if (boost::filesystem::exists(current_manifest)) {
+                        boost::filesystem::rename(current_manifest, backup_dir / "HIM.json", ec);
+                        if (ec) { /* try copy then remove */
+                            boost::filesystem::copy_file(current_manifest, backup_dir / "HIM.json",
+                                                         boost::filesystem::copy_option::overwrite_if_exists);
+                            boost::filesystem::remove(current_manifest);
+                        }
+                    }
+                    if (boost::filesystem::exists(current_folder)) {
+                        boost::filesystem::rename(current_folder, backup_dir / "HIM", ec);
+                        if (ec) { // fallback to recursive copy
+                            std::function<void(const boost::filesystem::path&, const boost::filesystem::path&)> copy_rec;
+                            copy_rec = [&](const boost::filesystem::path& src, const boost::filesystem::path& dst) {
+                                if (boost::filesystem::is_directory(src)) {
+                                    boost::filesystem::create_directories(dst);
+                                    for (auto& ent : boost::filesystem::directory_iterator(src)) {
+                                        copy_rec(ent.path(), dst / ent.path().filename());
+                                    }
+                                } else {
+                                    boost::filesystem::copy_file(src, dst, boost::filesystem::copy_option::overwrite_if_exists);
+                                }
+                            };
+                            copy_rec(current_folder, backup_dir / "HIM");
+                            boost::filesystem::remove_all(current_folder);
+                        }
+                    }
+                    had_backup = true;
+                }
+            } catch (...) {
+                // backup failed -> abort
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("Failed to backup existing HIM profiles. Installation aborted."), _L("HIM Profiles Update"),
+                                 wxICON_ERROR);
+                });
+                return;
+            }
+
+            // 6) move extracted content into profiles_dir
+            bool moved_ok = false;
+            try {
+                // If extracted content is in tmp_extract/HIM (top folder), move that; else move everything appropriately
+                boost::filesystem::path extracted_root = tmp_extract;
+                // If tmp_extract contains a single subdirectory (common case), use it
+                std::vector<boost::filesystem::path> children;
+                for (auto& ent : boost::filesystem::directory_iterator(tmp_extract))
+                    children.push_back(ent.path());
+                if (children.size() == 1 && boost::filesystem::is_directory(children[0])) {
+                    extracted_root = children[0];
+                }
+
+                // ensure destination HIM folder does not exist (it was moved to backup)
+                if (boost::filesystem::exists(profiles_dir / "HIM")) {
+                    // remove (shouldn't happen)
+                    boost::filesystem::remove_all(profiles_dir / "HIM", ec);
+                }
+
+                // try rename (fast & atomic if same fs)
+                boost::filesystem::rename(extracted_root, profiles_dir / "HIM", ec);
+                if (ec) {
+                    // rename failed (likely cross-device). Fallback to recursive copy.
+                    std::function<void(const boost::filesystem::path&, const boost::filesystem::path&)> copy_rec2;
+                    copy_rec2 = [&](const boost::filesystem::path& src, const boost::filesystem::path& dst) {
+                        if (boost::filesystem::is_directory(src)) {
+                            boost::filesystem::create_directories(dst);
+                            for (auto& ent : boost::filesystem::directory_iterator(src)) {
+                                copy_rec2(ent.path(), dst / ent.path().filename());
+                            }
+                        } else {
+                            boost::filesystem::copy_file(src, dst, boost::filesystem::copy_option::overwrite_if_exists);
+                        }
+                    };
+                    copy_rec2(extracted_root, profiles_dir / "HIM");
+                    // remove tmp extract
+                    boost::filesystem::remove_all(tmp_extract);
+                }
+                // ensure HIM.json resides at profiles_dir/HIM.json (some packages place it at root)
+                if (boost::filesystem::exists(profiles_dir / "HIM" / "HIM.json") && !boost::filesystem::exists(profiles_dir / "HIM.json")) {
+                    boost::filesystem::rename(profiles_dir / "HIM" / "HIM.json", profiles_dir / "HIM.json", ec);
+                    if (ec) {
+                        // try copy
+                        boost::filesystem::copy_file(profiles_dir / "HIM" / "HIM.json", profiles_dir / "HIM.json",
+                                                     boost::filesystem::copy_option::overwrite_if_exists);
+                    }
+                }
+                moved_ok = true;
+            } catch (std::exception& e) {
+                // installation failed -> attempt rollback
+                moved_ok = false;
+            }
+
+            if (!moved_ok) {
+                // attempt rollback: restore backup
+                try {
+                    if (had_backup) {
+                        if (boost::filesystem::exists(profiles_dir / "HIM"))
+                            boost::filesystem::remove_all(profiles_dir / "HIM");
+                        if (boost::filesystem::exists(profiles_dir / "HIM.json"))
+                            boost::filesystem::remove(profiles_dir / "HIM.json");
+                        if (boost::filesystem::exists(backup_dir / "HIM"))
+                            boost::filesystem::rename(backup_dir / "HIM", profiles_dir / "HIM");
+                        if (boost::filesystem::exists(backup_dir / "HIM.json"))
+                            boost::filesystem::rename(backup_dir / "HIM.json", profiles_dir / "HIM.json");
+                    }
+                } catch (...) {}
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("Failed to install HIM profiles. Original profiles restored if possible."), _L("HIM Profiles Update"),
+                                 wxICON_ERROR);
+                });
+                return;
+            }
+
+            // 7) verify installed manifest exists and version matches remote_version
+            bool verify_ok = false;
+            try {
+                boost::filesystem::path installed_manifest = profiles_dir / "HIM.json";
+                if (!boost::filesystem::exists(installed_manifest)) {
+                    // maybe only in HIM folder
+                    if (boost::filesystem::exists(profiles_dir / "HIM" / "HIM.json"))
+                        installed_manifest = profiles_dir / "HIM" / "HIM.json";
+                }
+                if (boost::filesystem::exists(installed_manifest)) {
+                    std::string installed_content;
+                    Slic3r::load_string_file(installed_manifest, installed_content);
+                    nlohmann::json installed_j   = nlohmann::json::parse(installed_content);
+                    std::string    installed_ver = installed_j.value("version", std::string(""));
+                    if (!remote_version.empty() && !installed_ver.empty()) {
+                        if (installed_ver == remote_version)
+                            verify_ok = true;
+                    } else {
+                        // could not verify version (no remote or no installed ver) -> accept as ok
+                        verify_ok = true;
+                    }
+                }
+            } catch (...) {
+                verify_ok = false;
+            }
+
+            if (!verify_ok) {
+                // rollback
+                try {
+                    if (had_backup) {
+                        if (boost::filesystem::exists(profiles_dir / "HIM"))
+                            boost::filesystem::remove_all(profiles_dir / "HIM");
+                        if (boost::filesystem::exists(profiles_dir / "HIM.json"))
+                            boost::filesystem::remove(profiles_dir / "HIM.json");
+                        if (boost::filesystem::exists(backup_dir / "HIM"))
+                            boost::filesystem::rename(backup_dir / "HIM", profiles_dir / "HIM");
+                        if (boost::filesystem::exists(backup_dir / "HIM.json"))
+                            boost::filesystem::rename(backup_dir / "HIM.json", profiles_dir / "HIM.json");
+                    }
+                } catch (...) {}
+                boost::filesystem::remove_all(tmp_extract);
+                boost::filesystem::remove(zip_path);
+                GUI::wxGetApp().CallAfter([this]() {
+                    wxMessageBox(_L("Installed HIM profiles failed verification and were rolled back."), _L("HIM Profiles Update"),
+                                 wxICON_ERROR);
+                });
+                return;
+            }
+
+            // 8) remove data_dir_path/system/ folder (as requested)
+            try {
+                boost::filesystem::path system_folder = data_dir_path / "system";
+                if (boost::filesystem::exists(system_folder)) {
+                    boost::filesystem::remove_all(system_folder);
+                }
+            } catch (...) {
+                // non-fatal: log and continue
+                BOOST_LOG_TRIVIAL(warning) << "[HIM OTA] Failed to remove data_dir/system";
+            }
+
+            // 9) cleanup zip file and tmp extract if any
+            try {
+                if (boost::filesystem::exists(zip_path))
+                    boost::filesystem::remove(zip_path);
+                if (boost::filesystem::exists(tmp_extract))
+                    boost::filesystem::remove_all(tmp_extract);
+            } catch (...) {}
+
+            // Success: notify user to restart
+            GUI::wxGetApp().CallAfter([this, remote_version]() {
+                wxMessageBox(wxString::Format("HIM profiles have been updated to %s.\nPlease restart the application to apply changes.",
+                                              remote_version),
+                             _L("HIM Profiles Updated"), wxOK | wxICON_INFORMATION);
+            });
+            return;
+        } catch (std::exception& e) {
+            // generic catch: notify error and attempt no-op rollback (user can restore from backups)
+            GUI::wxGetApp().CallAfter([this, e]() {
+                wxMessageBox(wxString::Format("HIM profiles installation failed: %s", e.what()), _L("HIM Profiles Update"), wxICON_ERROR);
+            });
+            return;
+        }
+    }).detach();
+}
+
+
 
 void GUI_App::process_network_msg(std::string dev_id, std::string msg)
 {
