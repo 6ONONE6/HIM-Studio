@@ -5275,6 +5275,19 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 return;
             }
 
+            //  common recursive copy function
+            std::function<void(const boost::filesystem::path&, const boost::filesystem::path&)> copy_rec;
+            copy_rec = [&](const boost::filesystem::path& src, const boost::filesystem::path& dst) {
+                if (boost::filesystem::is_directory(src)) {
+                    boost::filesystem::create_directories(dst);
+                    for (auto& ent : boost::filesystem::directory_iterator(src)) {
+                        copy_rec(ent.path(), dst / ent.path().filename());
+                    }
+                } else {
+                    boost::filesystem::copy_file(src, dst, boost::filesystem::copy_option::overwrite_if_exists);
+                }
+            };
+
             // 5) backup current profiles (move HIM.json and HIM folder)
             boost::filesystem::path backup_dir = ota_backups / ("HIM_bak_" + tsstr);
             boost::filesystem::create_directories(backup_dir.parent_path());
@@ -5289,7 +5302,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 if (boost::filesystem::exists(current_manifest) || boost::filesystem::exists(current_folder)) {
                     if (boost::filesystem::exists(current_manifest)) {
                         boost::filesystem::rename(current_manifest, backup_dir / "HIM.json", ec);
-                        if (ec) { /* try copy then remove */
+                        if (ec) {
                             boost::filesystem::copy_file(current_manifest, backup_dir / "HIM.json",
                                                          boost::filesystem::copy_option::overwrite_if_exists);
                             boost::filesystem::remove(current_manifest);
@@ -5297,18 +5310,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                     }
                     if (boost::filesystem::exists(current_folder)) {
                         boost::filesystem::rename(current_folder, backup_dir / "HIM", ec);
-                        if (ec) { // fallback to recursive copy
-                            std::function<void(const boost::filesystem::path&, const boost::filesystem::path&)> copy_rec;
-                            copy_rec = [&](const boost::filesystem::path& src, const boost::filesystem::path& dst) {
-                                if (boost::filesystem::is_directory(src)) {
-                                    boost::filesystem::create_directories(dst);
-                                    for (auto& ent : boost::filesystem::directory_iterator(src)) {
-                                        copy_rec(ent.path(), dst / ent.path().filename());
-                                    }
-                                } else {
-                                    boost::filesystem::copy_file(src, dst, boost::filesystem::copy_option::overwrite_if_exists);
-                                }
-                            };
+                        if (ec) {
                             copy_rec(current_folder, backup_dir / "HIM");
                             boost::filesystem::remove_all(current_folder);
                         }
@@ -5346,33 +5348,12 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 }
 
                 // try rename (fast & atomic if same fs)
-                boost::filesystem::rename(extracted_root, profiles_dir / "HIM", ec);
+                boost::filesystem::rename(extracted_root, profiles_dir, ec);
                 if (ec) {
-                    // rename failed (likely cross-device). Fallback to recursive copy.
-                    std::function<void(const boost::filesystem::path&, const boost::filesystem::path&)> copy_rec2;
-                    copy_rec2 = [&](const boost::filesystem::path& src, const boost::filesystem::path& dst) {
-                        if (boost::filesystem::is_directory(src)) {
-                            boost::filesystem::create_directories(dst);
-                            for (auto& ent : boost::filesystem::directory_iterator(src)) {
-                                copy_rec2(ent.path(), dst / ent.path().filename());
-                            }
-                        } else {
-                            boost::filesystem::copy_file(src, dst, boost::filesystem::copy_option::overwrite_if_exists);
-                        }
-                    };
-                    copy_rec2(extracted_root, profiles_dir / "HIM");
-                    // remove tmp extract
+                    copy_rec(extracted_root, profiles_dir);
                     boost::filesystem::remove_all(tmp_extract);
                 }
-                // ensure HIM.json resides at profiles_dir/HIM.json (some packages place it at root)
-                if (boost::filesystem::exists(profiles_dir / "HIM" / "HIM.json") && !boost::filesystem::exists(profiles_dir / "HIM.json")) {
-                    boost::filesystem::rename(profiles_dir / "HIM" / "HIM.json", profiles_dir / "HIM.json", ec);
-                    if (ec) {
-                        // try copy
-                        boost::filesystem::copy_file(profiles_dir / "HIM" / "HIM.json", profiles_dir / "HIM.json",
-                                                     boost::filesystem::copy_option::overwrite_if_exists);
-                    }
-                }
+
                 moved_ok = true;
             } catch (std::exception& e) {
                 // installation failed -> attempt rollback
@@ -5388,9 +5369,9 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                         if (boost::filesystem::exists(profiles_dir / "HIM.json"))
                             boost::filesystem::remove(profiles_dir / "HIM.json");
                         if (boost::filesystem::exists(backup_dir / "HIM"))
-                            boost::filesystem::rename(backup_dir / "HIM", profiles_dir / "HIM");
+                            copy_rec(backup_dir / "HIM", profiles_dir / "HIM");
                         if (boost::filesystem::exists(backup_dir / "HIM.json"))
-                            boost::filesystem::rename(backup_dir / "HIM.json", profiles_dir / "HIM.json");
+                            boost::filesystem::copy_file(backup_dir / "HIM.json", profiles_dir / "HIM.json");
                     }
                 } catch (...) {}
                 boost::filesystem::remove_all(tmp_extract);
@@ -5406,11 +5387,6 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             bool verify_ok = false;
             try {
                 boost::filesystem::path installed_manifest = profiles_dir / "HIM.json";
-                if (!boost::filesystem::exists(installed_manifest)) {
-                    // maybe only in HIM folder
-                    if (boost::filesystem::exists(profiles_dir / "HIM" / "HIM.json"))
-                        installed_manifest = profiles_dir / "HIM" / "HIM.json";
-                }
                 if (boost::filesystem::exists(installed_manifest)) {
                     std::string installed_content;
                     Slic3r::load_string_file(installed_manifest, installed_content);
@@ -5437,9 +5413,9 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                         if (boost::filesystem::exists(profiles_dir / "HIM.json"))
                             boost::filesystem::remove(profiles_dir / "HIM.json");
                         if (boost::filesystem::exists(backup_dir / "HIM"))
-                            boost::filesystem::rename(backup_dir / "HIM", profiles_dir / "HIM");
+                            copy_rec(backup_dir / "HIM", profiles_dir / "HIM");
                         if (boost::filesystem::exists(backup_dir / "HIM.json"))
-                            boost::filesystem::rename(backup_dir / "HIM.json", profiles_dir / "HIM.json");
+                            boost::filesystem::copy_file(backup_dir / "HIM.json", profiles_dir / "HIM.json");
                     }
                 } catch (...) {}
                 boost::filesystem::remove_all(tmp_extract);
@@ -5472,7 +5448,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
 
             // Success: notify user to restart
             GUI::wxGetApp().CallAfter([this, remote_version]() {
-                wxMessageBox(wxString::Format("HIM profiles have been updated to %s.\nPlease restart the application to apply changes.",
+                wxMessageBox(wxString::Format(_L("HIM profiles have been updated to %s.\n\nPlease restart the application to apply changes."),
                                               remote_version),
                              _L("HIM Profiles Updated"), wxOK | wxICON_INFORMATION);
             });
@@ -5480,14 +5456,12 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
         } catch (std::exception& e) {
             // generic catch: notify error and attempt no-op rollback (user can restore from backups)
             GUI::wxGetApp().CallAfter([this, e]() {
-                wxMessageBox(wxString::Format("HIM profiles installation failed: %s", e.what()), _L("HIM Profiles Update"), wxICON_ERROR);
+                wxMessageBox(wxString::Format(_L("HIM profiles installation failed: %s"), e.what()), _L("HIM Profiles Update"), wxICON_ERROR);
             });
             return;
         }
     }).detach();
 }
-
-
 
 void GUI_App::process_network_msg(std::string dev_id, std::string msg)
 {
