@@ -58,6 +58,7 @@
 #include <wx/utils.h>
 #include <openssl/hmac.h>
 #include <openssl/evp.h>
+#include <openssl/sha.h>
 
 #include "libslic3r/Utils.hpp"
 #include "libslic3r/Model.hpp"
@@ -4949,6 +4950,7 @@ void GUI_App::check_new_version_him_profiles()
                 // "download-url":"", "notes": "..." }
                 std::string remote_version;
                 std::string download_url;
+                std::string sha256;
                 std::string notes;
                 std::string compat_min, compat_max;
 
@@ -4956,6 +4958,8 @@ void GUI_App::check_new_version_him_profiles()
                     remote_version = j["version"].get<std::string>();
                 if (j.contains("download-url"))
                     download_url = j["download-url"].get<std::string>();
+                if (j.contains("sha256"))
+                    sha256 = j["sha256"].get<std::string>();
                 if (j.contains("notes"))
                     notes = j["notes"].get<std::string>();
                 if (j.contains("compatible_app")) {
@@ -5009,6 +5013,7 @@ void GUI_App::check_new_version_him_profiles()
                 std::string msg = "A new HIM profiles package is available.\n\n";
                 msg += "Local version: " + local_profile_version + "\n";
                 msg += "Remote version: " + remote_version + "\n\n";
+                msg += "sha: " + sha256 + "\n\n";
                 if (!notes.empty())
                     msg += "Notes:\n" + notes + "\n\n";
                 msg += "No automatic install is performed. Please download the package and install it manually (or use the OTA installer "
@@ -5018,7 +5023,7 @@ void GUI_App::check_new_version_him_profiles()
                 if (!download_url.empty()) {
                     int ret = wxMessageBox(_L(msg), _L("HIM Profiles Update Available"), wxYES_NO | wxICON_INFORMATION);
                     if (ret == wxYES) {
-                        install_him_profiles_from_url(download_url, remote_version);
+                        install_him_profiles_from_url(download_url, remote_version, sha256);
                     } else {
                         // user postponed; you may choose to mark internal state here
                         wxLogMessage("User postponed HIM profiles update (remote %s).", remote_version);
@@ -5040,20 +5045,14 @@ void GUI_App::check_new_version_him_profiles()
     request.Start();
 }
 
-void GUI_App::install_him_profiles_from_url(const std::string& download_url, const std::string& remote_version)
+void GUI_App::install_him_profiles_from_url(const std::string& download_url, const std::string& remote_version, const std::string& sha256)
 {
-    // Run heavy work in background
-    std::thread([this, download_url, remote_version]() {
+    std::thread([this, download_url, remote_version, sha256]() {
         try {
-            // 1) prepare paths
             std::string             data_dir_str = data_dir();
             boost::filesystem::path data_dir_path(data_dir_str);
-
-            // ota folder: <data_dir>/ota/profiles/HIM/
             boost::filesystem::path ota_profiles = data_dir_path / "ota" / "profiles" / "HIM";
             boost::filesystem::create_directories(ota_profiles);
-
-            // backups folder: <data_dir>/ota/backups/
             boost::filesystem::path ota_backups = data_dir_path / "ota" / "backups";
             boost::filesystem::create_directories(ota_backups);
 
@@ -5061,7 +5060,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             wxFileName              exePath(wxStandardPaths::Get().GetExecutablePath());
             wxString                baseDir      = exePath.GetPath();
             boost::filesystem::path profiles_dir = boost::filesystem::path(baseDir.ToStdString()) / "resources" / "profiles";
-            boost::filesystem::create_directories(profiles_dir);
+            //boost::filesystem::create_directories(profiles_dir);
 
             // timestamp for unique names
             std::time_t ts    = std::time(nullptr);
@@ -5127,47 +5126,49 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 return;
             }
 
-            // Optional: attempt to fetch an expected SHA256 from download_url + ".sha256" (if you will publish it there)
-            std::string expected_sha256;
-            try {
-                std::string             sha_url1 = download_url + ".sha256";
-                boost::filesystem::path sha_tmp  = ota_profiles / ("HIM_pkg_" + tsstr + ".sha256");
-                std::ostringstream      cmd;
-#ifdef _WIN32
-                cmd << "cmd /C curl -L -f -s -S -o \"" << sha_tmp.string() << "\" \"" << sha_url1 << "\"";
-#else
-                cmd << "curl -L -f -s -S -o \"" << sha_tmp.string() << "\" \"" << sha_url1 << "\"";
-#endif
-                int rc = ::wxExecute(cmd.str(), wxEXEC_SYNC);
-                if (rc == 0 && boost::filesystem::exists(sha_tmp)) {
-                    std::ifstream ifs(sha_tmp.string());
-                    if (ifs) {
-                        std::string line;
-                        std::getline(ifs, line);
-                        boost::algorithm::trim(line);
-                        // line may contain "sha256  filename" or just hash
-                        std::vector<std::string> toks;
-                        boost::split(toks, line, boost::is_any_of(" \t"));
-                        for (auto& t : toks)
-                            if (!t.empty()) {
-                                expected_sha256 = t;
-                                break;
-                            }
-                        ifs.close();
-                    }
-                    // remove sha tmp file
-                    boost::filesystem::remove(sha_tmp);
+
+            
+            //***********************************
+            if (!sha256.empty()) {
+                std::ifstream file(zip_path.string(), std::ios::binary);
+                if (!file) {
+                    GUI::wxGetApp().CallAfter([this]() {
+                        wxMessageBox(_L("Failed to open downloaded HIM profiles package for SHA256 verification."),
+                                     _L("HIM Profiles Update"), wxICON_ERROR);
+                    });
+                    boost::filesystem::remove(zip_path);
+                    return;
                 }
-            } catch (...) {
-                // ignore; not fatal
+                SHA256_CTX sha256_ctx;
+                SHA256_Init(&sha256_ctx);
+                const size_t buffer_size = 1 << 12; // 4KB
+                std::vector<char> buffer(buffer_size);
+                while (file) {
+                    file.read(buffer.data(), buffer_size);
+                    std::streamsize bytes_read = file.gcount();
+                    if (bytes_read > 0) {
+                        SHA256_Update(&sha256_ctx, buffer.data(), static_cast<size_t>(bytes_read));
+                    }
+                }
+                unsigned char hash[SHA256_DIGEST_LENGTH];
+                SHA256_Final(hash, &sha256_ctx);
+                std::ostringstream hash_ss;
+                for (int i = 0; i < SHA256_DIGEST_LENGTH; ++i) {
+                    hash_ss << std::hex << std::setw(2) << std::setfill('0') << static_cast<int>(hash[i]);
+                }
+                std::string computed_sha256 = hash_ss.str();
+                if (computed_sha256 != sha256) {
+                    GUI::wxGetApp().CallAfter([this]() {
+                        wxMessageBox(_L("SHA256 verification of downloaded HIM profiles package failed. Installation aborted."),
+                                     _L("HIM Profiles Update"), wxICON_ERROR);
+                    });
+                    boost::filesystem::remove(zip_path);
+                    return;
+                }
             }
 
-            // NOTE: we did NOT compute/verify local sha here.
-            // If you want SHA verification, implement compute_file_sha256(zip_path) and compare to expected_sha256.
-            if (!expected_sha256.empty()) {
-                // TODO: compute local SHA256 and compare; for now just log
-                BOOST_LOG_TRIVIAL(info) << boost::format("[HIM OTA] Found expected SHA256: %1%") % expected_sha256;
-            }
+            //***********************************
+
 
             // 3) unzip to tmp_extract
             boost::filesystem::create_directories(tmp_extract);
