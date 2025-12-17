@@ -58,7 +58,12 @@
 #include <wx/utils.h>
 #include <openssl/hmac.h>
 #include <openssl/evp.h>
+
 #include <openssl/sha.h>
+#include <wx/webrequest.h>
+#include <wx/wfstream.h>
+
+
 
 #include "libslic3r/Utils.hpp"
 #include "libslic3r/Model.hpp"
@@ -5045,6 +5050,11 @@ void GUI_App::check_new_version_him_profiles()
     request.Start();
 }
 
+static size_t curl_write_cb(void* ptr, size_t size, size_t nmemb, void* stream)
+{
+    return fwrite(ptr, size, nmemb, static_cast<FILE*>(stream));
+}
+
 void GUI_App::install_him_profiles_from_url(const std::string& download_url, const std::string& remote_version, const std::string& sha256)
 {
     std::thread([this, download_url, remote_version, sha256]() {
@@ -5070,61 +5080,52 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             boost::filesystem::path zip_path    = ota_profiles / ("HIM_pkg_" + tsstr + ".zip");
             boost::filesystem::path tmp_extract = ota_profiles / ("tmp_HIM_" + tsstr);
 
-            // 2) download file (try curl, powershell, then fail)
+
             bool downloaded = false;
-            int  exitcode   = -1;
+            std::string err_msg;
 
-            // prefer curl
-            {
-                std::ostringstream cmd;
-                // -L follow redirects, -s silent, -S show error, -f fail on http errors, -o output
-                cmd << "curl -L -f -s -S -o \"" << zip_path.string() << "\" \"" << download_url << "\"";
-#ifdef _WIN32
-                // on Windows, ensure we run via cmd /C so that quotes are handled
-                std::string wcmd = std::string("cmd /C ") + cmd.str();
-                exitcode         = ::wxExecute(wcmd, wxEXEC_SYNC);
-#else
-                exitcode = ::wxExecute(cmd.str(), wxEXEC_SYNC);
-#endif
-                if (exitcode == 0 && boost::filesystem::exists(zip_path)) {
-                    downloaded = true;
+            CURL* curl = curl_easy_init();
+            if (!curl) {
+                err_msg = "Failed to initialize libcurl.";
+            } else {
+                FILE* fp = std::fopen(zip_path.string().c_str(), "wb");
+                if (!fp) {
+                    err_msg = "Failed to open output file for writing.";
+                } else {
+                    curl_easy_setopt(curl, CURLOPT_URL, download_url.c_str());
+                    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+                    curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
+                    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_write_cb);
+                    curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+                    curl_easy_setopt(curl, CURLOPT_USERAGENT, "HIM-Updater/1.0");
+
+                    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+                    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+
+                    CURLcode res = curl_easy_perform(curl);
+                    if (res == CURLE_OK) {
+                        downloaded = true;
+                    } else {
+                        err_msg = curl_easy_strerror(res);
+                    }
+
+                    std::fclose(fp);
                 }
+                curl_easy_cleanup(curl);
             }
 
-            // fallback: PowerShell (Windows) or wget (unix)
-#ifdef _WIN32
             if (!downloaded) {
-                // try PowerShell Invoke-WebRequest
-                std::ostringstream ps;
-                ps << "powershell -NoProfile -Command \"try { Invoke-WebRequest -Uri '" << download_url << "' -OutFile '"
-                   << zip_path.string() << "' -UseBasicParsing -ErrorAction Stop; exit 0 } catch { exit 1 }\"";
-                exitcode = ::wxExecute(ps.str(), wxEXEC_SYNC);
-                if (exitcode == 0 && boost::filesystem::exists(zip_path))
-                    downloaded = true;
-            }
-#else
-            if (!downloaded) {
-                // try wget
-                std::ostringstream cmd2;
-                cmd2 << "wget -q -O \"" << zip_path.string() << "\" \"" << download_url << "\"";
-                exitcode = ::wxExecute(cmd2.str(), wxEXEC_SYNC);
-                if (exitcode == 0 && boost::filesystem::exists(zip_path))
-                    downloaded = true;
-            }
-#endif
-
-            if (!downloaded) {
-                // download failed
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("Failed to download HIM profiles package. Please check network or download manually."),
-                                 _L("HIM Profiles Update"), wxICON_ERROR);
-                });
-                // cleanup any partial file
-                boost::system::error_code e1;
+                boost::system::error_code ec;
                 if (boost::filesystem::exists(zip_path))
-                    boost::filesystem::remove(zip_path, e1);
+                    boost::filesystem::remove(zip_path, ec);
+
+                std::string show = "Failed to download HIM profiles package.\nURL:\n" + download_url + "\n\nError:\n" + err_msg;
+
+                GUI::wxGetApp().CallAfter(
+                    [show]() { wxMessageBox(wxString::FromUTF8(show.c_str()), _L("HIM Profiles Update"), wxICON_ERROR); });
                 return;
             }
+
 
 
             
