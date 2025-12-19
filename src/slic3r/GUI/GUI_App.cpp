@@ -4811,28 +4811,146 @@ void GUI_App::check_new_version_sf(bool show_tips, int by_user)
 
 void GUI_App::check_new_version_hs(bool show_tips, int by_user)
 {
+    auto compareVersions = [](const std::string& a_raw, const std::string& b_raw) {
+        auto normalize_version = [](const std::string& s) {
+            size_t i = 0;
+            while (i < s.size() && !std::isdigit(static_cast<unsigned char>(s[i])))
+                ++i;
+            return (i == 0) ? s : s.substr(i);
+        };
+
+        auto split = [](const std::string& s) {
+            std::vector<std::string> parts;
+            std::string              cur;
+            for (char ch : s) {
+                if (ch == '.') {
+                    parts.push_back(cur);
+                    cur.clear();
+                } else
+                    cur.push_back(ch);
+            }
+            parts.push_back(cur);
+            return parts;
+        };
+
+        auto extract_num_prefix = [](const std::string& seg) {
+            // returns pair<num_prefix_exists, pair<numeric_value, suffix_string>>
+            size_t i = 0;
+            while (i < seg.size() && std::isdigit(static_cast<unsigned char>(seg[i])))
+                ++i;
+            if (i == 0)
+                return std::make_pair(false, std::make_pair(0LL, seg));
+            long long val = 0;
+            try {
+                val = std::stoll(seg.substr(0, i));
+            } catch (...) {
+                val = 0;
+            }
+            std::string suffix = (i < seg.size()) ? seg.substr(i) : std::string();
+            return std::make_pair(true, std::make_pair(val, suffix));
+        };
+
+        std::string              a  = normalize_version(a_raw);
+        std::string              b  = normalize_version(b_raw);
+        std::vector<std::string> pa = split(a);
+        std::vector<std::string> pb = split(b);
+        size_t                   n  = std::max(pa.size(), pb.size());
+
+        for (size_t i = 0; i < n; ++i) {
+            std::string sa = (i < pa.size() ? pa[i] : "0");
+            std::string sb = (i < pb.size() ? pb[i] : "0");
+
+            auto ea = extract_num_prefix(sa);
+            auto eb = extract_num_prefix(sb);
+
+            bool a_has_num = ea.first;
+            bool b_has_num = eb.first;
+
+            if (a_has_num || b_has_num) {
+                // If both have numeric prefix -> compare numeric values
+                if (a_has_num && b_has_num) {
+                    long long va = ea.second.first;
+                    long long vb = eb.second.first;
+                    if (va < vb)
+                        return -1;
+                    if (va > vb)
+                        return +1;
+                    // numeric prefixes equal -> consider suffixes
+                    const std::string& sfx_a     = ea.second.second;
+                    const std::string& sfx_b     = eb.second.second;
+                    bool               a_has_sfx = !sfx_a.empty();
+                    bool               b_has_sfx = !sfx_b.empty();
+                    if (!a_has_sfx && b_has_sfx)
+                        return +1; // 1.2.3 > 1.2.3-beta
+                    if (a_has_sfx && !b_has_sfx)
+                        return -1;
+                    if (a_has_sfx && b_has_sfx) {
+                        // compare suffix case-insensitive
+                        std::string la = sfx_a, lb = sfx_b;
+                        for (auto& c : la)
+                            c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                        for (auto& c : lb)
+                            c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                        if (la < lb)
+                            return -1;
+                        if (la > lb)
+                            return +1;
+                        // equal suffix -> continue
+                    }
+                    // else both have no suffix -> continue to next segment
+                } else {
+                    // only one side has numeric prefix:
+                    // numeric prefix > non-numeric prefix IF numeric value > implied 0?
+                    // Decide: treat non-numeric as 0 numeric prefix but with suffix (so e.g. "alpha" < "1")
+                    if (a_has_num && !b_has_num) {
+                        // numeric vs non-numeric: compare numeric vs 0? but numeric should be > non-numeric in practice
+                        return +1;
+                    } else { // !a_has_num && b_has_num
+                        return -1;
+                    }
+                }
+            } else {
+                // Neither has numeric prefix -> lexicographic compare ignoring case
+                std::string la = sa, lb = sb;
+                for (auto& c : la)
+                    c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                for (auto& c : lb)
+                    c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                if (la < lb)
+                    return -1;
+                if (la > lb)
+                    return +1;
+                // else equal -> continue
+            }
+        }
+        return 0;
+    };
+
     wxEvtHandler* handler = wxTheApp->GetTopWindow();
     wxWebRequest  request;
     request = wxWebSession::GetDefault().CreateRequest(handler, "https://gitee.com/nullptr01/HIM-Studio/raw/master/updates.json");
 
-    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [by_user, this](wxWebRequestEvent& event) {
+    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [by_user, compareVersions, this](wxWebRequestEvent& event) {
         if (event.GetState() == wxWebRequest::State_Completed) {
-            wxString response = event.GetResponse().AsString();
-            std::string jsonStr = response.utf8_string();
-            wxLogMessage("recive updates info:\n%s", response.c_str());
+            wxString    response = event.GetResponse().AsString();
+            std::string jsonStr  = response.utf8_string();
+            //wxLogMessage("recive updates info:\n%s", response.c_str());
 
             try {
                 json j       = json::parse(jsonStr);
                 json updates = j["updates"];
                 json windows = updates["windows"];
 
-                wxString latestVersion = wxString::FromUTF8(windows["latest-version"]);
-                wxString changelog = wxString::FromUTF8(windows["changelog"]);
+                wxString    changelog   = wxString::FromUTF8(windows["changelog"]);
                 std::string downloadUrl = windows["download-url"];
+                std::string latestVersion  = windows["latest-version"];
+                std::string currentVersion = std::string(HIM_VERSION); // assumes HIM_VERSION is simple ascii
 
-                if (latestVersion.ToStdString() != std::string(HIM_VERSION)) {
-                    int ret = wxMessageBox(_L("The latest version: ") + latestVersion + "\n\n" + _L("Current version: ") + std::string(HIM_VERSION)
-                        + "\n\n" + changelog, _L("New version found!"), wxYES_NO | wxICON_INFORMATION);
+                int cmp = compareVersions(currentVersion, latestVersion);
+                if (cmp < 0) { // current < latest -> update available
+                    int ret = wxMessageBox(_L("The latest version: ") + wxString::FromUTF8(latestVersion.c_str()) + "\n\n" +
+                                               _L("Current version: ") + std::string(HIM_VERSION) + "\n\n" + changelog,
+                                           _L("New version found!"), wxYES_NO | wxICON_INFORMATION);
 
                     if (ret == wxYES) {
                         wxLaunchDefaultBrowser(downloadUrl);
@@ -4840,7 +4958,6 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
                         check_new_version_him_profiles();
                     }
                 } else {
-                    wxLogMessage("almost newest");
                     if (by_user != 0) {
                         this->no_new_version();
                     }
@@ -4921,7 +5038,7 @@ void GUI_App::check_new_version_him_profiles()
         if (event.GetState() == wxWebRequest::State_Completed) {
             wxString    response = event.GetResponse().AsString();
             std::string jsonStr  = response.utf8_string();
-            wxLogMessage("received HIM profiles updates info:\n%s", response.c_str());
+            //wxLogMessage("received HIM profiles updates info:\n%s", response.c_str());
 
             // 1) read local profiles/HIM.json
             std::string local_profile_version = "0.0.0";
@@ -5050,14 +5167,15 @@ void GUI_App::check_new_version_him_profiles()
     request.Start();
 }
 
-static size_t curl_write_cb(void* ptr, size_t size, size_t nmemb, void* stream)
-{
-    return fwrite(ptr, size, nmemb, static_cast<FILE*>(stream));
-}
-
 void GUI_App::install_him_profiles_from_url(const std::string& download_url, const std::string& remote_version, const std::string& sha256)
 {
     std::thread([this, download_url, remote_version, sha256]() {
+
+        static auto write_cb = [](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
+            FILE* fp = static_cast<FILE*>(userdata);
+            return fwrite(ptr, size, nmemb, fp);
+        };
+
         try {
             std::string             data_dir_str = data_dir();
             boost::filesystem::path data_dir_path(data_dir_str);
@@ -5066,24 +5184,16 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             boost::filesystem::path ota_backups = data_dir_path / "ota" / "backups";
             boost::filesystem::create_directories(ota_backups);
 
-            // exe resources folder: <exe_dir>/resources/profiles/
-            wxFileName              exePath(wxStandardPaths::Get().GetExecutablePath());
-            wxString                baseDir      = exePath.GetPath();
-            boost::filesystem::path profiles_dir = boost::filesystem::path(baseDir.ToStdString()) / "resources" / "profiles";
-            //boost::filesystem::create_directories(profiles_dir);
-
             // timestamp for unique names
             std::time_t ts    = std::time(nullptr);
             std::string tsstr = std::to_string(ts);
 
             // target zip path
             boost::filesystem::path zip_path    = ota_profiles / ("HIM_pkg_" + tsstr + ".zip");
-            boost::filesystem::path tmp_extract = ota_profiles / ("tmp_HIM_" + tsstr);
-
-
             bool downloaded = false;
             std::string err_msg;
 
+            // init curl
             CURL* curl = curl_easy_init();
             if (!curl) {
                 err_msg = "Failed to initialize libcurl.";
@@ -5092,16 +5202,33 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 if (!fp) {
                     err_msg = "Failed to open output file for writing.";
                 } else {
+                    // curl options
                     curl_easy_setopt(curl, CURLOPT_URL, download_url.c_str());
                     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
                     curl_easy_setopt(curl, CURLOPT_FAILONERROR, 1L);
-                    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, curl_write_cb);
+
+                    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_cb);
                     curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+
+                    curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
+
                     curl_easy_setopt(curl, CURLOPT_USERAGENT, "HIM-Updater/1.0");
 
-                    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-                    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+                    // SSL verify
+                    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 1L);
+                    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 2L);
 
+                    // exe directory
+                    wxFileName exePath(wxStandardPaths::Get().GetExecutablePath());
+                    wxString   baseDir = exePath.GetPath();
+                    wxFileName caFile(baseDir, "cacert.pem");
+                    if (caFile.FileExists()) {
+                        wxString caPath = caFile.GetFullPath();
+                        // pass to libcurl (UTF-8!)
+                        curl_easy_setopt(curl, CURLOPT_CAINFO, caPath.ToUTF8().data());
+                    }
+                    
+                    // perform download (blocking)
                     CURLcode res = curl_easy_perform(curl);
                     if (res == CURLE_OK) {
                         downloaded = true;
@@ -5119,17 +5246,15 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 if (boost::filesystem::exists(zip_path))
                     boost::filesystem::remove(zip_path, ec);
 
-                std::string show = "Failed to download HIM profiles package.\nURL:\n" + download_url + "\n\nError:\n" + err_msg;
+                std::string show = "Failed to download HIM profiles package.\n\nURL:\n" + download_url + "\n\nError:\n" + err_msg;
 
                 GUI::wxGetApp().CallAfter(
                     [show]() { wxMessageBox(wxString::FromUTF8(show.c_str()), _L("HIM Profiles Update"), wxICON_ERROR); });
                 return;
             }
 
-
-
             
-            //***********************************
+            //  sha256 verification
             if (!sha256.empty()) {
                 std::ifstream file(zip_path.string(), std::ios::binary);
                 if (!file) {
@@ -5168,10 +5293,8 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 }
             }
 
-            //***********************************
-
-
             // 3) unzip to tmp_extract
+            boost::filesystem::path tmp_extract = ota_profiles / ("tmp_HIM_" + tsstr);
             boost::filesystem::create_directories(tmp_extract);
             bool unzipped = false;
             // try platform unzip methods
@@ -5291,6 +5414,10 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             };
 
             // 5) backup current profiles (move HIM.json and HIM folder)
+            // exe resources folder: <exe_dir>/resources/profiles/
+            wxFileName              exePath(wxStandardPaths::Get().GetExecutablePath());
+            wxString                baseDir      = exePath.GetPath();
+            boost::filesystem::path profiles_dir = boost::filesystem::path(baseDir.ToStdString()) / "resources" / "profiles";
             boost::filesystem::path backup_dir = ota_backups / ("HIM_bak_" + tsstr);
             boost::filesystem::create_directories(backup_dir.parent_path());
             boost::filesystem::create_directories(backup_dir);
