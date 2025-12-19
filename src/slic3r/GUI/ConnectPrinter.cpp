@@ -49,24 +49,7 @@ ConnectPrinterDialog::ConnectPrinterDialog(wxWindow *parent, wxWindowID id, cons
     sizer_connect->Add(FromDIP(20), 0);
 
     m_button_confirm = new Button(this, _L("Confirm"));
-    m_button_confirm->SetFont(Label::Body_12);
-    m_button_confirm->SetMinSize(wxSize(-1, FromDIP(24)));
-    m_button_confirm->SetCornerRadius(FromDIP(12));
-    m_button_confirm->SetTextColor(wxColour("#FFFFFE"));
-
-    StateColor btn_bg(
-        std::pair<wxColour, int>(wxColour(27, 85, 161), StateColor::Pressed),
-        std::pair<wxColour, int>(wxColour(43, 135, 255), StateColor::Hovered),
-        std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal)
-    );
-
-    StateColor btn_bd(std::pair<wxColour, int>(wxColour(37, 115, 217), StateColor::Normal));
-
-    StateColor btn_text(std::pair<wxColour, int>(wxColour(255, 255, 255), StateColor::Normal));
-
-    m_button_confirm->SetBackgroundColor(btn_bg);
-    m_button_confirm->SetBorderColor(btn_bd);
-    m_button_confirm->SetTextColor(btn_text);
+    m_button_confirm->SetStyle(ButtonStyle::Confirm, ButtonType::Choice);
 
     sizer_connect->Add(m_button_confirm, 0, wxALL | wxALIGN_CENTER_VERTICAL, 0);
     
@@ -193,8 +176,7 @@ void ConnectPrinterDialog::on_dpi_changed(const wxRect &suggested_rect)
     m_textCtrl_code->GetTextCtrl()->SetSize(wxSize(-1, FromDIP(22)));
     m_textCtrl_code->GetTextCtrl()->SetMinSize(wxSize(-1, FromDIP(22)));
 
-    m_button_confirm->SetCornerRadius(FromDIP(12));
-    m_button_confirm->Rescale();
+    m_button_confirm->Rescale(); // ORCA No need to set style again
     
     Layout();
     this->Refresh();
