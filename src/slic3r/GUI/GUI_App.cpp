@@ -4883,37 +4883,157 @@ void GUI_App::check_new_version_sf(bool show_tips, int by_user)
 
 void GUI_App::check_new_version_hs(bool show_tips, int by_user)
 {
+    auto compareVersions = [](const std::string& a_raw, const std::string& b_raw) {
+        auto normalize_version = [](const std::string& s) {
+            size_t i = 0;
+            while (i < s.size() && !std::isdigit(static_cast<unsigned char>(s[i])))
+                ++i;
+            return (i == 0) ? s : s.substr(i);
+        };
+
+        auto split = [](const std::string& s) {
+            std::vector<std::string> parts;
+            std::string              cur;
+            for (char ch : s) {
+                if (ch == '.') {
+                    parts.push_back(cur);
+                    cur.clear();
+                } else
+                    cur.push_back(ch);
+            }
+            parts.push_back(cur);
+            return parts;
+        };
+
+        auto extract_num_prefix = [](const std::string& seg) {
+            // returns pair<num_prefix_exists, pair<numeric_value, suffix_string>>
+            size_t i = 0;
+            while (i < seg.size() && std::isdigit(static_cast<unsigned char>(seg[i])))
+                ++i;
+            if (i == 0)
+                return std::make_pair(false, std::make_pair(0LL, seg));
+            long long val = 0;
+            try {
+                val = std::stoll(seg.substr(0, i));
+            } catch (...) {
+                val = 0;
+            }
+            std::string suffix = (i < seg.size()) ? seg.substr(i) : std::string();
+            return std::make_pair(true, std::make_pair(val, suffix));
+        };
+
+        std::string              a  = normalize_version(a_raw);
+        std::string              b  = normalize_version(b_raw);
+        std::vector<std::string> pa = split(a);
+        std::vector<std::string> pb = split(b);
+        size_t                   n  = std::max(pa.size(), pb.size());
+
+        for (size_t i = 0; i < n; ++i) {
+            std::string sa = (i < pa.size() ? pa[i] : "0");
+            std::string sb = (i < pb.size() ? pb[i] : "0");
+
+            auto ea = extract_num_prefix(sa);
+            auto eb = extract_num_prefix(sb);
+
+            bool a_has_num = ea.first;
+            bool b_has_num = eb.first;
+
+            if (a_has_num || b_has_num) {
+                // If both have numeric prefix -> compare numeric values
+                if (a_has_num && b_has_num) {
+                    long long va = ea.second.first;
+                    long long vb = eb.second.first;
+                    if (va < vb)
+                        return -1;
+                    if (va > vb)
+                        return +1;
+                    // numeric prefixes equal -> consider suffixes
+                    const std::string& sfx_a     = ea.second.second;
+                    const std::string& sfx_b     = eb.second.second;
+                    bool               a_has_sfx = !sfx_a.empty();
+                    bool               b_has_sfx = !sfx_b.empty();
+                    if (!a_has_sfx && b_has_sfx)
+                        return +1; // 1.2.3 > 1.2.3-beta
+                    if (a_has_sfx && !b_has_sfx)
+                        return -1;
+                    if (a_has_sfx && b_has_sfx) {
+                        // compare suffix case-insensitive
+                        std::string la = sfx_a, lb = sfx_b;
+                        for (auto& c : la)
+                            c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                        for (auto& c : lb)
+                            c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                        if (la < lb)
+                            return -1;
+                        if (la > lb)
+                            return +1;
+                        // equal suffix -> continue
+                    }
+                    // else both have no suffix -> continue to next segment
+                } else {
+                    // only one side has numeric prefix:
+                    // numeric prefix > non-numeric prefix IF numeric value > implied 0?
+                    // Decide: treat non-numeric as 0 numeric prefix but with suffix (so e.g. "alpha" < "1")
+                    if (a_has_num && !b_has_num) {
+                        // numeric vs non-numeric: compare numeric vs 0? but numeric should be > non-numeric in practice
+                        return +1;
+                    } else { // !a_has_num && b_has_num
+                        return -1;
+                    }
+                }
+            } else {
+                // Neither has numeric prefix -> lexicographic compare ignoring case
+                std::string la = sa, lb = sb;
+                for (auto& c : la)
+                    c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                for (auto& c : lb)
+                    c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+                if (la < lb)
+                    return -1;
+                if (la > lb)
+                    return +1;
+                // else equal -> continue
+            }
+        }
+        return 0;
+    };
+
     wxEvtHandler* handler = wxTheApp->GetTopWindow();
     wxWebRequest  request;
     request = wxWebSession::GetDefault().CreateRequest(handler, "https://gitee.com/nullptr01/HIM-Studio/raw/master/updates.json");
 
-    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [by_user, this](wxWebRequestEvent& event) {
+    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [by_user, compareVersions, this](wxWebRequestEvent& event) {
         if (event.GetState() == wxWebRequest::State_Completed) {
-            wxString response = event.GetResponse().AsString();
-            std::string jsonStr = response.utf8_string();
-            wxLogMessage("recive updates info:\n%s", response.c_str());
+            wxString    response = event.GetResponse().AsString();
+            std::string jsonStr  = response.utf8_string();
+            //wxLogMessage("recive updates info:\n%s", response.c_str());
 
             try {
                 json j       = json::parse(jsonStr);
                 json updates = j["updates"];
                 json windows = updates["windows"];
 
-                wxString latestVersion = wxString::FromUTF8(windows["latest-version"]);
-                wxString changelog = wxString::FromUTF8(windows["changelog"]);
-                std::string downloadUrl = windows["download-url"];
+                wxString    changelog       = wxString::FromUTF8(windows["changelog"]);
+                std::string downloadUrl     = windows["download-url"];
+                std::string latestVersion  = windows["latest-version"];
+                std::string currentVersion = std::string(HIM_VERSION);
 
-                if (latestVersion.ToStdString() != std::string(HIM_VERSION)) {
-                    int ret = wxMessageBox(_L("The latest version: ") + latestVersion + "\n\n" + _L("Current version: ") + std::string(HIM_VERSION)
-                        + "\n\n" + changelog, _L("New version found!"), wxYES_NO | wxICON_INFORMATION);
+                int cmp = compareVersions(currentVersion, latestVersion);
+                if (cmp < 0) { // current < latest -> update available
+                    int ret = wxMessageBox(_L("The latest version: ") + wxString::FromUTF8(latestVersion.c_str()) + "\n\n" +
+                                               _L("Current version: ") + std::string(HIM_VERSION) + "\n\n" + changelog,
+                                           _L("New version found!"), wxYES_NO | wxICON_INFORMATION);
 
                     if (ret == wxYES) {
                         wxLaunchDefaultBrowser(downloadUrl);
+                    } else {
+                        //check_new_version_him_profiles();
                     }
                 } else {
-                    wxLogMessage("almost newest");
                     if (by_user != 0) {
                         this->no_new_version();
                     }
+                    //check_new_version_him_profiles();
                 }
             } catch (std::exception& e) {
                 wxLogError("parse update info fail%s", e.what());
