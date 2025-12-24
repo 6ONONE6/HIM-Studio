@@ -5129,7 +5129,7 @@ void GUI_App::check_new_version_him_profiles()
                 }
 
                 // 5) update is available and compatible. Notify user (no download/install executed here).
-                std::string msg = "A new HIM profiles package is available.  Update now?\n";
+                std::string msg = "A new HIM profiles package is available.    Update now?\n\n";
                 msg += local_profile_version + " ---> ";
                 msg += remote_version + "\n";
                 //msg += "sha: " + sha256 + "\n\n";
@@ -5176,6 +5176,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
     };
 
     std::thread([this, download_url, remote_version, sha256, progress_ptr, is_cancelled, update_status]() {
+
         static auto write_cb = [](void* ptr, size_t size, size_t nmemb, void* userdata) -> size_t {
             FILE* fp = static_cast<FILE*>(userdata);
             return fwrite(ptr, size, nmemb, fp);
@@ -5252,13 +5253,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 boost::system::error_code ec;
                 if (boost::filesystem::exists(zip_path))
                     boost::filesystem::remove(zip_path, ec);
-
-                std::string show = "Failed to download HIM profiles package.\n\nURL:\n" + download_url + "\n\nError:\n" + err_msg;
-
-                GUI::wxGetApp().CallAfter(
-                    [show]() { wxMessageBox(wxString::FromUTF8(show.c_str()), _L("HIM Profiles Update"), wxICON_ERROR); });
-                //return;
-                throw std::runtime_error("Download failed");
+                throw std::runtime_error("Failed to download HIM profiles package.\n\nURL:\n" + download_url + "\n\nError:\n" + err_msg);
             }
 
             update_status(50, _L("Verifying package integrity..."));
@@ -5271,12 +5266,8 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             if (!sha256.empty()) {
                 std::ifstream file(zip_path.string(), std::ios::binary);
                 if (!file) {
-                    GUI::wxGetApp().CallAfter([this]() {
-                        wxMessageBox(_L("Failed to open downloaded HIM profiles package for SHA256 verification."),
-                                     _L("HIM Profiles Update"), wxICON_ERROR);
-                    });
                     boost::filesystem::remove(zip_path);
-                    return;
+                    throw std::runtime_error("Failed to open downloaded HIM profiles package for SHA256 verification.");
                 }
                 SHA256_CTX sha256_ctx;
                 SHA256_Init(&sha256_ctx);
@@ -5297,12 +5288,8 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 }
                 std::string computed_sha256 = hash_ss.str();
                 if (computed_sha256 != sha256) {
-                    GUI::wxGetApp().CallAfter([this]() {
-                        wxMessageBox(_L("SHA256 verification of downloaded HIM profiles package failed. Installation aborted."),
-                                     _L("HIM Profiles Update"), wxICON_ERROR);
-                    });
                     boost::filesystem::remove(zip_path);
-                    return;
+                    throw std::runtime_error("SHA256 verification of downloaded HIM profiles package failed. Installation aborted.");
                 }
             }
             
@@ -5354,12 +5341,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             if (!unzipped) {
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("Failed to extract HIM profiles package. Please extract manually and install."),
-                                 _L("HIM Profiles Update"), wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("Failed to extract HIM profiles package. Please extract manually and install.");
             }
 
             // 4) validate extracted package: must contain HIM.json and version match
@@ -5372,14 +5354,9 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 }
             }
             if (!boost::filesystem::exists(extracted_manifest)) {
-                // not found
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("The package does not contain HIM.json. Installation aborted."), _L("HIM Profiles Update"),
-                                 wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("The package does not contain HIM.json. Installation aborted.");
             }
 
             std::string manifest_content;
@@ -5388,11 +5365,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             } catch (...) {
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("Failed to read package manifest HIM.json. Installation aborted."), _L("HIM Profiles Update"),
-                                 wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("Failed to read package manifest HIM.json. Installation aborted.");
             }
 
             nlohmann::json manifest_j;
@@ -5401,10 +5374,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             } catch (...) {
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("Invalid JSON in package HIM.json. Installation aborted."), _L("HIM Profiles Update"), wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("Invalid JSON in package HIM.json. Installation aborted.");
             }
 
             std::string extracted_version = manifest_j.value("version", std::string(""));
@@ -5412,12 +5382,8 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 // mismatch (warning -> treat as error)
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-                GUI::wxGetApp().CallAfter([this, remote_version, extracted_version]() {
-                    wxMessageBox(wxString::Format("Package version mismatch: expected %s but package contains %s. Installation aborted.",
-                                                  remote_version, extracted_version),
-                                 _L("HIM Profiles Update"), wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("Package version mismatch: expected " + remote_version + " but package contains " +
+                                         extracted_version + ". Installation aborted.");
             }
 
             // 5) backup current profiles (move HIM.json and HIM folder)
@@ -5472,14 +5438,9 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                     had_backup = true;
                 }
             } catch (...) {
-                // backup failed -> abort
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("Failed to backup existing HIM profiles. Installation aborted."), _L("HIM Profiles Update"),
-                                 wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("Failed to backup existing HIM profiles. Installation aborted.");
             }
 
             // 6) move extracted content into profiles_dir
@@ -5495,12 +5456,6 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                     extracted_root = children[0];
                 }
 
-                // ensure destination HIM folder does not exist (it was moved to backup)
-                if (boost::filesystem::exists(profiles_dir / "HIM")) {
-                    // remove (shouldn't happen)
-                    boost::filesystem::remove_all(profiles_dir / "HIM", ec);
-                }
-
                 // try rename (fast & atomic if same fs)
                 boost::filesystem::rename(extracted_root, profiles_dir, ec);
                 if (ec) {
@@ -5514,7 +5469,6 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             }
 
             if (!moved_ok) {
-                // attempt rollback: restore backup
                 try {
                     if (had_backup) {
                         if (boost::filesystem::exists(profiles_dir / "HIM"))
@@ -5529,11 +5483,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 } catch (...) {}
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("Failed to install HIM profiles. Original profiles restored if possible."), _L("HIM Profiles Update"),
-                                 wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("Failed to install HIM profiles. Original profiles restored if possible.");
             }
 
             // 7) verify installed manifest exists and version matches remote_version
@@ -5558,7 +5508,6 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
             }
 
             if (!verify_ok) {
-                // rollback
                 try {
                     if (had_backup) {
                         if (boost::filesystem::exists(profiles_dir / "HIM"))
@@ -5573,11 +5522,7 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                 } catch (...) {}
                 boost::filesystem::remove_all(tmp_extract);
                 boost::filesystem::remove(zip_path);
-                GUI::wxGetApp().CallAfter([this]() {
-                    wxMessageBox(_L("Installed HIM profiles failed verification and were rolled back."), _L("HIM Profiles Update"),
-                                 wxICON_ERROR);
-                });
-                return;
+                throw std::runtime_error("Installed HIM profiles failed verification and were rolled back.");
             }
 
             // 8) remove data_dir_path/system/ folder (as requested)
@@ -5604,13 +5549,13 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                     progress_ptr->Destroy();
                 }
             });
+
             GUI::wxGetApp().CallAfter([progress_ptr, remote_version]() {
                 wxMessageBox(wxString::Format(_L("HIM profiles have been updated to %s.\n\nPlease restart the application to apply changes."),
                                               remote_version),
                              _L("HIM Profiles Updated"), wxOK | wxICON_INFORMATION);
             });
 
-            return;
         } catch (std::exception& e) {
             GUI::wxGetApp().CallAfter([progress_ptr, e, this]() {
                 if (progress_ptr)
@@ -5620,11 +5565,11 @@ void GUI_App::install_him_profiles_from_url(const std::string& download_url, con
                     this->GetTopWindow()->Raise();
                 }
 
+                std::string test = std::string(e.what());
                 if (std::string(e.what()) != "User cancelled") {
                     wxMessageBox(wxString::Format(_L("Update failed: %s"), e.what()), _L("Error"), wxICON_ERROR);
                 }
             });
-            return;
         }
     }).detach();
 }
