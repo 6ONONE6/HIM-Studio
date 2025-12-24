@@ -58,12 +58,7 @@
 #include <wx/utils.h>
 #include <openssl/hmac.h>
 #include <openssl/evp.h>
-
 #include <openssl/sha.h>
-#include <wx/webrequest.h>
-#include <wx/wfstream.h>
-
-
 
 #include "libslic3r/Utils.hpp"
 #include "libslic3r/Model.hpp"
