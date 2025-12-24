@@ -483,6 +483,8 @@ public:
     void            check_new_version(bool show_tips = false, int by_user = 0);
     void            check_new_version_sf(bool show_tips = false, int by_user = 0);
     void            check_new_version_hs(bool show_tips = false, int by_user = 0);
+    void            check_new_version_him_profiles();
+    void            install_him_profiles_from_url(const std::string& download_url, const std::string& remote_version, const std::string& sha256);
     bool            process_network_msg(std::string dev_id, std::string msg);
     void            request_new_version(int by_user);
     void            enter_force_upgrade();
