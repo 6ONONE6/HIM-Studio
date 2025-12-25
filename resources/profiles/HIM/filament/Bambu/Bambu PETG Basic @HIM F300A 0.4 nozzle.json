@@ -1,0 +1,59 @@
+{
+    "type": "filament",
+    "name": "Bambu PETG Basic @HIM F300A 0.4 nozzle",
+    "inherits": "Bambu PETG Basic @base",
+    "from": "system",
+    "setting_id": "OGFSA01",
+    "instantiation": "true",
+    "filament_density": [
+        "1.24"
+    ],
+    "filament_cost": [
+        "20"
+    ],
+    "temperature_vitrification": [
+        "60"
+    ],
+    "filament_flow_ratio": [
+        "1.0185"
+    ],
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "pressure_advance": [
+        "0.02"
+    ],
+    "nozzle_temperature": [
+        "240"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "250"
+    ],
+    "filament_max_volumetric_speed": [
+        "13"
+    ],
+    "slow_down_layer_time": [
+        "0"
+    ],
+    "complete_print_exhaust_fan_speed": [
+        "80"
+    ],
+    "during_print_exhaust_fan_speed": [
+        "60"
+    ],
+    "filament_retraction_length": [
+        "0.8"
+    ],
+    "filament_start_gcode": [
+        "; Filament start gcode\n"
+    ],
+    "filament_long_retractions_when_cut": [
+        "1"
+    ],
+    "filament_retraction_distances_when_cut": [
+        "18"
+    ],
+    "compatible_printers": [
+        "HIM F300A 0.4 nozzle"
+    ]
+}

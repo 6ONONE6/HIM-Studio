@@ -53,28 +53,52 @@
             "sub_path": "filament/base/fdm_filament_pla.json"
         },
         {
-            "name": "Bambu PLA Matte @base",
-            "sub_path": "filament/Bambu/Bambu PLA Matte @base.json"
+            "name": "Bambu PETG Basic @base",
+            "sub_path": "filament/Bambu/Bambu PETG Basic @base.json"
+        },
+        {
+            "name": "Bambu PETG HF @base",
+            "sub_path": "filament/Bambu/Bambu PETG HF @base.json"
+        },
+        {
+            "name": "Bambu PETG Translucent @base",
+            "sub_path": "filament/Bambu/Bambu PETG Translucent @base.json"
         },
         {
             "name": "Bambu PLA Basic @base",
             "sub_path": "filament/Bambu/Bambu PLA Basic @base.json"
         },
         {
+            "name": "Bambu PLA Matte @base",
+            "sub_path": "filament/Bambu/Bambu PLA Matte @base.json"
+        },
+        {
             "name": "Bambu PLA Silk @base",
             "sub_path": "filament/Bambu/Bambu PLA Silk @base.json"
+        },
+        {
+            "name": "Bambu PLA Translucent @base",
+            "sub_path": "filament/Bambu/Bambu PLA Translucent @base.json"
         },
         {
             "name": "Bambu PLA Wood @base",
             "sub_path": "filament/Bambu/Bambu PLA Wood @base.json"
         },
         {
-            "name": "eSUN PLA+ @base",
-            "sub_path": "filament/eSUN/eSUN PLA+ @base.json"
+            "name": "eSUN PEBA-90A @base",
+            "sub_path": "filament/eSUN/eSUN PEBA-90A @base.json"
+        },
+        {
+            "name": "eSUN PETG Basic @base",
+            "sub_path": "filament/eSUN/eSUN PETG Basic @base.json"
         },
         {
             "name": "eSUN PLA Silk @base",
             "sub_path": "filament/eSUN/eSUN PLA Silk @base.json"
+        },
+        {
+            "name": "eSUN PLA+ @base",
+            "sub_path": "filament/eSUN/eSUN PLA+ @base.json"
         },
         {
             "name": "kexcelled PLA @base",
@@ -113,16 +137,32 @@
             "sub_path": "filament/SUNLU/SUNLU Wood PLA @base.json"
         },
         {
-            "name": "Bambu PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PLA Matte @HIM F300A 0.4 nozzle.json"
+            "name": "Bambu PETG Basic @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/Bambu PETG Basic @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "Bambu PETG HF @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/Bambu PETG HF @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "Bambu PETG Translucent @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/Bambu PETG Translucent @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "Bambu PLA Basic @HIM F300A 0.4 nozzle",
             "sub_path": "filament/Bambu/Bambu PLA Basic @HIM F300A 0.4 nozzle.json"
         },
         {
+            "name": "Bambu PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/Bambu PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
             "name": "Bambu PLA Silk @HIM F300A 0.4 nozzle",
             "sub_path": "filament/Bambu/Bambu PLA Silk @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "Bambu PLA Translucent @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Bambu/Bambu PLA Translucent @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "Bambu PLA Wood @HIM F300A 0.4 nozzle",
@@ -157,16 +197,32 @@
             "sub_path": "filament/SUNLU/SUNLU Wood PLA @HIM F300A 0.4 nozzle.json"
         },
         {
-            "name": "eSUN PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PLA Matte @HIM F300A 0.4 nozzle.json"
+            "name": "eSUN PEBA-90A @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/eSUN PEBA-90A @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "eSUN PETG Basic @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/eSUN PETG Basic @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "eSUN PLA Basic @HIM F300A 0.4 nozzle",
             "sub_path": "filament/eSUN/eSUN PLA Basic @HIM F300A 0.4 nozzle.json"
         },
         {
+            "name": "eSUN PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/eSUN PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
             "name": "eSUN PLA Silk @HIM F300A 0.4 nozzle",
             "sub_path": "filament/eSUN/eSUN PLA Silk @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "eSUN PLA Translucent @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/eSUN PLA Translucent @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "eSUN PLA WOOD @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/eSUN/eSUN PLA WOOD @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "Panchroma PLA Matte @HIM F300A 0.4 nozzle",

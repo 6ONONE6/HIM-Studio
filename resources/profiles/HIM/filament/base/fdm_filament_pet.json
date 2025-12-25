@@ -11,12 +11,6 @@
     "eng_plate_temp_initial_layer": [
         "0"
     ],
-    "fan_cooling_layer_time": [
-        "20"
-    ],
-    "fan_min_speed": [
-        "20"
-    ],
     "filament_cost": [
         "30"
     ],
@@ -28,12 +22,6 @@
     ],
     "filament_type": [
         "PETG"
-    ],
-    "hot_plate_temp": [
-        "80"
-    ],
-    "hot_plate_temp_initial_layer": [
-        "80"
     ],
     "nozzle_temperature": [
         "255"
