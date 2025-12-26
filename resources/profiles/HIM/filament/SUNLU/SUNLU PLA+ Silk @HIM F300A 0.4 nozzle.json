@@ -1,7 +1,7 @@
 {
     "type": "filament",
-    "name": "SUNLU Silk PLA+ @HIM F300A 0.4 nozzle",
-    "inherits": "SUNLU Silk PLA+ @base",
+    "name": "SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
+    "inherits": "SUNLU PLA+ Silk @base",
     "from": "system",
     "setting_id": "OSNLS05",
     "instantiation": "true",

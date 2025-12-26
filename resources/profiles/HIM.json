@@ -1,6 +1,6 @@
 {
     "name": "HIM",
-    "version":  "02.03.01.00",
+    "version":  "02.03.01.01",
     "force_update": "0",
     "description": "HIM configurations",
     "machine_model_list": [
@@ -109,32 +109,44 @@
             "sub_path": "filament/kexcelled/kexcelled PLA Silk @base.json"
         },
         {
-            "name": "Panchroma PLA Matte @base",
-            "sub_path": "filament/Polymaker/Panchroma PLA Matte @base.json"
+            "name": "Panchroma PETG-HF @base",
+            "sub_path": "filament/Polymaker/Panchroma PETG-HF @base.json"
         },
         {
             "name": "Panchroma PLA Basic @base",
             "sub_path": "filament/Polymaker/Panchroma PLA Basic @base.json"
         },
         {
+            "name": "Panchroma PLA Matte @base",
+            "sub_path": "filament/Polymaker/Panchroma PLA Matte @base.json"
+        },
+        {
             "name": "Panchroma PLA Silk @base",
             "sub_path": "filament/Polymaker/Panchroma PLA Silk @base.json"
         },
         {
-            "name": "SUNLU PLA Matte @base",
-            "sub_path": "filament/SUNLU/SUNLU PLA Matte @base.json"
-        },
-        {
-            "name": "SUNLU Silk PLA+ @base",
-            "sub_path": "filament/SUNLU/SUNLU Silk PLA+ @base.json"
+            "name": "SUNLU PETG-HF @base",
+            "sub_path": "filament/SUNLU/SUNLU PETG-HF @base.json"
         },
         {
             "name": "SUNLU PLA Basic @base",
             "sub_path": "filament/SUNLU/SUNLU PLA Basic @base.json"
         },
         {
-            "name": "SUNLU Wood PLA @base",
-            "sub_path": "filament/SUNLU/SUNLU Wood PLA @base.json"
+            "name": "SUNLU PLA Matte @base",
+            "sub_path": "filament/SUNLU/SUNLU PLA Matte @base.json"
+        },
+        {
+            "name": "SUNLU PLA Translucent @base",
+            "sub_path": "filament/SUNLU/SUNLU PLA Translucent @base.json"
+        },
+        {
+            "name": "SUNLU PLA Wood @base",
+            "sub_path": "filament/SUNLU/SUNLU PLA Wood @base.json"
+        },
+        {
+            "name": "SUNLU PLA+ Silk @base",
+            "sub_path": "filament/SUNLU/SUNLU PLA+ Silk @base.json"
         },
         {
             "name": "Bambu PETG Basic @HIM F300A 0.4 nozzle",
@@ -181,20 +193,28 @@
             "sub_path": "filament/kexcelled/kexcelled PLA Silk @HIM F300A 0.4 nozzle.json"
         },
         {
-            "name": "SUNLU PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU PLA Matte @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "SUNLU Silk PLA+ @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU Silk PLA+ @HIM F300A 0.4 nozzle.json"
+            "name": "SUNLU PETG-HF @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/SUNLU PETG-HF @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "SUNLU PLA Basic @HIM F300A 0.4 nozzle",
             "sub_path": "filament/SUNLU/SUNLU PLA Basic @HIM F300A 0.4 nozzle.json"
         },
         {
-            "name": "SUNLU Wood PLA @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU Wood PLA @HIM F300A 0.4 nozzle.json"
+            "name": "SUNLU PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/SUNLU PLA Matte @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "SUNLU PLA Translucent @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/SUNLU PLA Translucent @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "SUNLU PLA Wood @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/SUNLU PLA Wood @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/SUNLU/SUNLU PLA+ Silk @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "eSUN PEBA-90A @HIM F300A 0.4 nozzle",
@@ -225,12 +245,16 @@
             "sub_path": "filament/eSUN/eSUN PLA WOOD @HIM F300A 0.4 nozzle.json"
         },
         {
-            "name": "Panchroma PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Polymaker/Panchroma PLA Matte @HIM F300A 0.4 nozzle.json"
+            "name": "Panchroma PETG-HF @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Polymaker/Panchroma PETG-HF @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "Panchroma PLA Basic @HIM F300A 0.4 nozzle",
             "sub_path": "filament/Polymaker/Panchroma PLA Basic @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "Panchroma PLA Matte @HIM F300A 0.4 nozzle",
+            "sub_path": "filament/Polymaker/Panchroma PLA Matte @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "Panchroma PLA Silk @HIM F300A 0.4 nozzle",

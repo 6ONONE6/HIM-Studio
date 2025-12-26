@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "SUNLU Silk PLA+ @base",
+    "name": "SUNLU PLA Translucent @base",
     "inherits": "fdm_filament_pla",
     "from": "system",
     "filament_id": "GFSNL05",
@@ -13,7 +13,7 @@
         "1.25"
     ],
     "filament_flow_ratio": [
-        "0.98"
+        "0.9025"
     ],
     "filament_long_retractions_when_cut": [
         "1"
@@ -22,7 +22,7 @@
         "18"
     ],    
     "filament_max_volumetric_speed": [
-        "12"
+        "18"
     ],
     "filament_vendor": [
         "SUNLU"
