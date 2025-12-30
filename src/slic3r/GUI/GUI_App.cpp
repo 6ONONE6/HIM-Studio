@@ -5124,25 +5124,24 @@ void GUI_App::check_new_version_him_profiles()
                 }
 
                 // 5) update is available and compatible. Notify user (no download/install executed here).
-                std::string msg = "A new HIM profiles package is available.    Update now?\n\n";
-                msg += local_profile_version + " ---> ";
-                msg += remote_version + "\n";
-                //msg += "sha: " + sha256 + "\n\n";
-                if (!notes.empty())
-                    msg += "Notes:\n" + notes + "\n";
+                wxString msg = wxString::Format(_L("A new HIM profiles package is available. Update now?\n\n"
+                                                   "%s ---> %s\n\n"), local_profile_version, remote_version);
+                if (!notes.empty()) {
+                    msg += _L("Notes:\n");
+                    msg += wxString::FromUTF8(notes);
+                    msg += "\n";
+                }
 
-                // If there's a download URL we show it and allow user to open it.
                 if (!download_url.empty()) {
-                    int ret = wxMessageBox(_L(msg), _L("HIM Profiles Update Available"), wxYES_NO | wxICON_INFORMATION);
+                    int ret = wxMessageBox(msg, _L("HIM Profiles Update Available"), wxYES_NO | wxICON_INFORMATION);
                     if (ret == wxYES) {
                         install_him_profiles_from_url(download_url, remote_version, sha256);
                     } else {
                         wxLogMessage("User postponed HIM profiles update (remote %s).", remote_version);
                     }
                 } else {
-                    wxMessageBox(_L(msg), _L("HIM Profiles Update Available"), wxOK | wxICON_INFORMATION);
+                    wxMessageBox(msg, _L("HIM Profiles Update Available"), wxOK | wxICON_INFORMATION);
                 }
-
             } catch (std::exception& e) {
                 wxLogError("Failed to parse remote HIM updates.json: %s", e.what());
             }

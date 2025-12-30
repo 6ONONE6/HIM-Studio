@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 10:35+0800\n"
+"POT-Creation-Date: 2025-12-30 11:16+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -1646,6 +1646,55 @@ msgid "Check for update error: "
 msgstr ""
 
 msgid "New Version Check"
+msgstr ""
+
+msgid "HIM Profiles - Incompatible"
+msgstr ""
+
+#, c-format, boost-format
+msgid ""
+"A new HIM profiles package is available. Update now?\n"
+"\n"
+"%s ---> %s\n"
+"\n"
+msgstr ""
+
+msgid "Notes:\n"
+msgstr ""
+
+msgid "HIM Profiles Update Available"
+msgstr ""
+
+msgid "HIM Profiles Update"
+msgstr ""
+
+msgid "Preparing..."
+msgstr ""
+
+msgid "Downloading configuration package..."
+msgstr ""
+
+msgid "Verifying package integrity..."
+msgstr ""
+
+msgid "Extracting configuration package..."
+msgstr ""
+
+msgid "Installing configuration package..."
+msgstr ""
+
+#, c-format, boost-format
+msgid ""
+"HIM profiles have been updated to %s.\n"
+"\n"
+"Please restart the application to apply changes."
+msgstr ""
+
+msgid "HIM Profiles Updated"
+msgstr ""
+
+#, c-format, boost-format
+msgid "Update failed: %s"
 msgstr ""
 
 msgid "Privacy Policy Update"

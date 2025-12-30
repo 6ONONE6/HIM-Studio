@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Slic3rPE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-24 10:35+0800\n"
-"PO-Revision-Date: 2025-11-24 10:39+0800\n"
+"POT-Creation-Date: 2025-12-30 11:16+0800\n"
+"PO-Revision-Date: 2025-12-30 11:22+0800\n"
 "Last-Translator: Handle <mail@bysb.net>\n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 msgid "Current AMS humidity"
 msgstr "当前AMS湿度"
@@ -1637,6 +1637,62 @@ msgstr "检查更新错误："
 
 msgid "New Version Check"
 msgstr "新版本检查"
+
+msgid "HIM Profiles - Incompatible"
+msgstr "HIM 配置文件不兼容"
+
+#, c-format, boost-format
+msgid ""
+"A new HIM profiles package is available. Update now?\n"
+"\n"
+"%s ---> %s\n"
+"\n"
+msgstr ""
+"新版HIM配置文件包现已发布。是否立即更新？\n"
+"\n"
+"%s ---> %s\n"
+"\n"
+
+msgid "Notes:\n"
+msgstr "注释：\n"
+
+msgid "HIM Profiles Update Available"
+msgstr "HIM 配置文件更新已可用"
+
+msgid "HIM Profiles Update"
+msgstr "HIM 配置文件更新"
+
+msgid "Preparing..."
+msgstr "正在准备..."
+
+msgid "Downloading configuration package..."
+msgstr "正在下载配置包..."
+
+msgid "Verifying package integrity..."
+msgstr "验证软件包完整性..."
+
+msgid "Extracting configuration package..."
+msgstr "提取配置包..."
+
+msgid "Installing configuration package..."
+msgstr "正在安装配置包……"
+
+#, c-format, boost-format
+msgid ""
+"HIM profiles have been updated to %s.\n"
+"\n"
+"Please restart the application to apply changes."
+msgstr ""
+"HIM配置文件已更新至%s。\n"
+"\n"
+"请重启应用程序以应用更改。"
+
+msgid "HIM Profiles Updated"
+msgstr "HIM 配置文件已更新"
+
+#, c-format, boost-format
+msgid "Update failed: %s"
+msgstr "更新失败：%s"
 
 msgid "Privacy Policy Update"
 msgstr "隐私协议更新"
