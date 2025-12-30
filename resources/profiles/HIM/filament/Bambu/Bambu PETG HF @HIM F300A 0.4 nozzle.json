@@ -42,7 +42,7 @@
         "60"
     ],
     "filament_retraction_length": [
-        "0.5"
+        "0.8"
     ],
     "filament_start_gcode": [
         "; Filament start gcode\n"

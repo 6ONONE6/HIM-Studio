@@ -85,10 +85,6 @@
             "sub_path": "filament/Bambu/Bambu PLA Wood @base.json"
         },
         {
-            "name": "eSUN PEBA-90A @base",
-            "sub_path": "filament/eSUN/eSUN PEBA-90A @base.json"
-        },
-        {
             "name": "eSUN PETG Basic @base",
             "sub_path": "filament/eSUN/eSUN PETG Basic @base.json"
         },
@@ -215,10 +211,6 @@
         {
             "name": "SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
             "sub_path": "filament/SUNLU/SUNLU PLA+ Silk @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "eSUN PEBA-90A @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PEBA-90A @HIM F300A 0.4 nozzle.json"
         },
         {
             "name": "eSUN PETG Basic @HIM F300A 0.4 nozzle",

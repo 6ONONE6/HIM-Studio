@@ -47,13 +47,6 @@
     "filament_start_gcode": [
         "; Filament start gcode\n"
     ],
-
-    "filament_long_retractions_when_cut": [
-        "1"
-    ],
-    "filament_retraction_distances_when_cut": [
-        "18"
-    ],
     "compatible_printers": [
         "HIM F300A 0.4 nozzle"
     ]
