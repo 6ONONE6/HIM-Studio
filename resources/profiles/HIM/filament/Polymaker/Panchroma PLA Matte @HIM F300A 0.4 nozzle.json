@@ -1,13 +1,10 @@
 {
     "type": "filament",
-    "name": "HIM+PolyLite PLA @HIM F300A 0.4 nozzle",
-    "inherits": "HIM+PolyLite PLA @base",
+    "name": "Panchroma PLA Matte @HIM F300A 0.4 nozzle",
+    "inherits": "Panchroma PLA Matte @base",
     "from": "system",
     "setting_id": "OGFSL19",
     "instantiation": "true",
-    "filament_vendor": [
-        "HIM"
-    ],
     "filament_density": [
         "1.24"
     ],

@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "HIM+PolyLite PLA @base",
+    "name": "Panchroma PLA Silk @base",
     "inherits": "fdm_filament_pla",
     "from": "system",
     "filament_id": "GFL00",

@@ -1,6 +1,6 @@
 {
     "type": "filament",
-    "name": "HIM+eSUN PLA+ @base",
+    "name": "eSUN PLA+ @base",
     "inherits": "fdm_filament_pla",
     "from": "system",
     "filament_id": "GFL03",
