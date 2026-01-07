@@ -101,6 +101,7 @@ static DWORD execute_process_winapi(const std::wstring &command_line)
 // Run the script. If it is a perl script, run it through the bundled perl interpreter.
 // If it is a batch file, run it through the cmd.exe.
 // Otherwise run it directly.
+#if 0
 static int run_script(const std::string &script, const std::string &gcode, std::string &/*std_err*/)
 {
     // Unpack the argument list provided by the user.
@@ -142,6 +143,91 @@ static int run_script(const std::string &script, const std::string &gcode, std::
     LocalFree(szArglist);
 	quote_argv_winapi(boost::nowide::widen(gcode), command_line);
     return (int)execute_process_winapi(command_line);
+}
+#endif
+
+static int run_script(const std::string& script, const std::string& gcode, std::string& /*std_err*/)
+{
+    // Unpack the argument list provided by the user.
+    int     nArgs;
+    LPWSTR* szArglist = CommandLineToArgvW(boost::nowide::widen(script).c_str(), &nArgs);
+    if (szArglist == nullptr || nArgs <= 0) {
+        // CommandLineToArgvW failed. Maybe the command line escapment is invalid?
+        throw Slic3r::RuntimeError(std::string("Post processing script ") + script + " on file " + gcode +
+                                   " failed. CommandLineToArgvW() refused to parse the command line path.");
+    }
+
+    std::wstring command = szArglist[0];
+
+    // If the provided command path does not exist, try to locate it under <exe_dir>/scripts/
+    if (!boost::filesystem::exists(boost::filesystem::path(command))) {
+        // Get current exe directory
+        wchar_t wpath_exe[_MAX_PATH + 1];
+        ::GetModuleFileNameW(nullptr, wpath_exe, _MAX_PATH);
+        boost::filesystem::path exe_path(wpath_exe);
+        boost::filesystem::path scripts_dir = exe_path.parent_path() / L"scripts";
+
+        boost::filesystem::path cmd_path(command);
+        boost::filesystem::path candidate;
+
+        if (!cmd_path.has_parent_path() || cmd_path.parent_path().empty()) {
+            // Only filename provided: look in scripts/<filename>
+            candidate = scripts_dir / cmd_path.filename();
+        } else {
+            // Relative path provided: preserve the relative structure under scripts/
+            candidate = scripts_dir / cmd_path;
+        }
+
+        if (boost::filesystem::exists(candidate)) {
+            command = candidate.wstring();
+        } else {
+            // Not found — release resources and report error (maintain original behavior)
+            LocalFree(szArglist);
+            throw Slic3r::RuntimeError(std::string("The configured post-processing script does not exist: ") +
+                                       boost::nowide::narrow(command));
+        }
+    }
+
+    std::wstring command_line;
+
+    // If it's a perl script, run via bundled perl (same logic as before)
+    if (boost::iends_with(command, L".pl")) {
+        // The current process may be slic3r.exe or slic3r-console.exe.
+        // Find the path of the process:
+        wchar_t wpath_exe[_MAX_PATH + 1];
+        ::GetModuleFileNameW(nullptr, wpath_exe, _MAX_PATH);
+        boost::filesystem::path path_exe(wpath_exe);
+        boost::filesystem::path path_perl = path_exe.parent_path() / "perl" / "perl.exe";
+        if (!boost::filesystem::exists(path_perl)) {
+            LocalFree(szArglist);
+            throw Slic3r::RuntimeError(std::string("Perl interpreter ") + path_perl.string() + " does not exist.");
+        }
+        // Put perl.exe first on the command line
+        quote_argv_winapi(boost::nowide::widen(path_perl.string()), command_line);
+        command_line += L" ";
+    } else if (boost::iends_with(command, L".bat")) {
+        // Run a batch file through the command line interpreter.
+        command_line = L"cmd.exe /C ";
+    }
+
+    // Build the final command line.
+    // Use the possibly-replaced 'command' for argv[0], and keep original tokens for other args.
+    for (int i = 0; i < nArgs; ++i) {
+        if (i == 0) {
+            // Use resolved/absolute path for argv[0]
+            quote_argv_winapi(command, command_line);
+        } else {
+            quote_argv_winapi(szArglist[i], command_line);
+        }
+        command_line += L" ";
+    }
+
+    LocalFree(szArglist);
+
+    // Append the gcode path as the last argument
+    quote_argv_winapi(boost::nowide::widen(gcode), command_line);
+
+    return (int) execute_process_winapi(command_line);
 }
 
 #else
