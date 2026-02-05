@@ -100,8 +100,8 @@ static const std::map<const wchar_t, std::string> font_icons = {
     {ImGui::CollapseBtn                , "collapse_btn"               },
     {ImGui::RevertBtn                  , "revert_btn"                 },
 
-    {ImGui::HorizontalHide        , "horizontal_hide"               },
-    {ImGui::HorizontalShow        , "horizontal_show"               },
+    //{ImGui::HorizontalHide        , "horizontal_hide"               }, // ORCA use ExpandBtn / CollapseBtn
+    //{ImGui::HorizontalShow        , "horizontal_show"               },
 
     {ImGui::CloseBlockNotifButton      , "block_notification_close"           },
     {ImGui::CloseBlockNotifHoverButton , "block_notification_close_hover"     },
@@ -2598,18 +2598,18 @@ void ImGuiWrapper::pop_common_window_style() {
 
 void ImGuiWrapper::push_confirm_button_style() {
     if (m_is_dark_mode) {
-        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(37.0f / 255.0f, 115.0f / 255.0f, 217.0f / 255.0f, 1.f));
+        ImGui::PushStyleColor(ImGuiCol_Button,        to_ImVec4(decode_color_to_float_array("#1E5FB3")));
         ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(37.0f / 255.0f, 115.0f / 255.0f, 217.0f / 255.0f, 1.f));
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, to_ImVec4(decode_color_to_float_array("#236CCC")));
-        ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(27.f / 255.f, 136.f / 255.f, 68.f / 255.f, 1.f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonActive,  to_ImVec4(decode_color_to_float_array("#1E5FB3")));
         ImGui::PushStyleColor(ImGuiCol_CheckMark, ImVec4(1.f, 1.f, 1.f, 0.88f));
         ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 0.88f));
     }
     else {
-        ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(37.0f / 255.0f, 115.0f / 255.0f, 217.0f / 255.0f, 1.f));
+        ImGui::PushStyleColor(ImGuiCol_Button,        to_ImVec4(decode_color_to_float_array("#2573D9")));
         ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(37.0f / 255.0f, 115.0f / 255.0f, 217.0f / 255.0f, 1.f));
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, to_ImVec4(decode_color_to_float_array("#2A83F7")));
-        ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(27.f / 255.f, 136.f / 255.f, 68.f / 255.f, 1.f));
+        ImGui::PushStyleColor(ImGuiCol_ButtonActive,  to_ImVec4(decode_color_to_float_array("#2573D9")));
         ImGui::PushStyleColor(ImGuiCol_CheckMark, ImVec4(1.f, 1.f, 1.f, 1.f));
         ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.f, 1.f, 1.f, 1.f));
     }
