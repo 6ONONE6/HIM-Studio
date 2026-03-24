@@ -348,7 +348,7 @@ wxBitmap* BitmapCache::load_svg(const std::string &bitmap_name, unsigned target_
         replaces["#2573D9"] = "#1E5FB3";
 
     if (!new_color.empty())
-        replaces["\"#009688\""] = "\"" + new_color + "\"";
+        replaces["\"#2573D9\""] = "\"" + new_color + "\"";
 
      NSVGimage *image = nullptr;
     if (strstr(bitmap_name.c_str(), "printer_thumbnail") == NULL) {
@@ -567,7 +567,7 @@ bool BitmapCache::load_from_svg_file_change_color(const std::string &filename, u
     temp_color[7]             = '\0';
     unsigned int change_color = nsvg__parseColorHex(temp_color);
     change_color |= (unsigned int) (1.0f * 255) << 24; // opacity
-    unsigned int green_color = 0xFF889600; // #009688
+    unsigned int green_color = 0xFF889600; // #2573D9
     for (NSVGshape* shape = image->shapes; shape != nullptr; shape = shape->next) {
         // find green color
         if (shape->fill.color == green_color) {
