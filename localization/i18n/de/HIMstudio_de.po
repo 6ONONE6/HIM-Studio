@@ -1653,7 +1653,7 @@ msgstr ""
 "erkannt."
 
 msgid "STEP files"
-msgstr "SETP Dateien"
+msgstr "STEP Dateien"
 
 msgid "STL files"
 msgstr "STL Dateien"
