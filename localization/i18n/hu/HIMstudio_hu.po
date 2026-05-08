@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 16:06+0800\n"
+"POT-Creation-Date: 2026-05-08 11:14+0800\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8602,11 +8602,9 @@ msgid "Auto slice after changes"
 msgstr "Automatikus szeletelés módosítások után"
 
 msgid ""
-"If enabled, OrcaSlicer will re-slice automatically whenever slicing-related "
+"If enabled, HimStudio will re-slice automatically whenever slicing-related "
 "settings change."
 msgstr ""
-"Ha engedélyezve van, az OrcaSlicer automatikusan újraszeletel minden "
-"szeletelést érintő beállításváltozás után."
 
 msgid ""
 "Delay in seconds before auto slicing starts, allowing multiple edits to be "
@@ -8806,48 +8804,35 @@ msgstr ""
 msgid "Download Network Plug-in"
 msgstr "Hálózati bővítmény letöltése"
 
-msgid "Associate files to OrcaSlicer"
-msgstr "Fájlok társítása a OrcaSlicerhoz"
-
-#, fuzzy
-msgid "Associate 3MF files to OrcaSlicer"
-msgstr ".3mf fájlok társítása a OrcaSlicerhoz"
-
-msgid "If enabled, sets OrcaSlicer as default application to open 3MF files."
+msgid "Associate files to HimStudio"
 msgstr ""
-"Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
-"alkalmazásként a 3MF file fájlok megnyitásához"
 
-msgid "Associate DRC files to OrcaSlicer"
-msgstr "DRC fájlok társítása OrcaSlicerhez"
-
-msgid "If enabled, sets OrcaSlicer as default application to open DRC files."
+msgid "Associate 3MF files to HimStudio"
 msgstr ""
-"Ha engedélyezve van, az OrcaSlicer lesz az alapértelmezett alkalmazás DRC "
-"fájlok megnyitásához."
 
-#, fuzzy
-msgid "Associate STL files to OrcaSlicer"
-msgstr ".stl fájlok társítása a OrcaSlicerhoz"
-
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open STL files."
+msgid "If enabled, sets HimStudio as default application to open 3MF files."
 msgstr ""
-"Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
-"alkalmazásként az .stl fájlok megnyitásához"
 
-#, fuzzy
-msgid "Associate STEP files to OrcaSlicer"
-msgstr ".step/.stp fájlok társítása a OrcaSlicerhoz"
-
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open STEP files."
+msgid "Associate DRC files to HimStudio"
 msgstr ""
-"Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
-"alkalmazásként a .step fájlok megnyitásához"
 
-msgid "Associate web links to OrcaSlicer"
-msgstr "Webhivatkozások társítása OrcaSlicerhez"
+msgid "If enabled, sets HimStudio as default application to open DRC files."
+msgstr ""
+
+msgid "Associate STL files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STL files."
+msgstr ""
+
+msgid "Associate STEP files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STEP files."
+msgstr ""
+
+msgid "Associate web links to HimStudio"
+msgstr ""
 
 msgid "Developer"
 msgstr "Fejlesztő"
@@ -11059,13 +11044,10 @@ msgid "Ramming line"
 msgstr "Tömörítési sor"
 
 msgid ""
-"Orca would re-calculate your flushing volumes everytime the filaments color "
-"changed or filaments changed. You could disable the auto-calculate in Orca "
-"Slicer > Preferences"
+"HimStudio would re-calculate your flushing volumes everytime the filaments "
+"color changed or filaments changed. You could disable the auto-calculate in "
+"HimStudio > Preferences"
 msgstr ""
-"Az Orca újraszámolja az öblítési mennyiségeket minden alkalommal, amikor a "
-"filament színe vagy maga a filament megváltozik. Az automatikus számítást "
-"kikapcsolhatod itt: Orca Slicer > Beállítások"
 
 msgid "Flushing volume (mm³) for each filament pair."
 msgstr "Öblítési mennyiség (mm³) minden filamentpárhoz."
@@ -22732,6 +22714,69 @@ msgstr ""
 "Tudtad, hogy a kunkorodásra hajlamos anyagok (például ABS) nyomtatásakor a "
 "tárgyasztal hőmérsékletének növelése csökkentheti a kunkorodás "
 "valószínűségét?"
+
+#~ msgid ""
+#~ "If enabled, OrcaSlicer will re-slice automatically whenever slicing-"
+#~ "related settings change."
+#~ msgstr ""
+#~ "Ha engedélyezve van, az OrcaSlicer automatikusan újraszeletel minden "
+#~ "szeletelést érintő beállításváltozás után."
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "Fájlok társítása a OrcaSlicerhoz"
+
+#, fuzzy
+#~ msgid "Associate 3MF files to OrcaSlicer"
+#~ msgstr ".3mf fájlok társítása a OrcaSlicerhoz"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open 3MF files."
+#~ msgstr ""
+#~ "Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
+#~ "alkalmazásként a 3MF file fájlok megnyitásához"
+
+#~ msgid "Associate DRC files to OrcaSlicer"
+#~ msgstr "DRC fájlok társítása OrcaSlicerhez"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open DRC files."
+#~ msgstr ""
+#~ "Ha engedélyezve van, az OrcaSlicer lesz az alapértelmezett alkalmazás DRC "
+#~ "fájlok megnyitásához."
+
+#, fuzzy
+#~ msgid "Associate STL files to OrcaSlicer"
+#~ msgstr ".stl fájlok társítása a OrcaSlicerhoz"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STL files."
+#~ msgstr ""
+#~ "Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
+#~ "alkalmazásként az .stl fájlok megnyitásához"
+
+#, fuzzy
+#~ msgid "Associate STEP files to OrcaSlicer"
+#~ msgstr ".step/.stp fájlok társítása a OrcaSlicerhoz"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STEP files."
+#~ msgstr ""
+#~ "Ha engedélyezve van, a OrcaSlicer-t állítja be alapértelmezett "
+#~ "alkalmazásként a .step fájlok megnyitásához"
+
+#~ msgid "Associate web links to OrcaSlicer"
+#~ msgstr "Webhivatkozások társítása OrcaSlicerhez"
+
+#~ msgid ""
+#~ "Orca would re-calculate your flushing volumes everytime the filaments "
+#~ "color changed or filaments changed. You could disable the auto-calculate "
+#~ "in Orca Slicer > Preferences"
+#~ msgstr ""
+#~ "Az Orca újraszámolja az öblítési mennyiségeket minden alkalommal, amikor "
+#~ "a filament színe vagy maga a filament megváltozik. Az automatikus "
+#~ "számítást kikapcsolhatod itt: Orca Slicer > Beállítások"
 
 #, fuzzy, c-format, boost-format
 #~ msgid ""

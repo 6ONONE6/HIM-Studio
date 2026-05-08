@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 16:06+0800\n"
+"POT-Creation-Date: 2026-05-08 11:14+0800\n"
 "PO-Revision-Date: 2025-10-25 23:01+0300\n"
 "Last-Translator: Gintaras Kučinskas <sharanchius@gmail.com>\n"
 "Language-Team: \n"
@@ -8583,11 +8583,9 @@ msgid "Auto slice after changes"
 msgstr "Auto slice after changes"
 
 msgid ""
-"If enabled, OrcaSlicer will re-slice automatically whenever slicing-related "
+"If enabled, HimStudio will re-slice automatically whenever slicing-related "
 "settings change."
 msgstr ""
-"If enabled, OrcaSlicer will re-slice automatically whenever slicing-related "
-"settings change."
 
 msgid ""
 "Delay in seconds before auto slicing starts, allowing multiple edits to be "
@@ -8787,47 +8785,35 @@ msgstr ""
 msgid "Download Network Plug-in"
 msgstr "Download Network Plug-in"
 
-msgid "Associate files to OrcaSlicer"
-msgstr "Susieti failus su Orca Slicer"
-
-#, fuzzy
-msgid "Associate 3MF files to OrcaSlicer"
-msgstr "Susieti .3mf failus su Orca Slicer"
-
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open 3MF files."
+msgid "Associate files to HimStudio"
 msgstr ""
-"Jei įjungta, \"Orca Slicer\" nustatoma kaip numatytasis .3mf failų atidarymo "
-"įrankis"
 
-msgid "Associate DRC files to OrcaSlicer"
-msgstr "Associate DRC files to OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open DRC files."
-msgstr "If enabled, sets OrcaSlicer as default application to open DRC files."
-
-#, fuzzy
-msgid "Associate STL files to OrcaSlicer"
-msgstr "Susieti .stl failus su Orca Slicer"
-
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open STL files."
+msgid "Associate 3MF files to HimStudio"
 msgstr ""
-"Jei įjungta, \"Orca Slicer\" nustatoma kaip numatytoji programa .stl failams "
-"atverti"
 
-#, fuzzy
-msgid "Associate STEP files to OrcaSlicer"
-msgstr "Susieti .step/.stp failus su Orca Slicer"
-
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open STEP files."
+msgid "If enabled, sets HimStudio as default application to open 3MF files."
 msgstr ""
-"Jei įjungta, \"Orca Slicer\" nustatoma kaip numatytoji programa .step "
-"failams atverti"
 
-msgid "Associate web links to OrcaSlicer"
-msgstr "Susieti interneto nuorodas su Orca Slicer"
+msgid "Associate DRC files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open DRC files."
+msgstr ""
+
+msgid "Associate STL files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STL files."
+msgstr ""
+
+msgid "Associate STEP files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STEP files."
+msgstr ""
+
+msgid "Associate web links to HimStudio"
+msgstr ""
 
 msgid "Developer"
 msgstr "Developer"
@@ -11030,13 +11016,10 @@ msgid "Ramming line"
 msgstr "Ramming linija"
 
 msgid ""
-"Orca would re-calculate your flushing volumes everytime the filaments color "
-"changed or filaments changed. You could disable the auto-calculate in Orca "
-"Slicer > Preferences"
+"HimStudio would re-calculate your flushing volumes everytime the filaments "
+"color changed or filaments changed. You could disable the auto-calculate in "
+"HimStudio > Preferences"
 msgstr ""
-"Orca would re-calculate your flushing volumes everytime the filaments color "
-"changed or filaments changed. You could disable the auto-calculate in Orca "
-"Slicer > Preferences"
 
 msgid "Flushing volume (mm³) for each filament pair."
 msgstr "Kiekvienos gijų poros išmetimo tūris (mm³)."
@@ -22597,6 +22580,69 @@ msgstr ""
 "Ar žinojote, kad spausdinant medžiagas, kurios linkusios deformuotis, "
 "pavyzdžiui, ABS, tinkamai padidinus kaitinimo pagrindo temperatūrą galima "
 "sumažinti deformavimosi tikimybę."
+
+#~ msgid ""
+#~ "If enabled, OrcaSlicer will re-slice automatically whenever slicing-"
+#~ "related settings change."
+#~ msgstr ""
+#~ "If enabled, OrcaSlicer will re-slice automatically whenever slicing-"
+#~ "related settings change."
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "Susieti failus su Orca Slicer"
+
+#, fuzzy
+#~ msgid "Associate 3MF files to OrcaSlicer"
+#~ msgstr "Susieti .3mf failus su Orca Slicer"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open 3MF files."
+#~ msgstr ""
+#~ "Jei įjungta, \"Orca Slicer\" nustatoma kaip numatytasis .3mf failų "
+#~ "atidarymo įrankis"
+
+#~ msgid "Associate DRC files to OrcaSlicer"
+#~ msgstr "Associate DRC files to OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open DRC files."
+#~ msgstr ""
+#~ "If enabled, sets OrcaSlicer as default application to open DRC files."
+
+#, fuzzy
+#~ msgid "Associate STL files to OrcaSlicer"
+#~ msgstr "Susieti .stl failus su Orca Slicer"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STL files."
+#~ msgstr ""
+#~ "Jei įjungta, \"Orca Slicer\" nustatoma kaip numatytoji programa .stl "
+#~ "failams atverti"
+
+#, fuzzy
+#~ msgid "Associate STEP files to OrcaSlicer"
+#~ msgstr "Susieti .step/.stp failus su Orca Slicer"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STEP files."
+#~ msgstr ""
+#~ "Jei įjungta, \"Orca Slicer\" nustatoma kaip numatytoji programa .step "
+#~ "failams atverti"
+
+#~ msgid "Associate web links to OrcaSlicer"
+#~ msgstr "Susieti interneto nuorodas su Orca Slicer"
+
+#~ msgid ""
+#~ "Orca would re-calculate your flushing volumes everytime the filaments "
+#~ "color changed or filaments changed. You could disable the auto-calculate "
+#~ "in Orca Slicer > Preferences"
+#~ msgstr ""
+#~ "Orca would re-calculate your flushing volumes everytime the filaments "
+#~ "color changed or filaments changed. You could disable the auto-calculate "
+#~ "in Orca Slicer > Preferences"
 
 #, fuzzy, c-format, boost-format
 #~ msgid ""

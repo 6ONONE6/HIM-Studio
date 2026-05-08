@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OrcaSlicer 2.3.0-rc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 16:06+0800\n"
+"POT-Creation-Date: 2026-05-08 11:14+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Krzysztof Morga <<tlumaczeniebs@gmail.com>>\n"
 "Language-Team: \n"
@@ -8361,7 +8361,7 @@ msgid "Auto slice after changes"
 msgstr ""
 
 msgid ""
-"If enabled, OrcaSlicer will re-slice automatically whenever slicing-related "
+"If enabled, HimStudio will re-slice automatically whenever slicing-related "
 "settings change."
 msgstr ""
 
@@ -8544,36 +8544,35 @@ msgstr ""
 msgid "Download Network Plug-in"
 msgstr ""
 
-msgid "Associate files to OrcaSlicer"
-msgstr "Skojarzenia plików z OrcaSlicer"
-
-msgid "Associate 3MF files to OrcaSlicer"
-msgstr "Skojarzenie plików 3MF"
-
-msgid "If enabled, sets OrcaSlicer as default application to open 3MF files."
-msgstr "Ustala OrcaSlicer jako domyślny program do otwierania plików 3MF."
-
-msgid "Associate DRC files to OrcaSlicer"
+msgid "Associate files to HimStudio"
 msgstr ""
 
-msgid "If enabled, sets OrcaSlicer as default application to open DRC files."
+msgid "Associate 3MF files to HimStudio"
 msgstr ""
 
-msgid "Associate STL files to OrcaSlicer"
-msgstr "Skojarzenie plików STL"
+msgid "If enabled, sets HimStudio as default application to open 3MF files."
+msgstr ""
 
-msgid "If enabled, sets OrcaSlicer as default application to open STL files."
-msgstr "Ustala OrcaSlicer jako domyślny program do otwierania plików STL."
+msgid "Associate DRC files to HimStudio"
+msgstr ""
 
-msgid "Associate STEP files to OrcaSlicer"
-msgstr "Skojarzenie plików STEP"
+msgid "If enabled, sets HimStudio as default application to open DRC files."
+msgstr ""
 
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open STEP files."
-msgstr "Ustala OrcaSlicer jako domyślny program do otwierania plików STEP."
+msgid "Associate STL files to HimStudio"
+msgstr ""
 
-msgid "Associate web links to OrcaSlicer"
-msgstr "Powiązania odnośników z OrcaSlicer"
+msgid "If enabled, sets HimStudio as default application to open STL files."
+msgstr ""
+
+msgid "Associate STEP files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STEP files."
+msgstr ""
+
+msgid "Associate web links to HimStudio"
+msgstr ""
 
 msgid "Developer"
 msgstr ""
@@ -10651,9 +10650,9 @@ msgid "Ramming line"
 msgstr ""
 
 msgid ""
-"Orca would re-calculate your flushing volumes everytime the filaments color "
-"changed or filaments changed. You could disable the auto-calculate in Orca "
-"Slicer > Preferences"
+"HimStudio would re-calculate your flushing volumes everytime the filaments "
+"color changed or filaments changed. You could disable the auto-calculate in "
+"HimStudio > Preferences"
 msgstr ""
 
 msgid "Flushing volume (mm³) for each filament pair."
@@ -21828,6 +21827,34 @@ msgstr ""
 "Czy wiesz, że podczas drukowania filamentami podatnymi na odkształcenia, "
 "takimi jak ABS, odpowiednie zwiększenie temperatury podgrzewanej płyty może "
 "zmniejszyć prawdopodobieństwo odkształceń?"
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "Skojarzenia plików z OrcaSlicer"
+
+#~ msgid "Associate 3MF files to OrcaSlicer"
+#~ msgstr "Skojarzenie plików 3MF"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open 3MF files."
+#~ msgstr "Ustala OrcaSlicer jako domyślny program do otwierania plików 3MF."
+
+#~ msgid "Associate STL files to OrcaSlicer"
+#~ msgstr "Skojarzenie plików STL"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STL files."
+#~ msgstr "Ustala OrcaSlicer jako domyślny program do otwierania plików STL."
+
+#~ msgid "Associate STEP files to OrcaSlicer"
+#~ msgstr "Skojarzenie plików STEP"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STEP files."
+#~ msgstr "Ustala OrcaSlicer jako domyślny program do otwierania plików STEP."
+
+#~ msgid "Associate web links to OrcaSlicer"
+#~ msgstr "Powiązania odnośników z OrcaSlicer"
 
 #~ msgid "Orca Slicer is licensed under "
 #~ msgstr "Orca Slicer jest licencjonowany na zasadach "

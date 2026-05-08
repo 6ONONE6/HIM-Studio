@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 16:06+0800\n"
+"POT-Creation-Date: 2026-05-08 11:14+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -8427,11 +8427,9 @@ msgid "Auto slice after changes"
 msgstr "変更後に自動スライス"
 
 msgid ""
-"If enabled, OrcaSlicer will re-slice automatically whenever slicing-related "
+"If enabled, HimStudio will re-slice automatically whenever slicing-related "
 "settings change."
 msgstr ""
-"有効にすると、スライス関連の設定が変更されるたびにOrcaSlicerが自動的に再スラ"
-"イスします。"
 
 msgid ""
 "Delay in seconds before auto slicing starts, allowing multiple edits to be "
@@ -8627,42 +8625,35 @@ msgstr ""
 msgid "Download Network Plug-in"
 msgstr "ネットワークプラグインをダウンロード"
 
-msgid "Associate files to OrcaSlicer"
-msgstr "ファイルをOrca Slicerに関連付ける"
-
-#, fuzzy
-msgid "Associate 3MF files to OrcaSlicer"
-msgstr ".3mfファイルをOrca Slicerに関連付けます。"
-
-msgid "If enabled, sets OrcaSlicer as default application to open 3MF files."
-msgstr "デフォルトで.3mfファイルをOrca Slicerで開く"
-
-msgid "Associate DRC files to OrcaSlicer"
-msgstr "DRCファイルをOrcaSlicerに関連付け"
-
-msgid "If enabled, sets OrcaSlicer as default application to open DRC files."
+msgid "Associate files to HimStudio"
 msgstr ""
-"有効にすると、DRCファイルを開くデフォルトアプリケーションとしてOrcaSlicerを設"
-"定します。"
 
-#, fuzzy
-msgid "Associate STL files to OrcaSlicer"
-msgstr ".stlファイルをOrca Slicerに関連付けます。"
+msgid "Associate 3MF files to HimStudio"
+msgstr ""
 
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open STL files."
-msgstr "デフォルトで.stlファイルをOrca Slicerで開く"
+msgid "If enabled, sets HimStudio as default application to open 3MF files."
+msgstr ""
 
-#, fuzzy
-msgid "Associate STEP files to OrcaSlicer"
-msgstr ".step/.stpファイルをOrca Slicerに関連付けます。"
+msgid "Associate DRC files to HimStudio"
+msgstr ""
 
-#, fuzzy
-msgid "If enabled, sets OrcaSlicer as default application to open STEP files."
-msgstr "デフォルトで.step/.stpファイルをOrca Slicerで開く"
+msgid "If enabled, sets HimStudio as default application to open DRC files."
+msgstr ""
 
-msgid "Associate web links to OrcaSlicer"
-msgstr "ウェブリンクをOrcaSlicerに関連付け"
+msgid "Associate STL files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STL files."
+msgstr ""
+
+msgid "Associate STEP files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STEP files."
+msgstr ""
+
+msgid "Associate web links to HimStudio"
+msgstr ""
 
 msgid "Developer"
 msgstr "開発者"
@@ -10783,12 +10774,10 @@ msgid "Ramming line"
 msgstr "ラミングライン"
 
 msgid ""
-"Orca would re-calculate your flushing volumes everytime the filaments color "
-"changed or filaments changed. You could disable the auto-calculate in Orca "
-"Slicer > Preferences"
+"HimStudio would re-calculate your flushing volumes everytime the filaments "
+"color changed or filaments changed. You could disable the auto-calculate in "
+"HimStudio > Preferences"
 msgstr ""
-"Orcaはフィラメントの色やフィラメントが変更されるたびにフラッシングボリューム"
-"を再計算します。Orca Slicer > 設定で自動計算を無効にできます"
 
 msgid "Flushing volume (mm³) for each filament pair."
 msgstr "各フィラメントペアのフラッシュ量（mm³）"
@@ -20534,6 +20523,62 @@ msgstr ""
 "反りを避ける\n"
 "ABSのような反りやすい素材を印刷する場合、ヒートベッドの温度を適切に上げること"
 "で、反りが発生する確率を下げることができることをご存知ですか？"
+
+#~ msgid ""
+#~ "If enabled, OrcaSlicer will re-slice automatically whenever slicing-"
+#~ "related settings change."
+#~ msgstr ""
+#~ "有効にすると、スライス関連の設定が変更されるたびにOrcaSlicerが自動的に再ス"
+#~ "ライスします。"
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "ファイルをOrca Slicerに関連付ける"
+
+#, fuzzy
+#~ msgid "Associate 3MF files to OrcaSlicer"
+#~ msgstr ".3mfファイルをOrca Slicerに関連付けます。"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open 3MF files."
+#~ msgstr "デフォルトで.3mfファイルをOrca Slicerで開く"
+
+#~ msgid "Associate DRC files to OrcaSlicer"
+#~ msgstr "DRCファイルをOrcaSlicerに関連付け"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open DRC files."
+#~ msgstr ""
+#~ "有効にすると、DRCファイルを開くデフォルトアプリケーションとしてOrcaSlicer"
+#~ "を設定します。"
+
+#, fuzzy
+#~ msgid "Associate STL files to OrcaSlicer"
+#~ msgstr ".stlファイルをOrca Slicerに関連付けます。"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STL files."
+#~ msgstr "デフォルトで.stlファイルをOrca Slicerで開く"
+
+#, fuzzy
+#~ msgid "Associate STEP files to OrcaSlicer"
+#~ msgstr ".step/.stpファイルをOrca Slicerに関連付けます。"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STEP files."
+#~ msgstr "デフォルトで.step/.stpファイルをOrca Slicerで開く"
+
+#~ msgid "Associate web links to OrcaSlicer"
+#~ msgstr "ウェブリンクをOrcaSlicerに関連付け"
+
+#~ msgid ""
+#~ "Orca would re-calculate your flushing volumes everytime the filaments "
+#~ "color changed or filaments changed. You could disable the auto-calculate "
+#~ "in Orca Slicer > Preferences"
+#~ msgstr ""
+#~ "Orcaはフィラメントの色やフィラメントが変更されるたびにフラッシングボリュー"
+#~ "ムを再計算します。Orca Slicer > 設定で自動計算を無効にできます"
 
 #, fuzzy, c-format, boost-format
 #~ msgid ""

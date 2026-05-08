@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Orca Slicer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-24 16:06+0800\n"
+"POT-Creation-Date: 2026-05-08 11:14+0800\n"
 "PO-Revision-Date: 2026-03-08 21:15-0300\n"
 "Last-Translator: Alexandre Folle de Menezes\n"
 "Language-Team: Portuguese, Brazilian\n"
@@ -8648,11 +8648,9 @@ msgid "Auto slice after changes"
 msgstr "Fatiar automaticamente após mudanças"
 
 msgid ""
-"If enabled, OrcaSlicer will re-slice automatically whenever slicing-related "
+"If enabled, HimStudio will re-slice automatically whenever slicing-related "
 "settings change."
 msgstr ""
-"Se ativado, o OrcaSlicer irá re-fatiar automaticamente sempre que as "
-"configurações relacionadas ao fatiamento forem alteradas."
 
 msgid ""
 "Delay in seconds before auto slicing starts, allowing multiple edits to be "
@@ -8852,40 +8850,35 @@ msgstr ""
 msgid "Download Network Plug-in"
 msgstr "Baixar Plug-in de Rede"
 
-msgid "Associate files to OrcaSlicer"
-msgstr "Associar arquivos ao OrcaSlicer"
-
-msgid "Associate 3MF files to OrcaSlicer"
-msgstr "Associar arquivos 3MF ao OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open 3MF files."
+msgid "Associate files to HimStudio"
 msgstr ""
-"Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos 3MF."
 
-msgid "Associate DRC files to OrcaSlicer"
-msgstr "Associar arquivos DRC ao OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open DRC files."
+msgid "Associate 3MF files to HimStudio"
 msgstr ""
-"Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos DRC."
 
-msgid "Associate STL files to OrcaSlicer"
-msgstr "Associar arquivos STL ao OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open STL files."
+msgid "If enabled, sets HimStudio as default application to open 3MF files."
 msgstr ""
-"Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos STL."
 
-msgid "Associate STEP files to OrcaSlicer"
-msgstr "Associar arquivos STEP ao OrcaSlicer"
-
-msgid "If enabled, sets OrcaSlicer as default application to open STEP files."
+msgid "Associate DRC files to HimStudio"
 msgstr ""
-"Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos "
-"STEP."
 
-msgid "Associate web links to OrcaSlicer"
-msgstr "Associar links da web ao OrcaSlicer"
+msgid "If enabled, sets HimStudio as default application to open DRC files."
+msgstr ""
+
+msgid "Associate STL files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STL files."
+msgstr ""
+
+msgid "Associate STEP files to HimStudio"
+msgstr ""
+
+msgid "If enabled, sets HimStudio as default application to open STEP files."
+msgstr ""
+
+msgid "Associate web links to HimStudio"
+msgstr ""
 
 msgid "Developer"
 msgstr "Desenvolvedor"
@@ -11116,13 +11109,10 @@ msgid "Ramming line"
 msgstr "Linha de moldeamento"
 
 msgid ""
-"Orca would re-calculate your flushing volumes everytime the filaments color "
-"changed or filaments changed. You could disable the auto-calculate in Orca "
-"Slicer > Preferences"
+"HimStudio would re-calculate your flushing volumes everytime the filaments "
+"color changed or filaments changed. You could disable the auto-calculate in "
+"HimStudio > Preferences"
 msgstr ""
-"O Orca recalculará seus volumes de purga toda vez que a cor dos filamentos "
-"ou os filamentos forem alterados. Você pode desativar o cálculo automático "
-"em OrcaSlicer > Preferências"
 
 msgid "Flushing volume (mm³) for each filament pair."
 msgstr "Volume de purga (mm³) para cada par de filamentos."
@@ -22827,6 +22817,64 @@ msgstr ""
 "Você sabia que ao imprimir materiais propensos ao empenamento, como ABS, "
 "aumentar adequadamente a temperatura da mesa aquecida pode reduzir a "
 "probabilidade de empenamento?"
+
+#~ msgid ""
+#~ "If enabled, OrcaSlicer will re-slice automatically whenever slicing-"
+#~ "related settings change."
+#~ msgstr ""
+#~ "Se ativado, o OrcaSlicer irá re-fatiar automaticamente sempre que as "
+#~ "configurações relacionadas ao fatiamento forem alteradas."
+
+#~ msgid "Associate files to OrcaSlicer"
+#~ msgstr "Associar arquivos ao OrcaSlicer"
+
+#~ msgid "Associate 3MF files to OrcaSlicer"
+#~ msgstr "Associar arquivos 3MF ao OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open 3MF files."
+#~ msgstr ""
+#~ "Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos "
+#~ "3MF."
+
+#~ msgid "Associate DRC files to OrcaSlicer"
+#~ msgstr "Associar arquivos DRC ao OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open DRC files."
+#~ msgstr ""
+#~ "Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos "
+#~ "DRC."
+
+#~ msgid "Associate STL files to OrcaSlicer"
+#~ msgstr "Associar arquivos STL ao OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STL files."
+#~ msgstr ""
+#~ "Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos "
+#~ "STL."
+
+#~ msgid "Associate STEP files to OrcaSlicer"
+#~ msgstr "Associar arquivos STEP ao OrcaSlicer"
+
+#~ msgid ""
+#~ "If enabled, sets OrcaSlicer as default application to open STEP files."
+#~ msgstr ""
+#~ "Se ativado, define OrcaSlicer como aplicativo padrão para abrir arquivos "
+#~ "STEP."
+
+#~ msgid "Associate web links to OrcaSlicer"
+#~ msgstr "Associar links da web ao OrcaSlicer"
+
+#~ msgid ""
+#~ "Orca would re-calculate your flushing volumes everytime the filaments "
+#~ "color changed or filaments changed. You could disable the auto-calculate "
+#~ "in Orca Slicer > Preferences"
+#~ msgstr ""
+#~ "O Orca recalculará seus volumes de purga toda vez que a cor dos "
+#~ "filamentos ou os filamentos forem alterados. Você pode desativar o "
+#~ "cálculo automático em OrcaSlicer > Preferências"
 
 #, fuzzy, c-format, boost-format
 #~ msgid ""
