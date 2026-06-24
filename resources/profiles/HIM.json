@@ -1,12 +1,16 @@
 {
     "name": "HIM",
-    "version":  "02.03.02.00",
+    "version":  "02.03.02.03",
     "force_update": "0",
     "description": "HIM configurations",
     "machine_model_list": [
         {
             "name": "HIM F300A",
             "sub_path": "machine/HIM F300A.json"
+        },
+        {
+            "name": "HIM F300B",
+            "sub_path": "machine/HIM F300B.json"
         }
     ],
     "process_list": [
@@ -41,6 +45,10 @@
         {
             "name": "0.28mm Standard @HIM F300A 0.4 nozzle",
             "sub_path": "process/0.28mm Standard @HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "0.20mm Standard @HIM F300B 0.4 nozzle",
+            "sub_path": "process/0.20mm Standard @HIM F300B 0.4 nozzle.json"
         }
     ],
     "filament_list": [
@@ -337,6 +345,10 @@
         {
             "name": "HIM F300A 0.4 nozzle",
             "sub_path": "machine/HIM F300A 0.4 nozzle.json"
+        },
+        {
+            "name": "HIM F300B 0.4 nozzle",
+            "sub_path": "machine/HIM F300B 0.4 nozzle.json"
         }
     ]
 }

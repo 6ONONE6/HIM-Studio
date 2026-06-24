@@ -118,7 +118,7 @@ static const std::unordered_map<std::string, std::vector<std::string>> printer_m
                             "Geeetech A20 M",     "Geeetech A20 T",     "Geeetech A30 Pro",   "Geeetech A30 M",     "Geeetech A30 T",
                             "Geeetech M1"}},
      {"Ginger Additive",   {"ginger G1"}},
-     {"HIM", {"HIM F300A"}},
+     {"HIM",               {"HIM F300A",    "HIM F300B"}},
      {"InfiMech",          {"InfiMech TX",                       "InfiMech TX Hardened Steel Nozzle"}},
      {"Kingroon",          {"Kingroon KP3S PRO S1", "Kingroon KP3S PRO V2", "Kingroon KP3S 3.0",    "Kingroon KP3S V1",     "Kingroon KLP1"}},
      {"Lulzbot",           {"Lulzbot Taz 6",        "Lulzbot Taz 4 or 5",   "Lulzbot Taz Pro Dual", "Lulzbot Taz Pro S"}},
