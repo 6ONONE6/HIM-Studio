@@ -5790,13 +5790,13 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
                     if (ret == wxYES) {
                         wxLaunchDefaultBrowser(downloadUrl);
                     } else {
-                        check_new_version_him_profiles();
+                        check_new_version_him_profiles(by_user);
                     }
                 } else {
                     if (by_user != 0) {
                         this->no_new_version();
                     }
-                    check_new_version_him_profiles();
+                    check_new_version_him_profiles(by_user);
                 }
             } catch (std::exception& e) {
                 wxLogError("parse update info fail%s", e.what());
@@ -5811,7 +5811,7 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
     request.Start();
 }
 
-void GUI_App::check_new_version_him_profiles()
+void GUI_App::check_new_version_him_profiles(int by_user)
 {
     wxEvtHandler*     handler = wxTheApp->GetTopWindow();
     wxWebRequest      request;
@@ -5868,7 +5868,7 @@ void GUI_App::check_new_version_him_profiles()
         return true;
     };
 
-    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [this, updates_url, parse_version, compare_version_vec, version_greater,
+    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [this, by_user, updates_url, parse_version, compare_version_vec, version_greater,
                                                in_range](wxWebRequestEvent& event) {
         if (event.GetState() == wxWebRequest::State_Completed) {
             wxString    response = event.GetResponse().AsString();
@@ -5949,10 +5949,12 @@ void GUI_App::check_new_version_him_profiles()
                 if (!app_compatible) {
                     wxLogMessage("Remote HIM profiles version %s is not compatible with this application version %s. Skipping.",
                                  remote_version, app_version);
-                    wxMessageBox(wxString::Format("Found HIM profiles version %s, but it's not compatible with this application version "
-                                                  "%s. Update skipped.",
-                                                  remote_version, app_version),
-                                 _L("HIM Profiles - Incompatible"), wxOK | wxICON_INFORMATION);
+                    if (by_user != 0) {
+                        wxMessageBox(wxString::Format("Found HIM profiles version %s, but it's not compatible with this application version "
+                                                      "%s. Update skipped.",
+                                                      remote_version, app_version),
+                                     _L("HIM Profiles - Incompatible"), wxOK | wxICON_INFORMATION);
+                    }
                     return;
                 }
 
@@ -5981,7 +5983,7 @@ void GUI_App::check_new_version_him_profiles()
                         wxLogMessage("User postponed HIM profiles update (remote %s).", remote_version);
                     }
                 } else {
-                    wxMessageBox(msg, _L("HIM Profiles Update Available"), wxOK | wxICON_INFORMATION);
+                    //wxMessageBox(msg, _L("HIM Profiles Update Available"), wxOK | wxICON_INFORMATION);
                 }
 
             } catch (std::exception& e) {
@@ -5989,6 +5991,9 @@ void GUI_App::check_new_version_him_profiles()
             }
 
         } else if (event.GetState() == wxWebRequest::State_Failed) {
+            if (by_user != 0) {
+                wxMessageBox(_L("Check for HIM profiles update error: ") + event.GetErrorDescription(), _L("HIM Profiles Update Check"), wxICON_ERROR);
+            }
             wxLogError("HIM profiles update check failed: %s", event.GetErrorDescription());
         }
     });
