@@ -43,6 +43,12 @@
     "z_hop_types": [
         "Slope Lift"
     ],
+    "bed_exclude_area": [
+        "283x222",
+        "300x222",
+        "300x300",
+        "283x300"
+    ],
     "min_layer_height": [
     "0.08"
     ]
