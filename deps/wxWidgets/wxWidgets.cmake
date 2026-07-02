@@ -16,7 +16,11 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
 endif()
 
 if (MSVC)
-    set(_wx_edge "-DwxUSE_WEBVIEW_EDGE=ON")
+    set(_webview2_package_dir "${CMAKE_BINARY_DIR}/WebView2")
+    set(_wx_edge
+        "-DwxUSE_WEBVIEW_EDGE=ON"
+        "-DWEBVIEW2_PACKAGE_DIR:PATH=${_webview2_package_dir}"
+    )
 else ()
     set(_wx_edge "-DwxUSE_WEBVIEW_EDGE=OFF")
 endif ()
@@ -32,6 +36,7 @@ orcaslicer_add_cmake_project(
         ${_wx_toolkit}
         "-DCMAKE_DEBUG_POSTFIX:STRING=${_wx_debug_postfix}"
         -DwxBUILD_DEBUG_LEVEL=0
+        -DwxBUILD_LOCALES=OFF
         -DwxBUILD_SAMPLES=OFF
         ${_wx_shared}
         -DwxUSE_MEDIACTRL=ON
@@ -65,6 +70,32 @@ if(MSVC)
 else()
     set(_wx_inc_dest ${DESTDIR}/include/wx-3.3/wx)
 endif()
+
+ExternalProject_Add_Step(dep_wxWidgets clean_installed_headers
+    DEPENDEES update
+    DEPENDERS configure
+    COMMENT "Removing stale installed wxWidgets headers"
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${_wx_inc_dest}
+)
+
+if(MSVC)
+    ExternalProject_Add_Step(dep_wxWidgets prepare_webview2_package
+        DEPENDEES update
+        DEPENDERS configure
+        COMMENT "Preparing local WebView2 SDK for wxWidgets"
+        COMMAND ${CMAKE_COMMAND} -E make_directory
+            ${_webview2_package_dir}/build/native/include
+        COMMAND ${CMAKE_COMMAND} -E make_directory
+            ${_webview2_package_dir}/build/native/${DEPS_ARCH}
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${PROJECT_SOURCE_DIR}/WebView2/include
+            ${_webview2_package_dir}/build/native/include
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${PROJECT_SOURCE_DIR}/WebView2/lib/win-${DEPS_ARCH}
+            ${_webview2_package_dir}/build/native/${DEPS_ARCH}
+    )
+endif()
+
 ExternalProject_Add_Step(dep_wxWidgets copy_private_headers
     DEPENDEES install
     COMMENT "Copying wxWidgets private headers"

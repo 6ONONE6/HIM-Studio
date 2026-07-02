@@ -5839,9 +5839,10 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
                 json updates = j["updates"];
                 json windows = updates["windows"];
 
-                wxString    changelog      = wxString::FromUTF8(windows["changelog"]);
-                std::string downloadUrl    = windows["download-url"];
-                std::string latestVersion  = windows["latest-version"];
+                std::string changelog_text = windows["changelog"].get<std::string>();
+                wxString    changelog      = wxString::FromUTF8(changelog_text);
+                std::string downloadUrl    = windows["download-url"].get<std::string>();
+                std::string latestVersion  = windows["latest-version"].get<std::string>();
                 std::string currentVersion = std::string(HIM_VERSION); // assumes HIM_VERSION is simple ascii
 
                 int cmp = compareVersions(currentVersion, latestVersion);
