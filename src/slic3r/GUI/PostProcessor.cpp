@@ -128,10 +128,33 @@ static int run_script(const std::string& script, const std::string& gcode, std::
                                    " failed. CommandLineToArgvW() refused to parse the command line path.");
     }
 
-    std::wstring command_line;
     std::wstring command = szArglist[0];
-    if (!boost::filesystem::exists(boost::filesystem::path(command)))
-        throw Slic3r::RuntimeError(std::string("The configured post-processing script does not exist: ") + boost::nowide::narrow(command));
+
+    // If the provided command path does not exist, try to locate it under <exe_dir>/scripts/.
+    if (!boost::filesystem::exists(boost::filesystem::path(command))) {
+        wchar_t wpath_exe[_MAX_PATH + 1];
+        ::GetModuleFileNameW(nullptr, wpath_exe, _MAX_PATH);
+        boost::filesystem::path exe_path(wpath_exe);
+        boost::filesystem::path scripts_dir = exe_path.parent_path() / L"scripts";
+
+        boost::filesystem::path cmd_path(command);
+        boost::filesystem::path candidate;
+
+        if (!cmd_path.has_parent_path() || cmd_path.parent_path().empty())
+            candidate = scripts_dir / cmd_path.filename();
+        else
+            candidate = scripts_dir / cmd_path;
+
+        if (boost::filesystem::exists(candidate)) {
+            command = candidate.wstring();
+        } else {
+            LocalFree(szArglist);
+            throw Slic3r::RuntimeError(std::string("The configured post-processing script does not exist: ") +
+                                       boost::nowide::narrow(command));
+        }
+    }
+
+    std::wstring command_line;
     if (boost::iends_with(command, L".pl")) {
         // This is a perl script. Run it through the perl interpreter.
         // The current process may be slic3r.exe or slic3r-console.exe.
@@ -153,7 +176,7 @@ static int run_script(const std::string& script, const std::string& gcode, std::
     }
 
     for (int i = 0; i < nArgs; ++i) {
-        quote_argv_winapi(szArglist[i], command_line);
+        quote_argv_winapi(i == 0 ? command : szArglist[i], command_line);
         command_line += L" ";
     }
     LocalFree(szArglist);
