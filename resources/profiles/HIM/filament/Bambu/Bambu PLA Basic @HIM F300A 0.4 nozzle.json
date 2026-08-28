@@ -54,6 +54,7 @@
         "18"
     ],
     "compatible_printers": [
-        "HIM F300A 0.4 nozzle"
+        "HIM F300A 0.4 nozzle",
+        "HIM F300B 0.4 nozzle"
     ]
 }
