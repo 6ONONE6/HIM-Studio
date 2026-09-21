@@ -1,9 +1,9 @@
 {
     "type": "filament",
     "name": "eSUN PLA Translucent @HIM F300A 0.4 nozzle",
-    "inherits": "eSUN PLA Silk @base",
+    "inherits": "eSUN PLA Translucent @base",
     "from": "system",
-    "setting_id": "OGFSL03_00",
+    "setting_id": "tmurcKII16LXAuuc",
     "instantiation": "true",
     "filament_density": [
         "1.24"

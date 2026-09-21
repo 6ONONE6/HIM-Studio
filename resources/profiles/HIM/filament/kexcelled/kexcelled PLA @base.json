@@ -2,7 +2,7 @@
     "type": "filament",
     "name": "kexcelled PLA @base",
     "from": "system",
-    "filament_id": "kexce002",
+    "filament_id": "OFgpbLwL",
     "instantiation": "false",
     "inherits": "fdm_filament_pla",
     "enable_pressure_advance": [

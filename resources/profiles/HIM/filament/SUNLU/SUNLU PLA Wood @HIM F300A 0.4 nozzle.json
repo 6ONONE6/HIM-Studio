@@ -3,7 +3,7 @@
     "name": "SUNLU PLA Wood @HIM F300A 0.4 nozzle",
     "inherits": "SUNLU PLA Wood @base",
     "from": "system",
-    "setting_id": "OSNLS02",
+    "setting_id": "qaTbdnvmBJNEzUBr",
     "instantiation": "true",
     "filament_density": [
         "1.24"

@@ -3,7 +3,7 @@
     "name": "Bambu PLA Matte @base",
     "inherits": "fdm_filament_pla",
     "from": "system",
-    "filament_id": "GFA01",
+    "filament_id": "OFXIbw5D",
     "instantiation": "false",
     "filament_cost": [
         "24.99"
@@ -16,17 +16,5 @@
     ],
     "filament_vendor": [
         "Bambu Lab"
-    ],
-    "filament_scarf_seam_type": [
-        "none"
-    ],
-    "filament_scarf_height":[
-        "5%"
-    ],
-    "filament_scarf_gap":[
-        "0%"
-    ],
-    "filament_scarf_length":[
-        "10"
     ]
 }

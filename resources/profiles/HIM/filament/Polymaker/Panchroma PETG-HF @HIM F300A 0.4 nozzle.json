@@ -3,7 +3,7 @@
     "name": "Panchroma PETG-HF @HIM F300A 0.4 nozzle",
     "inherits": "Panchroma PETG-HF @base",
     "from": "system",
-    "setting_id": "OGFSL19",
+    "setting_id": "COkwaOkfKPemxX6y",
     "instantiation": "true",
     "filament_density": [
         "1.24"

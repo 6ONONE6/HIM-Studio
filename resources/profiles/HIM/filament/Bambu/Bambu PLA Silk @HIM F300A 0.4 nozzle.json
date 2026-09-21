@@ -3,7 +3,7 @@
     "name": "Bambu PLA Silk @HIM F300A 0.4 nozzle",
     "inherits": "Bambu PLA Silk @base",
     "from": "system",
-    "setting_id": "OGFSA01",
+    "setting_id": "mQZPe217oaql7oS8",
     "instantiation": "true",
     "filament_density": [
         "1.24"

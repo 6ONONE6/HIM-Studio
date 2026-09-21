@@ -1,6 +1,6 @@
 {
     "type": "process",
-    "setting_id": "GP002",
+    "setting_id": "AnW93JZTjv9A0Gma",
     "name": "0.20mm Standard @HIM F300B 0.4 nozzle",
     "from": "system",
     "inherits": "fdm_process_HIM_common",

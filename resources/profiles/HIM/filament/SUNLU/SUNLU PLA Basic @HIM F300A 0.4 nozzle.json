@@ -3,7 +3,7 @@
     "name": "SUNLU PLA Basic @HIM F300A 0.4 nozzle",
     "inherits": "SUNLU PLA Basic @base",
     "from": "system",
-    "setting_id": "OSNLS02",
+    "setting_id": "5hIHQfyzKLyVOave",
     "instantiation": "true",
     "filament_density": [
         "1.24"

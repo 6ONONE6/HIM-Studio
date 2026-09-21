@@ -3,7 +3,7 @@
     "name": "SUNLU PLA Translucent @HIM F300A 0.4 nozzle",
     "inherits": "SUNLU PLA Translucent @base",
     "from": "system",
-    "setting_id": "OSNLS05",
+    "setting_id": "vjcqNWp8AHHtGBpg",
     "instantiation": "true",
     "filament_density": [
         "1.24"

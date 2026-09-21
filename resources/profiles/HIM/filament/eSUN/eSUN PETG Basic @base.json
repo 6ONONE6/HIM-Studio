@@ -3,7 +3,7 @@
     "name": "eSUN PETG Basic @base",
     "inherits": "fdm_filament_pet",
     "from": "system",
-    "filament_id": "GFL03",
+    "filament_id": "OFgsMqUf",
     "instantiation": "false",
     "filament_cost": [
         "22.99"

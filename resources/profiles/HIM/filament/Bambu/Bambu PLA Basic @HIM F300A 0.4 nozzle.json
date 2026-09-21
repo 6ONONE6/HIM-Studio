@@ -3,7 +3,7 @@
     "name": "Bambu PLA Basic @HIM F300A 0.4 nozzle",
     "inherits": "Bambu PLA Basic @base",
     "from": "system",
-    "setting_id": "OGFSA01",
+    "setting_id": "d4tJmXZOGcPfPUZH",
     "instantiation": "true",
     "filament_density": [
         "1.24"
