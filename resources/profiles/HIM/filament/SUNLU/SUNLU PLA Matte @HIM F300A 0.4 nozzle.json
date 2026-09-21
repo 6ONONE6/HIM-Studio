@@ -3,7 +3,7 @@
     "name": "SUNLU PLA Matte @HIM F300A 0.4 nozzle",
     "inherits": "SUNLU PLA Matte @base",
     "from": "system",
-    "setting_id": "OSNLS02",
+    "setting_id": "xOaysnbmQc7LF16y",
     "instantiation": "true",
     "filament_density": [
         "1.24"

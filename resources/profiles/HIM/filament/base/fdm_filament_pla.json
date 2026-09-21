@@ -4,7 +4,6 @@
     "inherits": "fdm_filament_common",
     "from": "system",
     "instantiation": "false",
-    "filament_id": "GFL99",
     "additional_cooling_fan_speed": [
         "70"
     ],
@@ -37,12 +36,6 @@
     ],
     "filament_max_volumetric_speed": [
         "12"
-    ],
-    "filament_scarf_seam_type": [
-        "none"
-    ],
-    "filament_scarf_gap": [
-        "15%"
     ],
     "hot_plate_temp": [
         "55"

@@ -3,7 +3,7 @@
     "name": "eSUN PETG Basic @HIM F300A 0.4 nozzle",
     "inherits": "eSUN PETG Basic @base",
     "from": "system",
-    "setting_id": "OGFSL03_00",
+    "setting_id": "W32Nnan6G6NDiBMz",
     "instantiation": "true",
     "filament_density": [
         "1.24"

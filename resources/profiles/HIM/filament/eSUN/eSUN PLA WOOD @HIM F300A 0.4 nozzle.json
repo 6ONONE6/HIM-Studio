@@ -1,9 +1,9 @@
 {
     "type": "filament",
     "name": "eSUN PLA WOOD @HIM F300A 0.4 nozzle",
-    "inherits": "eSUN PLA+ @base",
+    "inherits": "eSUN PLA WOOD @base",
     "from": "system",
-    "setting_id": "OGFSL03_00",
+    "setting_id": "WKpZfoZ1aew62cwD",
     "instantiation": "true",
     "filament_density": [
         "1.24"

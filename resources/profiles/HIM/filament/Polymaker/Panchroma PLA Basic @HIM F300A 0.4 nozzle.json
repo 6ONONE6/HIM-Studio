@@ -3,7 +3,7 @@
     "name": "Panchroma PLA Basic @HIM F300A 0.4 nozzle",
     "inherits": "Panchroma PLA Basic @base",
     "from": "system",
-    "setting_id": "OGFSL19",
+    "setting_id": "OkOOR7dXG6NK9cpZ",
     "instantiation": "true",
     "filament_density": [
         "1.24"

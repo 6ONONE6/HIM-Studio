@@ -3,7 +3,7 @@
     "name": "Bambu PETG Translucent @HIM F300A 0.4 nozzle",
     "inherits": "Bambu PETG Translucent @base",
     "from": "system",
-    "setting_id": "OGFSA01",
+    "setting_id": "5yKWWDH4bCH6XVZ2",
     "instantiation": "true",
     "filament_density": [
         "1.24"

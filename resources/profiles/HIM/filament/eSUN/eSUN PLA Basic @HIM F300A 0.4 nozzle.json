@@ -1,9 +1,9 @@
 {
     "type": "filament",
     "name": "eSUN PLA Basic @HIM F300A 0.4 nozzle",
-    "inherits": "eSUN PLA+ @base",
+    "inherits": "eSUN PLA Basic @base",
     "from": "system",
-    "setting_id": "OGFSL03_00",
+    "setting_id": "MHGmlRgEdQ1J71XZ",
     "instantiation": "true",
     "filament_density": [
         "1.24"

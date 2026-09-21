@@ -3,7 +3,7 @@
     "name": "SUNLU PLA Wood @base",
     "inherits": "fdm_filament_pla",
     "from": "system",
-    "filament_id": "GFSNL02",
+    "filament_id": "OFh2c9tZ",
     "instantiation": "false",
     "filament_cost": [
         "25.99"
@@ -25,18 +25,6 @@
     ],
     "filament_vendor": [
         "SUNLU"
-    ],
-    "filament_scarf_seam_type": [
-        "none"
-    ],
-    "filament_scarf_height":[
-        "5%"
-    ],
-    "filament_scarf_gap":[
-        "0%"
-    ],
-    "filament_scarf_length":[
-        "10"
     ],
     "temperature_vitrification": [
         "54"

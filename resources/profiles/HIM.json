@@ -1,354 +1,378 @@
 {
-    "name": "HIM",
-    "version":  "02.03.02.05",
-    "force_update": "0",
-    "description": "HIM configurations",
-    "machine_model_list": [
-        {
-            "name": "HIM F300A",
-            "sub_path": "machine/HIM F300A.json"
-        },
-        {
-            "name": "HIM F300B",
-            "sub_path": "machine/HIM F300B.json"
-        }
-    ],
-    "process_list": [
-        {
-            "name": "fdm_process_common",
-            "sub_path": "process/fdm_process_common.json"
-        },
-        {
-            "name": "fdm_process_HIM_common",
-            "sub_path": "process/fdm_process_HIM_common.json"
-        },
-        {
-            "name": "0.08mm Standard @HIM F300A 0.4 nozzle",
-            "sub_path": "process/0.08mm Standard @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "0.12mm Standard @HIM F300A 0.4 nozzle",
-            "sub_path": "process/0.12mm Standard @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "0.15mm Standard @HIM F300A 0.4 nozzle",
-            "sub_path": "process/0.15mm Standard @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "0.20mm Standard @HIM F300A 0.4 nozzle",
-            "sub_path": "process/0.20mm Standard @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "0.24mm Standard @HIM F300A 0.4 nozzle",
-            "sub_path": "process/0.24mm Standard @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "0.28mm Standard @HIM F300A 0.4 nozzle",
-            "sub_path": "process/0.28mm Standard @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "0.20mm Standard @HIM F300B 0.4 nozzle",
-            "sub_path": "process/0.20mm Standard @HIM F300B 0.4 nozzle.json"
-        }
-    ],
-    "filament_list": [
-        {
-            "name": "fdm_filament_common",
-            "sub_path": "filament/base/fdm_filament_common.json"
-        },
-        {
-            "name": "fdm_filament_abs",
-            "sub_path": "filament/base/fdm_filament_abs.json"
-        },
-        {
-            "name": "fdm_filament_asa",
-            "sub_path": "filament/base/fdm_filament_asa.json"
-        },
-        {
-            "name": "fdm_filament_bvoh",
-            "sub_path": "filament/base/fdm_filament_bvoh.json"
-        },
-        {
-            "name": "fdm_filament_eva",
-            "sub_path": "filament/base/fdm_filament_eva.json"
-        },
-        {
-            "name": "fdm_filament_hips",
-            "sub_path": "filament/base/fdm_filament_hips.json"
-        },
-        {
-            "name": "fdm_filament_pa",
-            "sub_path": "filament/base/fdm_filament_pa.json"
-        },
-        {
-            "name": "fdm_filament_pc",
-            "sub_path": "filament/base/fdm_filament_pc.json"
-        },
-        {
-            "name": "fdm_filament_pctg",
-            "sub_path": "filament/base/fdm_filament_pctg.json"
-        },
-        {
-            "name": "fdm_filament_pe",
-            "sub_path": "filament/base/fdm_filament_pe.json"
-        },
-        {
-            "name": "fdm_filament_pet",
-            "sub_path": "filament/base/fdm_filament_pet.json"
-        },
-        {
-            "name": "fdm_filament_pha",
-            "sub_path": "filament/base/fdm_filament_pha.json"
-        },
-        {
-            "name": "fdm_filament_pla",
-            "sub_path": "filament/base/fdm_filament_pla.json"
-        },
-        {
-            "name": "fdm_filament_pla_silk",
-            "sub_path": "filament/base/fdm_filament_pla_silk.json"
-        },
-        {
-            "name": "fdm_filament_pp",
-            "sub_path": "filament/base/fdm_filament_pp.json"
-        },
-        {
-            "name": "fdm_filament_ppa",
-            "sub_path": "filament/base/fdm_filament_ppa.json"
-        },
-        {
-            "name": "fdm_filament_pps",
-            "sub_path": "filament/base/fdm_filament_pps.json"
-        },
-        {
-            "name": "fdm_filament_pva",
-            "sub_path": "filament/base/fdm_filament_pva.json"
-        },
-        {
-            "name": "fdm_filament_sbs",
-            "sub_path": "filament/base/fdm_filament_sbs.json"
-        },
-        {
-            "name": "fdm_filament_tpu",
-            "sub_path": "filament/base/fdm_filament_tpu.json"
-        },
-        {
-            "name": "Bambu PETG Basic @base",
-            "sub_path": "filament/Bambu/Bambu PETG Basic @base.json"
-        },
-        {
-            "name": "Bambu PETG HF @base",
-            "sub_path": "filament/Bambu/Bambu PETG HF @base.json"
-        },
-        {
-            "name": "Bambu PETG Translucent @base",
-            "sub_path": "filament/Bambu/Bambu PETG Translucent @base.json"
-        },
-        {
-            "name": "Bambu PLA Basic @base",
-            "sub_path": "filament/Bambu/Bambu PLA Basic @base.json"
-        },
-        {
-            "name": "Bambu PLA Matte @base",
-            "sub_path": "filament/Bambu/Bambu PLA Matte @base.json"
-        },
-        {
-            "name": "Bambu PLA Silk @base",
-            "sub_path": "filament/Bambu/Bambu PLA Silk @base.json"
-        },
-        {
-            "name": "Bambu PLA Translucent @base",
-            "sub_path": "filament/Bambu/Bambu PLA Translucent @base.json"
-        },
-        {
-            "name": "Bambu PLA Wood @base",
-            "sub_path": "filament/Bambu/Bambu PLA Wood @base.json"
-        },
-        {
-            "name": "eSUN PETG Basic @base",
-            "sub_path": "filament/eSUN/eSUN PETG Basic @base.json"
-        },
-        {
-            "name": "eSUN PLA Silk @base",
-            "sub_path": "filament/eSUN/eSUN PLA Silk @base.json"
-        },
-        {
-            "name": "eSUN PLA+ @base",
-            "sub_path": "filament/eSUN/eSUN PLA+ @base.json"
-        },
-        {
-            "name": "kexcelled PLA @base",
-            "sub_path": "filament/kexcelled/kexcelled PLA @base.json"
-        },
-        {
-            "name": "kexcelled PLA Silk @base",
-            "sub_path": "filament/kexcelled/kexcelled PLA Silk @base.json"
-        },
-        {
-            "name": "Panchroma PETG-HF @base",
-            "sub_path": "filament/Polymaker/Panchroma PETG-HF @base.json"
-        },
-        {
-            "name": "Panchroma PLA Basic @base",
-            "sub_path": "filament/Polymaker/Panchroma PLA Basic @base.json"
-        },
-        {
-            "name": "Panchroma PLA Matte @base",
-            "sub_path": "filament/Polymaker/Panchroma PLA Matte @base.json"
-        },
-        {
-            "name": "Panchroma PLA Silk @base",
-            "sub_path": "filament/Polymaker/Panchroma PLA Silk @base.json"
-        },
-        {
-            "name": "SUNLU PETG-HF @base",
-            "sub_path": "filament/SUNLU/SUNLU PETG-HF @base.json"
-        },
-        {
-            "name": "SUNLU PLA Basic @base",
-            "sub_path": "filament/SUNLU/SUNLU PLA Basic @base.json"
-        },
-        {
-            "name": "SUNLU PLA Matte @base",
-            "sub_path": "filament/SUNLU/SUNLU PLA Matte @base.json"
-        },
-        {
-            "name": "SUNLU PLA Translucent @base",
-            "sub_path": "filament/SUNLU/SUNLU PLA Translucent @base.json"
-        },
-        {
-            "name": "SUNLU PLA Wood @base",
-            "sub_path": "filament/SUNLU/SUNLU PLA Wood @base.json"
-        },
-        {
-            "name": "SUNLU PLA+ Silk @base",
-            "sub_path": "filament/SUNLU/SUNLU PLA+ Silk @base.json"
-        },
-        {
-            "name": "Bambu PETG Basic @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PETG Basic @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Bambu PETG HF @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PETG HF @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Bambu PETG Translucent @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PETG Translucent @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Bambu PLA Basic @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PLA Basic @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Bambu PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PLA Matte @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Bambu PLA Silk @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PLA Silk @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Bambu PLA Translucent @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PLA Translucent @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Bambu PLA Wood @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Bambu/Bambu PLA Wood @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "kexcelled PLA K5 @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/kexcelled/kexcelled PLA K5 @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/kexcelled/kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "kexcelled PLA Silk @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/kexcelled/kexcelled PLA Silk @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "SUNLU PETG-HF @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU PETG-HF @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "SUNLU PLA Basic @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU PLA Basic @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "SUNLU PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU PLA Matte @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "SUNLU PLA Translucent @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU PLA Translucent @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "SUNLU PLA Wood @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU PLA Wood @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/SUNLU/SUNLU PLA+ Silk @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "eSUN PETG Basic @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PETG Basic @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "eSUN PLA Basic @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PLA Basic @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "eSUN PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PLA Matte @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "eSUN PLA Silk @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PLA Silk @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "eSUN PLA Translucent @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PLA Translucent @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "eSUN PLA WOOD @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/eSUN/eSUN PLA WOOD @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Panchroma PETG-HF @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Polymaker/Panchroma PETG-HF @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Panchroma PLA Basic @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Polymaker/Panchroma PLA Basic @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Panchroma PLA Matte @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Polymaker/Panchroma PLA Matte @HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "Panchroma PLA Silk @HIM F300A 0.4 nozzle",
-            "sub_path": "filament/Polymaker/Panchroma PLA Silk @HIM F300A 0.4 nozzle.json"
-        }
-    ],
-    "machine_list": [
-        {
-            "name": "fdm_machine_common",
-            "sub_path": "machine/fdm_machine_common.json"
-        },
-        {
-            "name": "fdm_klipper_common",
-            "sub_path": "machine/fdm_klipper_common.json"
-        },
-        {
-            "name": "HIM F300A 0.4 nozzle",
-            "sub_path": "machine/HIM F300A 0.4 nozzle.json"
-        },
-        {
-            "name": "HIM F300B 0.4 nozzle",
-            "sub_path": "machine/HIM F300B 0.4 nozzle.json"
-        }
-    ]
+	"name": "HIM",
+	"version": "02.03.02.06",
+	"force_update": "0",
+	"description": "HIM configurations",
+	"machine_model_list": [
+		{
+			"name": "HIM F300A",
+			"sub_path": "machine/HIM F300A.json"
+		},
+		{
+			"name": "HIM F300B",
+			"sub_path": "machine/HIM F300B.json"
+		}
+	],
+	"process_list": [
+		{
+			"name": "fdm_process_common",
+			"sub_path": "process/fdm_process_common.json"
+		},
+		{
+			"name": "fdm_process_HIM_common",
+			"sub_path": "process/fdm_process_HIM_common.json"
+		},
+		{
+			"name": "0.08mm Standard @HIM F300A 0.4 nozzle",
+			"sub_path": "process/0.08mm Standard @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "0.12mm Standard @HIM F300A 0.4 nozzle",
+			"sub_path": "process/0.12mm Standard @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "0.15mm Standard @HIM F300A 0.4 nozzle",
+			"sub_path": "process/0.15mm Standard @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "0.20mm Standard @HIM F300A 0.4 nozzle",
+			"sub_path": "process/0.20mm Standard @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "0.20mm Standard @HIM F300B 0.4 nozzle",
+			"sub_path": "process/0.20mm Standard @HIM F300B 0.4 nozzle.json"
+		},
+		{
+			"name": "0.24mm Standard @HIM F300A 0.4 nozzle",
+			"sub_path": "process/0.24mm Standard @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "0.28mm Standard @HIM F300A 0.4 nozzle",
+			"sub_path": "process/0.28mm Standard @HIM F300A 0.4 nozzle.json"
+		}
+	],
+	"filament_list": [
+		{
+			"name": "fdm_filament_common",
+			"sub_path": "filament/base/fdm_filament_common.json"
+		},
+		{
+			"name": "fdm_filament_abs",
+			"sub_path": "filament/base/fdm_filament_abs.json"
+		},
+		{
+			"name": "fdm_filament_asa",
+			"sub_path": "filament/base/fdm_filament_asa.json"
+		},
+		{
+			"name": "fdm_filament_bvoh",
+			"sub_path": "filament/base/fdm_filament_bvoh.json"
+		},
+		{
+			"name": "fdm_filament_eva",
+			"sub_path": "filament/base/fdm_filament_eva.json"
+		},
+		{
+			"name": "fdm_filament_hips",
+			"sub_path": "filament/base/fdm_filament_hips.json"
+		},
+		{
+			"name": "fdm_filament_pa",
+			"sub_path": "filament/base/fdm_filament_pa.json"
+		},
+		{
+			"name": "fdm_filament_pc",
+			"sub_path": "filament/base/fdm_filament_pc.json"
+		},
+		{
+			"name": "fdm_filament_pctg",
+			"sub_path": "filament/base/fdm_filament_pctg.json"
+		},
+		{
+			"name": "fdm_filament_pe",
+			"sub_path": "filament/base/fdm_filament_pe.json"
+		},
+		{
+			"name": "fdm_filament_pet",
+			"sub_path": "filament/base/fdm_filament_pet.json"
+		},
+		{
+			"name": "fdm_filament_pha",
+			"sub_path": "filament/base/fdm_filament_pha.json"
+		},
+		{
+			"name": "fdm_filament_pla",
+			"sub_path": "filament/base/fdm_filament_pla.json"
+		},
+		{
+			"name": "fdm_filament_pp",
+			"sub_path": "filament/base/fdm_filament_pp.json"
+		},
+		{
+			"name": "fdm_filament_ppa",
+			"sub_path": "filament/base/fdm_filament_ppa.json"
+		},
+		{
+			"name": "fdm_filament_pps",
+			"sub_path": "filament/base/fdm_filament_pps.json"
+		},
+		{
+			"name": "fdm_filament_pva",
+			"sub_path": "filament/base/fdm_filament_pva.json"
+		},
+		{
+			"name": "fdm_filament_sbs",
+			"sub_path": "filament/base/fdm_filament_sbs.json"
+		},
+		{
+			"name": "fdm_filament_tpu",
+			"sub_path": "filament/base/fdm_filament_tpu.json"
+		},
+		{
+			"name": "Bambu PETG Basic @base",
+			"sub_path": "filament/Bambu/Bambu PETG Basic @base.json"
+		},
+		{
+			"name": "Bambu PETG HF @base",
+			"sub_path": "filament/Bambu/Bambu PETG HF @base.json"
+		},
+		{
+			"name": "Bambu PETG Translucent @base",
+			"sub_path": "filament/Bambu/Bambu PETG Translucent @base.json"
+		},
+		{
+			"name": "Panchroma PETG-HF @base",
+			"sub_path": "filament/Polymaker/Panchroma PETG-HF @base.json"
+		},
+		{
+			"name": "SUNLU PETG-HF @base",
+			"sub_path": "filament/SUNLU/SUNLU PETG-HF @base.json"
+		},
+		{
+			"name": "eSUN PETG Basic @base",
+			"sub_path": "filament/eSUN/eSUN PETG Basic @base.json"
+		},
+		{
+			"name": "Bambu PLA Basic @base",
+			"sub_path": "filament/Bambu/Bambu PLA Basic @base.json"
+		},
+		{
+			"name": "Bambu PLA Matte @base",
+			"sub_path": "filament/Bambu/Bambu PLA Matte @base.json"
+		},
+		{
+			"name": "Bambu PLA Silk @base",
+			"sub_path": "filament/Bambu/Bambu PLA Silk @base.json"
+		},
+		{
+			"name": "Bambu PLA Translucent @base",
+			"sub_path": "filament/Bambu/Bambu PLA Translucent @base.json"
+		},
+		{
+			"name": "Bambu PLA Wood @base",
+			"sub_path": "filament/Bambu/Bambu PLA Wood @base.json"
+		},
+		{
+			"name": "Panchroma PLA Basic @base",
+			"sub_path": "filament/Polymaker/Panchroma PLA Basic @base.json"
+		},
+		{
+			"name": "Panchroma PLA Matte @base",
+			"sub_path": "filament/Polymaker/Panchroma PLA Matte @base.json"
+		},
+		{
+			"name": "Panchroma PLA Silk @base",
+			"sub_path": "filament/Polymaker/Panchroma PLA Silk @base.json"
+		},
+		{
+			"name": "SUNLU PLA Basic @base",
+			"sub_path": "filament/SUNLU/SUNLU PLA Basic @base.json"
+		},
+		{
+			"name": "SUNLU PLA Matte @base",
+			"sub_path": "filament/SUNLU/SUNLU PLA Matte @base.json"
+		},
+		{
+			"name": "SUNLU PLA Translucent @base",
+			"sub_path": "filament/SUNLU/SUNLU PLA Translucent @base.json"
+		},
+		{
+			"name": "SUNLU PLA Wood @base",
+			"sub_path": "filament/SUNLU/SUNLU PLA Wood @base.json"
+		},
+		{
+			"name": "SUNLU PLA+ Silk @base",
+			"sub_path": "filament/SUNLU/SUNLU PLA+ Silk @base.json"
+		},
+		{
+			"name": "eSUN PLA Basic @base",
+			"sub_path": "filament/eSUN/eSUN PLA Basic @base.json"
+		},
+		{
+			"name": "eSUN PLA Matte @base",
+			"sub_path": "filament/eSUN/eSUN PLA Matte @base.json"
+		},
+		{
+			"name": "eSUN PLA Silk @base",
+			"sub_path": "filament/eSUN/eSUN PLA Silk @base.json"
+		},
+		{
+			"name": "eSUN PLA Translucent @base",
+			"sub_path": "filament/eSUN/eSUN PLA Translucent @base.json"
+		},
+		{
+			"name": "eSUN PLA WOOD @base",
+			"sub_path": "filament/eSUN/eSUN PLA WOOD @base.json"
+		},
+		{
+			"name": "eSUN PLA+ @base",
+			"sub_path": "filament/eSUN/eSUN PLA+ @base.json"
+		},
+		{
+			"name": "fdm_filament_pla_silk",
+			"sub_path": "filament/base/fdm_filament_pla_silk.json"
+		},
+		{
+			"name": "kexcelled PLA @base",
+			"sub_path": "filament/kexcelled/kexcelled PLA @base.json"
+		},
+		{
+			"name": "kexcelled PLA K5 @base",
+			"sub_path": "filament/kexcelled/kexcelled PLA K5 @base.json"
+		},
+		{
+			"name": "kexcelled PLA K5 Matte @base",
+			"sub_path": "filament/kexcelled/kexcelled PLA K5 Matte @base.json"
+		},
+		{
+			"name": "kexcelled PLA Silk @base",
+			"sub_path": "filament/kexcelled/kexcelled PLA Silk @base.json"
+		},
+		{
+			"name": "Bambu PETG Basic @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PETG Basic @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Bambu PETG HF @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PETG HF @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Bambu PETG Translucent @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PETG Translucent @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Panchroma PETG-HF @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Polymaker/Panchroma PETG-HF @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "SUNLU PETG-HF @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/SUNLU/SUNLU PETG-HF @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "eSUN PETG Basic @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/eSUN/eSUN PETG Basic @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Bambu PLA Basic @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PLA Basic @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Bambu PLA Matte @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PLA Matte @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Bambu PLA Silk @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PLA Silk @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Bambu PLA Translucent @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PLA Translucent @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Bambu PLA Wood @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Bambu/Bambu PLA Wood @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Panchroma PLA Basic @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Polymaker/Panchroma PLA Basic @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Panchroma PLA Matte @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Polymaker/Panchroma PLA Matte @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "Panchroma PLA Silk @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/Polymaker/Panchroma PLA Silk @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "SUNLU PLA Basic @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/SUNLU/SUNLU PLA Basic @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "SUNLU PLA Matte @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/SUNLU/SUNLU PLA Matte @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "SUNLU PLA Translucent @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/SUNLU/SUNLU PLA Translucent @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "SUNLU PLA Wood @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/SUNLU/SUNLU PLA Wood @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "SUNLU PLA+ Silk @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/SUNLU/SUNLU PLA+ Silk @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "eSUN PLA Basic @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/eSUN/eSUN PLA Basic @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "eSUN PLA Matte @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/eSUN/eSUN PLA Matte @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "eSUN PLA Silk @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/eSUN/eSUN PLA Silk @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "eSUN PLA Translucent @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/eSUN/eSUN PLA Translucent @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "eSUN PLA WOOD @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/eSUN/eSUN PLA WOOD @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "kexcelled PLA K5 @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/kexcelled/kexcelled PLA K5 @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/kexcelled/kexcelled PLA K5 Matte @HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "kexcelled PLA Silk @HIM F300A 0.4 nozzle",
+			"sub_path": "filament/kexcelled/kexcelled PLA Silk @HIM F300A 0.4 nozzle.json"
+		}
+	],
+	"machine_list": [
+		{
+			"name": "fdm_machine_common",
+			"sub_path": "machine/fdm_machine_common.json"
+		},
+		{
+			"name": "fdm_klipper_common",
+			"sub_path": "machine/fdm_klipper_common.json"
+		},
+		{
+			"name": "HIM F300A 0.4 nozzle",
+			"sub_path": "machine/HIM F300A 0.4 nozzle.json"
+		},
+		{
+			"name": "HIM F300B 0.4 nozzle",
+			"sub_path": "machine/HIM F300B 0.4 nozzle.json"
+		}
+	]
 }

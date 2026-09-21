@@ -3,7 +3,7 @@
     "name": "Bambu PLA Translucent @HIM F300A 0.4 nozzle",
     "inherits": "Bambu PLA Translucent @base",
     "from": "system",
-    "setting_id": "OGFSA01",
+    "setting_id": "mf3a51OHcLJSPTLZ",
     "instantiation": "true",
     "filament_density": [
         "1.24"

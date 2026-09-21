@@ -8,5 +8,5 @@
     "bed_model": "",
     "bed_texture": "HIM_bed_texture.svg",
     "hotend_model": "",
-    "default_materials": ""
+    "default_materials": "Generic PLA @System"
 }

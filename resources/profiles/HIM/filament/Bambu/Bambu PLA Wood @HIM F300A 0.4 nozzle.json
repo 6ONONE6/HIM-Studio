@@ -3,7 +3,7 @@
     "name": "Bambu PLA Wood @HIM F300A 0.4 nozzle",
     "inherits": "Bambu PLA Wood @base",
     "from": "system",
-    "setting_id": "OGFSA01",
+    "setting_id": "3MLmtZxSXKWCtvL0",
     "instantiation": "true",
     "filament_density": [
         "1.24"

@@ -3,7 +3,7 @@
     "name": "Bambu PETG Basic @HIM F300A 0.4 nozzle",
     "inherits": "Bambu PETG Basic @base",
     "from": "system",
-    "setting_id": "OGFSA01",
+    "setting_id": "Sdp8Nmx8opPkQKeK",
     "instantiation": "true",
     "filament_density": [
         "1.24"

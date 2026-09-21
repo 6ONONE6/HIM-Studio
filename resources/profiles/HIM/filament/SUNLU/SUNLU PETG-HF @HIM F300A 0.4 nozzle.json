@@ -3,7 +3,7 @@
     "name": "SUNLU PETG-HF @HIM F300A 0.4 nozzle",
     "inherits": "SUNLU PETG-HF @base",
     "from": "system",
-    "setting_id": "OSNLS05",
+    "setting_id": "Tbca9hlUmlVxg6lG",
     "instantiation": "true",
     "filament_density": [
         "1.24"
