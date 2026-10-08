@@ -2,20 +2,25 @@
 #include "TriMesh.hpp"
 #include "CgalUtils.hpp"
 #include "Callbacks.hpp"
-#include <CGAL/Polygon_mesh_processing/border.h>
+#include <CGAL/boost/graph/border.h>
+#include <CGAL/Named_function_parameters.h>
 #include <CGAL/Polygon_mesh_processing/manifoldness.h>
+#include <CGAL/Polygon_mesh_processing/repair_degeneracies.h>
 #include <CGAL/Polygon_mesh_processing/repair_polygon_soup.h>
 #include <CGAL/Polygon_mesh_processing/repair.h>
 #include <CGAL/Polygon_mesh_processing/orient_polygon_soup.h>
 #include <CGAL/Polygon_mesh_processing/polygon_soup_to_polygon_mesh.h>
 #include <CGAL/Polygon_mesh_processing/stitch_borders.h>
 #include <CGAL/Polygon_mesh_processing/triangulate_hole.h>
+#include <CGAL/boost/graph/graph_traits_Surface_mesh.h>
 #include <boost/log/trivial.hpp>
 #include <algorithm>
 #include <chrono>
 #include <cstddef>
+#include <iterator>
 #include <memory>
 #include <utility>
+#include <vector>
 
 namespace Slic3r { namespace tex2color {
 
@@ -60,7 +65,7 @@ inline BoundaryEdgeStats ComputeBoundaryEdgeStats(const cgalutils::CGALMesh& cga
     using HalfedgeDescriptor = boost::graph_traits<CGALMesh>::halfedge_descriptor;
 
     std::vector<HalfedgeDescriptor> border_cycles;
-    PMP::extract_boundary_cycles(cgal_mesh, std::back_inserter(border_cycles));
+    CGAL::extract_boundary_cycles(cgal_mesh, std::back_inserter(border_cycles));
 
     BoundaryEdgeStats stats;
     stats.cycle_count = border_cycles.size();
@@ -90,11 +95,11 @@ inline void CloseBoundariesAndRepairManifoldness(cgalutils::CGALMesh& cgal_mesh)
     PMP::duplicate_non_manifold_vertices(cgal_mesh);
 
     std::vector<HalfedgeDescriptor> border_cycles;
-    PMP::extract_boundary_cycles(cgal_mesh, std::back_inserter(border_cycles));
+    CGAL::extract_boundary_cycles(cgal_mesh, std::back_inserter(border_cycles));
 
     for (const HalfedgeDescriptor h : border_cycles) {
         std::vector<FaceDescriptor> patch_faces;
-        PMP::triangulate_hole(cgal_mesh, h, std::back_inserter(patch_faces));
+        PMP::triangulate_hole(cgal_mesh, h, CGAL::parameters::face_output_iterator(std::back_inserter(patch_faces)));
     }
 
     PMP::remove_degenerate_faces(cgal_mesh);
