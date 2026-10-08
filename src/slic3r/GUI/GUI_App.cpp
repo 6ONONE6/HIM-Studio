@@ -6494,7 +6494,7 @@ void GUI_App::check_new_version_hs(bool show_tips, int by_user)
     wxWebRequest  request;
     request = wxWebSession::GetDefault().CreateRequest(handler, "https://gitee.com/nullptr01/HIM-Studio/raw/master/updates.json");
 
-    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [by_user, compareVersions, this](wxWebRequestEvent& event) {
+    handler->Bind(wxEVT_WEBREQUEST_STATE, [by_user, compareVersions, this](wxWebRequestEvent& event) {
         if (event.GetState() == wxWebRequest::State_Completed) {
             wxString    response = event.GetResponse().AsString();
             std::string jsonStr  = response.utf8_string();
@@ -6598,7 +6598,7 @@ void GUI_App::check_new_version_him_profiles(int by_user)
         return true;
     };
 
-    handler->Bind(wxEVT_WEBREQUEST_COMPLETED, [this, by_user, updates_url, parse_version, compare_version_vec, version_greater,
+    handler->Bind(wxEVT_WEBREQUEST_STATE, [this, by_user, updates_url, parse_version, compare_version_vec, version_greater,
                                                in_range](wxWebRequestEvent& event) {
         if (event.GetState() == wxWebRequest::State_Completed) {
             wxString    response = event.GetResponse().AsString();
