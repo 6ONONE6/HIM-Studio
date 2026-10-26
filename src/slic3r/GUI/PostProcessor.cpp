@@ -27,8 +27,6 @@
 
 // BBS
 #include <algorithm>
-#include <boost/process/pipe.hpp>
-#include <boost/process/io.hpp>
 #include <cstring>
 #include <cstdio>
 #include <exception>
@@ -210,7 +208,7 @@ static int run_script(const std::string& script, const std::string& gcode, std::
 // POSIX
 
 #include <cstdlib> // getenv()
-#include <boost/process.hpp>
+#include <slic3r/Utils/BoostProcessCompat.hpp>
 
 namespace process = boost::process;
 
