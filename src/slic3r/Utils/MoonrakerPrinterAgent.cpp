@@ -533,6 +533,18 @@ void MoonrakerPrinterAgent::build_ams_payload(int ams_count, int max_lane_index,
                 tray_json["tray_info_idx"] = tray->tray_info_idx;
                 tray_json["tray_type"] = tray->tray_type;
                 tray_json["tray_color"] = normalize_color_value(tray->tray_color);
+                // Sent for every tray, since update_filament_multi_color() stops at the first tray without "cols".
+                // "ctype" uses the filament_colour_type values (0 = gradient, 1 = solid or segments).
+                const bool     multi = tray->tray_colors.size() > 1;
+                nlohmann::json cols  = nlohmann::json::array();
+                if (multi) {
+                    for (const std::string& color : tray->tray_colors)
+                        cols.push_back(normalize_color_value(color));
+                } else {
+                    cols.push_back(tray_json["tray_color"]);
+                }
+                tray_json["cols"]  = cols;
+                tray_json["ctype"] = multi && tray->colors_gradient ? 0 : 1;
 
                 // Add temperature data if provided
                 if (tray->bed_temp > 0) {
@@ -856,10 +868,15 @@ bool MoonrakerPrinterAgent::fetch_moonraker_filament_data(std::vector<AmsTrayDat
         tray.bed_temp = safe_json_int(lane_obj, "bed_temp");
         tray.nozzle_temp = safe_json_int(lane_obj, "nozzle_temp");
         tray.has_filament = !tray.tray_type.empty();
+        // A lane's filament_id goes to AMS sync as the tray id, which matches it like a Bambu tray's
+        // and falls back to the material type when no compatible preset carries it. Only a string
+        // counts: Happy Hare writes Spoolman's numeric filament record id under the same key.
+        tray.tray_info_idx = safe_json_string(lane_obj, "filament_id");
         auto* bundle = GUI::wxGetApp().preset_bundle;
-        tray.tray_info_idx = bundle
-            ? bundle->filaments.filament_id_by_type(tray.tray_type)
-            : map_filament_type_to_generic_id(tray.tray_type);
+        if (tray.tray_info_idx.empty())
+            tray.tray_info_idx = bundle
+                ? bundle->filaments.filament_id_by_type(tray.tray_type)
+                : map_filament_type_to_generic_id(tray.tray_type);
 
         max_lane_index = std::max(max_lane_index, lane_index);
         trays.push_back(tray);
