@@ -1866,7 +1866,7 @@ void PreferencesDialog::create_items()
     // managed by Windows Settings; the runtime registry toggles below cannot work.
     // Show a minimal page that sends the user to Windows' Default Apps settings instead.
     if (is_running_in_msix()) {
-        g_sizer->Add(create_item_title(_L("Associate files to OrcaSlicer")), 1, wxEXPAND);
+        g_sizer->Add(create_item_title(_L("Associate files to HimStudio")), 1, wxEXPAND);
 
         auto item_open_default_apps = create_item_button(
             _L("File associations for the Microsoft Store version are managed by Windows Settings."),
@@ -1875,22 +1875,22 @@ void PreferencesDialog::create_items()
         g_sizer->Add(item_open_default_apps);
     } else {
         //// FILES > Extensions
-        g_sizer->Add(create_item_title(_L("Associate files to OrcaSlicer")), 1, wxEXPAND);
+        g_sizer->Add(create_item_title(_L("Associate files to HimStudio")), 1, wxEXPAND);
 
-        auto item_associate_3mf    = create_item_checkbox(_L("Associate 3MF files to OrcaSlicer"), _L("If enabled, this sets OrcaSlicer as the default application to open 3MF files.") , "associate_3mf");
+        auto item_associate_3mf    = create_item_checkbox(_L("Associate 3MF files to HimStudio"), _L("If enabled, this sets HimStudio as the default application to open 3MF files.") , "associate_3mf");
         g_sizer->Add(item_associate_3mf);
 
-        auto item_associate_drc    = create_item_checkbox(_L("Associate DRC files to OrcaSlicer"), _L("If enabled, sets OrcaSlicer as default application to open DRC files."), "associate_drc");
+        auto item_associate_drc    = create_item_checkbox(_L("Associate DRC files to HimStudio"), _L("If enabled, sets HimStudio as default application to open DRC files."), "associate_drc");
         g_sizer->Add(item_associate_drc);
 
-        auto item_associate_stl    = create_item_checkbox(_L("Associate STL files to OrcaSlicer"), _L("If enabled, this sets OrcaSlicer as the default application to open STL files.") , "associate_stl");
+        auto item_associate_stl    = create_item_checkbox(_L("Associate STL files to HimStudio"), _L("If enabled, this sets HimStudio as the default application to open STL files.") , "associate_stl");
         g_sizer->Add(item_associate_stl);
 
-        auto item_associate_step   = create_item_checkbox(_L("Associate STEP files to OrcaSlicer"), _L("If enabled, this sets OrcaSlicer as the default application to open STEP files."), "associate_step");
+        auto item_associate_step   = create_item_checkbox(_L("Associate STEP files to HimStudio"), _L("If enabled, this sets HimStudio as the default application to open STEP files."), "associate_step");
         g_sizer->Add(item_associate_step);
 
         //// FILES > WebLinks
-        g_sizer->Add(create_item_title(_L("Associate web links to OrcaSlicer")), 1, wxEXPAND);
+        g_sizer->Add(create_item_title(_L("Associate web links to HimStudio")), 1, wxEXPAND);
 
         auto associate_url_prusa   = create_item_link_association(L"prusaslicer", "Printables.com");
         g_sizer->Add(associate_url_prusa);
@@ -1927,7 +1927,7 @@ void PreferencesDialog::create_items()
 
     auto item_auto_reslice = create_item_auto_reslice(
         _L("Auto slice after changes"),
-        _L("If enabled, OrcaSlicer will re-slice automatically whenever slicing-related settings change."),
+        _L("If enabled, HimStudio will re-slice automatically whenever slicing-related settings change."),
         _L("Delay in seconds before auto slicing starts, allowing multiple edits to be grouped. Use 0 to slice immediately."));
     g_sizer->Add(item_auto_reslice);
 
@@ -2358,67 +2358,6 @@ void PreferencesDialog::create_items()
 
     g_sizer->AddSpacer(FromDIP(10));
     sizer_page->Add(g_sizer, 0, wxEXPAND);
-
-    //////////////////////////
-    //// ASSOCIATE TAB 
-    /////////////////////////////////////
-#ifdef _WIN32
-    // MSIX: associations are declared in the package manifest and defaults are
-    // managed by Windows Settings; the runtime registry toggles below cannot work.
-    // Show a minimal page that sends the user to Windows' Default Apps settings instead.
-    if (is_running_in_msix()) {
-        m_pref_tabs->AppendItem(_L("Associate"));
-        f_sizers.push_back(new wxFlexGridSizer(1, 1, v_gap, 0));
-        g_sizer = f_sizers.back();
-        g_sizer->AddGrowableCol(0, 1);
-
-        g_sizer->Add(create_item_title(_L("Associate files to OrcaSlicer")), 1, wxEXPAND);
-
-        auto item_open_default_apps = create_item_button(
-            _L("File associations for the Microsoft Store version are managed by Windows Settings."),
-            _L("Open Windows Default Apps Settings"), "", "",
-            []() { wxLaunchDefaultBrowser("ms-settings:defaultapps"); });
-        g_sizer->Add(item_open_default_apps);
-
-        g_sizer->AddSpacer(FromDIP(10));
-        sizer_page->Add(g_sizer, 0, wxEXPAND);
-    } else {
-    m_pref_tabs->AppendItem(_L("Associate"));
-    f_sizers.push_back(new wxFlexGridSizer(1, 1, v_gap, 0));
-    g_sizer = f_sizers.back();
-    g_sizer->AddGrowableCol(0, 1);
-
-    //// ASSOCIATE > Extensions
-    g_sizer->Add(create_item_title(_L("Associate files to OrcaSlicer")), 1, wxEXPAND);
-
-    auto item_associate_3mf    = create_item_checkbox(_L("Associate 3MF files to OrcaSlicer"), _L("If enabled, this sets OrcaSlicer as the default application to open 3MF files.") , "associate_3mf");
-    g_sizer->Add(item_associate_3mf);
-
-    auto item_associate_drc = create_item_checkbox(_L("Associate DRC files to OrcaSlicer"), _L("If enabled, sets OrcaSlicer as default application to open DRC files."), "associate_drc");
-    g_sizer->Add(item_associate_drc);
-
-    auto item_associate_stl    = create_item_checkbox(_L("Associate STL files to OrcaSlicer"), _L("If enabled, this sets OrcaSlicer as the default application to open STL files.") , "associate_stl");
-    g_sizer->Add(item_associate_stl);
-
-    auto item_associate_step   = create_item_checkbox(_L("Associate STEP files to OrcaSlicer"), _L("If enabled, this sets OrcaSlicer as the default application to open STEP files."), "associate_step");
-    g_sizer->Add(item_associate_step);
-
-    //// ASSOCIATE > WebLinks
-    g_sizer->Add(create_item_title(_L("Associate web links to OrcaSlicer")), 1, wxEXPAND);
-
-    auto associate_url_prusa   = create_item_link_association(L"prusaslicer", "Printables.com");
-    g_sizer->Add(associate_url_prusa);
-
-    auto associate_url_bambu   = create_item_link_association(L"bambustudio", "Makerworld.com");
-    g_sizer->Add(associate_url_bambu);
-
-    auto associate_url_cura    = create_item_link_association(L"cura", "Thingiverse.com");
-    g_sizer->Add(associate_url_cura);
-
-    g_sizer->AddSpacer(FromDIP(10));
-    sizer_page->Add(g_sizer, 0, wxEXPAND);
-    }
-#endif // _WIN32
 
     //////////////////////////
     //// DEVELOPER TAB
