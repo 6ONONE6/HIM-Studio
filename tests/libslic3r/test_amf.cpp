@@ -1,28 +1,16 @@
 #include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_message.hpp>
-#include <catch2/generators/catch_generators.hpp>
-#include <catch2/matchers/catch_matchers.hpp>
-#include <catch2/matchers/catch_matchers_floating_point.hpp>
 
 #include "libslic3r/Config.hpp"
-#include "libslic3r/BoundingBox.hpp"
 #include "libslic3r/Format/AMF.hpp"
-#include "libslic3r/Format/ProjectStrategy.hpp"
 #include "libslic3r/Model.hpp"
 #include "libslic3r/PrintConfig.hpp"
-#include "libslic3r/TriangleMesh.hpp"
-#include "libslic3r/libslic3r.h"
 
 #include "test_utils.hpp"
 
 #include <boost/nowide/fstream.hpp>
-#include <boost/filesystem/path.hpp>
 
-#include <algorithm>
-#include <cstddef>
 #include <ios>
 #include <string>
-#include <vector>
 
 using namespace Slic3r;
 

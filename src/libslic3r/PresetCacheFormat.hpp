@@ -203,10 +203,9 @@ public:
     // read. The three kinds are written in one stream, so reaching the machines
     // means reading past the processes and filaments — their configs are consumed
     // and dropped rather than built. This is how a build that ships caches instead
-    // of preset JSONs answers "which vendor carries this preset?". With `renamed`
-    // it answers whether a preset was renamed from `preset_name` instead.
+    // of preset JSONs answers "which vendor carries this preset?".
     static bool carries_preset(const std::string& path, const std::string& vendor_name,
-                               Preset::Type type, const std::string& preset_name, bool renamed = false);
+                               Preset::Type type, const std::string& preset_name);
 };
 
 } // namespace Slic3r

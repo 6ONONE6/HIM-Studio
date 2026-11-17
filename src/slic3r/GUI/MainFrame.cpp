@@ -159,7 +159,6 @@
 #include <cassert>
 #include <wx/display.h>
 #include <wx/window.h>
-#include <wx/wupdlock.h>
 
 
 using json = nlohmann::json;
@@ -1215,11 +1214,7 @@ void MainFrame::update_layout()
 
     wxBusyCursor busy;
 
-    // While the main frame is being created nothing is on screen, and a freeze would only walk
-    // every child window to block redraws that cannot happen.
-    wxWindowUpdateLocker no_updates;
-    if (IsShownOnScreen())
-        no_updates.Lock(this);
+    Freeze();
 
     // Remove old settings
     if (m_layout != ESettingsLayout::Unknown)
@@ -1311,6 +1306,7 @@ void MainFrame::update_layout()
 #endif
 
     Layout();
+    Thaw();
 }
 
 #ifdef __WXGTK__

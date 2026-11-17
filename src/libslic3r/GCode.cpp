@@ -94,7 +94,6 @@
 #include <regex>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/find.hpp>
-#include <boost/algorithm/string/join.hpp>
 #include <boost/foreach.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/log/trivial.hpp>
@@ -1070,6 +1069,27 @@ static std::vector<Vec2d> get_path_of_change_filament(const Print& print)
         return gcode;
     }
 
+    // A folded tower layer is thicker than the object layer it sits on, so the height process_layer
+    // emitted is not the tower's. Both writers declare one, but each hardcodes a tag dialect - Type 1
+    // forces s_IsBBLPrinter and writes "; LAYER_HEIGHT:", Type 2 writes ";HEIGHT:" - and the processor
+    // reads only its printer's, so a Type 1 tower on a non-BBL printer loses it and the merged layer
+    // is drawn and costed as a thin one. Declare it here, where the printer is known, unless the tower
+    // already wrote the right tag. _extrude puts the object's height back on the next object path,
+    // since process_layer forces the role to erWipeTower on any layer with a tower.
+    std::string WipeTowerIntegration::tower_height_tag(GCode &gcodegen, const WipeTower::ToolChangeResult &tcr,
+                                                       const std::string &tcr_gcode) const
+    {
+        const std::string tag = ";" + GCodeProcessor::reserved_tag(GCodeProcessor::ETags::Height);
+        if (! m_sparse_layers_combined || std::abs(gcodegen.m_last_height - tcr.layer_height) <= EPSILON ||
+            tcr_gcode.find(tag) != std::string::npos)
+            return {};
+        // Keep m_last_height what the G-code last declared, so a second visit does not repeat it.
+        gcodegen.m_last_height = tcr.layer_height;
+        char buf[64];
+        sprintf(buf, "%s%g\n", tag.c_str(), tcr.layer_height);
+        return buf;
+    }
+
     // FanMover consumes these markers (and drops them) to avoid splitting a G1 inside custom gcode.
     // Only written when FanMover runs, the same gate as its construction in GCode::process_layers.
     static std::string wrap_custom_gcode_for_fan_mover(const FullPrintConfig &config, const std::string &gcode)
@@ -1619,6 +1639,7 @@ static std::vector<Vec2d> get_path_of_change_filament(const Print& print)
         config.set_key_value("filament_start_gcode", new ConfigOptionString(start_filament_gcode_str));
         std::string tcr_gcode, tcr_escaped_gcode = gcodegen.placeholder_parser_process("tcr_rotated_gcode", tcr_rotated_gcode, new_filament_id, &config);
         unescape_string_cstyle(tcr_escaped_gcode, tcr_gcode);
+        gcode += tower_height_tag(gcodegen, tcr, tcr_gcode);
         gcode += tcr_gcode;
         // Count the toolchange only when the emitted block really changed the tool —
         // tower visits without a filament change must not advance the ordinal.
@@ -1938,6 +1959,7 @@ static std::vector<Vec2d> get_path_of_change_filament(const Print& print)
         std::string tcr_gcode,
             tcr_escaped_gcode = gcodegen.placeholder_parser_process("tcr_rotated_gcode", tcr_rotated_gcode, new_extruder_id, &config);
         unescape_string_cstyle(tcr_escaped_gcode, tcr_gcode);
+        gcode += tower_height_tag(gcodegen, tcr, tcr_gcode);
         gcode += tcr_gcode;
         check_add_eol(toolchange_gcode_str);
 
@@ -3728,20 +3750,6 @@ void GCode::_do_export(Print& print, GCodeOutputStream &file, ThumbnailsGenerato
     this->placeholder_parser().set("first_filaments", new ConfigOptionInts(first_filaments));
     this->placeholder_parser().set("initial_tool", initial_extruder_id);
     this->placeholder_parser().set("initial_extruder", initial_extruder_id);
-    // Orca: filament types really extruded on this plate, deduplicated, in filament id order.
-    // Joined with '_': safe in URLs and on print hosts, and unlike '-' it does not clash with
-    // types that already contain a hyphen (PLA-CF, TPU-95A).
-    std::string printing_filament_types;
-    {
-        std::vector<std::string> types;
-        for (const Extruder &extruder : m_writer.extruders()) {
-            std::string type = m_config.filament_type.get_at(extruder.id());
-            if (std::find(types.begin(), types.end(), type) == types.end())
-                types.emplace_back(std::move(type));
-        }
-        printing_filament_types = boost::algorithm::join(types, "_");
-    }
-    this->placeholder_parser().set("printing_filament_types", printing_filament_types);
     //BBS
     match_physical_extruder_for_each_filament(first_non_support_filaments, m_config);
 
@@ -4943,8 +4951,6 @@ void GCode::_do_export(Print& print, GCodeOutputStream &file, ThumbnailsGenerato
         print.tool_ordering()));
     print.m_print_statistics.initial_tool = initial_extruder_id;
     print.m_print_statistics.initial_no_support_tool = initial_non_support_extruder_id;
-    // Set again here: update_print_stats_and_format_filament_stats() above cleared the statistics.
-    print.m_print_statistics.printing_filament_types = printing_filament_types;
     if (!is_bbl_printers) {
         file.write_format("; total filament used [g] = %.2lf\n",
             print.m_print_statistics.total_weight);
